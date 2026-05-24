@@ -6,6 +6,7 @@ Every meaningful decision should be reflected here before or alongside implement
 
 ## Structure
 
+- `next-steps.md`: current handoff and best next step for future sessions. Read this first.
 - `product-vision.md`: high-level product direction and scope.
 - `decision-log.md`: lightweight chronological decisions.
 - `open-questions.md`: unresolved product, app, legal, architecture, and data questions.
@@ -29,7 +30,8 @@ Decision entries should include:
 
 ## Current Priorities
 
-1. Preserve the product vision and initial constraints.
-2. Build a reliable structured SRD data foundation.
-3. Start with the compendium and data model before full app implementation.
-4. Keep offline-first behavior and real-time campaign play as architectural drivers.
+1. Read and update `next-steps.md` at the start and end of each session.
+2. Preserve the product vision and initial constraints.
+3. Build a reliable structured SRD data foundation.
+4. Start with the compendium and data model before full app implementation.
+5. Keep offline-first behavior and real-time campaign play as architectural drivers.

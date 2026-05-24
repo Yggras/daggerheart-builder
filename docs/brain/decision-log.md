@@ -271,3 +271,19 @@ Use Expo Router at the repository root with routes for home, compendium list/sea
 Consequences:
 
 The prototype can validate navigation, local fixture loading, search, filters, and detail rendering before adding Supabase, character builder, campaign mode, or a design system.
+
+## 2026-05-24 - Add SRD Relationship Links
+
+Status: Accepted
+
+Context:
+
+The compendium needs convenient navigation between related entries, especially classes, subclasses, and relevant rules.
+
+Decision:
+
+Add a generic `relationships` field to SRD entries, validate that relationship targets exist, and render related entries on detail pages. Continue to keep mechanical references like `class.subclassIds` and `subclass.classId` and derive links from them.
+
+Consequences:
+
+Broken links fail fixture validation, and the prototype supports class-to-subclass, subclass-to-class, and entry-to-rule navigation without implementing inline rich-text links yet.

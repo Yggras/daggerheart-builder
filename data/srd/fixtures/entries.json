@@ -25,6 +25,28 @@
       "summary": "A charismatic performer class using Grace and Codex domains."
     },
     "tags": ["class", "grace", "codex", "social"],
+    "relationships": [
+      {
+        "type": "subclass",
+        "targetId": "subclass.bard.troubadour",
+        "label": "Troubadour"
+      },
+      {
+        "type": "subclass",
+        "targetId": "subclass.bard.wordsmith",
+        "label": "Wordsmith"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
     "domains": ["Grace", "Codex"],
     "startingEvasion": 10,
     "startingHitPoints": 5,
@@ -67,6 +89,28 @@
       "summary": "A Bard subclass focused on songs that support allies."
     },
     "tags": ["subclass", "bard", "support", "music"],
+    "relationships": [
+      {
+        "type": "class",
+        "targetId": "class.bard",
+        "label": "Bard"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.conditions",
+        "label": "Conditions"
+      }
+    ],
     "classId": "class.bard",
     "spellcastTrait": "presence",
     "features": {
@@ -86,6 +130,76 @@
         {
           "name": "Virtuoso",
           "text": "You are among the greatest of your craft and your skill is boundless. You can perform each of your Gifted Performer feature's songs twice per long rest."
+        }
+      ]
+    }
+  },
+  {
+    "id": "subclass.bard.wordsmith",
+    "kind": "subclass",
+    "name": "Wordsmith",
+    "slug": "wordsmith",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 6
+      },
+      "printedPages": [8, 9],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Play the Wordsmith if you want to use clever wordplay and captivate crowds.",
+      "summary": "A Bard subclass focused on speeches, wordplay, and social support."
+    },
+    "tags": ["subclass", "bard", "support", "social"],
+    "relationships": [
+      {
+        "type": "class",
+        "targetId": "class.bard",
+        "label": "Bard"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
+    "classId": "class.bard",
+    "spellcastTrait": "presence",
+    "features": {
+      "foundation": [
+        {
+          "name": "Rousing Speech",
+          "text": "Once per long rest, you can give a heartfelt, inspiring speech. All allies within Far range clear 2 Stress."
+        },
+        {
+          "name": "Heart of a Poet",
+          "text": "After you make an action roll to impress, persuade, or offend someone, you can spend a Hope to add a d4 to the roll."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Eloquent",
+          "text": "Once per session, when you encourage an ally, you can allow them to find a mundane object or tool they need, help an Ally without spending Hope, or give them an additional downtime move during their next rest."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Epic Poetry",
+          "text": "Your Rally Die increases to a d10. Additionally, when you Help an Ally, you can narrate the moment as if you were writing the tale of their heroism in a memoir. When you do, roll a d10 as your advantage die."
         }
       ]
     }
@@ -116,6 +230,18 @@
       "summary": "A protective Arcana spell that reduces incoming damage."
     },
     "tags": ["domain-card", "arcana", "spell", "level-1", "defense"],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.hit_points_damage_thresholds",
+        "label": "Hit Points & Damage Thresholds"
+      }
+    ],
     "domain": "Arcana",
     "level": 1,
     "cardType": "spell",
@@ -153,6 +279,13 @@
       "summary": "A level 4 Codex grimoire containing defensive, temporal, and wall-creating magic."
     },
     "tags": ["domain-card", "codex", "grimoire", "level-4", "magic"],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      }
+    ],
     "domain": "Codex",
     "level": 4,
     "cardType": "grimoire",
@@ -265,6 +398,100 @@
     }
   },
   {
+    "id": "rule.core.hope",
+    "kind": "rule_reference",
+    "name": "Hope",
+    "slug": "hope",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [38, 39],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Every PC starts with 2 Hope at character creation and gains more throughout play. A PC can have a maximum of 6 Hope at one time, and Hope carries over between sessions. Players can spend Hope to help an Ally, utilize an Experience, initiate a Tag Team Roll, or activate a Hope Feature.",
+      "summary": "Player metacurrency used to power abilities, help allies, use experiences, and initiate Tag Team Rolls."
+    },
+    "tags": ["rule", "core", "hope", "metacurrency"],
+    "category": "core mechanics",
+    "headings": ["Core Mechanics", "Hope & Fear", "Hope"]
+  },
+  {
+    "id": "rule.combat.stress",
+    "kind": "rule_reference",
+    "name": "Stress",
+    "slug": "stress",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [39],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Stress represents how much mental, physical, and emotional strain a character can endure. All classes start with 6 Stress slots. You'll be able to increase the number of Stress slots you have available as you level up, to a maximum of 12.",
+      "summary": "Tracks strain and fuels some abilities; all classes start with 6 Stress slots."
+    },
+    "tags": ["rule", "combat", "stress"],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.conditions",
+        "label": "Conditions"
+      }
+    ],
+    "category": "combat",
+    "headings": ["Combat", "Stress"]
+  },
+  {
+    "id": "rule.combat.conditions",
+    "kind": "rule_reference",
+    "name": "Conditions",
+    "slug": "conditions",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 21,
+        "pageEnd": 21
+      },
+      "printedPages": [41],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Conditions are effects that grant specific benefits or drawbacks to the target they are attached to. Daggerheart has three standard conditions: Hidden, Restrained, and Vulnerable. Some features can apply special or unique conditions, which work as described in the feature text. Unless otherwise noted, the same condition can't be applied more than once to the same target.",
+      "summary": "Reference entry for standard and special conditions such as Hidden, Restrained, and Vulnerable."
+    },
+    "tags": ["rule", "combat", "conditions"],
+    "category": "combat",
+    "headings": ["Combat", "Conditions"]
+  },
+  {
     "id": "rule.combat.hit_points_damage_thresholds",
     "kind": "rule_reference",
     "name": "Hit Points & Damage Thresholds",
@@ -290,6 +517,13 @@
       "summary": "Explains how damage thresholds determine marked HP."
     },
     "tags": ["rule", "combat", "hit-points", "damage-thresholds"],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
     "category": "combat",
     "headings": ["Combat", "Hit Points & Damage Thresholds"]
   }

@@ -23,6 +23,12 @@ const TextSchema = z.object({
   summary: z.string().optional(),
 });
 
+const RelationshipSchema = z.object({
+  type: z.enum(["class", "subclass", "rule", "domain_card", "weapon", "related"]),
+  targetId: z.string().regex(/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/),
+  label: z.string().min(1),
+});
+
 const BaseEntrySchema = z.object({
   id: z.string().regex(/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/),
   name: z.string().min(1),
@@ -31,6 +37,7 @@ const BaseEntrySchema = z.object({
   review: ReviewSchema,
   text: TextSchema,
   tags: z.array(z.string().regex(/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/)),
+  relationships: z.array(RelationshipSchema).default([]),
 });
 
 const TraitSchema = z.enum([
@@ -149,6 +156,38 @@ export const SrdEntryCollectionSchema = z.array(SrdEntrySchema).superRefine((ent
         code: "custom",
         message: "PDF page end must be greater than or equal to page start",
         path: [index, "source", "pdf", "pageEnd"],
+      });
+    }
+  }
+
+  for (const [index, entry] of entries.entries()) {
+    for (const [relationshipIndex, relationship] of entry.relationships.entries()) {
+      if (!ids.has(relationship.targetId)) {
+        ctx.addIssue({
+          code: "custom",
+          message: `Relationship target does not exist: ${relationship.targetId}`,
+          path: [index, "relationships", relationshipIndex, "targetId"],
+        });
+      }
+    }
+
+    if (entry.kind === "class") {
+      for (const [subclassIndex, subclassId] of entry.subclassIds.entries()) {
+        if (!ids.has(subclassId)) {
+          ctx.addIssue({
+            code: "custom",
+            message: `Subclass target does not exist: ${subclassId}`,
+            path: [index, "subclassIds", subclassIndex],
+          });
+        }
+      }
+    }
+
+    if (entry.kind === "subclass" && !ids.has(entry.classId)) {
+      ctx.addIssue({
+        code: "custom",
+        message: `Class target does not exist: ${entry.classId}`,
+        path: [index, "classId"],
       });
     }
   }

@@ -1,7 +1,7 @@
 import { Link, useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { formatKind, formatSource, formatTags } from "../../src/compendium/display";
-import { getSrdEntryById } from "../../src/srd/loadFixture";
+import { getRelatedEntries, getSrdEntryById } from "../../src/srd/loadFixture";
 import type { SrdEntry } from "../../src/srd/schema";
 
 export default function CompendiumDetailScreen() {
@@ -37,6 +37,8 @@ export default function CompendiumDetailScreen() {
       </View>
 
       {renderKindDetails(entry)}
+
+      <RelatedEntries entry={entry} />
 
       <Section title="Original Text">
         <Text style={styles.body}>{entry.text.original}</Text>
@@ -138,6 +140,30 @@ function Feature({ title, text }: { title: string; text: string }) {
   );
 }
 
+function RelatedEntries({ entry }: { entry: SrdEntry }) {
+  const relatedEntries = getRelatedEntries(entry);
+
+  if (relatedEntries.length === 0) {
+    return null;
+  }
+
+  return (
+    <Section title="Related Entries">
+      <View style={styles.relatedList}>
+        {relatedEntries.map((relatedEntry) => (
+          <Link key={relatedEntry.id} href={{ pathname: "/compendium/[id]", params: { id: relatedEntry.id } }} asChild>
+            <Pressable style={styles.relatedCard}>
+              <Text style={styles.relatedKind}>{formatKind(relatedEntry.kind)}</Text>
+              <Text style={styles.relatedTitle}>{relatedEntry.name}</Text>
+              {relatedEntry.text.summary ? <Text style={styles.relatedSummary}>{relatedEntry.text.summary}</Text> : null}
+            </Pressable>
+          </Link>
+        ))}
+      </View>
+    </Section>
+  );
+}
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -232,6 +258,34 @@ const styles = StyleSheet.create({
     color: "#4e433b",
     fontSize: 15,
     lineHeight: 22,
+  },
+  relatedList: {
+    gap: 10,
+  },
+  relatedCard: {
+    borderWidth: 1,
+    borderColor: "#eadcca",
+    borderRadius: 14,
+    backgroundColor: "#f6f0e3",
+    gap: 4,
+    padding: 12,
+  },
+  relatedKind: {
+    color: "#8d5428",
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 0.8,
+    textTransform: "uppercase",
+  },
+  relatedTitle: {
+    color: "#201915",
+    fontSize: 17,
+    fontWeight: "800",
+  },
+  relatedSummary: {
+    color: "#6a5b50",
+    fontSize: 14,
+    lineHeight: 20,
   },
   missingTitle: {
     color: "#201915",

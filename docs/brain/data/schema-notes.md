@@ -55,8 +55,30 @@ All entries share:
 - `review`
 - `text`
 - `tags`
+- `relationships`
 
 Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, and rule categories/headings.
+
+## Relationships
+
+SRD entries can link to other entries through `relationships`.
+
+Relationship fields:
+
+- `type`
+- `targetId`
+- `label`
+
+Current relationship types:
+
+- `class`
+- `subclass`
+- `rule`
+- `domain_card`
+- `weapon`
+- `related`
+
+Validation requires every relationship target to exist in the same entry collection. Mechanical references are still preserved, such as `class.subclassIds` and `subclass.classId`; the UI derives related-entry navigation from both explicit relationships and these mechanical references.
 
 ## Source References
 
@@ -98,7 +120,13 @@ PDF pages are useful for extraction tooling. Printed pages are useful for manual
   "metadata": {
     "tags": []
   },
-  "relationships": []
+  "relationships": [
+    {
+      "type": "rule",
+      "targetId": "rule.core.hope",
+      "label": "Hope"
+    }
+  ]
 }
 ```
 

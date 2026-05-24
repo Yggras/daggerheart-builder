@@ -33,6 +33,7 @@ The first prototype includes:
 - Local text search over reviewed fixture entries.
 - Kind filters for rule references, classes, subclasses, domain cards, and weapons.
 - Detail screens for each fixture entry.
+- Related-entry navigation between linked SRD entries.
 - Runtime validation through Zod before entries are exposed to the UI.
 
 The prototype intentionally does not include Supabase, full SRD ingestion, character builder integration, or a UI kit.
@@ -48,3 +49,4 @@ The prototype intentionally does not include Supabase, full SRD ingestion, chara
 - Should the compendium require login?
 - Should source page references be stored for each entry?
 - Which content categories should ship first?
+- Should related rules eventually be shown as inline links inside rules text, or should explicit related-entry sections remain the main navigation pattern?
