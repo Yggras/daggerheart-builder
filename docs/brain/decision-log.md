@@ -255,3 +255,19 @@ Use a TypeScript/Zod discriminated union for initial SRD entries with shared bas
 Consequences:
 
 The first fixture can be validated with `npm run validate:srd`, and future parser work has a concrete JSON target.
+
+## 2026-05-24 - Build First Prototype With Expo Router
+
+Status: Accepted
+
+Context:
+
+The project needs a runnable app shell before building the first compendium prototype.
+
+Decision:
+
+Use Expo Router at the repository root with routes for home, compendium list/search/filter, and compendium detail. Use plain React Native components for the prototype and avoid adding a UI kit for now.
+
+Consequences:
+
+The prototype can validate navigation, local fixture loading, search, filters, and detail rendering before adding Supabase, character builder, campaign mode, or a design system.

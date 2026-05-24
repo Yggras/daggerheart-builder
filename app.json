@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Daggerheart Builder",
+    "slug": "daggerheart-builder",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "daggerheart-builder",
+    "userInterfaceStyle": "automatic",
+    "platforms": ["ios", "android", "web"],
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": false
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { ZodError } from "zod";
-import { SrdEntryCollectionSchema } from "../src/srd/schema.js";
+import { SrdEntryCollectionSchema } from "../src/srd/schema";
 
 const fixturePath = new URL("../data/srd/fixtures/entries.json", import.meta.url);
 

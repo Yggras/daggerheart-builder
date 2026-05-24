@@ -35,6 +35,14 @@ Backend
 
 Target iOS, Android, and web with Expo, React Native, TypeScript, and Expo Router.
 
+The current app shell lives at the repository root using Expo Router:
+
+- `app/index.tsx`
+- `app/compendium/index.tsx`
+- `app/compendium/[id].tsx`
+
+The first prototype uses plain React Native components and local fixture data. A UI kit is intentionally deferred.
+
 ## Backend Direction
 
 Use Supabase as the backend. It must support:
@@ -55,6 +63,8 @@ Supabase components in scope:
 ## Data Direction
 
 Use reviewed versioned JSON for canonical SRD data. Validate runtime data with Zod. The compendium should consume local canonical data rather than calling Supabase for SRD content at runtime.
+
+The current prototype loads `data/srd/fixtures/entries.json` through `src/srd/loadFixture.ts` and validates it with the Zod schema in `src/srd/schema.ts` before rendering.
 
 ## Auth Direction
 

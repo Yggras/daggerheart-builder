@@ -2,16 +2,34 @@
   "name": "daggerheart-builder",
   "version": "0.1.0",
   "private": true,
+  "main": "expo-router/entry",
   "type": "module",
   "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
     "validate:srd": "tsx scripts/validate-srd.ts"
   },
   "dependencies": {
+    "@expo/metro-runtime": "^56.0.12",
+    "expo": "^56.0.4",
+    "expo-constants": "~56.0.15",
+    "expo-linking": "~56.0.11",
+    "expo-router": "^56.2.6",
+    "expo-status-bar": "^56.0.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "^0.85.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "^4.25.2",
+    "react-native-web": "^0.21.2",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "~6.0.3"
   }
 }

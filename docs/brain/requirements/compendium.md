@@ -25,6 +25,18 @@ Provide a searchable reference for official Daggerheart SRD content.
 - Work offline after data is available locally.
 - Support links between related rules entries where structured data allows it.
 
+## Current Prototype
+
+The first prototype includes:
+
+- A compendium list screen.
+- Local text search over reviewed fixture entries.
+- Kind filters for rule references, classes, subclasses, domain cards, and weapons.
+- Detail screens for each fixture entry.
+- Runtime validation through Zod before entries are exposed to the UI.
+
+The prototype intentionally does not include Supabase, full SRD ingestion, character builder integration, or a UI kit.
+
 ## Data Requirements
 
 - Compendium entries must come from reviewed canonical data.
