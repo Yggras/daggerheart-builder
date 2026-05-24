@@ -207,3 +207,19 @@ Use Supabase email/password authentication with admin-managed accounts. Disable 
 Consequences:
 
 No auth email provider is required for MVP. Users cannot self-register or self-reset passwords until a later auth upgrade.
+
+## 2026-05-24 - Run PDF Extraction Spike Before Full Parser
+
+Status: Accepted
+
+Context:
+
+The SRD PDF is a major project risk. Starting only with handcrafted data could hide extraction issues, while building a full parser before the schema is proven could waste effort.
+
+Decision:
+
+Run a limited PDF extraction spike on representative SRD sections before the first compendium prototype. Then define an initial schema, create a tiny fixture dataset, build the prototype, and defer the full parser until the schema and prototype are proven.
+
+Consequences:
+
+The project learns about PDF extraction quality early while keeping the parser guided by app data needs.
