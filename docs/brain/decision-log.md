@@ -223,3 +223,35 @@ Run a limited PDF extraction spike on representative SRD sections before the fir
 Consequences:
 
 The project learns about PDF extraction quality early while keeping the parser guided by app data needs.
+
+## 2026-05-24 - Accept September 9 2025 SRD PDF As Current Source
+
+Status: Accepted
+
+Context:
+
+The official Daggerheart SRD page currently links `Daggerheart-SRD-9-09-25.pdf` and labels it Daggerheart System Reference Document v1.0 with a September-9 changelog.
+
+Decision:
+
+Use the official September 9, 2025 SRD PDF as the current canonical source document for extraction and review.
+
+Consequences:
+
+The local source PDF lives at `data/source/Daggerheart-SRD-9-09-25.pdf`, and all extracted SRD data must be checked against this document unless a newer official source replaces it.
+
+## 2026-05-24 - Use Initial Zod SRD Discriminated Union
+
+Status: Accepted
+
+Context:
+
+The project needs an app-ready target shape before building the full PDF parser. The extraction spike showed that prose and structured data need validation and review metadata.
+
+Decision:
+
+Use a TypeScript/Zod discriminated union for initial SRD entries with shared base fields and kind-specific fields for `rule_reference`, `class`, `subclass`, `domain_card`, and `weapon`.
+
+Consequences:
+
+The first fixture can be validated with `npm run validate:srd`, and future parser work has a concrete JSON target.

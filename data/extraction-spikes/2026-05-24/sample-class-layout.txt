@@ -1,0 +1,159 @@
+    DOMAIN CARDS                                                        card’s Recall Cost (located in the top right of the card next to    BARD                                                                 BARD SUBCLASSES
+                                                                        the lightning bolt symbol). If your loadout is already full, you
+    Each domain card provides one or more features your PC              must also move a card from your loadout to your vault to make                                                                            Choose either the Troubadour or Wordsmith subclass.
+    can utilize during their adventures. Some domain cards              space, though you can do this at no cost.                           Bards are the most charismatic people in all the realms.
+                                                                                                                                            Members of this class are masters of captivation and
+    provide moves you can make, such as a unique attack or a
+                                                                        When you gain a new domain card at level-up, you can                specialize in a variety of performance types, including singing,     TROUBADOUR
+    spell. Others offer passive effects, new downtime or social
+    encounter abilities, or one-time benefits.                          immediately move it into your loadout for free. If your loadout     playing musical instruments, weaving tales, or telling jokes.        Play the Troubadour if you want to play music to bolster your
+                                                                        is already full, you must also move a card from your loadout to     Whether performing for an audience or speaking to an                 allies.
+       DOMAIN CARD ANATOMY                                              your vault to make space.                                           individual, bards thrive in social situations. Members of this
+                                                                                                                                            profession bond and train at schools or guilds, but a current           SPELLCAST TRAIT
+    Each domain card includes six elements:                                USAGE LIMITS                                                     of egotism runs through those of the bardic persuasion. While
+                                                                                                                                            they may be the most likely class to bring people together, a           Presence
+       Level                                                            If a domain card restricts how often it can be used, you can
+       The number in the top left of the card indicates the card’s                                                                          bard of ill temper can just as easily tear a party apart.
+                                                                        track such limits with whatever method you prefer, such                                                                                     FOUNDATION FEATURE
+       level. You cannot acquire a domain card with a level higher      as turning the card sideways, flipping it facedown, or using
+       than your PC’s.                                                  tokens.                                                                                                                                     Gifted Performer: You can play three different types of
+                                                                                                                                            DOMAINS - Grace & Codex                                                 songs, once each per long rest; describe how you perform
+       Domain                                                             Note: if an effect or ability gives you a number of uses equal                                                                            for others to gain the listed benefit:
+       Beneath the card’s level there is a symbol indicating its          to a trait with a modifier of +0 or less, it grants you 0 uses.
+       domain. You can only choose cards from your class’s two
+                                                                                                                                            STARTING EVASION - 10                                                   • Relaxing Song: You and all allies within Close range clear
+       domains.                                                                                                                                                                                                       a Hit Point.
+
+       Recall Cost
+                                                                        CLASSES                                                             STARTING HIT POINTS - 5
+                                                                                                                                                                                                                    • Epic Song: Make a target within Close range temporarily
+       The number and lightning bolt in the top right of the card       A class is a role-based archetype that determines a PC’s:           CLASS ITEMS - A romance novel or a letter never opened                    Vulnerable.
+       shows its Recall Cost. This is the amount of Stress a player      • Access to Domains: Each class grants access to two                                                                                       • Heartbreaking Song: You and all allies within Close
+       must mark to swap this card from their vault with a card            domains; players choose cards from these domains during                                                                                    range gain a Hope.
+       from their loadout.                                                 character creation and when leveling up.                            BARD’S HOPE FEATURE
+                                                                                                                                                                                                                    SPECIALIZATION FEATURE
+       Note: A player can swap domain cards during downtime              • Starting Evasion and Hit Points (HP)                                Make a Scene: Spend 3 Hope to temporarily Distract a
+       without paying the domain card’s Recall Cost.                                                                                           target within Close range, giving them a -2 penalty to their         Maestro. Your rallying songs steel the courage of those
+                                                                         • Starting Items                                                                                                                           who listen. When you give a Rally Die to an ally, they can
+                                                                                                                                               Difficulty.
+       Title                                                             • Class Feature(s)                                                                                                                         gain a Hope or clear a Stress.
+       The name of the card.                                             • Class Hope Feature, a class feature that costs 3 Hope to            CLASS FEATURE
+       Type                                                                activate.                                                                                                                                MASTERY FEATURE
+                                                                                                                                               Rally: Once per session, describe how you rally the party
+       The card’s type is listed in the center above the title. There   There are 9 classes in the Daggerheart core materials: Bard,           and give yourself and each of your allies a Rally Die. At level      Virtuoso. You are among the greatest of your craft and your
+       are three types of domain cards: abilities, spells, and          Druid, Guardian, Ranger, Rogue, Seraph, Sorcerer, Warrior,             1, your Rally Die is a d6. A PC can spend their Rally Die to         skill is boundless. You can perform each of your “Gifted
+       grimoires. Abilities are typically non-magical in nature,        and Wizard.                                                            roll it, adding the result to their action roll, reaction roll,      Performer” feature’s songs twice per long rest.
+       while spells are magical. Grimoires are unique to the Codex                                                                             damage roll, or to clear a number of Stress equal to the
+       domain and grant access to a collection of less potent
+                                                                        SUBCLASSES                                                             result. At the end of each session, clear all unspent Rally
+       spells. Some game mechanics only apply to certain types                                                                                 Dice. At level 5, your Rally Die increases to a d8.               WORDSMITH
+       of cards.                                                        Each class is divided into two subclasses, each of which
+                                                                        further defines and highlights one aspect of its class                                                                                   Play the Wordsmith if you want to use clever wordplay and
+       Feature                                                          archetype. Your chosen subclass grants the following:                                                                                    captivate crowds.
+       The text on the bottom half of the card describes its
+       feature(s), including any special rules you need to follow        • Spellcast Trait: the trait used on all Spellcast rolls.                                                                                  SPELLCAST TRAIT
+       when you use that card.                                           • Foundation Feature: a unique starting feature that
+                                                                                                                                                                                                                    Presence
+                                                                           establishes the identity and strengths of the subclass.
+       LOADOUT & VAULT                                                   • Specialization Feature: an advanced feature that can be                                                                                  FOUNDATION FEATURES
+    Your loadout is the set of acquired domain cards whose                 gained on level up. For some subclasses, the specialization
+                                                                           feature grants a new ability; for others, it expands or                                                                                  Rousing Speech: Once per long rest, you can give a
+    effects your PC can use during play. You can have up to
+                                                                           enhances a feature you already acquired through a class or                                                                               heartfelt, inspiring speech. All allies within Far range clear
+    5 domain cards in your loadout at one time. Once you’ve
+                                                                           subclass.                                                                                                                                2 Stress.
+    acquired six or more domain cards, you must choose five to
+    keep in your loadout; the rest are considered to be in your          • Mastery Feature: The mastery feature is a subclass’s most                                                                                Heart of a Poet: After you make an action roll to impress,
+    vault. Vault cards are inactive and do not influence play              powerful feature, which can be gained at higher levels.                                                                                  persuade, or offend someone, you can spend a Hope to
+                                                                           For some subclasses, the mastery feature unlocks an                                                                                      add a d4 to the roll.
+      Note: Your subclass, ancestry, and community cards don’t
+                                                                           extraordinary new ability; for others, it’s the impressive
+      count toward your loadout or vault and are always active and
+                                                                           culmination of their subclass’s core feature.
+      available.
+                                                                        The Daggerheart core set includes cards detailing each
+    At the start of a rest, before using downtime moves, you can        foundation, specialization, and mastery feature. When you
+    freely move cards between your loadout and your vault, so           acquire one of these features, take its card for use as a
+    long as your loadout doesn’t exceed its five-card maximum.          reference during play.
+    To move a card from your vault to your loadout at any other
+    time, you must mark a number of Stress equal to the vaulted
+
+
+
+8    Daggerheart SRD                                                                                                                                                                                                                                          Daggerheart SRD        9
+     SPECIALIZATION FEATURE                                          DRUID                                                               DRUID SUBCLASSES                                                 WARDEN OF RENEWAL
+     Eloquent. Your moving words boost morale. Once per                                                                                  Choose either the Warden of the Elements or Warden of            Play the Warden of Renewal if you want to use powerful magic
+     session, when you encourage an ally, you can do one of the      Becoming a druid is more than an occupation; it’s a calling for     Renewal subclass.                                                to heal your party.
+     following:                                                      those who wish to learn from and protect the magic of the
+      • Allow them to find a mundane object or tool they need.
+                                                                     wilderness. While one might underestimate a gentle druid who                                                                           SPELLCAST TRAIT
+                                                                     practices the often-quiet work of cultivating flora, druids who     WARDEN OF THE ELEMENTS
+      • Help an Ally without spending Hope.                          channel the untamed forces of nature are terrifying to behold.                                                                         Instinct
+                                                                                                                                         Play the Warden of the Elements if you want to embody the
+      • Give them an additional downtime move during their           Druids cultivate their abilities in small groups, often connected
+        next rest.                                                   by a specific ethos or locale, but some choose to work alone.
+                                                                                                                                         natural elements of the wild.                                      FOUNDATION FEATURES
+                                                                     Through years of study and dedication, druids can learn to                                                                             Clarity of Nature: Once per long rest, you can create a
+     MASTERY FEATURE                                                 transform into beasts and shape nature itself.                        SPELLCAST TRAIT
+                                                                                                                                                                                                            space of natural serenity within Close range. When you
+     Epic Poetry. Your Rally Die increases to a d10. Additionally,                                                                         Instinct                                                         spend a few minutes resting within the space, clear Stress
+     when you Help an Ally, you can narrate the moment as                                                                                                                                                   equal to your Instinct, distributed as you choose between
+     if you were writing the tale of their heroism in a memoir.      DOMAINS - Sage & Arcana                                               FOUNDATION FEATURE                                               you and your allies.
+     When you do, roll a d10 as your advantage die.                                                                                        Elemental Incarnation: Mark a Stress to Channel one of the       Regeneration: Touch a creature and spend 3 Hope. That
+                                                                     STARTING EVASION - 10                                                 following elements until you take Severe damage or until         creature clears 1d4 Hit Points.
+                                                                                                                                           your next rest:
+     BACKGROUND QUESTIONS                                            STARTING HIT POINTS - 6
+                                                                                                                                            • Fire: When an adversary within Melee range deals              SPECIALIZATION FEATURES
+     Answer any of the following background questions. You can       CLASS ITEMS - A small bag of rocks and bones or a                        damage to you, they take 1d10 magic damage.                   Regenerative Reach: You can target creatures within Very
+     also create your own questions.                                 strange pendant found in the dirt
+                                                                                                                                            • Earth: Gain a bonus to your damage thresholds equal to        Close range with your “Regeneration” feature.
+       • Who from your community taught you to have such                                                                                      your Proficiency.                                             Warden’s Protection: Once per long rest, spend 2 Hope to
+         confidence in yourself?                                                                                                            • Water: When you deal damage to an adversary within            clear 2 Hit Points on 1d4 allies within Close range.
+                                                                        DRUID’S HOPE FEATURE
+       • You were in love once. Who did you adore, and how                                                                                    Melee range, all other adversaries within Very Close
+         did they hurt you?                                             Evolution: Spend 3 Hope to transform into a Beastform                 range must mark a Stress.                                     MASTERY FEATURE
+                                                                        without marking a Stress. When you do, choose one trait to          • Air: You can hover, gaining advantage on Agility Rolls.
+       • You’ve always looked up to another bard. Who are               raise by +1 until you drop out of that Beastform.                                                                                   Defender: Your animal transformation embodies a healing
+         they, and why do you idolize them?                                                                                                SPECIALIZATION FEATURE                                           guardian spirit. When you’re in Beastform and an ally within
+                                                                        CLASS FEATURES                                                                                                                      Close range marks 2 or more Hit Points, you can mark a
+     CONNECTIONS                                                                                                                           Elemental Aura: Once per rest while Channeling, you can          Stress to reduce the number of Hit Points they mark by 1.
+                                                                        Beastform: Mark a Stress to magically transform into a             assume an aura matching your element. The aura affects
+     Ask your fellow players one of the following questions for         creature of your tier or lower from the Beastform list. You        targets within Close range until your Channeling ends.
+     their character to answer, or create your own questions.           can drop out of this form at any time. While transformed,                                                                           BACKGROUND QUESTIONS
+                                                                                                                                            • Fire: When an adversary marks 1 or more Hit Points,
+                                                                        you can’t use weapons or cast spells from domain cards,
+       • What made you realize we were going to be such                                                                                       they must also mark a Stress.                                 Answer any of the following background questions. You can
+                                                                        but you can still use other features or abilities you have
+         good friends?                                                                                                                      • Earth: Your allies gain a +1 bonus to Strength.               also create your own questions.
+                                                                        access to. Spells you cast before you transform stay
+       • What do I do that annoys you?                                  active and last for their normal duration, and you can talk         • Water: When an adversary deals damage to you, you               • Why was the community you grew up in so reliant on
+                                                                        and communicate as normal. Additionally, you gain the                 can mark a Stress to move them anywhere within Very               nature and its creatures?
+       • Why do you grab my hand at night?                              Beastform’s features, add their Evasion bonus to your                 Close range of where they are.
+                                                                        Evasion, and use the trait specified in their statistics for                                                                          • Who was the first wild animal you bonded with? Why
+                                                                                                                                            • Air: When you or an ally takes damage from an attack
+                                                                        your attack. While you’re in a Beastform, your armor                                                                                    did your bond end?
+                                                                                                                                              beyond Melee range, reduce the damage by 1d8.
+                                                                        becomes part of your body and you mark Armor Slots as                                                                                 • Who has been trying to hunt you down? What do
+                                                                        usual; when you drop out of a Beastform, those marked              MASTERY FEATURE                                                      they want from you?
+                                                                        Armor Slots remain marked. If you mark your last Hit Point,
+                                                                        you automatically drop out of this form.                           Elemental Dominion: You further embody your element.
+                                                                                                                                           While Channeling, you gain the following benefit:                CONNECTIONS
+                                                                        Wildtouch: You can perform harmless, subtle effects that
+                                                                                                                                            • Fire: You gain a +1 bonus to your Proficiency for attacks     Ask your fellow players one of the following questions for
+                                                                        involve nature—such as causing a flower to rapidly grow,
+                                                                                                                                              and spells that deal damage.                                  their character to answer, or create your own questions.
+                                                                        summoning a slight gust of wind, or starting a campfire—
+                                                                        at will.                                                            • Earth: When you would mark Hit Points, roll a d6 per Hit        • What did you confide in me that makes me leap into
+                                                                                                                                              Point marked. For each result of 6, reduce the number             danger for you every time?
+                                                                                                                                              of Hit Points you mark by 1.
+                                                                                                                                                                                                              • What animal do I say you remind me of?
+                                                                                                                                            • Water: When an attack against you succeeds, you
+                                                                                                                                              can mark a Stress to make the attacker temporarily              • What affectionate nickname have you given me?
+                                                                                                                                              Vulnerable.
+                                                                                                                                            • Air: You gain a +1 bonus to your Evasion and can fly.
+
+
+
+
+10   Daggerheart SRD                                                                                                                                                                                                                                  Daggerheart SRD      11
+

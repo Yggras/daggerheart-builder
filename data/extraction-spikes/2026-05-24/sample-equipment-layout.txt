@@ -1,0 +1,141 @@
+     EQUIPMENT                                                       WEAPONS                                                              PRIMARY WEAPON TABLES
+                                                                     All weapons have a tier, trait, range, damage die, damage            Players can choose one Tier 1 primary weapon during character creation.
+     Your equipped weapons and armor are the ones listed in
+                                                                     type, and burden. Some weapons also have a feature.
+     the “Active Weapons” and “Active Armor” sections of your                                                                             The GM can make other weapons available throughout the campaign as the PCs level up.
+     character sheet. Your character can only attack with weapons,
+     benefit from armor, and gain features from items they have
+                                                                        CATEGORY
+     equipped. You can’t equip weapons or armor with a higher tier   A weapon’s category specifies whether it is a Primary or
+                                                                                                                                          TIER 1 (LEVEL 1)
+     than you.                                                       Secondary weapon. Your character can only equip up to one
+                                                                                                                                          Physical Weapons
+                                                                     weapon of each category at a time.
+     PCs can carry up to two additional weapons in the “Inventory
+     Weapon” areas of the character sheet.                                                                                                 Name           Trait          Range           Damage      Burden       Feature
+                                                                        TRAIT
+     You can swap an Inventory Weapon with an Active Weapon at                                                                            Broadsword      Agility       Melee            d8 phy      One-Handed   Reliable: +1 to attack rolls
+     no cost during a rest or moment of calm; otherwise, you must    A weapon’s trait specifies which trait to use when making an
+                                                                                                                                          Longsword       Agility       Melee            d10+3 phy   Two-Handed   —
+     mark a Stress to do so.                                         attack roll with it.
+                                                                                                                                          Battleaxe       Strength      Melee            d10+3 phy   Two-Handed   —
+     Your character can only have one Active Armor at a time.           RANGE                                                             Greatsword      Strength      Melee            d10+3 phy   Two-Handed   Massive: −1 to Evasion; on a successful attack, roll an
+     They can’t equip armor while in danger or under pressure;                                                                                                                                                    additional damage die and discard the lowest result.
+     otherwise, they can equip or unequip armor without cost.        A weapon’s range specifies the maximum distance between
+                                                                     the attacker and their target when attacking with it.                Mace            Strength      Melee            d8+1 phy    One-Handed   —
+     Each armor has its own Armor Slots; if your character
+     unequips their armor, track how many of its Armor Slots are                                                                          Warhammer       Strength      Melee            d12+3 phy   Two-Handed   Heavy: −1 to Evasion
+     marked. You can't carry armor in your inventory. When your         DAMAGE                                                            Dagger          Finesse       Melee            d8+1 phy    One-Handed   —
+     character equips or unequips armor, recalculate your damage     A weapon’s damage indicates the size of the damage dice              Quarterstaff    Instinct      Melee            d10+3 phy   Two-Handed   —
+     thresholds.                                                     you roll on a successful attack with it; you roll a number of
+                                                                                                                                          Cutlass         Presence      Melee            d8+1 phy    One-Handed   —
+                                                                     dice equal to your Proficiency. If the damage includes a flat
+                                                                     modifier, this number is added to the total damage rolled, but       Rapier          Presence      Melee            d8 phy      One-Handed   Quick: When you make an attack, you can mark a
+                                                                     is not altered or affected by Proficiency.                                                                                                   Stress to target another creature within range.
+                                                                                                                                          Halberd         Strength      Very Close       d10+2 phy   Two-Handed   Cumbersome: −1 to Finesse
+                                                                        DAMAGE TYPE                                                       Spear           Finesse       Very Close       d8+3 phy    Two-Handed   —
+                                                                     A weapon’s damage type indicates whether it deals physical           Shortbow        Agility       Far              d6+3 phy    Two-Handed   —
+                                                                     or magic damage. Weapons that deal magic damage can only             Crossbow        Finesse       Far              d6+1 phy    One-Handed   —
+                                                                     be wielded by characters with a Spellcast trait.
+                                                                                                                                          Longbow         Agility       Very Far         d8+3 phy    Two-Handed   Cumbersome: −1 to Finesse
+                                                                        BURDEN
+                                                                     A weapon’s burden indicates how many hands it occupies               TIER 1 (LEVEL 1)
+                                                                     when equipped. Your character’s maximum burden is 2 hands.
+                                                                                                                                          Magic Weapons
+                                                                        FEATURE                                                            All magic weapons require a Spellcast trait
+                                                                     A weapon’s feature is a special rule that stays in effect while
+                                                                     the weapon is equipped.                                               Name            Trait         Range           Damage      Burden       Feature
+
+                                                                     You can throw an equipped weapon at a target within Very             Arcane          Strength       Melee           d10+3 mag   Two-Handed   —
+                                                                                                                                          Gauntlets
+                                                                     Close range, making the attack roll with Finesse. On a
+                                                                     success, deal damage as usual for that weapon. Once thrown,          Hallowed Axe    Strength       Melee           d8+1 mag    One-Handed   —
+                                                                     the weapon is no longer considered equipped. Until you               Glowing Rings   Agility        Very Close      d10+2 mag   Two-Handed   —
+                                                                     retrieve and re-equip it, you can’t attack with it or benefit from
+                                                                                                                                          Hand Runes      Instinct       Very Close      d10 mag     One-Handed   —
+                                                                     its features.
+                                                                                                                                          Returning       Finesse        Close           d8 mag      One-Handed   Returning: When this weapon is thrown within its
+                                                                                                                                          Blade                                                                   range, it appears in your hand immediately after the
+                                                                                                                                                                                                                  attack.
+                                                                                                                                          Shortstaff      Instinct       Close           d8+1 mag    One-Handed   —
+                                                                                                                                          Dualstaff       Instinct       Far             d6+3 mag    Two-Handed   —
+                                                                                                                                          Scepter         Presence       Far             d6 mag      Two-Handed   Versatile: This weapon can also be used with these
+                                                                                                                                                                                                                  statistics—Presence, Melee, d8.
+                                                                                                                                          Wand            Knowledge      Far             d6+1 mag    One-Handed   —
+                                                                                                                                          Greatstaff      Knowledge      Very Far        d6 mag      Two-Handed   Powerful: On a successful attack, roll an additional
+                                                                                                                                                                                                                  damage die and discard the lowest result.
+
+
+
+
+44    Daggerheart SRD                                                                                                                                                                                                                              Daggerheart SRD          45
+     TIER 2 (LEVELS 2–4)                                                                                                       TIER 2 (LEVELS 2–4)
+     Physical Weapons                                                                                                          Magic Weapons
+      Name             Trait      Range        Damage      Burden       Feature                                                 All magic weapons require a Spellcast trait
+
+     Improved          Agility    Melee        d8+3 phy    One-Handed   Reliable: +1 to attack rolls                           Name               Trait          Range        Damage      Burden       Feature
+     Broadsword
+                                                                                                                               Improved Arcane    Strength       Melee        d10+6 mag   Two-Handed   —
+     Improved          Agility    Melee        d10+6 phy   Two-Handed   —                                                      Gauntlets
+     Longsword
+                                                                                                                               Improved           Strength       Melee        d8+4 mag    One-Handed   —
+     Improved          Strength   Melee        d10+6 phy   Two-Handed   —                                                      Hallowed Axe
+     Battleaxe
+                                                                                                                               Improved           Agility        Very Close   d10+5 mag   Two-Handed   —
+     Improved          Strength   Melee        d10+6 phy   Two-Handed   Massive: −1 to Evasion; on a successful attack, roll   Glowing Rings
+     Greatsword                                                         an additional damage die and discard the lowest        Improved Hand      Instinct       Very Close   d10+3 mag   One-Handed   —
+                                                                        result.                                                Runes
+     Improved Mace     Strength   Melee        d8+4 phy    One-Handed   —                                                      Improved           Finesse        Close        d8+3 mag    One-Handed   Returning: When this weapon is thrown within its
+     Improved          Strength   Melee        d12+6 phy   Two-Handed   Heavy: −1 to Evasion                                   Returning Blade                                                         range, it appears in your hand immediately after the
+     Warhammer                                                                                                                                                                                         attack.
+
+     Improved          Finesse    Melee        d8+4 phy    One-Handed   —                                                      Improved           Instinct       Close        d8+4 mag    One-Handed   —
+                                                                                                                               Shortstaff
+     Dagger
+                                                                                                                               Improved           Instinct       Far          d6+6 mag    Two-Handed   —
+     Improved          Instinct   Melee        d10+6 phy   Two-Handed   —
+                                                                                                                               Dualstaff
+     Quarterstaff
+                                                                                                                               Improved           Presence       Far          d6+3 mag    Two-Handed   Versatile: This weapon can also be used with these
+     Improved          Presence   Melee        d8+4 phy    One-Handed   —                                                      Scepter                                                                 statistics—Presence, Melee, d8+3.
+     Cutlass
+                                                                                                                               Improved Wand      Knowledge      Far          d6+4 mag    One-Handed   —
+     Improved          Presence   Melee        d8+3 phy    One-Handed   Quick: When you make an attack, you can mark a
+     Rapier                                                             Stress to target another creature within range.
+                                                                                                                               Improved           Knowledge      Very Far     d6+3 mag    Two-Handed   Powerful: On a successful attack, roll an additional
+     Improved          Strength   Very Close   d10+5 phy   Two-Handed   Cumbersome: −1 to Finesse                              Greatstaff                                                              damage die and discard the lowest result.
+     Halberd
+                                                                                                                               Ego Blade          Agility        Melee        d12+4 mag   One-Handed   Pompous: You must have a Presence of 0 or lower to
+     Improved Spear    Finesse    Very Close   d8+6 phy    Two-Handed   —                                                                                                                              use this weapon.
+     Improved          Agility    Far          d6+6 phy    Two-Handed   —                                                      Casting Sword      Strength       Melee        d10+4 mag   Two-Handed   Versatile: This weapon can also be used with these
+     Shortbow                                                                                                                                                                                          statistics—Knowledge, Far, d6+3.
+     Improved          Finesse    Far          d6+4 phy    One-Handed   —                                                      Devouring          Finesse        Melee        d8+4 mag    One-Handed   Scary: On a successful attack, the target must mark
+     Crossbow                                                                                                                  Dagger                                                                  a Stress.
+     Improved          Agility    Very Far     d8+6 phy    Two-Handed   Cumbersome: −1 to Finesse                              Hammer of Exota    Instinct       Melee        d8+6 mag    Two-Handed   Eruptive: On a successful attack against a target
+     Longbow                                                                                                                                                                                           within Melee range, all other adversaries within Very
+                                                                                                                                                                                                       Close range must succeed on a reaction roll (14) or
+     Gilded Falchion   Strength   Melee        d10+4 phy   One-Handed   Powerful: On a successful attack, roll an additional                                                                           take half damage.
+                                                                        damage die and discard the lowest result.
+                                                                                                                               Yutari Bloodbow    Finesse        Far          d6+4 mag    Two-Handed   Brutal: When you roll the maximum value on a
+     Knuckle Blades    Strength   Melee        d10+6 phy   Two-Handed   Brutal: When you roll the maximum value on a                                                                                   damage die, roll an additional damage die.
+                                                                        damage die, roll an additional damage die.
+                                                                                                                               Elder Bow          Instinct       Far          d6+4 mag    Two-Handed   Powerful: On a successful attack, roll an additional
+     Urok              Finesse    Melee        d8+3 phy    One-Handed   Deadly: When you deal Severe damage, the target                                                                                damage die and discard the lowest result.
+     Broadsword                                                         must mark an additional HP.                            Scepter of Elias   Presence       Far          d6+3 mag    One-Handed   Invigorating: On a successful attack, roll a d4. On a
+     Bladed Whip       Agility    Very Close   d8+3 phy    One-Handed   Quick: When you make an attack, you can mark a                                                                                 result of 4, clear a Stress.
+                                                                        Stress to target another creature within range.        Wand of            Presence       Far          d6+4 mag    One-Handed   Persuasive: Before you make a Presence Roll, you
+     Steelforged       Strength   Very Close   d8+4 phy    Two-Handed   Scary: On a successful attack, the target must mark    Enthrallment                                                            can mark a Stress to gain a +2 bonus to the result.
+     Halberd                                                            a Stress.                                              Keeper's Staff     Knowledge      Far          d6+4 mag    Two-Handed   Reliable: +1 to attack rolls
+     War Scythe        Finesse    Very Close   d8+5 phy    Two-Handed   Reliable: +1 to attack rolls
+     Blunderbuss       Finesse    Close        d8+6 phy    Two-Handed   Reloading: After you make an attack, roll a d6. On
+                                                                        a result of 1, you must mark a Stress to reload this
+                                                                        weapon before you can fire it again.
+     Greatbow          Strength   Far          d6+6 phy    Two-Handed   Powerful: On a successful attack, roll an additional
+                                                                        damage die and discard the lowest result.
+     Finehair Bow      Agility    Very Far     d6+5 phy    Two-Handed   Reliable: +1 to attack rolls
+
+
+
+
+46    Daggerheart SRD                                                                                                                                                                                                                 Daggerheart SRD          47
+

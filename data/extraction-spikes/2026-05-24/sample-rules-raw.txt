@@ -1,0 +1,377 @@
+GROUPACTION ROLLS
+When multiple PCs take action together, the party chooses
+one PC to lead the action. Each other player then describes
+how their character collaborates on the task. The leader
+makes an action roll as usual, while the other players make
+reaction rolls using whichever traits they and the GM decide
+fit best.
+The lead character gains a +1 bonus to their lead action roll for
+each of these reaction rolls that succeeded and a −1 penalty
+for each these reaction rolls that failed.
+TAGTEAM ROLLS
+Each player can, once per session, initiate a TagTeam Roll
+between their character and another PC by spending 3 Hope.
+The players work with one another to describe how they
+combine their actions in a unique and exciting way. Both
+players make separate action rolls; before resolving the roll’s
+outcome, choose one of the rolls to apply to both actions. On
+a roll with Hope, all PCs involved gain a Hope. On a roll with
+Fear, the GM gains a Fear token for each PC involved.
+On a successful Tag Team attack roll, both players roll damage
+and add the totals together to determine the damage dealt,
+which is then treated as if it came from a single source. If the
+attacks deal different types of damage, the players choose
+which type to deal.
+Notes:
+ATag Team Roll counts as a single action roll for the
+purposes of any countdowns or features that track action
+rolls.
+Though each player may only initiate one Tag Team Roll per
+session, one PC can be involved in multiple Tag Team Rolls.
+ADVANTAGE & DISADVANTAGE
+Some features and effects let you roll with advantage or
+disadvantage on an action or reaction roll:
+• Advantage represents an opportunity that you seize to
+increase your chances of success. When you roll with
+advantage, you roll a d6 advantage die with your dice pool
+and add its result to your total.
+• Disadvantage represents an additional difficulty, hardship,
+or challenge you face when attempting an action. When
+you roll with disadvantage, you roll a d6 disadvantage die
+with your dice pool and subtract its result from your total.
+Advantage or disadvantage can be granted or imposed by
+mechanical triggers or at the GM’s discretion. When a PC aids
+you with Help an Ally, they roll their own advantage die and
+you add it to your total.
+Advantage and disadvantage dice cancel each out, one-for-
+one, when they would be added to the same dice pool, so
+you’ll never roll both at the same time. If you have advantage
+or disadvantage from other sources that don’t affect your own
+dice pool, such as another player’s Help an Ally move, their
+effects stack with your rolled results.
+HOPE & FEAR
+Hope and Fear are metacurrencies representing the cosmic
+forces that shape the events of your table’s story. Hope
+powers PC abilities and features, while Fear powers the
+abilities of the GM and the adversaries and environments they
+control.
+HOPE
+Every PC starts with 2 Hope at character creation and gains
+more throughout play. A PC can have a maximum of 6 Hope at
+one time, and Hope carries over between sessions.
+Players can spend Hope to:
+• Help anAlly
+When you Help an Ally who is making an action roll,
+describe how you do so and roll an advantage die. Multiple
+players can spend Hope to help the same acting player,
+but that player only adds the highest result to their final
+total.
+• Utilize an Experience
+When you Utilize an Experience on a relevant roll, add its
+modifier to the result. You can spend multiple Hope to
+utilize multiple Experiences.
+• Initiate aTagTeam Roll
+Spend 3 Hope to initiate a Tag Team roll, combining the
+actions of two PCs into one impressive act of synergy.
+When you make a Tag Team roll, both players roll their
+action rolls and then choose which set of results to apply
+to the outcome.
+• Activate a Hope Feature
+A Hope Feature is any effect that allows (or requires) you
+to spend a specified amount of Hope to activate it. Class
+Hope features are class-specific features, detailed on your
+character sheet, that cost 3 Hope to activate.
+Note: When using a Hope Feature, ifyou rolled with Hope
+for that action, the Hope you gain from that roll can be spent
+on that feature (or toward it, if it requires spending multiple
+Hope).
+FEAR
+The GM gains Fear whenever a player rolls with Fear and can
+spend Fear at any time to make or enhance a GM move or to
+use a Fear Feature. The GM can have up to 12 Fear at one
+time. Fear carries over between sessions.
+COMBAT
+Though Daggerheart relies on the same flow of collaborative
+storytelling in and out of combat, physical conflicts rely
+more heavily on several key mechanics related to attacking,
+maneuvering, and taking damage.
+EVASION
+Evasion represents a character’s ability to avoid attacks and
+other unwanted effects. Any roll made against a PC has a
+Difficulty equal to the target’s Evasion. A PC’s base Evasion
+is determined by their class, but can be modified by domain
+cards, equipment, conditions, and other effects.
+Note: attacks rolled against adversaries use the target’s
+Difficulty instead of Evasion.
+HIT POINTS & DAMAGE
+THRESHOLDS
+Hit Points (HP) represent a character’s ability to withstand
+physical injury. When a character takes damage, they mark 1
+to 3 HP, based on their damage thresholds:
+• If the final damage is at or above the character’s Severe
+damage threshold, they mark 3 HP.
+• If the final damage is at or above the character’s Major
+damage threshold but below their Severe damage
+threshold, they mark 2 HP.
+• If the final damage is below the character’s Major damage
+threshold, they mark 1 HP.
+• If incoming damage is ever reduced to 0 or less, no HP is
+marked.
+You’ll be able to increase the number of Hit Point slots you
+have available as you level up, to a maximum of 12.
+A PC’s damage thresholds are calculated by adding their level
+to the listed damage thresholds of their equipped armor. A
+PC’s starting HP is based on their class, but they can gain
+additional Hit Points through advancements, features, and
+other effects.
+An adversary’s Damage Thresholds and HP are listed in their
+stat blocks.
+When a character marks their last Hit Point, they fall. If a PC
+falls, they make a death move.
+Characters can clear Hit Points by taking downtime moves
+(see: Downtime) or by activating relevant special abilities or
+effects.
+Optional Rule: Massive Damage
+If a character ever takes damage equal to twice their
+Severe threshold, they mark 4 HP instead of 3.
+STRESS
+Stress represents how much mental, physical, and emotional
+strain a character can endure. All classes start with 6 Stress
+slots. You’ll be able to increase the number of Stress slots
+you have available as you level up, to a maximum of 12. Some
+special abilities or effects require the character activating
+them to mark Stress, and the GM can require a PC to mark
+Stress as a GM move or to represent the cost, complication,
+or consequence of an action roll.
+When a character marks their last Stress, they become
+Vulnerable (see: Conditions) until they clear at least 1 Stress.
+When a character must mark 1 or more Stress but can’t, they
+mark 1 HP instead. A character can’t use a move that requires
+them to mark Stress if all of their Stress is marked.
+PCs can clear Stress by making downtime moves (see:
+Downtime). A PC’s maximum Stress is determined by their
+class, but they can increase it through advancements, abilities,
+and other effects.
+ATTACKING
+ATTACK ROLLS
+An attack roll is an action roll intended to inflict harm. The
+trait that applies to an attack roll is specified by the weapon
+or spell being used. Unarmed attack rolls use either Strength
+or Finesse (GM’s choice). An attack roll’s Difficulty, unless
+otherwise noted, is equal to the Difficulty score of its target.
+DAMAGE ROLLS
+On a successful attack, roll damage. Damage is calculated
+from the damage roll listed in the attack’s description with the
+format “xdy+[modifier]” (e.g., for a spell that inflicts “1d8+2”
+damage, you roll an eight-sided and add 2 to the result; the
+damage dealt is equal to the total).
+Any time an effect says to deal damage using your Spellcast
+trait, you roll a number of dice equal to your Spellcast trait.
+Note: Ifyour Spellcast trait is +0 or lower, you don’t roll
+anything.
+For weapons, the number of damage dice you roll is equal
+to your Proficiency. Note that your Proficiency multiplies the
+number of dice you roll, but doesn’t affect the modifier. For
+example, a PC with Proficiency 2 and wielding a weapon with a
+damage rating of “d8+2” deals damage equal to “2d8+2” on a
+successful attack.
+Successful unarmed attacks inflict [Proficiency]d4 damage.
+CRITICALDAMAGE
+When you get a critical success (i.e., you roll matching values
+on your Duality Dice) on an attack roll, you deal extra damage.
+Make the damage roll as usual, but add the maximum possible
+result of the damage dice to the final total. For instance, if an
+attack would normally deal 2d8+1 damage, a critical success
+would deal 2d8+1+16.
+39 38 Daggerheart SRD Daggerheart SRDDAMAGETYPES
+There are two damage types: physical damage (phy) and
+magic damage (mag). Unless stated otherwise, mundane
+weapons and unarmed attacks deal physical damage, and
+spells deal magic damage.
+RESISTANCE, IMMUNITY,AND DIRECT
+DAMAGE
+If a target has resistance to a damage type, then they reduce
+incoming damage of that type by half before comparing it to
+their Hit Point Thresholds. If the target has additional ways
+of reducing incoming damage, such as marking Armor Slots,
+they apply the resistance effect first. The effects of multiple
+resistances to the same damage type do not stack.
+If a target has immunity to a damage type, they ignore
+incoming damage of that type.
+If an attack deals both physical and magic damage, a
+character can only benefit from resistance or immunity if they
+are resistant or immune to both damage types.
+Direct damage is damage that can’t be reduced by marking
+Armor Slots.
+MULTI-TARGETATTACK ROLLS
+If a spell or ability allows you to target multiple adversaries,
+make one attack roll and one damage roll, then apply the
+results to each target individually.
+MULTIPLE DAMAGE SOURCES
+Damage dealt simultaneously from multiple sources is always
+totaled before it’s compared to its target’s damage thresholds.
+For example, if a PC with orc ancestry makes a successful
+attack against a target in Melee range and decides to
+spend a Hope to use their “Tusks” feature (which gives
+them an extra 1d6 damage on a damage roll), they would
+roll their normal weapon damage and add a d6 to the
+result, then deal that total damage to the adversary.
+MAPS, RANGE,
+AND MOVEMENT
+You can play Daggerheart using “theater of the mind” or maps
+and miniatures. The conversions below from abstract ranges
+to physical measurements assume 1 inch of map represents
+about 5 feet of fictional space.
+Daggerheart uses the following ranges to translate fictional
+positioning into relative distance for the purposes of targeting,
+movement, and other game mechanics:
+Melee: Close enough to touch, up to a few feet away.
+VeryClose: Close enough to see fine details, about 5–10
+feet away. While in danger, a character can move, as part
+of their action, from Very Close range into Melee range. On
+a map: anything within the shortest length of a game card
+(2-3 inches).
+Close: Close enough to see prominent details, about
+10–30 feet away. While in danger, a character can move,
+as part of their action, from Close range into Melee range.
+On a map: anything within the length of a pencil (5-6 inches).
+Far: Close enough to see very little detail, about 30–100
+feet away. While in danger, a character must make an
+Agility Roll to safely move from Far range into Melee range.
+On a map: anything within the length of the long edge of a
+piece of copy paper (11–12 inches).
+VeryFar: Too far to make out any details, about 100–300
+feet away. While in danger, a character must make an
+Agility Roll to safely move from Very Far range into Melee
+range. On a map: anything beyond Far range, but still within
+the bounds of the conflict or scene.
+Out ofRange: Anything beyond a character’s Very Far
+range is Out of Range and usually can’t be targeted.
+Range is measured from the source of an effect, such as the
+attacker or spellcaster, to the target or object of an effect.
+Aweapon, spell, ability, item, or other effect’s stated range is
+a maximum range; unless otherwise noted, it can be used at
+closer distances.
+Optional Rule: Defined Ranges
+Ifyour table would rather operate with more precise range
+rules, you can use a 1-inch grid battle map during combat.
+Ifyou do, use the following guidelines for play:
+• Melee: 1 square
+• VeryClose: 3 squares
+• Close: 6 squares
+• Far: 12 squares
+• VeryFar: 13+ squares
+• Out ofRange: Off the battlemap
+MOVEMENTUNDER PRESSURE
+When you’re under pressure or in danger and make an action
+roll, you can move to a location within Close range as part of
+that action. If you’re not already making an action roll, or if
+you want to move farther than your Close range, you need to
+succeed on an Agility Roll to safely reposition yourself.
+An adversary can move within Close range for free as part of
+an action, or within Very Far range as a separate action.
+AREAOFEFFECT
+Unless stated otherwise, all the targets of a group effect must
+be within Very Close range of a single origin point within your
+effect’s range.
+LINE OFSIGHT& COVER
+Unless stated otherwise, a ranged attacker must have line
+ofsight to their intended target to make an attack roll. If a
+partial obstruction lies between the attacker and target, the
+target has cover. Attacks made through cover are rolled with
+disadvantage. If the obstruction is total, there is no line of
+sight.
+CONDITIONS
+Conditions are effects that grant specific benefits or
+drawbacks to the target they are attached to.
+STANDARD CONDITIONS
+Daggerheart has three standard conditions:
+HIDDEN
+While you’re out of sight from all enemies and they
+don’t otherwise know your location, you gain the Hidden
+condition. Any rolls against a Hidden creature have
+disadvantage. After an adversary moves to where they
+would see you, you move into their line of sight, oryou
+make an attack, you are no longer Hidden.
+RESTRAINED
+Restrained characters can’t move, but you can still take
+actions from their current position.
+VULNERABLE
+When a creature is Vulnerable, all rolls targeting them have
+advantage.
+Some features can apply special or unique conditions, which
+work as described in the feature text.
+Unless otherwise noted, the same condition can’t be applied
+more than once to the same target.
+TEMPORARY TAGS
+& SPECIAL CONDITIONS
+The temporary tag denotes a condition or effect that the
+affected creature can clear by making a move against it. When
+an affected PC makes a move to clear a temporary condition
+or effect, it normally requires a successful action roll using
+an appropriate trait. When an affected adversary makes a
+move to clear a temporary condition or effect, the GM puts
+the spotlight on the adversary and describes how they do it;
+this doesn’t require a roll but it does use up that adversary’s
+spotlight.
+Specialconditions are only cleared when specific requirements
+are met, such as completing a certain action or using a
+particular item.The requirements for clearing these conditions
+are stated in the text ofthe effect that applies the condition.
+DOWNTIME
+Between conflicts, the party can take a rest to recover
+expended resources and deepen their bonds. During a rest,
+each PC can make up to two downtime moves.
+When the party rests, they must choose between a short rest
+and a long rest. If a party takes three short rests in a row, their
+next rest must be a long rest.
+If a short rest is interrupted, such as by an adversary's
+attack, the characters don’t gain its benefits. If a long rest is
+interrupted, the characters only gain the benefits of a short
+rest.
+A short rest lasts enough time for the party to catch its
+breath, about an hour in-world. Each player can move domain
+cards between their loadout and vault for free, then choose
+twice from the following list of downtime moves (players can
+choose the same move twice):
+• Tend toWounds: Clear 1d4+Tier Hit Points foryourself or
+an ally.
+• ClearStress: Clear 1d4+Tier Stress.
+• RepairArmor: Clear 1d4+TierArmor Slots from your or an
+ally’s armor.
+• Prepare: Describe how you prepare yourself for the path
+ahead, then gain a Hope. Ifyou choose to Prepare with one
+or more members of your party, you each gain 2 Hope.
+At the end ofa short rest, any features or effects with a
+limited number of uses per rest refresh and any features or
+effects that last until your next rest expire.
+A long rest is when the characters make camp and relax or
+sleep for several in-game hours. Each player can move domain
+cards between their loadout and vault for free, then choose
+twice from the following list of downtime moves (players can
+choose the same move twice):
+• Tend toAllWounds: Clear all Hit Points foryourself or an
+ally.
+• ClearAll Stress: Clear all Stress.
+• RepairAllArmor: Clear all Armor Slots from your or an
+ally’s armor
+• Prepare: Describe howyou prepare for the next day’s
+adventure, then gain a Hope. If you choose to Prepare
+with one or more members of your party, you each gain 2
+Hope.
+• Work on a Project: With GM approval, a PC may pursue
+a long-term project, such as deciphering an ancient text
+or crafting a new weapon. The first time they start a new
+project, assign it a countdown. Each time a PC makes
+the Work on a Project move, they either advance their
+project’s countdown automatically or make an action roll
+to advance it (GM’s choice).
+At the end of a long rest, any features or effects with a limited
+number of uses per rest or per long rest refresh and any
+features or effects that last until your next rest or until your
+next long rest expire.
+DOWNTIME CONSEQUENCES
+On a short rest, the GM gains 1d4 Fear. On a long rest, they
+gain Fear equal to 1d4 + the number of PCs, and they can
+advance a long-term countdown of their choice.
+41 40 Daggerheart SRD Daggerheart SRD

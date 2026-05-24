@@ -6,6 +6,16 @@ Use the official Daggerheart SRD PDF from Critical Role/Darrington Press as the 
 
 The relevant license basis is the Darrington Press Community Gaming License. Exact obligations remain an open question and must be verified.
 
+Current accepted source document:
+
+- Source page: https://www.daggerheart.com/srd/
+- Direct PDF URL: https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf
+- Local path: `data/source/Daggerheart-SRD-9-09-25.pdf`
+- Source label: Daggerheart System Reference Document v1.0
+- Changelog label on source page: Daggerheart SRD September-9
+- Downloaded: 2026-05-24
+- SHA256: `39c5981ebfc85db071e5fdcebfda3add6c5eaf3d078fb1fd0b3790c912338687`
+
 ## Guiding Rules
 
 - Do not parse the PDF at runtime.
@@ -43,6 +53,34 @@ The initial spike should be small and representative. It should test extraction 
 
 The spike should produce notes about extraction quality, tool limitations, and likely cleanup requirements. It should not attempt to parse the entire SRD.
 
+## Current Spike Findings
+
+The 2026-05-24 extraction spike found Poppler suitable as the initial extraction foundation:
+
+- `pdftotext -raw` is useful for prose-first extraction.
+- `pdftohtml -xml` is useful for page-aware coordinates, table reconstruction, and column boundaries.
+- `pdftotext -layout` is useful as a human-debugging artifact, but is not ideal as the only parser input.
+
+Full notes live in `docs/brain/data/extraction-spike-2026-05-24.md`.
+
+## Initial Schema And Fixture
+
+The initial SRD schema lives in `src/srd/schema.ts` and uses a Zod discriminated union over these kinds:
+
+- `rule_reference`
+- `class`
+- `subclass`
+- `domain_card`
+- `weapon`
+
+The first fixture lives in `data/srd/fixtures/entries.json` and can be validated with:
+
+```bash
+npm run validate:srd
+```
+
+The fixture is intentionally small. It exists to prove schema shape, validation, and future compendium behavior before building a full parser.
+
 ## Validation Rules
 
 - No unreviewed data should be treated as canonical.
@@ -52,8 +90,7 @@ The spike should produce notes about extraction quality, tool limitations, and l
 
 ## Open Questions
 
-- Which PDF extraction tool should be used?
+- Should Poppler remain the only extraction dependency, or should future parser work compare PyMuPDF/pdfplumber as well?
 - What schema should canonical data use?
 - How will review state be tracked in files?
 - Are page references required or merely helpful?
-- Where will the SRD PDF itself live, if anywhere?

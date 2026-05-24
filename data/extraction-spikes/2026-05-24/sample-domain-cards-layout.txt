@@ -1,0 +1,189 @@
+         Ikla, the Sky Painter: Ikla’s artistic prowess and talent are   Phylax’s (they/them) decision to steal the Reaping Eye, and
+         unmatched, painting the skies of each weekly sunrise and        the consequences they’ve all paid for that decision have been
+         sunset over Fanewick in a myriad of scintillating colors.
+         They could not be lazier the rest of the week, and their
+         demeanor is exceedingly unpleasant, offended that anyone
+                                                                         grimly vindicating.
+                                                                         Recently, Kreil uncovered the Fanewraith’s plot and is horrified   APPENDIX
+                                                                         by the possibility of her success. Knowing he can’t send a
+         would ask a favor of them during their time off.
+                                                                         troop of Haven soldiers deep into the woods to hunt down and       This section contains additional information and reference sheets.
+         Oove, the Watcher of the Night Bloom: He is one of the          stop the Fanewraith from stealing the Sowing Eye, Kreil uses
+         few local gods who has never been seen, but he is often
+         heard in the wilds at night, whispering directions to lost
+                                                                         his vast network of informants and spies to find a group of
+                                                                         adventurers who can bring the Fanewraith to swift justice.
+                                                                                                                                            Domain Card reference
+         travelers, pointing them to the nearest source of night
+                                                                         The party is sent an invitation from Haven to meet with
+         bloom. Locals claim he leads those who displease him
+                                                                         Kreil. But is his information correct? Does he have his own         ARCANA DOMAIN
+         or harm nocturnal creatures into dangerous terrain. It’s
+                                                                         motivation or secret ambition? Whether they come from
+         rumored that he watches over Fanewick nights from his
+         home on the moon.
+                                                                         Fanewick or Haven, the party must extend some trust to a             RUNE WARD                                                           COUNTERSPELL
+                                                                         person who is equally as dangerous and mercurial as the              Level 1 Arcana Spell                                                Level 3 Arcana Spell
+         Qui’Gar, Whispered Sweetness for a Thorny End: A quiet          “enemy” they pursue. And what will they do when they find the        Recall Cost: 0                                                      Recall Cost: 2
+         god who presides over the deaths of those who pass in           Fanewraith? Bring her to justice? Side with her? Attempt to          You have a deeply personal trinket that can be infused with         You can interrupt a magical effect taking place by making a
+         thorny bushes and briar patches. Traditionally, she doesn’t     recover the Reaping Eye?                                             protective magic and held as a ward by you or an ally. Describe     reaction roll using your Spellcast trait. On a success, the effect
+         receive many visitors, but the Witherwild’s corruptive                                                                               what it is and why it’s important to you. The ward’s holder can     stops and any consequences are avoided, and this card is
+                                                                         Kreil advises the party to start their hunt for the Fanewraith
+         growth has made her job harder and upended her quiet                                                                                 spend a Hope to reduce incoming damage by 1d8.                      placed in your vault.
+                                                                         in the treetop village of Alula, where he suspects she runs her
+         existence.                                                                                                                           If the Ward Die result is 8, the ward’s power ends after it
+                                                                         operation.                                                                                                                               FLIGHT
+                                                                                                                                              reduces damage this turn. It can be recharged for free
+         Rohkin, the Wandering Horn: Rohkin watches over the                                                                                                                                                      Level 3 Arcana Spell
+                                                                                                                                              on your next rest.
+         many herds of horned creatures that reside in Fanewick.                                                                                                                                                  Recall Cost: 1
+         In happier times, he preserved the balance of nature
+                                                                         CAMPAIGN MECHANICS                                                   UNLEASH CHAOS                                                       Make a Spellcast Roll (15). On a success, place a number of
+         and civilization, preventing overhunting. But since the         The following mechanics are unique to this campaign.                 Level 1 Arcana Spell                                                tokens equal to your Agility on this card (minimum 1). When
+         corruption of the Witherwild has taken hold, he’s seen his                                                                           Recall Cost: 1                                                      you make an
+         herds change into unrecognizable, dangerous beasts.                CORRUPTION FROM THE WITHERWILD                                    At the beginning of a session, place a number of tokens equal       action roll while flying, spend a token from this card. After the
+                                                                                                                                              to your Spellcast trait on this card.                               action that spends the last token is resolved,
+      These are but a small slice of the hundreds, if not thousands,     Adversaries and environments in this campaign can gain                                                                                   you descend to the ground directly below you.
+      of Faint Divinities lurking, relaxing, hunting, and playing        an additional type called Withered. When an adversary is             Make a Spellcast Roll against a target within Far range and
+      throughout Fanewick.                                               Withered, describe how the Witherwild changed or impacted            spend any number of tokens to channel raw energy from within        BLINK OUT
+                                                                                                                                              yourself to unleash against them. On a success, roll a number       Level 4 Arcana Spell
+                                                                         how they would normally appear or operate. You also need
+                                                                                                                                              of d10s equal to the tokens you spent and deal that much            Recall Cost: 1
+        What Faint Divinities do the PCs acknowledge and pay             about 20 Wither tokens (these can be the same as the tokens          magic damage to the target. Mark a Stress to replenish this
+                                                                         you use for Fear).                                                   card with tokens (up to your Spellcast trait).                      Make a Spellcast Roll (12). On a success, spend a Hope to
+        tribute to, if any?
+                                                                                                                                                                                                                  teleport to another point you can see within Far range. If
+                                                                         Any time a PC takes Severe damage from a Withered                    At the end of each session, clear all unspent tokens.               any willing creatures are within Very Close range, spend an
+        How has the Witherwild changed the outlook, personality,
+                                                                         adversary or environment, gain a Wither token and place it                                                                               additional Hope for each creature to bring them with you.
+        and dispositions of the Faint Divinities the characters                                                                               WALL WALK
+        encounter?                                                       on that PC’s character sheet. When you do, the PC must roll
+                                                                                                                                              Level 1 Arcana Spell                                                PRESERVATION BLAST
+                                                                         their Fear Die. If they roll equal to or below the number of
+                                                                                                                                              Recall Cost: 1                                                      Level 4 Arcana Spell
+        Which gods ally themselves with Haven to preserve the            Wither tokens on their sheet, they immediately gain a scar and
+        endless spring? Which align with Fanewick?                       clear all tokens, describing how the Witherwild changes them         Spend a Hope to allow a creature you can touch to climb on          Recall Cost: 2
+                                                                                                                                              walls and ceilings as easily as walking on the ground. This lasts   Make a Spellcast Roll against all targets within Melee range.
+                                                                         permanently.
+                                                                                                                                              until the end of the scene or you cast Wall Walk again              Targets you succeed against are forced back to Far range and
+                                                                         At the end of each session, clear all Wither tokens from the                                                                             take d8+3 magic damage using your Spellcast trait.
+      THE INCITING INCIDENT                                                                                                                   CINDER GRASP
+                                                                         PCs’ sheets and gain an equal amount of Fear. If a character
+                                                                                                                                              Level 2 Arcana Spell                                                CHAIN LIGHTNING
+      You can use the prompt below to start your campaign, or create     ever dies with Wither tokens on their sheet, their body is
+                                                                                                                                              Recall Cost: 1                                                      Level 5 Arcana Spell
+      your own.                                                          permanently taken over by the Witherwild.
+                                                                                                                                              Make a Spellcast Roll against a target within Melee range.          Recall Cost: 1
+      The Reaping Eye is stowed in a secure vault beneath the                                                                                 On a success, the target instantly bursts into flames, takes        Mark 2 Stress to make a Spellcast Roll, unleashing lightning
+      central tower of Haven’s wizarding school, seemingly               SESSION ZERO QUESTIONS                                               1d20+3 magic damage, and is temporarily lit On Fire.                on all targets within Close range. Targets you succeed against
+      impossible to recover. A secretive and dangerous rebel group,      Ask any of these questions to your players, or make your own.        When a creature acts while On Fire, they must take an extra         must make a reaction roll with a Difficulty equal to the result of
+      led by a mysterious figure known only as the Fanewraith (she/                                                                           2d6 magic damage if they are still On Fire at the end of their      your Spellcast Roll. Targets who fail take 2d8+4 magic damage.
+      her), has hatched a plan to end the curse of the Witherwild:                                                                            action.                                                             Additional adversaries not already targeted by Chain Lightning
+                                                                           What dangerous animal comes out during the week of night                                                                               and within Close range of previous targets who took damage
+      find the Great Owl, Nikta, and pluck out the Sowing Eye.             that isn’t out during the week of day?                             FLOATING EYE                                                        must also make the reaction roll. Targets who fail take 2d8+4
+      While this may solve the immediate problem, the long-term                                                                               Level 2 Arcana Spell                                                magic damage. This chain continues until there are no more
+      consequences are not being considered, just as they weren’t          What unique trait (such as appearance, smell, or taste)            Recall Cost: 0                                                      adversaries within range.
+      when Haven invaded.                                                  does anything tainted by the Witherwild have?
+                                                                                                                                              Spend a Hope to create a single, small floating orb that you
+      Haven’s beleaguered spymaster, Kreil Dirn (he/him), is not           What superstitions does your character or their community          can move anywhere within Very Far range. While this spell is
+                                                                           have about traversing Fanewick during the long nights?             active, you can see through the orb as though you’re looking
+      a popular person in Haven. He is responsible for rooting out
+                                                                                                                                              out from its position. You can transition between using your
+      insurgents, stopping schemes before they have a chance to            Your character has witnessed something beautiful that              own senses and seeing through the orb freely. If the orb takes
+      start, and keeping a close watch on Haven’s internal activities.     came from the Witherwild. What is it and how has it                damage or moves out of range, the spell ends.
+      Kreil has never agreed—at least not openly—with Archmage             transformed their view of the corruption?
+
+
+
+118     Daggerheart SRD                                                                                                                                                                                                                                       Daggerheart SRD          119
+      PREMONITION                                                         CONFUSING AURA                                                        BLADE DOMAIN
+      Level 5 Arcana Spell                                                Level 8 Arcana Spell
+      Recall Cost: 2                                                      Recall Cost: 2
+                                                                                                                                                GET BACK UP                                                         CHAMPION’S EDGE
+      You can channel arcane energy to have visions of the future.        Make a Spellcast Roll (14). Once per long rest on a success,          Level 1 Blade Ability                                               Level 5 Blade Ability
+      Once per long rest, immediately after the GM conveys the            you create a layer of illusion over your body that makes it hard
+                                                                                                                                                Recall Cost: 1                                                      Recall Cost: 1
+      consequences of a roll you made, you can rescind the move           to tell exactly where you are. Mark any number of Stress
+      and consequences like they never happened and make another          to make that many additional layers. When an adversary                When you take Severe damage, you can mark a Stress to               When you critically succeed on an attack, you can spend up to
+      move instead.                                                       makes an attack against you, roll a number of d6s equal to            reduce the severity by one threshold.                               3 Hope and choose one of the following options for each Hope
+                                                                          the number of layers currently active. If any roll a 5 or higher,                                                                         spent:
+      RIFT WALKER                                                                                                                               NOT GOOD ENOUGH
+                                                                          one layer of the aura is destroyed and the attack fails. If all the                                                                       • You clear a Hit Point.
+      Level 6 Arcana Spell                                                                                                                      Level 1 Blade Ability
+                                                                          results are 4 or lower, you take the damage and this spell ends
+      Recall Cost: 2                                                                                                                            Recall Cost: 1                                                      • You clear an Armor Slot.
+      Make a Spellcast Roll (15). On a success, you place an arcane
+                                                                          EARTHQUAKE                                                            When you roll your damage dice, you can reroll any 1s or 2s.        • The target must mark an additional Hit Point.
+      marking on the ground where you currently stand. The next           Level 9 Arcana Spell                                                                                                                      You can’t choose the same option more than once.
+                                                                          Recall Cost: 2                                                        WHIRLWIND
+      time you successfully cast Rift Walker, a rift in space opens
+                                                                                                                                                Level 1 Blade Ability                                               VITALITY
+      up, providing safe passage back to the exact spot where the         Make a Spellcast Roll (16). Once per rest on a success, all
+      marking was placed. This rift stays open until you choose to        targets within Very Far range who aren’t flying must make             Recall Cost: 0                                                      Level 5 Blade Ability
+      close it or you cast another spell.                                 a Reaction Roll (18). Targets who fail take 3d10+8 physical           When you make a successful attack against a target within           Recall Cost: 0
+      You can drop the spell at any time to cast Rift Walker again and    damage and are temporarily Vulnerable. Targets who succeed            Very Close range, you can spend a Hope to use the attack            When you choose this card, permanently gain two of the
+      place the marking somewhere new.                                    take half damage.                                                     against all other targets within Very Close range. All additional   following benefits:
+                                                                          Additionally, when you succeed on the Spellcast Roll, all terrain     adversaries you succeed against with this ability take half
+      TELEKINESIS                                                                                                                               damage.                                                             • One Stress slot
+                                                                          within Very Far range becomes difficult to move through and
+      Level 6 Arcana Spell                                                structures within this range might sustain damage or crumble.                                                                             • One Hit Point slot
+                                                                                                                                                A SOLDIER’S BOND
+      Recall Cost: 0                                                                                                                                                                                                • +2 bonus to your damage thresholds
+                                                                          SENSORY PROJECTION                                                    Level 2 Blade Ability
+      Make a Spellcast Roll against a target within Far range. On                                                                               Recall Cost: 1                                                      Then place this card in your vault permanently.
+      a success, you can use your mind to move them anywhere              Level 9 Arcana Spell
+      within Far range of their original position. You can throw the      Recall Cost: 0                                                        Once per long rest, when you compliment someone or ask              BATTLE-HARDENED
+      lifted target as an attack by making an additional Spellcast Roll   Once per rest, make a Spellcast Roll (15). On a success,              them about something they’re good at,                               Level 6 Blade Ability
+                                                                                                                                                you can both gain 3 Hope.
+      against the second target you’re trying to attack. On a success,    drop into a vision that lets you clearly see and hear any place                                                                           Recall Cost: 2
+      deal d12+4 physical damage to the second target using your          you have been before as though you are standing there in              RECKLESS                                                            Once per long rest when you would make a Death Move, you
+      Proficiency. This spell then ends.                                  this moment. You can move freely in this vision and are not           Level 2 Blade Ability                                               can spend a Hope to clear a Hit Point instead.
+                                                                          constrained by the physics or impediments of a physical body.
+      ARCANA-TOUCHED                                                                                                                            Recall Cost: 1
+                                                                          This spell cannot be detected by mundane or magical means.                                                                                RAGE UP
+      Level 7 Arcana Ability                                              You drop out of this vision upon taking damage or casting             Mark a Stress to gain advantage on                                  Level 6 Blade Ability
+      Recall Cost: 2                                                      another spell.                                                        an attack.
+                                                                                                                                                                                                                    Recall Cost: 1
+      When 4 or more of the domain cards in your loadout are from                                                                               SCRAMBLE
+      the Arcana domain, gain the following benefits:
+                                                                          ADJUST REALITY                                                                                                                            Before you make an attack, you can mark a Stress to gain a
+                                                                          Level 10 Arcana Spell                                                 Level 3 Blade Ability                                               bonus to your damage roll equal to twice your Strength.
+       • +1 bonus to your Spellcast Rolls                                 Recall Cost: 1                                                        Recall Cost: 1                                                      You can Rage Up twice per attack.
+       • Once per rest, you can switch the results of your Hope and       After you or a willing ally make any roll, you can spend 5 Hope       Once per rest, when a creature within Melee range would deal
+         Fear Dice.                                                                                                                             damage to you, you can avoid the attack and safely move out
+                                                                                                                                                                                                                    BLADE-TOUCHED
+                                                                          to change the numerical result of that roll to a result of your                                                                           Level 7 Blade Ability
+                                                                          choice instead. The result must be plausible within the range         of Melee range of the enemy.
+      CLOAKING BLAST                                                                                                                                                                                                Recall Cost: 1
+                                                                          of the dice.                                                          VERSATILE FIGHTER
+      Level 7 Arcana Spell                                                                                                                                                                                          When 4 or more of the domain cards in your loadout are from
+      Recall Cost: 2                                                      FALLING SKY                                                           Level 3 Blade Ability                                               the Blade domain, gain the following benefits:
+      When you make a successful Spellcast Roll to cast a different       Level 10 Arcana Spell                                                 Recall Cost: 1
+                                                                                                                                                                                                                    • +2 bonus to your attack rolls
+      spell, you can spend a Hope to become Cloaked. While                Recall Cost: 1                                                        You can use a different character trait for an equipped weapon,
+      Cloaked, you remain unseen if you are stationary when an                                                                                  rather than the trait the weapon calls for.                         • +4 bonus to your Severe damage threshold
+                                                                          Make a Spellcast Roll against all adversaries within Far range.
+      adversary moves to where they would normally see you. When          Mark any number of Stress to make shards of arcana rain               When you deal damage, you can mark a Stress to use the              GLANCING BLOW
+      you move into or within an adversary’s line of sight or make an     down from above. Targets you succeed against take 1d20+2              maximum result of one of your damage dice instead of rolling        Level 7 Blade Ability
+      attack, you are no longer Cloaked.                                  magic damage for each Stress marked.                                  it.                                                                 Recall Cost: 1
+      ARCANE REFLECTION                                                                                                                         DEADLY FOCUS                                                        When you fail an attack, you can mark a Stress to deal weapon
+      Level 8 Arcana Spell                                                                                                                      Level 4 Blade Ability                                               damage using half your Proficiency.
+      Recall Cost: 1                                                                                                                            Recall Cost: 2                                                      BATTLE CRY
+      When you would take magic damage, you can spend any                                                                                       Once per rest, you can apply all your focus toward a target of      Level 8 Blade Ability
+      number of Hope to roll that many d6s. If any roll a 6, the                                                                                your choice. Until you attack another creature, you defeat the
+      attack is reflected back to the caster, dealing the damage to
+                                                                                                                                                                                                                    Recall Cost: 2
+                                                                                                                                                target, or the battle ends, gain a +1 bonus to your Proficiency.
+      them instead.                                                                                                                                                                                                 Once per long rest, while you’re charging into danger, you can
+                                                                                                                                                FORTIFIED ARMOR                                                     muster a rousing call that inspires your allies. All allies who
+                                                                                                                                                Level 4 Blade Ability                                               can hear you each clear a Stress and gain a Hope. Additionally,
+                                                                                                                                                Recall Cost: 0                                                      your allies gain advantage on attack rolls until you or an ally
+                                                                                                                                                                                                                    rolls a failure with Fear.
+                                                                                                                                                While you are wearing armor, gain a +2 bonus to your damage
+                                                                                                                                                thresholds.
+
+
+
+
+120   Daggerheart SRD                                                                                                                                                                                                                                         Daggerheart SRD         121
+

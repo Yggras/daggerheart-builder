@@ -1,0 +1,296 @@
+[
+  {
+    "id": "class.bard",
+    "kind": "class",
+    "name": "Bard",
+    "slug": "bard",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 5
+      },
+      "printedPages": [8, 9],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Bards are the most charismatic people in all the realms. Members of this class are masters of captivation and specialize in a variety of performance types, including singing, playing musical instruments, weaving tales, or telling jokes. Whether performing for an audience or speaking to an individual, bards thrive in social situations.",
+      "summary": "A charismatic performer class using Grace and Codex domains."
+    },
+    "tags": ["class", "grace", "codex", "social"],
+    "domains": ["Grace", "Codex"],
+    "startingEvasion": 10,
+    "startingHitPoints": 5,
+    "classItems": ["A romance novel", "A letter never opened"],
+    "hopeFeature": {
+      "name": "Make a Scene",
+      "text": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty."
+    },
+    "classFeatures": [
+      {
+        "name": "Rally",
+        "text": "Once per session, describe how you rally the party and give yourself and each of your allies a Rally Die. At level 1, your Rally Die is a d6. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. At level 5, your Rally Die increases to a d8."
+      }
+    ],
+    "subclassIds": ["subclass.bard.troubadour", "subclass.bard.wordsmith"]
+  },
+  {
+    "id": "subclass.bard.troubadour",
+    "kind": "subclass",
+    "name": "Troubadour",
+    "slug": "troubadour",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 5
+      },
+      "printedPages": [8, 9],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Play the Troubadour if you want to play music to bolster your allies.",
+      "summary": "A Bard subclass focused on songs that support allies."
+    },
+    "tags": ["subclass", "bard", "support", "music"],
+    "classId": "class.bard",
+    "spellcastTrait": "presence",
+    "features": {
+      "foundation": [
+        {
+          "name": "Gifted Performer",
+          "text": "You can play three different types of songs, once each per long rest; describe how you perform for others to gain the listed benefit: Relaxing Song clears a Hit Point for you and all allies within Close range. Epic Song makes a target within Close range temporarily Vulnerable. Heartbreaking Song gives you and all allies within Close range a Hope."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Maestro",
+          "text": "Your rallying songs steel the courage of those who listen. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Virtuoso",
+          "text": "You are among the greatest of your craft and your skill is boundless. You can perform each of your Gifted Performer feature's songs twice per long rest."
+        }
+      ]
+    }
+  },
+  {
+    "id": "domain_card.arcana.rune_ward",
+    "kind": "domain_card",
+    "name": "Rune Ward",
+    "slug": "rune-ward",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 60,
+        "pageEnd": 60
+      },
+      "printedPages": [119],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "You have a deeply personal trinket that can be infused with protective magic and held as a ward by you or an ally. Describe what it is and why it's important to you. The ward's holder can spend a Hope to reduce incoming damage by 1d8. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest.",
+      "summary": "A protective Arcana spell that reduces incoming damage."
+    },
+    "tags": ["domain-card", "arcana", "spell", "level-1", "defense"],
+    "domain": "Arcana",
+    "level": 1,
+    "cardType": "spell",
+    "recallCost": 0,
+    "abilities": [
+      {
+        "name": "Rune Ward",
+        "text": "The ward's holder can spend a Hope to reduce incoming damage by 1d8. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest."
+      }
+    ]
+  },
+  {
+    "id": "domain_card.codex.book_of_grynn",
+    "kind": "domain_card",
+    "name": "Book of Grynn",
+    "slug": "book-of-grynn",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 63,
+        "pageEnd": 63
+      },
+      "printedPages": [125],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range. Time Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell. Wall of Flame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage.",
+      "summary": "A level 4 Codex grimoire containing defensive, temporal, and wall-creating magic."
+    },
+    "tags": ["domain-card", "codex", "grimoire", "level-4", "magic"],
+    "domain": "Codex",
+    "level": 4,
+    "cardType": "grimoire",
+    "recallCost": 2,
+    "abilities": [
+      {
+        "name": "Arcane Deflection",
+        "text": "Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range."
+      },
+      {
+        "name": "Time Lock",
+        "text": "Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell."
+      },
+      {
+        "name": "Wall of Flame",
+        "text": "Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage."
+      }
+    ]
+  },
+  {
+    "id": "weapon.primary.tier1.broadsword",
+    "kind": "weapon",
+    "name": "Broadsword",
+    "slug": "broadsword",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 23,
+        "pageEnd": 23
+      },
+      "printedPages": [44, 45],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Broadsword Agility Melee d8 phy One-Handed Reliable: +1 to attack rolls",
+      "summary": "A one-handed Tier 1 physical primary weapon with Reliable."
+    },
+    "tags": ["weapon", "primary", "tier-1", "physical", "melee"],
+    "category": "primary",
+    "tier": 1,
+    "levelRange": {
+      "min": 1,
+      "max": 1
+    },
+    "weaponType": "physical",
+    "requiresSpellcastTrait": false,
+    "trait": "agility",
+    "range": "melee",
+    "damage": {
+      "dice": "d8",
+      "type": "physical"
+    },
+    "burden": "one_handed",
+    "feature": {
+      "name": "Reliable",
+      "text": "+1 to attack rolls"
+    }
+  },
+  {
+    "id": "weapon.primary.tier1.returning_blade",
+    "kind": "weapon",
+    "name": "Returning Blade",
+    "slug": "returning-blade",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 23,
+        "pageEnd": 23
+      },
+      "printedPages": [44, 45],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Returning Blade Finesse Close d8 mag One-Handed Returning: When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+      "summary": "A one-handed Tier 1 magic primary weapon that returns after being thrown."
+    },
+    "tags": ["weapon", "primary", "tier-1", "magic", "close"],
+    "category": "primary",
+    "tier": 1,
+    "levelRange": {
+      "min": 1,
+      "max": 1
+    },
+    "weaponType": "magic",
+    "requiresSpellcastTrait": true,
+    "trait": "finesse",
+    "range": "close",
+    "damage": {
+      "dice": "d8",
+      "type": "magic"
+    },
+    "burden": "one_handed",
+    "feature": {
+      "name": "Returning",
+      "text": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+    }
+  },
+  {
+    "id": "rule.combat.hit_points_damage_thresholds",
+    "kind": "rule_reference",
+    "name": "Hit Points & Damage Thresholds",
+    "slug": "hit-points-damage-thresholds",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [39],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": ["Fixture entry manually transcribed from the extraction sample and source PDF."]
+    },
+    "text": {
+      "original": "Hit Points (HP) represent a character's ability to withstand physical injury. When a character takes damage, they mark 1 to 3 HP, based on their damage thresholds: if the final damage is at or above the character's Severe damage threshold, they mark 3 HP; if the final damage is at or above the character's Major damage threshold but below their Severe damage threshold, they mark 2 HP; if the final damage is below the character's Major damage threshold, they mark 1 HP; if incoming damage is ever reduced to 0 or less, no HP is marked.",
+      "summary": "Explains how damage thresholds determine marked HP."
+    },
+    "tags": ["rule", "combat", "hit-points", "damage-thresholds"],
+    "category": "combat",
+    "headings": ["Combat", "Hit Points & Damage Thresholds"]
+  }
+]
