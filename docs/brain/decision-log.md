@@ -383,3 +383,35 @@ Use full manual review for early calibration slices, then shift toward risk-base
 Consequences:
 
 Parser output should include review notes or reports that identify cleanup actions and suspicious extraction artifacts. Automated validation remains mandatory for every generated batch, but validation does not replace human review for risky or flagged entries.
+
+## 2026-05-25 - Accept First Report-Driven Rule Reference Batch
+
+Status: Accepted
+
+Context:
+
+The first generated rule-reference batch covered 8 entries from `Hope & Fear` and adjacent combat rules. The generated review report identified cleanup actions and no suspicious tokens, and manual spot-check review found no flaws.
+
+Decision:
+
+Mark the 8 reviewed generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
+
+Consequences:
+
+The parser now preserves accepted review state for those generated entries when rerun. Newly added generated entries remain `extracted` until reviewed.
+
+## 2026-05-25 - Accept Second Report-Driven Rule Reference Batch
+
+Status: Accepted
+
+Context:
+
+The second generated rule-reference batch added 8 page-21 prose entries covering resistance, multi-target attacks, multiple damage sources, range and movement, line of sight, and temporary tags. The generated review report identified cleanup actions and no suspicious tokens, and manual review found no flaws.
+
+Decision:
+
+Mark the second 8 generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
+
+Consequences:
+
+All 16 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser slice should keep to prose-first `rule_reference` extraction, with Downtime as the recommended next target.

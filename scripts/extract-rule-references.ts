@@ -10,6 +10,25 @@ const sourcePdfPath = "data/source/Daggerheart-SRD-9-09-25.pdf";
 const outputPath = "data/srd/generated/entries.candidates.json";
 const reviewReportPath = "data/srd/generated/review-report.md";
 const sourceUrl = "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf";
+const acceptedReviewTimestamp = "2026-05-25T00:00:00.000Z";
+const acceptedReviewedIds = new Set([
+  "rule.core.hope_fear",
+  "rule.core.hope",
+  "rule.core.fear",
+  "rule.combat.evasion",
+  "rule.combat.hit_points_damage_thresholds",
+  "rule.combat.stress",
+  "rule.combat.damage_types",
+  "rule.combat.resistance_immunity_direct_damage",
+  "rule.combat.multi_target_attack_rolls",
+  "rule.combat.multiple_damage_sources",
+  "rule.combat.maps_range_movement",
+  "rule.combat.movement_under_pressure",
+  "rule.combat.area_of_effect",
+  "rule.combat.line_of_sight_cover",
+  "rule.combat.conditions",
+  "rule.combat.temporary_tags_special_conditions",
+]);
 
 type RuleSpec = {
   id: string;
@@ -126,6 +145,99 @@ const ruleSpecs: RuleSpec[] = [
     headings: ["Combat", "Damage Types"],
   },
   {
+    id: "rule.combat.resistance_immunity_direct_damage",
+    name: "Resistance, Immunity, and Direct Damage",
+    slug: "resistance-immunity-direct-damage",
+    category: "combat",
+    heading: "RESISTANCE, IMMUNITY,AND DIRECT",
+    nextHeading: "MULTI-TARGETATTACK ROLLS",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Explains resistance, immunity, and direct damage interactions.",
+    tags: ["rule", "combat", "resistance", "immunity", "direct-damage"],
+    headings: ["Combat", "Resistance, Immunity, and Direct Damage"],
+    dropLeadingText: "DAMAGE ",
+  },
+  {
+    id: "rule.combat.multi_target_attack_rolls",
+    name: "Multi-Target Attack Rolls",
+    slug: "multi-target-attack-rolls",
+    category: "combat",
+    heading: "MULTI-TARGETATTACK ROLLS",
+    nextHeading: "MULTIPLE DAMAGE SOURCES",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Explains how one attack and damage roll applies to multiple targets.",
+    tags: ["rule", "combat", "attack-rolls", "multi-target"],
+    headings: ["Combat", "Multi-Target Attack Rolls"],
+  },
+  {
+    id: "rule.combat.multiple_damage_sources",
+    name: "Multiple Damage Sources",
+    slug: "multiple-damage-sources",
+    category: "combat",
+    heading: "MULTIPLE DAMAGE SOURCES",
+    nextHeading: "MAPS, RANGE,",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Explains that simultaneous damage from multiple sources is totaled before threshold comparison.",
+    tags: ["rule", "combat", "damage", "thresholds"],
+    headings: ["Combat", "Multiple Damage Sources"],
+  },
+  {
+    id: "rule.combat.maps_range_movement",
+    name: "Maps, Range, and Movement",
+    slug: "maps-range-movement",
+    category: "combat",
+    heading: "MAPS, RANGE,",
+    nextHeading: "MOVEMENTUNDER PRESSURE",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Defines abstract range bands and their optional grid equivalents.",
+    tags: ["rule", "combat", "range", "movement", "maps"],
+    headings: ["Combat", "Maps, Range, and Movement"],
+    dropLeadingText: "AND MOVEMENT ",
+  },
+  {
+    id: "rule.combat.movement_under_pressure",
+    name: "Movement Under Pressure",
+    slug: "movement-under-pressure",
+    category: "combat",
+    heading: "MOVEMENTUNDER PRESSURE",
+    nextHeading: "AREAOFEFFECT",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Explains movement while under pressure or in danger.",
+    tags: ["rule", "combat", "movement", "pressure"],
+    headings: ["Combat", "Movement Under Pressure"],
+  },
+  {
+    id: "rule.combat.area_of_effect",
+    name: "Area of Effect",
+    slug: "area-of-effect",
+    category: "combat",
+    heading: "AREAOFEFFECT",
+    nextHeading: "LINE OFSIGHT& COVER",
+    pdfPage: 21,
+    printedPages: [40],
+    summary: "Defines the default origin and grouping requirement for group effects.",
+    tags: ["rule", "combat", "area-of-effect", "targeting"],
+    headings: ["Combat", "Area of Effect"],
+  },
+  {
+    id: "rule.combat.line_of_sight_cover",
+    name: "Line of Sight & Cover",
+    slug: "line-of-sight-cover",
+    category: "combat",
+    heading: "LINE OFSIGHT& COVER",
+    nextHeading: "CONDITIONS",
+    pdfPage: 21,
+    printedPages: [40, 41],
+    summary: "Explains line of sight requirements and cover penalties for ranged attacks.",
+    tags: ["rule", "combat", "line-of-sight", "cover", "ranged"],
+    headings: ["Combat", "Line of Sight & Cover"],
+  },
+  {
     id: "rule.combat.conditions",
     name: "Conditions",
     slug: "conditions",
@@ -138,6 +250,20 @@ const ruleSpecs: RuleSpec[] = [
     tags: ["rule", "combat", "conditions"],
     headings: ["Combat", "Conditions"],
   },
+  {
+    id: "rule.combat.temporary_tags_special_conditions",
+    name: "Temporary Tags & Special Conditions",
+    slug: "temporary-tags-special-conditions",
+    category: "combat",
+    heading: "TEMPORARY TAGS",
+    nextHeading: "DOWNTIME",
+    pdfPage: 21,
+    printedPages: [41],
+    summary: "Explains clearing temporary tags and special conditions.",
+    tags: ["rule", "combat", "temporary-tags", "conditions"],
+    headings: ["Combat", "Temporary Tags & Special Conditions"],
+    dropLeadingText: "& SPECIAL CONDITIONS ",
+  },
 ];
 
 const cleanupRules = [
@@ -145,6 +271,7 @@ const cleanupRules = [
   { pattern: /\baTagTeam\b/g, replacement: "a Tag Team", label: "aTagTeam -> a Tag Team" },
   { pattern: /\bTagTeam\b/g, replacement: "Tag Team", label: "TagTeam -> Tag Team" },
   { pattern: /\bifyou\b/g, replacement: "if you", label: "ifyou -> if you" },
+  { pattern: /\bIfyou\b/g, replacement: "If you", label: "Ifyou -> If you" },
   { pattern: /\bIfyour\b/g, replacement: "If your", label: "Ifyour -> If your" },
   { pattern: /\boryou\b/g, replacement: "or you", label: "oryou -> or you" },
   { pattern: /\bofsight\b/g, replacement: "of sight", label: "ofsight -> of sight" },
@@ -176,8 +303,10 @@ function extractRule(spec: RuleSpec, rawText: string): ExtractedRule {
   const cleaned = applyCleanup(normalizedSection.text);
   const appliedCleanupLabels = [...normalizedSection.appliedLabels, ...cleaned.appliedLabels];
   const suspiciousTokens = detectSuspiciousTokens(cleaned.text);
+  const accepted = acceptedReviewedIds.has(spec.id);
   const notes = [
     "Generated by scripts/extract-rule-references.ts from pdftotext -raw; review wording against the source PDF.",
+    ...(accepted ? ["Report-driven manual review accepted on 2026-05-25 with no flaws found."] : []),
     ...appliedCleanupLabels.map((label) => `Parser cleanup applied: ${label}.`),
     ...suspiciousTokens.map((token) => `Potential joined-word artifact remains: ${token}.`),
   ];
@@ -200,8 +329,8 @@ function extractRule(spec: RuleSpec, rawText: string): ExtractedRule {
         url: sourceUrl,
       },
       review: {
-        status: "extracted" as const,
-        reviewedAt: null,
+        status: accepted ? "reviewed" : "extracted",
+        reviewedAt: accepted ? acceptedReviewTimestamp : null,
         notes,
       },
       text: {

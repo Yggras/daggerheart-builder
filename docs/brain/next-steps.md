@@ -4,22 +4,21 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Use `data/srd/generated/review-report.md` to spot-check the generated rule-reference candidates against the source PDF before promoting or expanding parser output.
+Implement a dedicated `Downtime` rule-reference parser slice, then review it with the generated report before expanding beyond prose rules.
 
 ## Why This Is Next
 
-The parser now generates 8 `rule_reference` candidates across the `Hope & Fear` and adjacent combat rules sections, applies conservative cleanup for known extraction artifacts, and writes a review report. Candidate validation is proven, but generated entries remain untrusted until review.
+Both generated `rule_reference` batches have been accepted through report-driven manual review. The parser now generates 16 reviewed candidates total. `Downtime` is the next useful prose-heavy stress test before moving to tables, classes, domain cards, or other harder SRD shapes.
 
 ## Immediate Tasks
 
-1. Review `data/srd/generated/review-report.md`.
-2. Spot-check entries with parser cleanup: `rule.core.hope`, `rule.combat.hit_points_damage_thresholds`, and `rule.combat.conditions`.
-3. Spot-check at least one candidate without cleanup to verify parser boundaries remain sound.
-4. Keep generated entries marked `review.status: "extracted"` until manually reviewed or promoted.
-5. Validate fixture data with `npm run validate:srd` after any data/schema change.
-6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
-7. Typecheck with `npm run typecheck` after any code change.
-8. Do not expand beyond another small `rule_reference` slice until this report-driven review pass is accepted.
+1. Add a `rule.combat.downtime` candidate extracted from physical PDF page 21 / printed page 41.
+2. Keep `Downtime` as its own slice because it is large and list-heavy.
+3. Generate `data/srd/generated/entries.candidates.json` and `data/srd/generated/review-report.md` with `npm run extract:srd:rules`.
+4. Validate fixture data with `npm run validate:srd` after any data/schema change.
+5. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
+6. Typecheck with `npm run typecheck` after any code change.
+7. Review the generated report before marking `Downtime` as reviewed.
 
 ## Do Not Start Yet
 
@@ -49,11 +48,15 @@ The parser now generates 8 `rule_reference` candidates across the `Hope & Fear` 
 - First `rule_reference` parser slice implemented for the `Hope & Fear` section.
 - Risk-based candidate review accepted.
 - Rule-reference parser expanded to 8 candidates with conservative cleanup and a generated review report.
+- First 8 generated rule-reference candidates accepted through report-driven manual review.
+- Rule-reference parser expanded to 16 candidates, leaving the next page-21 prose slice marked `extracted` for review.
+- Second 8 generated rule-reference candidates accepted through report-driven manual review.
 
 ## Open Questions
 
 - Should source page references be shown in the UI permanently or only in review/admin views?
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
+- When should reviewed generated candidates be promoted into canonical app data?
 
 ## Handoff Rule
 

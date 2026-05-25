@@ -35,3 +35,4 @@
 
 - Should canonical reviewed data remain one JSON file or be split by entity kind before full extraction?
 - Do we need source page references for all SRD entries despite personal-use scope?
+- When should reviewed generated candidates be promoted into canonical app data?
