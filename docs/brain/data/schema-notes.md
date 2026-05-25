@@ -4,6 +4,8 @@
 
 Canonical SRD data should be stored as reviewed versioned JSON and validated with Zod. The initial schema lives in `src/srd/schema.ts` and the first fixture lives in `data/srd/fixtures/entries.json`.
 
+The representative schema/fixture spike passed automated validation and manual web review on 2026-05-25. The schema is sufficient to begin parser automation planning, while remaining provisional as full extraction reveals edge cases.
+
 Validate fixtures with:
 
 ```bash
@@ -145,6 +147,7 @@ PDF pages are useful for extraction tooling. Printed pages are useful for manual
 ## Open Questions
 
 - Should each SRD entity live in its own file or in grouped files?
-- Should source page references be mandatory?
-- Which fields are missing once the first compendium UI is built?
+- Should source page references be mandatory for all generated candidates?
+- Which fields are missing once parser-generated candidates cover the full SRD?
 - How should relationships between entries be represented beyond tags and IDs?
+- Should generated candidate validation use a separate script or extend `npm run validate:srd`?

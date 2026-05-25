@@ -319,3 +319,19 @@ Use `loot` as the SRD entry kind for both reusable items and consumables. Add a 
 Consequences:
 
 The app preserves SRD terminology while still supporting filters, display, and future character inventory rules that need to know whether loot is consumed on use.
+
+## 2026-05-25 - Schema Fixture Spike Complete
+
+Status: Accepted
+
+Context:
+
+The compendium needed representative schema and fixture coverage across major SRD entry families before parser automation could be planned responsibly.
+
+Decision:
+
+Accept the expanded schema/fixture coverage as sufficient for parser automation planning. The representative fixture set passes `npm run validate:srd`, `npm run typecheck`, `npx expo-doctor`, and manual web review with `npm run web`.
+
+Consequences:
+
+Future work can move from schema discovery into parser automation planning and first-slice implementation. Parser output must still be treated as extracted and unreviewed until manually checked against the SRD PDF.

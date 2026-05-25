@@ -33,14 +33,15 @@ Current accepted source document:
 4. Define an initial JSON schema informed by app needs and extraction reality.
 5. Create a tiny fixture dataset using that schema.
 6. Build the first offline compendium prototype against the fixture.
-7. Build the full extraction pipeline once the schema and prototype are proven.
-8. Extract text and tables into entity candidates using selected tooling.
-9. Normalize fields such as names, categories, domains, tiers, tags, and mechanics.
-10. Mark all extracted records as unreviewed.
-11. Manually review records against the SRD PDF.
-12. Correct extraction errors immediately.
-13. Promote reviewed records to canonical data.
-14. Build compendium and builder features from canonical data only.
+7. Draft and review the parser automation plan.
+8. Build parser automation in small validated slices once the plan is accepted.
+9. Extract text and tables into entity candidates using selected tooling.
+10. Normalize fields such as names, categories, domains, tiers, tags, and mechanics.
+11. Mark all extracted records as unreviewed.
+12. Manually review records against the SRD PDF.
+13. Correct extraction errors immediately.
+14. Promote reviewed records to canonical data.
+15. Build compendium and builder features from canonical data only.
 
 ## Extraction Spike Scope
 
@@ -62,6 +63,8 @@ The 2026-05-24 extraction spike found Poppler suitable as the initial extraction
 - `pdftotext -layout` is useful as a human-debugging artifact, but is not ideal as the only parser input.
 
 Full notes live in `docs/brain/data/extraction-spike-2026-05-24.md`.
+
+The next parser implementation direction lives in `docs/brain/data/parser-automation-plan.md`.
 
 ## Initial Schema And Fixture
 
@@ -86,6 +89,8 @@ npm run validate:srd
 ```
 
 The fixture is intentionally small. It exists to prove schema shape, validation, and future compendium behavior before building a full parser.
+
+The representative schema/fixture spike passed automated checks and manual web review on 2026-05-25. Parser automation planning can proceed, but parser output must remain unreviewed candidate data until manually checked.
 
 ## Validation Rules
 

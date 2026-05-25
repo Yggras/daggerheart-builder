@@ -14,7 +14,7 @@ Every meaningful decision should be reflected here before or alongside implement
 - `decisions/`: architecture decision records for durable decisions.
 - `requirements/`: feature requirements by product area.
 - `architecture/`: technical direction and system design notes.
-- `data/`: SRD ingestion, schema, and validation notes.
+- `data/`: SRD ingestion, schema, parser planning, and validation notes.
 
 ## Decision Rule
 
@@ -33,5 +33,5 @@ Decision entries should include:
 1. Read and update `next-steps.md` at the start and end of each session.
 2. Preserve the product vision and initial constraints.
 3. Build a reliable structured SRD data foundation.
-4. Start with the compendium and data model before full app implementation.
+4. Plan parser automation before implementing full SRD extraction.
 5. Keep offline-first behavior and real-time campaign play as architectural drivers.

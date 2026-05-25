@@ -66,6 +66,8 @@ Use reviewed versioned JSON for canonical SRD data. Validate runtime data with Z
 
 The current prototype loads `data/srd/fixtures/entries.json` through `src/srd/loadFixture.ts` and validates it with the Zod schema in `src/srd/schema.ts` before rendering.
 
+The representative schema/fixture spike has passed automated checks and manual web review. Parser automation should now produce generated candidate SRD JSON outside the app runtime, with extracted records remaining unreviewed until manually checked and promoted. The parser direction is tracked in `docs/brain/data/parser-automation-plan.md`.
+
 ## Auth Direction
 
 Use admin-managed Supabase email/password accounts for the MVP. App signup and forgot-password flows are out of scope until an auth email provider or another self-service auth method is added.

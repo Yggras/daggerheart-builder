@@ -33,7 +33,7 @@
 
 ## Data
 
-- What exact SRD PDF version will be treated as the canonical source?
-- What tooling will be used to extract PDF content?
-- How will each extracted record be marked reviewed or unreviewed?
+- Should generated candidate data be committed, ignored, or committed only in reviewed batches?
+- Should canonical reviewed data remain one JSON file or be split by entity kind before full extraction?
+- Should generated candidate validation use a separate script or extend `npm run validate:srd`?
 - Do we need source page references for all SRD entries despite personal-use scope?
