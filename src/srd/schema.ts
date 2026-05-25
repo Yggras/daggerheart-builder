@@ -66,6 +66,10 @@ const RangeSchema = z.enum(["melee", "very_close", "close", "far", "very_far"]);
 
 const DamageTypeSchema = z.enum(["physical", "magic"]);
 
+const WeaponDamageTypeSchema = z.enum(["physical", "magic", "physical_or_magic"]);
+
+const WeaponTraitSchema = z.union([TraitSchema, z.literal("spellcast")]);
+
 const BurdenSchema = z.enum(["one_handed", "two_handed"]);
 
 const DamageRollSchema = z.string().regex(/^(?:(?:\d+)?d\d+(?:[+-]\d+)?|\d+)$/);
@@ -129,11 +133,11 @@ export const WeaponEntrySchema = BaseEntrySchema.extend({
   levelRange: LevelRangeSchema,
   weaponType: z.enum(["physical", "magic"]),
   requiresSpellcastTrait: z.boolean(),
-  trait: TraitSchema,
+  trait: WeaponTraitSchema,
   range: RangeSchema,
   damage: z.object({
     dice: z.string().regex(/^d\d+(?:[+-]\d+)?$/),
-    type: DamageTypeSchema,
+    type: WeaponDamageTypeSchema,
   }),
   burden: BurdenSchema,
   feature: FeatureSchema.nullable(),

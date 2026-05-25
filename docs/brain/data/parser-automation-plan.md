@@ -88,7 +88,7 @@ Initial implementation status: `scripts/extract-rule-references.ts` generates `d
 
 Initial table implementation status: `scripts/extract-armor.ts` generates `data/srd/generated/armor.candidates.json` and `data/srd/generated/armor-review-report.md` from physical PDF page 29 using `pdftohtml -xml`. All 34 armor candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
-Initial weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md` from physical PDF page 23 using `pdftohtml -xml`. The first weapon slice covers 25 Tier 1 primary weapons and is marked `reviewed` after risk-based review and promoted to canonical split fixtures.
+Weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md` from physical PDF pages 23-28 using `pdftohtml -xml`. It extracts 204 weapon candidates covering primary weapons, secondary weapons, and combat wheelchair weapon rows. All 204 weapon candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
 Reasons:
 

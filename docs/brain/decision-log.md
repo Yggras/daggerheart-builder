@@ -543,3 +543,35 @@ Mark the 25 Tier 1 primary weapon candidates as `reviewed`, preserve that review
 Consequences:
 
 Canonical fixtures now contain the reviewed Tier 1 primary weapon table. The next weapon parser work should expand to the next narrow weapon slice, likely Tier 2 primary weapons, before attempting full weapon extraction.
+
+## 2026-05-25 - Expand To Full Weapon Extraction
+
+Status: Accepted
+
+Context:
+
+The Tier 1 primary weapon parser slice was accepted and promoted. The user requested moving to full weapon extraction rather than continuing narrow weapon slices.
+
+Decision:
+
+Expand `scripts/extract-weapons.ts` to parse physical PDF pages 23-28 with `pdftohtml -xml`, covering primary weapons, secondary weapons, and combat wheelchair weapon rows. Add schema support for weapon-only `spellcast` trait rows and `physical_or_magic` damage. Preserve the accepted Tier 1 primary weapon review state while leaving newly generated weapons marked `extracted`.
+
+Consequences:
+
+The weapon candidate file now contains 204 weapon entries: 25 reviewed and 179 extracted pending review. The next step is risk-based review of the full weapon report before promotion.
+
+## 2026-05-25 - Accept Full Weapon Batch
+
+Status: Accepted
+
+Context:
+
+The full weapon parser produced 204 weapon candidates across physical PDF pages 23-28. The generated report showed no parser warnings after fixing the Heavy Frame / Arcane Frame section boundary, and the user smoke-tested weapons without finding flaws.
+
+Decision:
+
+Mark the full 204-entry weapon candidate batch as `reviewed`, preserve that review state in `scripts/extract-weapons.ts`, and promote the reviewed candidates into `data/srd/fixtures/weapons.json`.
+
+Consequences:
+
+Canonical fixtures now contain reviewed rule references, armor, and the full weapon table set. The next parser target should stay equipment-adjacent with loot and consumables before moving to harder entity families.

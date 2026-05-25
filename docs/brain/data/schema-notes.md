@@ -67,6 +67,11 @@ All entries share:
 
 Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, armor thresholds/score, loot type/roll data, adversary stat blocks, environment stat blocks, and rule categories/headings.
 
+Weapon schema notes:
+
+- Weapon traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows.
+- Weapon damage types include `physical`, `magic`, and `physical_or_magic` for Ghostblade.
+
 ## Future Mechanical Effects
 
 The character builder will eventually need some feature text as processable data. Keep preserved SRD text as the display/source-of-truth field, but later add optional normalized mechanical effects for obvious static modifiers.
