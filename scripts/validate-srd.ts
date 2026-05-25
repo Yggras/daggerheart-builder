@@ -1,11 +1,15 @@
 import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { ZodError } from "zod";
 import { SrdEntryCollectionSchema } from "../src/srd/schema";
 
 const fixturePath = new URL("../data/srd/fixtures/entries.json", import.meta.url);
+const inputPath = process.argv[2];
+const targetPath = inputPath ? resolve(process.cwd(), inputPath) : fixturePath;
+const targetLabel = inputPath ?? "data/srd/fixtures/entries.json";
 
 try {
-  const raw = await readFile(fixturePath, "utf8");
+  const raw = await readFile(targetPath, "utf8");
   const parsed = JSON.parse(raw) as unknown;
   const entries = SrdEntryCollectionSchema.parse(parsed);
 
@@ -14,7 +18,7 @@ try {
     return acc;
   }, {});
 
-  console.log(`Validated ${entries.length} SRD fixture entries.`);
+  console.log(`Validated ${entries.length} SRD entries from ${targetLabel}.`);
   for (const [kind, count] of Object.entries(counts).sort(([a], [b]) => a.localeCompare(b))) {
     console.log(`- ${kind}: ${count}`);
   }

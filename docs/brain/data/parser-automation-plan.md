@@ -62,6 +62,8 @@ Candidate entries should:
 - Include source PDF and printed page references when available.
 - Include parser notes in `review.notes` for uncertain extraction choices.
 
+Small generated candidate batches should be committed during parser-slice development so output can be reviewed and compared over time. Bulk generated output can be reconsidered later once full extraction volume and review workflow are known.
+
 ## Extraction Order
 
 Implement extraction in small validated slices:
@@ -80,6 +82,8 @@ This order starts with prose and table shapes that are already represented in fi
 
 Start with `rule_reference` extraction from a small SRD rules section.
 
+Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for the `Hope & Fear` section from PDF page 20 using `pdftotext -raw`.
+
 Reasons:
 
 - Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
@@ -93,10 +97,11 @@ Every parser slice must run:
 
 ```bash
 npm run validate:srd
+npm run validate:srd:candidates
 npm run typecheck
 ```
 
-If generated data is stored outside `data/srd/fixtures/entries.json`, add a validation script for the generated candidate file before using it.
+`npm run validate:srd` validates the reviewed fixture by default. The underlying validator should also accept an arbitrary SRD JSON path so generated candidates can be checked with the same schema logic.
 
 No generated record should be treated as canonical until manually reviewed.
 
@@ -116,8 +121,6 @@ No generated record should be treated as canonical until manually reviewed.
 - Preserve official SRD terminology in IDs, kinds, UI labels, and docs.
 - Keep generated artifacts clearly marked so they are not confused with reviewed fixtures.
 
-## Open Decisions Before Implementation
+## Open Decisions
 
-- Should generated candidate data be committed, ignored, or committed only in small reviewed batches?
 - Should canonical reviewed data remain one JSON file or be split by entity kind before full extraction?
-- Should `npm run validate:srd` validate fixtures only, or should a new script validate arbitrary SRD JSON files?

@@ -4,22 +4,21 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Review and refine `docs/brain/data/parser-automation-plan.md`, then implement a small `rule_reference` parser slice.
+Manually review `data/srd/generated/entries.candidates.json` against the source PDF, especially spacing artifacts in the generated `rule.core.hope` text, before promoting or expanding parser output.
 
 ## Why This Is Next
 
-The app shell, fixture validation, search, filters, detail pages, and related-entry navigation now work. The representative schema/fixture spike has passed automated checks and manual web review, so the project is ready to plan parser automation before implementing the full parser.
+The first parser automation slice now generates a small `rule_reference` candidate batch for the `Hope & Fear` section. The parser path and candidate validation are proven, but generated entries remain untrusted until manual review against the SRD PDF.
 
 ## Immediate Tasks
 
-1. Review `docs/brain/data/parser-automation-plan.md`.
-2. Decide whether generated candidate data should be committed, ignored, or committed only in reviewed batches.
-3. Decide whether to validate generated candidate files with a new script or extend `npm run validate:srd`.
-4. Implement the first parser automation slice for `rule_reference` entries against a small SRD section.
-5. Validate parser output with Zod before using it in the app.
-6. Keep generated entries marked `review.status: "extracted"` until manually reviewed.
-7. Validate with `npm run validate:srd` after any data/schema change.
-8. Typecheck with `npm run typecheck` after any code change.
+1. Compare `data/srd/generated/entries.candidates.json` against `data/source/Daggerheart-SRD-9-09-25.pdf`.
+2. Decide whether parser cleanup should fix known spacing artifacts such as `anAlly`, `aTagTeam`, and `ifyou`, or leave them for manual review notes.
+3. Keep generated entries marked `review.status: "extracted"` until manually reviewed.
+4. Validate fixture data with `npm run validate:srd` after any data/schema change.
+5. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
+6. Typecheck with `npm run typecheck` after any code change.
+7. Do not expand beyond a small next `rule_reference` slice until this candidate batch has been reviewed.
 
 ## Do Not Start Yet
 
@@ -45,12 +44,13 @@ The app shell, fixture validation, search, filters, detail pages, and related-en
 - Armor, loot, adversary, and environment schema support, representative fixtures, filters, and detail rendering added.
 - Expanded fixture coverage manually reviewed in the web app with `npm run web`.
 - Parser automation plan drafted.
+- Small generated candidate batches and reusable SRD validation accepted.
+- First `rule_reference` parser slice implemented for the `Hope & Fear` section.
 
 ## Open Questions
 
 - Should source page references be shown in the UI permanently or only in review/admin views?
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
-- Should generated candidate validation use a separate script or extend `npm run validate:srd`?
 
 ## Handoff Rule
 

@@ -335,3 +335,35 @@ Accept the expanded schema/fixture coverage as sufficient for parser automation 
 Consequences:
 
 Future work can move from schema discovery into parser automation planning and first-slice implementation. Parser output must still be treated as extracted and unreviewed until manually checked against the SRD PDF.
+
+## 2026-05-25 - Commit Small Generated Candidate Batches
+
+Status: Accepted
+
+Context:
+
+Parser automation needs visible generated output for review, validation, and iteration, but full extraction may eventually produce large generated artifacts.
+
+Decision:
+
+Commit small generated candidate data batches for parser slices. Reconsider ignoring or regenerating bulk generated output once full extraction volume and review workflow are clearer.
+
+Consequences:
+
+Early parser output remains versioned and reviewable. Generated data must stay clearly marked as candidate data and must not be confused with reviewed canonical fixtures.
+
+## 2026-05-25 - Reuse SRD Validator For Candidate Files
+
+Status: Accepted
+
+Context:
+
+Both reviewed fixtures and generated candidate files must match the same `SrdEntryCollectionSchema` before app or review workflows trust their structure.
+
+Decision:
+
+Extend the existing SRD validation script so it can validate the default fixture file or an arbitrary SRD JSON path, rather than creating a separate validator implementation.
+
+Consequences:
+
+Validation logic stays centralized. Candidate validation can be exposed through package scripts while preserving the existing `npm run validate:srd` fixture workflow.

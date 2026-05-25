@@ -10,7 +10,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
-    "validate:srd": "tsx scripts/validate-srd.ts"
+    "validate:srd": "tsx scripts/validate-srd.ts",
+    "validate:srd:candidates": "tsx scripts/validate-srd.ts data/srd/generated/entries.candidates.json",
+    "extract:srd:rules": "tsx scripts/extract-rule-references.ts"
   },
   "dependencies": {
     "@expo/metro-runtime": "^56.0.12",
