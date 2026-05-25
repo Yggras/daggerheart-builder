@@ -72,6 +72,8 @@ The initial SRD schema lives in `src/srd/schema.ts` and uses a Zod discriminated
 - `subclass`
 - `domain_card`
 - `weapon`
+- `ancestry`
+- `community`
 
 The first fixture lives in `data/srd/fixtures/entries.json` and can be validated with:
 

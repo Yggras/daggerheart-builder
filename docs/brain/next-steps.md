@@ -1,10 +1,10 @@
 # Next Steps
 
-Last updated: 2026-05-24
+Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Expand the compendium data model and fixture coverage before building parser automation or character builder features.
+Continue expanding the compendium data model and fixture coverage before building parser automation or character builder features.
 
 ## Why This Is Next
 
@@ -12,16 +12,14 @@ The app shell, fixture validation, search, filters, detail pages, and related-en
 
 ## Immediate Tasks
 
-1. Add fixture/schema support for ancestry/species.
-2. Add fixture/schema support for community/background.
-3. Add fixture/schema support for armor.
-4. Add fixture/schema support for consumables/loot.
-5. Add fixture/schema support for adversaries.
-6. Add fixture/schema support for environments.
-7. Add related-entry links for the new fixture entries.
-8. Validate with `npm run validate:srd`.
-9. Typecheck with `npm run typecheck`.
-10. Run `npx expo-doctor`.
+1. Add fixture/schema support for armor.
+2. Add fixture/schema support for consumables/loot.
+3. Add fixture/schema support for adversaries.
+4. Add fixture/schema support for environments.
+5. Add related-entry links for the new fixture entries.
+6. Validate with `npm run validate:srd`.
+7. Typecheck with `npm run typecheck`.
+8. Run `npx expo-doctor`.
 
 ## Do Not Start Yet
 
@@ -42,11 +40,11 @@ The app shell, fixture validation, search, filters, detail pages, and related-en
 - Expo Router app shell created.
 - Offline compendium prototype created.
 - Related-entry linking system added.
+- SRD terminology alignment accepted: app/data entity names should follow official SRD wording.
+- Ancestry and community schema support, fixtures, filters, and detail rendering added.
 
 ## Open Questions
 
-- Should `species` be named `ancestry` in the app to match SRD wording?
-- Should `background` be modeled separately from `community`, or is `community` the correct SRD entity?
 - Should source page references be shown in the UI permanently or only in review/admin views?
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
 

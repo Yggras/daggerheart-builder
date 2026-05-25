@@ -18,8 +18,8 @@ Initial expected SRD entity categories include:
 - Spells
 - Items
 - Equipment
-- Species
-- Backgrounds
+- Ancestries
+- Communities
 - Rules references
 
 This list is provisional and should be updated after SRD analysis.

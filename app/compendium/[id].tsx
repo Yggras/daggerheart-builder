@@ -103,6 +103,21 @@ function renderKindDetails(entry: SrdEntry) {
           {entry.feature ? <Feature title={entry.feature.name} text={entry.feature.text} /> : null}
         </Section>
       );
+    case "ancestry":
+      return (
+        <Section title="Ancestry Details">
+          {entry.features.map((feature) => (
+            <Feature key={feature.name} title={feature.name} text={feature.text} />
+          ))}
+        </Section>
+      );
+    case "community":
+      return (
+        <Section title="Community Details">
+          <KeyValue label="Adjectives" value={entry.adjectives.join(", ")} />
+          <Feature title={entry.feature.name} text={entry.feature.text} />
+        </Section>
+      );
     case "rule_reference":
       return (
         <Section title="Rule Details">

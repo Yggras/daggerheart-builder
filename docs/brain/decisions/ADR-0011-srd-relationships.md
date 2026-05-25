@@ -24,6 +24,8 @@ Supported relationship types for now:
 - `rule`
 - `domain_card`
 - `weapon`
+- `ancestry`
+- `community`
 - `related`
 
 The Zod collection validator must verify that every `relationships[].targetId` exists in the same SRD entry collection.

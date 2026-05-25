@@ -40,7 +40,7 @@ The initial intended use is personal use only.
 
 ### Compendium
 
-Searchable reference for spells, items, equipment, classes, subclasses, domains, species, backgrounds, and other SRD content.
+Searchable reference for spells, items, equipment, classes, subclasses, domains, ancestries, communities, and other SRD content.
 
 ### Character Builder
 

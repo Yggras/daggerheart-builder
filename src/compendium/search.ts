@@ -9,6 +9,8 @@ export const compendiumKindFilters: CompendiumKindFilter[] = [
   "subclass",
   "domain_card",
   "weapon",
+  "ancestry",
+  "community",
 ];
 
 export function searchCompendium(entries: SrdEntry[], query: string, kind: CompendiumKindFilter) {

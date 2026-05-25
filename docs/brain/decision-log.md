@@ -287,3 +287,19 @@ Add a generic `relationships` field to SRD entries, validate that relationship t
 Consequences:
 
 Broken links fail fixture validation, and the prototype supports class-to-subclass, subclass-to-class, and entry-to-rule navigation without implementing inline rich-text links yet.
+
+## 2026-05-25 - Align Entity Names With SRD Wording
+
+Status: Accepted
+
+Context:
+
+The SRD uses `ancestry` and `community` for heritage and origin concepts. Earlier project notes used mixed terms such as species/background, creating ambiguity in schema and UI naming.
+
+Decision:
+
+Use official SRD wording for app and data entity names. Model these concepts as `ancestry` and `community`; do not introduce `species` or `background` as equivalent entity kinds.
+
+Consequences:
+
+Schema, fixtures, filters, UI labels, and docs should stay aligned with official SRD terminology. Background questions remain class/subclass content unless the SRD defines a separate background entity later.

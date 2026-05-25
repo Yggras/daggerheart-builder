@@ -44,6 +44,8 @@ Current kinds:
 - `subclass`
 - `domain_card`
 - `weapon`
+- `ancestry`
+- `community`
 
 All entries share:
 
@@ -57,7 +59,7 @@ All entries share:
 - `tags`
 - `relationships`
 
-Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, and rule categories/headings.
+Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, and rule categories/headings.
 
 ## Relationships
 
@@ -76,6 +78,8 @@ Current relationship types:
 - `rule`
 - `domain_card`
 - `weapon`
+- `ancestry`
+- `community`
 - `related`
 
 Validation requires every relationship target to exist in the same entry collection. Mechanical references are still preserved, such as `class.subclassIds` and `subclass.classId`; the UI derives related-entry navigation from both explicit relationships and these mechanical references.

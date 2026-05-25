@@ -24,7 +24,7 @@ const TextSchema = z.object({
 });
 
 const RelationshipSchema = z.object({
-  type: z.enum(["class", "subclass", "rule", "domain_card", "weapon", "related"]),
+  type: z.enum(["class", "subclass", "rule", "domain_card", "weapon", "ancestry", "community", "related"]),
   targetId: z.string().regex(/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/),
   label: z.string().min(1),
 });
@@ -117,12 +117,25 @@ export const WeaponEntrySchema = BaseEntrySchema.extend({
   feature: FeatureSchema.nullable(),
 });
 
+export const AncestryEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("ancestry"),
+  features: z.array(FeatureSchema).min(1),
+});
+
+export const CommunityEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("community"),
+  adjectives: z.array(z.string().min(1)).min(1),
+  feature: FeatureSchema,
+});
+
 export const SrdEntrySchema = z.discriminatedUnion("kind", [
   RuleReferenceEntrySchema,
   ClassEntrySchema,
   SubclassEntrySchema,
   DomainCardEntrySchema,
   WeaponEntrySchema,
+  AncestryEntrySchema,
+  CommunityEntrySchema,
 ]);
 
 export const SrdEntryCollectionSchema = z.array(SrdEntrySchema).superRefine((entries, ctx) => {

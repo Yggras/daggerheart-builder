@@ -6,7 +6,7 @@ Structured SRD data that has been reviewed and accepted as safe for app use.
 
 ## Compendium
 
-The searchable rules reference containing SRD entries such as spells, equipment, domains, classes, subclasses, species, backgrounds, and other rules content.
+The searchable rules reference containing SRD entries such as spells, equipment, domains, classes, subclasses, ancestries, communities, and other rules content.
 
 ## Daggerheart SRD
 
