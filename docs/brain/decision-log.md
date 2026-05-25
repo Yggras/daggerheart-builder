@@ -527,3 +527,19 @@ Add `scripts/extract-weapons.ts` to generate the Tier 1 primary weapon table fro
 Consequences:
 
 The parser now produces a separate 25-entry weapon candidate batch for risk-based review. Weapon extraction beyond Tier 1 primary weapons remains deferred until this slice is accepted.
+
+## 2026-05-25 - Accept Tier 1 Primary Weapon Batch
+
+Status: Accepted
+
+Context:
+
+The first weapon parser spike generated 25 Tier 1 primary weapon candidates from physical PDF page 23. The generated review report showed no parser warnings, and manual review/spot-checking found no flaws so far.
+
+Decision:
+
+Mark the 25 Tier 1 primary weapon candidates as `reviewed`, preserve that review state in `scripts/extract-weapons.ts`, and promote them into `data/srd/fixtures/weapons.json`.
+
+Consequences:
+
+Canonical fixtures now contain the reviewed Tier 1 primary weapon table. The next weapon parser work should expand to the next narrow weapon slice, likely Tier 2 primary weapons, before attempting full weapon extraction.

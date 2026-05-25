@@ -4,18 +4,18 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Review the first weapon table candidate output and report before expanding weapon extraction beyond Tier 1 primary weapons.
+Extend the weapon parser to the next narrow weapon table slice after Tier 1 primary weapons.
 
 ## Why This Is Next
 
-Reviewed generated rule-reference and armor candidates have been promoted into split canonical fixtures. The first weapon parser spike now generates 25 Tier 1 primary weapon candidates from physical PDF page 23 with a dedicated report and no current parser warnings. Weapons are larger than armor and span multiple pages, so the first weapon slice should be reviewed before expanding to higher tiers or secondary weapons.
+Reviewed generated rule-reference, armor, and Tier 1 primary weapon candidates have been promoted into split canonical fixtures. The first weapon parser spike worked with a dedicated report and no parser warnings. Weapons span multiple pages, so continue in narrow slices and keep each new slice reviewed before promoting or expanding further.
 
 ## Immediate Tasks
 
-1. Review `data/srd/generated/weapons-review-report.md` against physical PDF page 23 / printed pages 44-45.
-2. Spot-check clean weapon rows instead of manually reviewing every field with equal depth.
-3. Pay special attention to wrapped names and wrapped feature text, such as Arcane Gauntlets, Returning Blade, Scepter, and Greatstaff.
-4. Keep weapon candidates marked `review.status: "extracted"` until reviewed.
+1. Inspect the next weapon table page with `pdftohtml -xml` and compare it with the current weapon parser assumptions.
+2. Expand `scripts/extract-weapons.ts` only to the next narrow weapon slice, likely Tier 2 primary weapons.
+3. Keep newly generated weapon candidates marked `review.status: "extracted"` until reviewed.
+4. Use the weapon report to flag wrapped names/features and suspicious rows so manual review stays risk-based.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
 6. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
 7. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
@@ -29,8 +29,8 @@ Reviewed generated rule-reference and armor candidates have been promoted into s
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Bulk equipment table extraction before the Tier 1 primary weapon slice is reviewed.
-- Weapon extraction beyond Tier 1 primary weapons before this slice is accepted.
+- Bulk equipment table extraction before weapon parsing is calibrated across more than one page.
+- Full weapon extraction across all pages before the next narrow weapon slice is reviewed.
 - Other entity-specific extraction beyond the current weapon parser slice.
 - Full SRD extraction.
 
@@ -65,6 +65,7 @@ Reviewed generated rule-reference and armor candidates have been promoted into s
 - Reviewed rule-reference candidates promoted into canonical split fixtures.
 - Armor table parser batch accepted through risk-based review and promoted into canonical split fixtures.
 - First weapon table parser spike added for 25 Tier 1 primary weapons with separate candidate data and review report.
+- Tier 1 primary weapon parser batch accepted through risk-based review and promoted into canonical split fixtures.
 
 ## Open Questions
 
