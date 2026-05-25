@@ -447,3 +447,19 @@ Move moderately faster by adding the full physical page-22 prose slice for Death
 Consequences:
 
 The parser now produces 33 generated rule-reference candidates: 18 reviewed candidates and 15 extracted page-22 candidates pending review. Equipment tables and structured entity extraction remain deferred until the larger prose slice is reviewed.
+
+## 2026-05-25 - Accept Page 22 Prose Rule Reference Batch
+
+Status: Accepted
+
+Context:
+
+The expanded page-22 prose parser slice added 15 entries covering Death, Additional Rules, Leveling Up, and Multiclassing. The generated review report identified cleanup actions, no suspicious tokens, and manual review found no flaws.
+
+Decision:
+
+Mark the 15 page-22 generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
+
+Consequences:
+
+All 33 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should plan a narrow table-extraction spike before producing equipment or other entity candidates.

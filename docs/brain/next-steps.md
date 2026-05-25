@@ -4,18 +4,18 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Review the expanded page-22 prose `rule_reference` parser slice with `data/srd/generated/review-report.md` before moving into equipment tables or entity-specific extraction.
+Plan the first narrow table-extraction parser spike before adding equipment, ancestry, community, or other entity candidates.
 
 ## Why This Is Next
 
-All 18 generated `rule_reference` candidates through Downtime have been accepted through report-driven manual review. The parser now generates 33 candidates total: 18 reviewed entries plus 15 extracted page-22 entries covering Death, Additional Rules, Leveling Up, and Multiclassing. This is a deliberately larger prose-only slice with review report text lengths and previews, while still avoiding equipment tables and structured entity extraction.
+All 33 generated `rule_reference` candidates through the page-22 prose slice have been accepted through report-driven manual review. The prose parser is now calibrated enough to pause rule-reference expansion and decide how to approach the first non-prose shape safely. The next SRD pages are equipment tables, which need a different extraction strategy than heading-delimited prose.
 
 ## Immediate Tasks
 
-1. Review the 15 new page-22 entries in `data/srd/generated/entries.candidates.json` against physical PDF page 22 / printed pages 42-43.
-2. Fully review entries with parser cleanup in `data/srd/generated/review-report.md`, especially `rule.combat.death` and `rule.advancement.advancements`.
-3. Spot-check clean short entries such as rounding, rerolling dice, incoming damage, and simultaneous effects.
-4. Keep the page-22 entries marked `review.status: "extracted"` until manually reviewed.
+1. Inspect `pdftohtml -xml` output for the first equipment table page and compare it with existing weapon/armor/loot fixture shapes.
+2. Decide whether the first table spike should target weapons, armor, or another small table shape.
+3. Keep the first table spike narrow and commit only candidate output clearly marked `review.status: "extracted"`.
+4. Continue using `data/srd/generated/review-report.md` or a table-specific report to guide cleanup and risk review.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
 6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
 7. Typecheck with `npm run typecheck` after any code change.
@@ -27,7 +27,8 @@ All 18 generated `rule_reference` candidates through Downtime have been accepted
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Equipment tables or entity-specific parser extraction until the page-22 prose slice is reviewed.
+- Bulk equipment table extraction before a narrow table spike is planned and validated.
+- Entity-specific extraction beyond the chosen first table spike.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -55,6 +56,7 @@ All 18 generated `rule_reference` candidates through Downtime have been accepted
 - Downtime parser slice added as 2 extracted candidates with conservative cleanup and report output.
 - Downtime parser slice accepted through report-driven manual review, bringing all 18 generated rule-reference candidates to `reviewed`.
 - Rule-reference parser expanded to 33 candidates with 15 extracted page-22 prose entries and enhanced review report previews.
+- Page-22 prose rule-reference slice accepted through report-driven manual review, bringing all 33 generated rule-reference candidates to `reviewed`.
 
 ## Open Questions
 

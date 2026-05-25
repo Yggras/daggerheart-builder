@@ -30,6 +30,21 @@ const acceptedReviewedIds = new Set([
   "rule.combat.temporary_tags_special_conditions",
   "rule.combat.downtime",
   "rule.combat.downtime_consequences",
+  "rule.combat.death",
+  "rule.additional.rounding_up",
+  "rule.additional.rerolling_dice",
+  "rule.additional.incoming_damage",
+  "rule.additional.simultaneous_effects",
+  "rule.additional.stacking_effects",
+  "rule.additional.ongoing_spell_effects",
+  "rule.additional.spending_resources",
+  "rule.additional.using_features_after_a_roll",
+  "rule.advancement.leveling_up",
+  "rule.advancement.tier_achievements",
+  "rule.advancement.advancements",
+  "rule.advancement.damage_thresholds",
+  "rule.advancement.domain_cards",
+  "rule.advancement.multiclassing",
 ]);
 
 type RuleSpec = {
