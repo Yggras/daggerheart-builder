@@ -88,6 +88,8 @@ Initial implementation status: `scripts/extract-rule-references.ts` generates `d
 
 Initial table implementation status: `scripts/extract-armor.ts` generates `data/srd/generated/armor.candidates.json` and `data/srd/generated/armor-review-report.md` from physical PDF page 29 using `pdftohtml -xml`. All 34 armor candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
+Initial weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md` from physical PDF page 23 using `pdftohtml -xml`. The first weapon slice covers 25 Tier 1 primary weapons and leaves them marked `extracted` pending review.
+
 Reasons:
 
 - Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
@@ -103,6 +105,7 @@ Every parser slice must run:
 npm run validate:srd
 npm run validate:srd:candidates
 npm run validate:srd:candidates:armor
+npm run validate:srd:candidates:weapons
 npm run typecheck
 ```
 

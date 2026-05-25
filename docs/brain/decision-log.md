@@ -511,3 +511,19 @@ Promote reviewed rule-reference candidates into `data/srd/fixtures/rule-referenc
 Consequences:
 
 Canonical fixtures now contain the reviewed prose rule-reference slice and the full reviewed armor table. The next parser work should use the armor parser/report pattern for a separate weapon table spike before any bulk equipment extraction.
+
+## 2026-05-25 - Add First Weapon Table Parser Spike
+
+Status: Accepted
+
+Context:
+
+Armor table extraction proved the table parser/report pattern. Weapon tables are larger and include more wrapped names and feature text, so they should be extracted in a narrow slice before bulk equipment extraction.
+
+Decision:
+
+Add `scripts/extract-weapons.ts` to generate the Tier 1 primary weapon table from physical PDF page 23 into `data/srd/generated/weapons.candidates.json`, with a dedicated report at `data/srd/generated/weapons-review-report.md`. Keep generated weapon candidates marked `extracted` until reviewed.
+
+Consequences:
+
+The parser now produces a separate 25-entry weapon candidate batch for risk-based review. Weapon extraction beyond Tier 1 primary weapons remains deferred until this slice is accepted.
