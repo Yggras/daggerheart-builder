@@ -431,3 +431,19 @@ Mark `rule.combat.downtime` and `rule.combat.downtime_consequences` as `reviewed
 Consequences:
 
 All 18 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should choose another small prose-first `rule_reference` slice before moving to table-heavy or entity-specific extraction.
+
+## 2026-05-25 - Expand Prose Rule Reference Parser Before Tables
+
+Status: Accepted
+
+Context:
+
+The parser is calibrated for small prose-first `rule_reference` sections, and the Downtime slice was accepted without flaws. The next SRD pages include another prose-heavy rules page followed immediately by equipment tables, which are a different extraction problem.
+
+Decision:
+
+Move moderately faster by adding the full physical page-22 prose slice for Death, Additional Rules, Leveling Up, and Multiclassing before starting table-heavy or entity-specific extraction. Enhance the generated review report with text lengths and previews to make risk-based review faster.
+
+Consequences:
+
+The parser now produces 33 generated rule-reference candidates: 18 reviewed candidates and 15 extracted page-22 candidates pending review. Equipment tables and structured entity extraction remain deferred until the larger prose slice is reviewed.

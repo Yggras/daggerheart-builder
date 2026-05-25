@@ -291,6 +291,204 @@ const ruleSpecs: RuleSpec[] = [
     tags: ["rule", "combat", "downtime", "fear", "countdown"],
     headings: ["Combat", "Downtime Consequences"],
   },
+  {
+    id: "rule.combat.death",
+    name: "Death",
+    slug: "death",
+    category: "combat",
+    heading: "DEATH",
+    nextHeading: "ADDITIONAL RULES",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains death moves and what happens when a PC marks their last Hit Point.",
+    tags: ["rule", "combat", "death", "hit-points"],
+    headings: ["Combat", "Death"],
+  },
+  {
+    id: "rule.additional.rounding_up",
+    name: "Rounding Up",
+    slug: "rounding-up",
+    category: "additional rules",
+    heading: "ROUNDING UP",
+    nextHeading: "REROLLING DICE",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains rounding and resolving ambiguity in favor of the PCs.",
+    tags: ["rule", "additional-rules", "rounding"],
+    headings: ["Additional Rules", "Rounding Up"],
+  },
+  {
+    id: "rule.additional.rerolling_dice",
+    name: "Rerolling Dice",
+    slug: "rerolling-dice",
+    category: "additional rules",
+    heading: "REROLLING DICE",
+    nextHeading: "INCOMING DAMAGE",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains that rerolled dice use the new result unless stated otherwise.",
+    tags: ["rule", "additional-rules", "dice", "reroll"],
+    headings: ["Additional Rules", "Rerolling Dice"],
+  },
+  {
+    id: "rule.additional.incoming_damage",
+    name: "Incoming Damage",
+    slug: "incoming-damage",
+    category: "additional rules",
+    heading: "INCOMING DAMAGE",
+    nextHeading: "SIMULTANEOUS EFFECTS",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Defines incoming damage before Armor Slots are marked.",
+    tags: ["rule", "additional-rules", "damage", "armor"],
+    headings: ["Additional Rules", "Incoming Damage"],
+  },
+  {
+    id: "rule.additional.simultaneous_effects",
+    name: "Simultaneous Effects",
+    slug: "simultaneous-effects",
+    category: "additional rules",
+    heading: "SIMULTANEOUS EFFECTS",
+    nextHeading: "STACKING EFFECTS",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains who decides unclear resolution order for simultaneous effects.",
+    tags: ["rule", "additional-rules", "effects", "resolution-order"],
+    headings: ["Additional Rules", "Simultaneous Effects"],
+  },
+  {
+    id: "rule.additional.stacking_effects",
+    name: "Stacking Effects",
+    slug: "stacking-effects",
+    category: "additional rules",
+    heading: "STACKING EFFECTS",
+    nextHeading: "ONGOING SPELLEFFECTS",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains which effects can stack unless stated otherwise.",
+    tags: ["rule", "additional-rules", "effects", "stacking"],
+    headings: ["Additional Rules", "Stacking Effects"],
+  },
+  {
+    id: "rule.additional.ongoing_spell_effects",
+    name: "Ongoing Spell Effects",
+    slug: "ongoing-spell-effects",
+    category: "additional rules",
+    heading: "ONGOING SPELLEFFECTS",
+    nextHeading: "SPENDING RESOURCES",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains when spell effects without listed mechanical expiration end.",
+    tags: ["rule", "additional-rules", "spell", "effects"],
+    headings: ["Additional Rules", "Ongoing Spell Effects"],
+  },
+  {
+    id: "rule.additional.spending_resources",
+    name: "Spending Resources",
+    slug: "spending-resources",
+    category: "additional rules",
+    heading: "SPENDING RESOURCES",
+    nextHeading: "USING FEATURESAFTERAROLL",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains limits on spending Hope or marking Stress repeatedly on the same feature.",
+    tags: ["rule", "additional-rules", "hope", "stress", "resources"],
+    headings: ["Additional Rules", "Spending Resources"],
+  },
+  {
+    id: "rule.additional.using_features_after_a_roll",
+    name: "Using Features After a Roll",
+    slug: "using-features-after-a-roll",
+    category: "additional rules",
+    heading: "USING FEATURESAFTERAROLL",
+    nextHeading: "LEVELING UP",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains when features that affect a roll after totaling can be used.",
+    tags: ["rule", "additional-rules", "features", "rolls"],
+    headings: ["Additional Rules", "Using Features After a Roll"],
+  },
+  {
+    id: "rule.advancement.leveling_up",
+    name: "Leveling Up",
+    slug: "leveling-up",
+    category: "character advancement",
+    heading: "LEVELING UP",
+    nextHeading: "STEP ONE",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains milestone leveling, level tiers, and what tier affects.",
+    tags: ["rule", "advancement", "leveling", "tiers"],
+    headings: ["Leveling Up"],
+  },
+  {
+    id: "rule.advancement.tier_achievements",
+    name: "Tier Achievements",
+    slug: "tier-achievements",
+    category: "character advancement",
+    heading: "STEP ONE",
+    nextHeading: "STEP TWO",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Lists level-based tier achievements for levels 2, 5, and 8.",
+    tags: ["rule", "advancement", "leveling", "tiers", "experience", "proficiency"],
+    headings: ["Leveling Up", "Step One", "Tier Achievements"],
+    dropLeadingText: "TIER ACHIEVEMENTS ",
+  },
+  {
+    id: "rule.advancement.advancements",
+    name: "Advancements",
+    slug: "advancements",
+    category: "character advancement",
+    heading: "STEP TWO",
+    nextHeading: "STEP THREE",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains choosing level-up advancements and the available advancement options.",
+    tags: ["rule", "advancement", "leveling", "domain-cards", "subclass", "multiclass"],
+    headings: ["Leveling Up", "Step Two", "Advancements"],
+    dropLeadingText: "ADVANCEMENTS ",
+  },
+  {
+    id: "rule.advancement.damage_thresholds",
+    name: "Damage Thresholds",
+    slug: "damage-thresholds",
+    category: "character advancement",
+    heading: "STEP THREE",
+    nextHeading: "STEP FOUR",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains increasing all damage thresholds during level up.",
+    tags: ["rule", "advancement", "leveling", "damage-thresholds"],
+    headings: ["Leveling Up", "Step Three", "Damage Thresholds"],
+    dropLeadingText: "DAMAGE THRESHOLDS ",
+  },
+  {
+    id: "rule.advancement.domain_cards",
+    name: "Domain Cards",
+    slug: "domain-cards",
+    category: "character advancement",
+    heading: "STEP FOUR",
+    nextHeading: "MULTICLASSING",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains acquiring or exchanging domain cards during level up.",
+    tags: ["rule", "advancement", "leveling", "domain-cards", "loadout", "vault"],
+    headings: ["Leveling Up", "Step Four", "Domain Cards"],
+    dropLeadingText: "DOMAIN CARDS ",
+  },
+  {
+    id: "rule.advancement.multiclassing",
+    name: "Multiclassing",
+    slug: "multiclassing",
+    category: "character advancement",
+    heading: "MULTICLASSING",
+    pdfPage: 22,
+    printedPages: [42, 43],
+    summary: "Explains multiclassing, subclass foundation cards, and multiclass domain card limits.",
+    tags: ["rule", "advancement", "multiclass", "domains", "subclass"],
+    headings: ["Leveling Up", "Multiclassing"],
+  },
 ];
 
 const cleanupRules = [
@@ -319,6 +517,20 @@ const cleanupRules = [
   { pattern: /\bTierArmor\b/g, replacement: "Tier Armor", label: "TierArmor -> Tier Armor" },
   { pattern: /\bhowyou\b/g, replacement: "how you", label: "howyou -> how you" },
   { pattern: /\bend ofa\b/g, replacement: "end of a", label: "end ofa -> end of a" },
+  { pattern: /\bofGlory\b/g, replacement: "of Glory", label: "ofGlory -> of Glory" },
+  { pattern: /\bAfteryour\b/g, replacement: "After your", label: "Afteryour -> After your" },
+  { pattern: /\bItAll\b/g, replacement: "It All", label: "ItAll -> It All" },
+  { pattern: /\bhoweveryou’d\b/g, replacement: "however you’d", label: "howeveryou’d -> however you’d" },
+  { pattern: /\bincreasetwo\b/g, replacement: "increase two", label: "increasetwo -> increase two" },
+  { pattern: /\bormore\b/g, replacement: "or more", label: "ormore -> or more" },
+  { pattern: /\bincreaseyourExperience\b/g, replacement: "increase your Experience", label: "increaseyourExperience -> increase your Experience" },
+  { pattern: /\byoutake\b/g, replacement: "you take", label: "youtake -> you take" },
+  { pattern: /\bincreaseyourEvasion\b/g, replacement: "increase your Evasion", label: "increaseyourEvasion -> increase your Evasion" },
+  { pattern: /\bforyour\b/g, replacement: "for your", label: "foryour -> for your" },
+  { pattern: /\bincreaseyourProficiency\b/g, replacement: "increase your Proficiency", label: "increaseyourProficiency -> increase your Proficiency" },
+  { pattern: /\borvault\b/g, replacement: "or vault", label: "orvault -> or vault" },
+  { pattern: /\byourvault\b/g, replacement: "your vault", label: "yourvault -> your vault" },
+  { pattern: /\bWheneveryou\b/g, replacement: "Whenever you", label: "Wheneveryou -> Whenever you" },
 ] satisfies Array<{ pattern: RegExp; replacement: string; label: string }>;
 
 const pageTexts = await extractPdfPages(sourcePdfPath, unique(ruleSpecs.map((spec) => spec.pdfPage)));
@@ -451,7 +663,10 @@ function dropLeadingText(text: string, leadingText: string | undefined) {
 }
 
 function detectSuspiciousTokens(text: string) {
-  const matches = text.match(/\b[a-z]{2,}(?:Ally|Armor|Close|Damage|Far|Range|Sight|Stress|Team|Wounds)[a-z]*\b/g) ?? [];
+  const matches =
+    text.match(
+      /\b(?:[a-z]{2,}(?:Ally|Armor|Close|Damage|Evasion|Experience|Far|Features|Glory|Proficiency|Range|Roll|Sight|Stress|Team|Vault|Weapon|Wounds)[a-z]*|[a-z]{2,}(?:more|two|you|your))\b/g,
+    ) ?? [];
   return unique(matches).sort((a, b) => a.localeCompare(b));
 }
 
@@ -478,6 +693,8 @@ function buildReviewReport(extractedRules: ExtractedRule[]) {
     lines.push(`- Physical PDF page: ${rule.entry.source.pdf.pageStart}`);
     lines.push(`- Printed SRD pages: ${rule.entry.source.printedPages.join(", ")}`);
     lines.push(`- Review status: ${rule.entry.review.status}`);
+    lines.push(`- Text length: ${rule.entry.text.original.length} characters`);
+    lines.push(`- Text preview: ${previewText(rule.entry.text.original)}`);
     lines.push(
       `- Parser cleanup: ${rule.appliedCleanupLabels.length > 0 ? rule.appliedCleanupLabels.join("; ") : "none"}`,
     );
@@ -493,6 +710,10 @@ function buildReviewReport(extractedRules: ExtractedRule[]) {
   lines.push("");
 
   return `${lines.join("\n")}\n`;
+}
+
+function previewText(text: string) {
+  return text.length > 180 ? `${text.slice(0, 180)}...` : text;
 }
 
 function unique<T>(values: T[]) {

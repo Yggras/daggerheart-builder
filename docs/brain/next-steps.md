@@ -4,18 +4,18 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Select the next small prose-first `rule_reference` parser slice before expanding into tables, classes, domain cards, or other harder SRD shapes.
+Review the expanded page-22 prose `rule_reference` parser slice with `data/srd/generated/review-report.md` before moving into equipment tables or entity-specific extraction.
 
 ## Why This Is Next
 
-All 18 generated `rule_reference` candidates through Downtime have been accepted through report-driven manual review. The parser is calibrated for small prose sections, but the next expansion should remain narrow and reviewable before moving to table-heavy or entity-specific extraction.
+All 18 generated `rule_reference` candidates through Downtime have been accepted through report-driven manual review. The parser now generates 33 candidates total: 18 reviewed entries plus 15 extracted page-22 entries covering Death, Additional Rules, Leveling Up, and Multiclassing. This is a deliberately larger prose-only slice with review report text lengths and previews, while still avoiding equipment tables and structured entity extraction.
 
 ## Immediate Tasks
 
-1. Choose the next contiguous prose-heavy rules section for a small `rule_reference` parser slice.
-2. Add only that slice's rule specs to `scripts/extract-rule-references.ts`.
-3. Keep newly extracted candidates marked `review.status: "extracted"` until manually reviewed.
-4. Use `data/srd/generated/review-report.md` to guide cleanup and review risk.
+1. Review the 15 new page-22 entries in `data/srd/generated/entries.candidates.json` against physical PDF page 22 / printed pages 42-43.
+2. Fully review entries with parser cleanup in `data/srd/generated/review-report.md`, especially `rule.combat.death` and `rule.advancement.advancements`.
+3. Spot-check clean short entries such as rounding, rerolling dice, incoming damage, and simultaneous effects.
+4. Keep the page-22 entries marked `review.status: "extracted"` until manually reviewed.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
 6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
 7. Typecheck with `npm run typecheck` after any code change.
@@ -27,7 +27,8 @@ All 18 generated `rule_reference` candidates through Downtime have been accepted
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Full SRD extraction beyond the first validated parser slice.
+- Equipment tables or entity-specific parser extraction until the page-22 prose slice is reviewed.
+- Full SRD extraction.
 
 ## Recent Completed Milestones
 
@@ -53,6 +54,7 @@ All 18 generated `rule_reference` candidates through Downtime have been accepted
 - Second 8 generated rule-reference candidates accepted through report-driven manual review.
 - Downtime parser slice added as 2 extracted candidates with conservative cleanup and report output.
 - Downtime parser slice accepted through report-driven manual review, bringing all 18 generated rule-reference candidates to `reviewed`.
+- Rule-reference parser expanded to 33 candidates with 15 extracted page-22 prose entries and enhanced review report previews.
 
 ## Open Questions
 
