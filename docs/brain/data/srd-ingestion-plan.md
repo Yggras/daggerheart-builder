@@ -74,6 +74,10 @@ The initial SRD schema lives in `src/srd/schema.ts` and uses a Zod discriminated
 - `weapon`
 - `ancestry`
 - `community`
+- `armor`
+- `loot`
+- `adversary`
+- `environment`
 
 The first fixture lives in `data/srd/fixtures/entries.json` and can be validated with:
 

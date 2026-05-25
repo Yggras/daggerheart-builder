@@ -24,7 +24,20 @@ const TextSchema = z.object({
 });
 
 const RelationshipSchema = z.object({
-  type: z.enum(["class", "subclass", "rule", "domain_card", "weapon", "ancestry", "community", "related"]),
+  type: z.enum([
+    "class",
+    "subclass",
+    "rule",
+    "domain_card",
+    "weapon",
+    "ancestry",
+    "community",
+    "armor",
+    "loot",
+    "adversary",
+    "environment",
+    "related",
+  ]),
   targetId: z.string().regex(/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/),
   label: z.string().min(1),
 });
@@ -55,9 +68,21 @@ const DamageTypeSchema = z.enum(["physical", "magic"]);
 
 const BurdenSchema = z.enum(["one_handed", "two_handed"]);
 
+const DamageRollSchema = z.string().regex(/^(?:(?:\d+)?d\d+(?:[+-]\d+)?|\d+)$/);
+
+const LevelRangeSchema = z.object({
+  min: z.number().int().positive(),
+  max: z.number().int().positive(),
+});
+
 const FeatureSchema = z.object({
   name: z.string().min(1),
   text: z.string().min(1),
+});
+
+const StatThresholdsSchema = z.object({
+  major: z.number().int().positive().nullable(),
+  severe: z.number().int().positive().nullable(),
 });
 
 export const RuleReferenceEntrySchema = BaseEntrySchema.extend({
@@ -101,10 +126,7 @@ export const WeaponEntrySchema = BaseEntrySchema.extend({
   kind: z.literal("weapon"),
   category: z.enum(["primary", "secondary"]),
   tier: z.number().int().min(1).max(4),
-  levelRange: z.object({
-    min: z.number().int().positive(),
-    max: z.number().int().positive(),
-  }),
+  levelRange: LevelRangeSchema,
   weaponType: z.enum(["physical", "magic"]),
   requiresSpellcastTrait: z.boolean(),
   trait: TraitSchema,
@@ -128,6 +150,59 @@ export const CommunityEntrySchema = BaseEntrySchema.extend({
   feature: FeatureSchema,
 });
 
+export const ArmorEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("armor"),
+  tier: z.number().int().min(1).max(4),
+  levelRange: LevelRangeSchema,
+  baseThresholds: StatThresholdsSchema,
+  baseScore: z.number().int().nonnegative(),
+  feature: FeatureSchema.nullable(),
+});
+
+export const LootEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("loot"),
+  lootType: z.enum(["item", "consumable"]),
+  roll: z.number().int().positive(),
+  maxQuantity: z.number().int().positive().nullable(),
+});
+
+export const AdversaryEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("adversary"),
+  tier: z.number().int().min(1).max(4),
+  role: z.enum(["bruiser", "horde", "leader", "minion", "ranged", "skulk", "social", "solo", "standard", "support"]),
+  difficulty: z.number().int().positive(),
+  thresholds: StatThresholdsSchema,
+  hitPoints: z.number().int().positive(),
+  stress: z.number().int().positive(),
+  attack: z.object({
+    modifier: z.number().int(),
+    name: z.string().min(1),
+    range: RangeSchema,
+    damage: z.object({
+      roll: DamageRollSchema,
+      type: DamageTypeSchema,
+    }),
+  }),
+  experiences: z.array(
+    z.object({
+      name: z.string().min(1),
+      modifier: z.number().int(),
+    }),
+  ),
+  motivesAndTactics: z.array(z.string().min(1)).min(1),
+  features: z.array(FeatureSchema).min(1),
+});
+
+export const EnvironmentEntrySchema = BaseEntrySchema.extend({
+  kind: z.literal("environment"),
+  tier: z.number().int().min(1).max(4),
+  environmentType: z.enum(["event", "exploration", "social", "traversal"]),
+  difficulty: z.number().int().positive(),
+  impulses: z.array(z.string().min(1)).min(1),
+  potentialAdversaryIds: z.array(z.string()),
+  features: z.array(FeatureSchema).min(1),
+});
+
 export const SrdEntrySchema = z.discriminatedUnion("kind", [
   RuleReferenceEntrySchema,
   ClassEntrySchema,
@@ -136,6 +211,10 @@ export const SrdEntrySchema = z.discriminatedUnion("kind", [
   WeaponEntrySchema,
   AncestryEntrySchema,
   CommunityEntrySchema,
+  ArmorEntrySchema,
+  LootEntrySchema,
+  AdversaryEntrySchema,
+  EnvironmentEntrySchema,
 ]);
 
 export const SrdEntryCollectionSchema = z.array(SrdEntrySchema).superRefine((entries, ctx) => {
@@ -202,6 +281,18 @@ export const SrdEntryCollectionSchema = z.array(SrdEntrySchema).superRefine((ent
         message: `Class target does not exist: ${entry.classId}`,
         path: [index, "classId"],
       });
+    }
+
+    if (entry.kind === "environment") {
+      for (const [adversaryIndex, adversaryId] of entry.potentialAdversaryIds.entries()) {
+        if (!ids.has(adversaryId)) {
+          ctx.addIssue({
+            code: "custom",
+            message: `Potential adversary target does not exist: ${adversaryId}`,
+            path: [index, "potentialAdversaryIds", adversaryIndex],
+          });
+        }
+      }
     }
   }
 });

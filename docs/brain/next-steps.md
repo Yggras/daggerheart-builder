@@ -4,22 +4,21 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Continue expanding the compendium data model and fixture coverage before building parser automation or character builder features.
+Manually review the expanded fixture coverage in the web app, then decide whether the schema is ready for parser automation planning.
 
 ## Why This Is Next
 
-The app shell, fixture validation, search, filters, detail pages, and related-entry navigation now work. Before extracting the full SRD, we need broader fixture coverage to prove the schema handles more SRD entity types.
+The app shell, fixture validation, search, filters, detail pages, and related-entry navigation now work. The representative fixture coverage now spans the major SRD entry families needed to evaluate whether the schema is ready for parser automation.
 
 ## Immediate Tasks
 
-1. Add fixture/schema support for armor.
-2. Add fixture/schema support for consumables/loot.
-3. Add fixture/schema support for adversaries.
-4. Add fixture/schema support for environments.
-5. Add related-entry links for the new fixture entries.
-6. Validate with `npm run validate:srd`.
-7. Typecheck with `npm run typecheck`.
-8. Run `npx expo-doctor`.
+1. Manually review the expanded fixture entries with `npm run web`.
+2. Decide whether the current schema is sufficient for parser automation planning.
+3. If sufficient, write the parser automation plan before implementing the full parser.
+4. If insufficient, add another small fixture/schema slice for the missing SRD shape.
+5. Validate with `npm run validate:srd` after any data/schema change.
+6. Typecheck with `npm run typecheck` after any code change.
+7. Run `npx expo-doctor` after dependency or Expo config changes.
 
 ## Do Not Start Yet
 
@@ -42,6 +41,7 @@ The app shell, fixture validation, search, filters, detail pages, and related-en
 - Related-entry linking system added.
 - SRD terminology alignment accepted: app/data entity names should follow official SRD wording.
 - Ancestry and community schema support, fixtures, filters, and detail rendering added.
+- Armor, loot, adversary, and environment schema support, representative fixtures, filters, and detail rendering added.
 
 ## Open Questions
 

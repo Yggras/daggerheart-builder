@@ -16,10 +16,12 @@ Initial expected SRD entity categories include:
 - Subclasses
 - Domains
 - Spells
-- Items
-- Equipment
+- Loot
+- Equipment, including weapons and armor
 - Ancestries
 - Communities
+- Adversaries
+- Environments
 - Rules references
 
 This list is provisional and should be updated after SRD analysis.

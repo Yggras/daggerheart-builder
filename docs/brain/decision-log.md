@@ -303,3 +303,19 @@ Use official SRD wording for app and data entity names. Model these concepts as 
 Consequences:
 
 Schema, fixtures, filters, UI labels, and docs should stay aligned with official SRD terminology. Background questions remain class/subclass content unless the SRD defines a separate background entity later.
+
+## 2026-05-25 - Model Consumables As Loot Entries
+
+Status: Accepted
+
+Context:
+
+The SRD defines loot as comprising consumables and reusable items. The compendium needs to distinguish single-use consumables from reusable loot without inventing a separate top-level SRD entity name.
+
+Decision:
+
+Use `loot` as the SRD entry kind for both reusable items and consumables. Add a normalized `lootType` field with `item` and `consumable` values.
+
+Consequences:
+
+The app preserves SRD terminology while still supporting filters, display, and future character inventory rules that need to know whether loot is consumed on use.

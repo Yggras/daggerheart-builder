@@ -118,6 +118,58 @@ function renderKindDetails(entry: SrdEntry) {
           <Feature title={entry.feature.name} text={entry.feature.text} />
         </Section>
       );
+    case "armor":
+      return (
+        <Section title="Armor Details">
+          <KeyValue label="Tier" value={String(entry.tier)} />
+          <KeyValue label="Levels" value={`${entry.levelRange.min}-${entry.levelRange.max}`} />
+          <KeyValue label="Base Thresholds" value={formatThresholds(entry.baseThresholds)} />
+          <KeyValue label="Base Score" value={String(entry.baseScore)} />
+          {entry.feature ? <Feature title={entry.feature.name} text={entry.feature.text} /> : null}
+        </Section>
+      );
+    case "loot":
+      return (
+        <Section title="Loot Details">
+          <KeyValue label="Type" value={entry.lootType} />
+          <KeyValue label="Roll" value={String(entry.roll).padStart(2, "0")} />
+          <KeyValue label="Max Quantity" value={entry.maxQuantity ? String(entry.maxQuantity) : "Not limited"} />
+        </Section>
+      );
+    case "adversary":
+      return (
+        <Section title="Adversary Details">
+          <KeyValue label="Tier" value={String(entry.tier)} />
+          <KeyValue label="Role" value={entry.role} />
+          <KeyValue label="Difficulty" value={String(entry.difficulty)} />
+          <KeyValue label="Thresholds" value={formatThresholds(entry.thresholds)} />
+          <KeyValue label="HP" value={String(entry.hitPoints)} />
+          <KeyValue label="Stress" value={String(entry.stress)} />
+          <KeyValue label="Attack" value={formatAttack(entry.attack)} />
+          <KeyValue label="Motives & Tactics" value={entry.motivesAndTactics.join(", ")} />
+          {entry.experiences.length > 0 ? (
+            <KeyValue
+              label="Experiences"
+              value={entry.experiences.map((experience) => `${experience.name} +${experience.modifier}`).join(", ")}
+            />
+          ) : null}
+          {entry.features.map((feature) => (
+            <Feature key={feature.name} title={feature.name} text={feature.text} />
+          ))}
+        </Section>
+      );
+    case "environment":
+      return (
+        <Section title="Environment Details">
+          <KeyValue label="Tier" value={String(entry.tier)} />
+          <KeyValue label="Type" value={entry.environmentType} />
+          <KeyValue label="Difficulty" value={String(entry.difficulty)} />
+          <KeyValue label="Impulses" value={entry.impulses.join(", ")} />
+          {entry.features.map((feature) => (
+            <Feature key={feature.name} title={feature.name} text={feature.text} />
+          ))}
+        </Section>
+      );
     case "rule_reference":
       return (
         <Section title="Rule Details">
@@ -126,6 +178,18 @@ function renderKindDetails(entry: SrdEntry) {
         </Section>
       );
   }
+}
+
+function formatThresholds(thresholds: { major: number | null; severe: number | null }) {
+  if (thresholds.major === null && thresholds.severe === null) {
+    return "None";
+  }
+
+  return `${thresholds.major ?? "None"}/${thresholds.severe ?? "None"}`;
+}
+
+function formatAttack(attack: Extract<SrdEntry, { kind: "adversary" }>["attack"]) {
+  return `${attack.modifier >= 0 ? "+" : ""}${attack.modifier} | ${attack.name}: ${attack.range} | ${attack.damage.roll} ${attack.damage.type}`;
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

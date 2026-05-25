@@ -26,6 +26,10 @@ Supported relationship types for now:
 - `weapon`
 - `ancestry`
 - `community`
+- `armor`
+- `loot`
+- `adversary`
+- `environment`
 - `related`
 
 The Zod collection validator must verify that every `relationships[].targetId` exists in the same SRD entry collection.

@@ -7,13 +7,15 @@ Provide a searchable reference for official Daggerheart SRD content.
 ## Initial Content Areas
 
 - Spells
-- Items
-- Equipment
+- Loot
+- Equipment, including weapons and armor
 - Classes
 - Subclasses
 - Domains
 - Ancestries
 - Communities
+- Adversaries
+- Environments
 - Rules references
 - Other SRD entities discovered during data modeling
 
@@ -31,7 +33,7 @@ The first prototype includes:
 
 - A compendium list screen.
 - Local text search over reviewed fixture entries.
-- Kind filters for rule references, classes, subclasses, domain cards, weapons, ancestries, and communities.
+- Kind filters for rule references, classes, subclasses, domain cards, weapons, ancestries, communities, armor, loot, adversaries, and environments.
 - Detail screens for each fixture entry.
 - Related-entry navigation between linked SRD entries.
 - Runtime validation through Zod before entries are exposed to the UI.

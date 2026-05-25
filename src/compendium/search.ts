@@ -11,6 +11,10 @@ export const compendiumKindFilters: CompendiumKindFilter[] = [
   "weapon",
   "ancestry",
   "community",
+  "armor",
+  "loot",
+  "adversary",
+  "environment",
 ];
 
 export function searchCompendium(entries: SrdEntry[], query: string, kind: CompendiumKindFilter) {
