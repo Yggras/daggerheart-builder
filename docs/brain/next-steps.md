@@ -4,21 +4,22 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Manually review `data/srd/generated/entries.candidates.json` against the source PDF, especially spacing artifacts in the generated `rule.core.hope` text, before promoting or expanding parser output.
+Use `data/srd/generated/review-report.md` to spot-check the generated rule-reference candidates against the source PDF before promoting or expanding parser output.
 
 ## Why This Is Next
 
-The first parser automation slice now generates a small `rule_reference` candidate batch for the `Hope & Fear` section. The parser path and candidate validation are proven, but generated entries remain untrusted until manual review against the SRD PDF.
+The parser now generates 8 `rule_reference` candidates across the `Hope & Fear` and adjacent combat rules sections, applies conservative cleanup for known extraction artifacts, and writes a review report. Candidate validation is proven, but generated entries remain untrusted until review.
 
 ## Immediate Tasks
 
-1. Compare `data/srd/generated/entries.candidates.json` against `data/source/Daggerheart-SRD-9-09-25.pdf`.
-2. Decide whether parser cleanup should fix known spacing artifacts such as `anAlly`, `aTagTeam`, and `ifyou`, or leave them for manual review notes.
-3. Keep generated entries marked `review.status: "extracted"` until manually reviewed.
-4. Validate fixture data with `npm run validate:srd` after any data/schema change.
-5. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
-6. Typecheck with `npm run typecheck` after any code change.
-7. Do not expand beyond a small next `rule_reference` slice until this candidate batch has been reviewed.
+1. Review `data/srd/generated/review-report.md`.
+2. Spot-check entries with parser cleanup: `rule.core.hope`, `rule.combat.hit_points_damage_thresholds`, and `rule.combat.conditions`.
+3. Spot-check at least one candidate without cleanup to verify parser boundaries remain sound.
+4. Keep generated entries marked `review.status: "extracted"` until manually reviewed or promoted.
+5. Validate fixture data with `npm run validate:srd` after any data/schema change.
+6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
+7. Typecheck with `npm run typecheck` after any code change.
+8. Do not expand beyond another small `rule_reference` slice until this report-driven review pass is accepted.
 
 ## Do Not Start Yet
 
@@ -46,6 +47,8 @@ The first parser automation slice now generates a small `rule_reference` candida
 - Parser automation plan drafted.
 - Small generated candidate batches and reusable SRD validation accepted.
 - First `rule_reference` parser slice implemented for the `Hope & Fear` section.
+- Risk-based candidate review accepted.
+- Rule-reference parser expanded to 8 candidates with conservative cleanup and a generated review report.
 
 ## Open Questions
 

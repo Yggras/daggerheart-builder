@@ -17,3 +17,4 @@ Status: Accepted canonical source
 - This is the latest official SRD PDF linked from the official Daggerheart SRD page as checked on 2026-05-24.
 - The SRD PDF is the primary source for extraction and review.
 - Extracted data must be validated and manually reviewed before becoming canonical app data.
+- `source.pdf.pageStart` and `source.pdf.pageEnd` in extracted data refer to 1-based physical PDF page indexes used by tools such as Poppler. `source.printedPages` refers to the printed SRD page numbers used for human review.

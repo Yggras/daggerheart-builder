@@ -64,6 +64,8 @@ Candidate entries should:
 
 Small generated candidate batches should be committed during parser-slice development so output can be reviewed and compared over time. Bulk generated output can be reconsidered later once full extraction volume and review workflow are known.
 
+Generated review reports should be written alongside candidate data when useful. The current review report path is `data/srd/generated/review-report.md`.
+
 ## Extraction Order
 
 Implement extraction in small validated slices:
@@ -82,7 +84,7 @@ This order starts with prose and table shapes that are already represented in fi
 
 Start with `rule_reference` extraction from a small SRD rules section.
 
-Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for the `Hope & Fear` section from PDF page 20 using `pdftotext -raw`.
+Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Hope & Fear` and adjacent combat rule references from physical PDF pages 20-21 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md`.
 
 Reasons:
 
@@ -108,15 +110,17 @@ No generated record should be treated as canonical until manually reviewed.
 ## Review Workflow
 
 1. Parser writes candidate entries with `review.status: "extracted"`.
-2. Reviewer compares candidate entries against the SRD PDF.
-3. Reviewer fixes wording, source references, normalized fields, and relationships.
-4. Reviewer changes status to `reviewed` or `corrected`.
-5. Reviewed entries can be promoted into canonical app data.
+2. Parser reports cleanup actions and suspicious tokens for risk-based review.
+3. Reviewer spot-checks normal entries and fully reviews flagged or high-risk entries against the SRD PDF.
+4. Reviewer fixes wording, source references, normalized fields, and relationships.
+5. Reviewer changes status to `reviewed` or `corrected`.
+6. Reviewed entries can be promoted into canonical app data.
 
 ## Parser Implementation Notes
 
 - Keep parser code separate from app runtime code.
 - Prefer deterministic scripts that can be rerun against the same source PDF.
+- Use conservative cleanup rules for clear extraction artifacts; preserve typographic punctuation in `text.original` when it matches the SRD PDF.
 - Treat relationship inference conservatively; broken relationships should fail validation.
 - Preserve official SRD terminology in IDs, kinds, UI labels, and docs.
 - Keep generated artifacts clearly marked so they are not confused with reviewed fixtures.

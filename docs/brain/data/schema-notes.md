@@ -102,7 +102,11 @@ Each entry stores both PDF page range and printed SRD pages:
 - `source.pdf.pageEnd`
 - `source.printedPages`
 
-PDF pages are useful for extraction tooling. Printed pages are useful for manual review and user-facing references.
+`source.pdf.pageStart` and `source.pdf.pageEnd` are 1-based physical PDF page indexes used by extraction tools such as Poppler. They are not the same as the printed SRD page numbers visible in the document layout or some PDF viewers.
+
+`source.printedPages` stores the printed SRD page numbers used for human review and likely user-facing references.
+
+For example, physical PDF page 20 contains the spread with printed SRD pages 38 and 39.
 
 ## Candidate Record Shape
 
@@ -150,4 +154,3 @@ PDF pages are useful for extraction tooling. Printed pages are useful for manual
 - Should source page references be mandatory for all generated candidates?
 - Which fields are missing once parser-generated candidates cover the full SRD?
 - How should relationships between entries be represented beyond tags and IDs?
-- Should generated candidate validation use a separate script or extend `npm run validate:srd`?

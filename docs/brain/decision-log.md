@@ -367,3 +367,19 @@ Extend the existing SRD validation script so it can validate the default fixture
 Consequences:
 
 Validation logic stays centralized. Candidate validation can be exposed through package scripts while preserving the existing `npm run validate:srd` fixture workflow.
+
+## 2026-05-25 - Use Risk-Based Candidate Review
+
+Status: Accepted
+
+Context:
+
+Manually reviewing every generated SRD record with equal depth would not scale once parser automation expands beyond small slices. Early parser slices still need close review to calibrate extraction and cleanup behavior.
+
+Decision:
+
+Use full manual review for early calibration slices, then shift toward risk-based review: spot-check normal entries, fully review entries with parser warnings or suspicious tokens, and fully review high-risk mechanical content before promotion.
+
+Consequences:
+
+Parser output should include review notes or reports that identify cleanup actions and suspicious extraction artifacts. Automated validation remains mandatory for every generated batch, but validation does not replace human review for risky or flagged entries.
