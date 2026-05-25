@@ -1,6 +1,6 @@
 import { Link, useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { formatKind, formatSource, formatTags } from "../../src/compendium/display";
+import { formatKind, formatTags } from "../../src/compendium/display";
 import { getRelatedEntries, getSrdEntryById } from "../../src/srd/loadFixture";
 import type { SrdEntry } from "../../src/srd/schema";
 
@@ -28,8 +28,6 @@ export default function CompendiumDetailScreen() {
       {entry.text.summary ? <Text style={styles.summary}>{entry.text.summary}</Text> : null}
 
       <View style={styles.metaPanel}>
-        <Text style={styles.metaLabel}>Source</Text>
-        <Text style={styles.metaText}>{formatSource(entry)}</Text>
         <Text style={styles.metaLabel}>Review</Text>
         <Text style={styles.metaText}>{entry.review.status}</Text>
         <Text style={styles.metaLabel}>Tags</Text>

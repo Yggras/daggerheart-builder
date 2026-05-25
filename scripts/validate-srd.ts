@@ -1,16 +1,15 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { ZodError } from "zod";
+import { fixtureEntries } from "../src/srd/fixtureEntries";
 import { SrdEntryCollectionSchema } from "../src/srd/schema";
 
-const fixturePath = new URL("../data/srd/fixtures/entries.json", import.meta.url);
 const inputPath = process.argv[2];
-const targetPath = inputPath ? resolve(process.cwd(), inputPath) : fixturePath;
-const targetLabel = inputPath ?? "data/srd/fixtures/entries.json";
+const targetPath = inputPath ? resolve(process.cwd(), inputPath) : null;
+const targetLabel = inputPath ?? "data/srd/fixtures/*.json";
 
 try {
-  const raw = await readFile(targetPath, "utf8");
-  const parsed = JSON.parse(raw) as unknown;
+  const parsed = targetPath ? (JSON.parse(await readFile(targetPath, "utf8")) as unknown) : fixtureEntries;
   const entries = SrdEntryCollectionSchema.parse(parsed);
 
   const counts = entries.reduce<Record<string, number>>((acc, entry) => {

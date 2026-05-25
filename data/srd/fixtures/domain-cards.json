@@ -1,0 +1,123 @@
+[
+  {
+    "id": "domain_card.arcana.rune_ward",
+    "kind": "domain_card",
+    "name": "Rune Ward",
+    "slug": "rune-ward",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 60,
+        "pageEnd": 60
+      },
+      "printedPages": [
+        119
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "You have a deeply personal trinket that can be infused with protective magic and held as a ward by you or an ally. Describe what it is and why it's important to you. The ward's holder can spend a Hope to reduce incoming damage by 1d8. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest.",
+      "summary": "A protective Arcana spell that reduces incoming damage."
+    },
+    "tags": [
+      "domain-card",
+      "arcana",
+      "spell",
+      "level-1",
+      "defense"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.hit_points_damage_thresholds",
+        "label": "Hit Points & Damage Thresholds"
+      }
+    ],
+    "domain": "Arcana",
+    "level": 1,
+    "cardType": "spell",
+    "recallCost": 0,
+    "abilities": [
+      {
+        "name": "Rune Ward",
+        "text": "The ward's holder can spend a Hope to reduce incoming damage by 1d8. If the Ward Die result is 8, the ward's power ends after it reduces damage this turn. It can be recharged for free on your next rest."
+      }
+    ]
+  },
+  {
+    "id": "domain_card.codex.book_of_grynn",
+    "kind": "domain_card",
+    "name": "Book of Grynn",
+    "slug": "book-of-grynn",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 63,
+        "pageEnd": 63
+      },
+      "printedPages": [
+        125
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range. Time Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell. Wall of Flame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage.",
+      "summary": "A level 4 Codex grimoire containing defensive, temporal, and wall-creating magic."
+    },
+    "tags": [
+      "domain-card",
+      "codex",
+      "grimoire",
+      "level-4",
+      "magic"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      }
+    ],
+    "domain": "Codex",
+    "level": 4,
+    "cardType": "grimoire",
+    "recallCost": 2,
+    "abilities": [
+      {
+        "name": "Arcane Deflection",
+        "text": "Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range."
+      },
+      {
+        "name": "Time Lock",
+        "text": "Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell."
+      },
+      {
+        "name": "Wall of Flame",
+        "text": "Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage."
+      }
+    ]
+  }
+]

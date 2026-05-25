@@ -1,0 +1,58 @@
+[
+  {
+    "id": "armor.tier1.gambeson_armor",
+    "kind": "armor",
+    "name": "Gambeson Armor",
+    "slug": "gambeson-armor",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 29,
+        "pageEnd": 29
+      },
+      "printedPages": [
+        56
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-25T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "Gambeson Armor 5 / 11 3 Flexible: +1 to Evasion",
+      "summary": "Tier 1 armor with 5/11 base thresholds, base score 3, and Flexible."
+    },
+    "tags": [
+      "armor",
+      "tier-1",
+      "flexible"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.hit_points_damage_thresholds",
+        "label": "Hit Points & Damage Thresholds"
+      }
+    ],
+    "tier": 1,
+    "levelRange": {
+      "min": 1,
+      "max": 1
+    },
+    "baseThresholds": {
+      "major": 5,
+      "severe": 11
+    },
+    "baseScore": 3,
+    "feature": {
+      "name": "Flexible",
+      "text": "+1 to Evasion"
+    }
+  }
+]

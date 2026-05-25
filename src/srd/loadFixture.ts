@@ -1,4 +1,4 @@
-import fixtureEntries from "../../data/srd/fixtures/entries.json";
+import { fixtureEntries } from "./fixtureEntries";
 import { SrdEntryCollectionSchema, type SrdEntry } from "./schema";
 
 export const srdEntries = SrdEntryCollectionSchema.parse(fixtureEntries) satisfies SrdEntry[];

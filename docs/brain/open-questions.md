@@ -10,7 +10,7 @@
 
 - What are the exact obligations of the Darrington Press Community Gaming License for app distribution, attribution, and SRD text usage?
 - Are there required notices or attribution text that must appear in-app?
-- Are there restrictions on redistributing extracted SRD text inside a personal-use app?
+- Before any non-personal distribution, are there restrictions on redistributing extracted SRD text?
 
 ## Accounts And Sync
 
@@ -33,6 +33,5 @@
 
 ## Data
 
-- Should canonical reviewed data remain one JSON file or be split by entity kind before full extraction?
-- Do we need source page references for all SRD entries despite personal-use scope?
-- When should reviewed generated candidates be promoted into canonical app data?
+- Which generated candidate batches should be promoted first after split canonical fixtures are in place?
+- Should full extraction outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?

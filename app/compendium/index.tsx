@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { useState } from "react";
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
-import { formatKind, formatSource, formatTags } from "../../src/compendium/display";
+import { formatKind, formatTags } from "../../src/compendium/display";
 import { compendiumKindFilters, searchCompendium, type CompendiumKindFilter } from "../../src/compendium/search";
 import { srdEntries } from "../../src/srd/loadFixture";
 import type { SrdEntry } from "../../src/srd/schema";
@@ -63,7 +63,6 @@ function CompendiumRow({ entry }: { entry: SrdEntry }) {
       <Pressable style={styles.card}>
         <View style={styles.cardHeader}>
           <Text style={styles.kind}>{formatKind(entry.kind)}</Text>
-          <Text style={styles.source}>{formatSource(entry)}</Text>
         </View>
         <Text style={styles.cardTitle}>{entry.name}</Text>
         {entry.text.summary ? <Text style={styles.summary}>{entry.text.summary}</Text> : null}
@@ -150,10 +149,6 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     letterSpacing: 0.8,
     textTransform: "uppercase",
-  },
-  source: {
-    color: "#85766a",
-    fontSize: 12,
   },
   cardTitle: {
     color: "#201915",

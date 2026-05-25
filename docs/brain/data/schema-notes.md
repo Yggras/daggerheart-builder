@@ -2,7 +2,7 @@
 
 ## Current Status
 
-Canonical SRD data should be stored as reviewed versioned JSON and validated with Zod. The initial schema lives in `src/srd/schema.ts` and the first fixture lives in `data/srd/fixtures/entries.json`.
+Canonical SRD data should be stored as reviewed versioned JSON and validated with Zod. The initial schema lives in `src/srd/schema.ts`; canonical fixture data lives in kind-specific JSON files under `data/srd/fixtures/`.
 
 The representative schema/fixture spike passed automated validation and manual web review on 2026-05-25. The schema is sufficient to begin parser automation planning, while remaining provisional as full extraction reveals edge cases.
 
@@ -67,6 +67,18 @@ All entries share:
 
 Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, armor thresholds/score, loot type/roll data, adversary stat blocks, environment stat blocks, and rule categories/headings.
 
+## Future Mechanical Effects
+
+The character builder will eventually need some feature text as processable data. Keep preserved SRD text as the display/source-of-truth field, but later add optional normalized mechanical effects for obvious static modifiers.
+
+Initial effect candidates:
+
+- Evasion modifiers, such as `+1 to Evasion` or `-2 to Evasion`.
+- Trait modifiers, such as `-1 to Agility`.
+- Spellcast Roll modifiers, such as `+1 to Spellcast Rolls`.
+
+Do not model a full rules engine yet. Complex, triggered, conditional, or narrative effects should remain text-only until the character builder has concrete requirements for them.
+
 ## Relationships
 
 SRD entries can link to other entries through `relationships`.
@@ -104,7 +116,7 @@ Each entry stores both PDF page range and printed SRD pages:
 
 `source.pdf.pageStart` and `source.pdf.pageEnd` are 1-based physical PDF page indexes used by extraction tools such as Poppler. They are not the same as the printed SRD page numbers visible in the document layout or some PDF viewers.
 
-`source.printedPages` stores the printed SRD page numbers used for human review and likely user-facing references.
+`source.printedPages` stores the printed SRD page numbers used for human review. Source page references should appear only in review/admin surfaces for now, not the normal compendium UI.
 
 For example, physical PDF page 20 contains the spread with printed SRD pages 38 and 39.
 
@@ -150,7 +162,6 @@ For example, physical PDF page 20 contains the spread with printed SRD pages 38 
 
 ## Open Questions
 
-- Should each SRD entity live in its own file or in grouped files?
 - Should source page references be mandatory for all generated candidates?
 - Which fields are missing once parser-generated candidates cover the full SRD?
 - How should relationships between entries be represented beyond tags and IDs?

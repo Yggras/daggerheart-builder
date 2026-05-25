@@ -1,0 +1,94 @@
+[
+  {
+    "id": "loot.item.premium_bedroll",
+    "kind": "loot",
+    "name": "Premium Bedroll",
+    "slug": "premium-bedroll",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 30,
+        "pageEnd": 30
+      },
+      "printedPages": [
+        58
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-25T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "During downtime, you automatically clear a Stress.",
+      "summary": "Reusable loot item that clears Stress during downtime."
+    },
+    "tags": [
+      "loot",
+      "item",
+      "downtime",
+      "stress"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
+    "lootType": "item",
+    "roll": 1,
+    "maxQuantity": null
+  },
+  {
+    "id": "loot.consumable.minor_health_potion",
+    "kind": "loot",
+    "name": "Minor Health Potion",
+    "slug": "minor-health-potion",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 31,
+        "pageEnd": 31
+      },
+      "printedPages": [
+        60
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-25T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "Clear 1d4 HP.",
+      "summary": "Consumable loot that clears 1d4 HP."
+    },
+    "tags": [
+      "loot",
+      "consumable",
+      "healing",
+      "hit-points"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.hit_points_damage_thresholds",
+        "label": "Hit Points & Damage Thresholds"
+      }
+    ],
+    "lootType": "consumable",
+    "roll": 7,
+    "maxQuantity": 5
+  }
+]

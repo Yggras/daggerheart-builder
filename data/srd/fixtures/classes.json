@@ -1,0 +1,85 @@
+[
+  {
+    "id": "class.bard",
+    "kind": "class",
+    "name": "Bard",
+    "slug": "bard",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 5
+      },
+      "printedPages": [
+        8,
+        9
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Bards are the most charismatic people in all the realms. Members of this class are masters of captivation and specialize in a variety of performance types, including singing, playing musical instruments, weaving tales, or telling jokes. Whether performing for an audience or speaking to an individual, bards thrive in social situations.",
+      "summary": "A charismatic performer class using Grace and Codex domains."
+    },
+    "tags": [
+      "class",
+      "grace",
+      "codex",
+      "social"
+    ],
+    "relationships": [
+      {
+        "type": "subclass",
+        "targetId": "subclass.bard.troubadour",
+        "label": "Troubadour"
+      },
+      {
+        "type": "subclass",
+        "targetId": "subclass.bard.wordsmith",
+        "label": "Wordsmith"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
+    "domains": [
+      "Grace",
+      "Codex"
+    ],
+    "startingEvasion": 10,
+    "startingHitPoints": 5,
+    "classItems": [
+      "A romance novel",
+      "A letter never opened"
+    ],
+    "hopeFeature": {
+      "name": "Make a Scene",
+      "text": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty."
+    },
+    "classFeatures": [
+      {
+        "name": "Rally",
+        "text": "Once per session, describe how you rally the party and give yourself and each of your allies a Rally Die. At level 1, your Rally Die is a d6. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. At level 5, your Rally Die increases to a d8."
+      }
+    ],
+    "subclassIds": [
+      "subclass.bard.troubadour",
+      "subclass.bard.wordsmith"
+    ]
+  }
+]

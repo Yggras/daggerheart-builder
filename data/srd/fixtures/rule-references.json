@@ -1,0 +1,180 @@
+[
+  {
+    "id": "rule.core.hope",
+    "kind": "rule_reference",
+    "name": "Hope",
+    "slug": "hope",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [
+        38,
+        39
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Every PC starts with 2 Hope at character creation and gains more throughout play. A PC can have a maximum of 6 Hope at one time, and Hope carries over between sessions. Players can spend Hope to help an Ally, utilize an Experience, initiate a Tag Team Roll, or activate a Hope Feature.",
+      "summary": "Player metacurrency used to power abilities, help allies, use experiences, and initiate Tag Team Rolls."
+    },
+    "tags": [
+      "rule",
+      "core",
+      "hope",
+      "metacurrency"
+    ],
+    "category": "core mechanics",
+    "headings": [
+      "Core Mechanics",
+      "Hope & Fear",
+      "Hope"
+    ]
+  },
+  {
+    "id": "rule.combat.stress",
+    "kind": "rule_reference",
+    "name": "Stress",
+    "slug": "stress",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [
+        39
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Stress represents how much mental, physical, and emotional strain a character can endure. All classes start with 6 Stress slots. You'll be able to increase the number of Stress slots you have available as you level up, to a maximum of 12.",
+      "summary": "Tracks strain and fuels some abilities; all classes start with 6 Stress slots."
+    },
+    "tags": [
+      "rule",
+      "combat",
+      "stress"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.conditions",
+        "label": "Conditions"
+      }
+    ],
+    "category": "combat",
+    "headings": [
+      "Combat",
+      "Stress"
+    ]
+  },
+  {
+    "id": "rule.combat.conditions",
+    "kind": "rule_reference",
+    "name": "Conditions",
+    "slug": "conditions",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 21,
+        "pageEnd": 21
+      },
+      "printedPages": [
+        41
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Conditions are effects that grant specific benefits or drawbacks to the target they are attached to. Daggerheart has three standard conditions: Hidden, Restrained, and Vulnerable. Some features can apply special or unique conditions, which work as described in the feature text. Unless otherwise noted, the same condition can't be applied more than once to the same target.",
+      "summary": "Reference entry for standard and special conditions such as Hidden, Restrained, and Vulnerable."
+    },
+    "tags": [
+      "rule",
+      "combat",
+      "conditions"
+    ],
+    "category": "combat",
+    "headings": [
+      "Combat",
+      "Conditions"
+    ]
+  },
+  {
+    "id": "rule.combat.hit_points_damage_thresholds",
+    "kind": "rule_reference",
+    "name": "Hit Points & Damage Thresholds",
+    "slug": "hit-points-damage-thresholds",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 20,
+        "pageEnd": 20
+      },
+      "printedPages": [
+        39
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Hit Points (HP) represent a character's ability to withstand physical injury. When a character takes damage, they mark 1 to 3 HP, based on their damage thresholds: if the final damage is at or above the character's Severe damage threshold, they mark 3 HP; if the final damage is at or above the character's Major damage threshold but below their Severe damage threshold, they mark 2 HP; if the final damage is below the character's Major damage threshold, they mark 1 HP; if incoming damage is ever reduced to 0 or less, no HP is marked.",
+      "summary": "Explains how damage thresholds determine marked HP."
+    },
+    "tags": [
+      "rule",
+      "combat",
+      "hit-points",
+      "damage-thresholds"
+    ],
+    "relationships": [
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
+    "category": "combat",
+    "headings": [
+      "Combat",
+      "Hit Points & Damage Thresholds"
+    ]
+  }
+]

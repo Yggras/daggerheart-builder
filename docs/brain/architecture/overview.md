@@ -64,7 +64,7 @@ Supabase components in scope:
 
 Use reviewed versioned JSON for canonical SRD data. Validate runtime data with Zod. The compendium should consume local canonical data rather than calling Supabase for SRD content at runtime.
 
-The current prototype loads `data/srd/fixtures/entries.json` through `src/srd/loadFixture.ts` and validates it with the Zod schema in `src/srd/schema.ts` before rendering.
+The current prototype loads split kind-specific JSON files under `data/srd/fixtures/` through `src/srd/loadFixture.ts` and validates the combined collection with the Zod schema in `src/srd/schema.ts` before rendering.
 
 The representative schema/fixture spike has passed automated checks and manual web review. Parser automation should now produce generated candidate SRD JSON outside the app runtime, with extracted records remaining unreviewed until manually checked and promoted. The parser direction is tracked in `docs/brain/data/parser-automation-plan.md`.
 

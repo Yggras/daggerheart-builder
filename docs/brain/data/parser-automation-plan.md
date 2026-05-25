@@ -25,13 +25,13 @@ The schema/fixture coverage spike is complete and manually reviewed in the web a
 - `adversary`
 - `environment`
 
-The current validated fixture lives at `data/srd/fixtures/entries.json`.
+The current validated fixtures live as kind-specific JSON files under `data/srd/fixtures/`.
 
 ## Inputs
 
 - Canonical source PDF: `data/source/Daggerheart-SRD-9-09-25.pdf`
 - Current schema: `src/srd/schema.ts`
-- Fixture target shape: `data/srd/fixtures/entries.json`
+- Fixture target shape: split canonical JSON files under `data/srd/fixtures/`
 - Extraction spike notes: `docs/brain/data/extraction-spike-2026-05-24.md`
 
 ## Tooling Direction
@@ -64,7 +64,7 @@ Candidate entries should:
 
 Small generated candidate batches should be committed during parser-slice development so output can be reviewed and compared over time. Bulk generated output can be reconsidered later once full extraction volume and review workflow are known.
 
-Generated review reports should be written alongside candidate data when useful. The current review report path is `data/srd/generated/review-report.md`.
+Generated review reports should be written alongside candidate data when useful. The current prose rule-reference review report path is `data/srd/generated/review-report.md`; table/entity parser slices may use kind-specific candidate files and reports.
 
 ## Extraction Order
 
@@ -100,10 +100,11 @@ Every parser slice must run:
 ```bash
 npm run validate:srd
 npm run validate:srd:candidates
+npm run validate:srd:candidates:armor
 npm run typecheck
 ```
 
-`npm run validate:srd` validates the reviewed fixture by default. The underlying validator should also accept an arbitrary SRD JSON path so generated candidates can be checked with the same schema logic.
+`npm run validate:srd` validates the reviewed split fixture collection by default. The underlying validator also accepts an arbitrary SRD JSON path so generated candidates can be checked with the same schema logic. Run only the candidate validation commands relevant to files changed in the current slice.
 
 No generated record should be treated as canonical until manually reviewed.
 
@@ -127,4 +128,4 @@ No generated record should be treated as canonical until manually reviewed.
 
 ## Open Decisions
 
-- Should canonical reviewed data remain one JSON file or be split by entity kind before full extraction?
+- Which reviewed generated candidate batches should be promoted first after split canonical fixtures are available?

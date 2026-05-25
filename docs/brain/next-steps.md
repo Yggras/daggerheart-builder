@@ -4,21 +4,22 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Plan the first narrow table-extraction parser spike before adding equipment, ancestry, community, or other entity candidates.
+Review the first armor table candidate output and report before expanding table extraction beyond armor.
 
 ## Why This Is Next
 
-All 33 generated `rule_reference` candidates through the page-22 prose slice have been accepted through report-driven manual review. The prose parser is now calibrated enough to pause rule-reference expansion and decide how to approach the first non-prose shape safely. The next SRD pages are equipment tables, which need a different extraction strategy than heading-delimited prose.
+Canonical fixtures are now split by entity kind, and the first non-prose parser spike targets armor because the armor table shape is simpler than weapon tables. Generated table data should stay in separate kind-specific candidate files with dedicated review reports until the table parser is calibrated.
 
 ## Immediate Tasks
 
-1. Inspect `pdftohtml -xml` output for the first equipment table page and compare it with existing weapon/armor/loot fixture shapes.
-2. Decide whether the first table spike should target weapons, armor, or another small table shape.
-3. Keep the first table spike narrow and commit only candidate output clearly marked `review.status: "extracted"`.
-4. Continue using `data/srd/generated/review-report.md` or a table-specific report to guide cleanup and risk review.
+1. Review `data/srd/generated/armor-review-report.md` against physical PDF page 29 / printed pages 56-57.
+2. Fully review any armor rows flagged by the report for parse warnings or suspicious cleanup.
+3. Spot-check clean armor rows instead of manually reviewing every field with equal depth.
+4. Keep armor candidates marked `review.status: "extracted"` until reviewed.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
-6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
-7. Typecheck with `npm run typecheck` after any code change.
+6. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
+7. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
+8. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -57,12 +58,13 @@ All 33 generated `rule_reference` candidates through the page-22 prose slice hav
 - Downtime parser slice accepted through report-driven manual review, bringing all 18 generated rule-reference candidates to `reviewed`.
 - Rule-reference parser expanded to 33 candidates with 15 extracted page-22 prose entries and enhanced review report previews.
 - Page-22 prose rule-reference slice accepted through report-driven manual review, bringing all 33 generated rule-reference candidates to `reviewed`.
+- Canonical fixture data split by SRD kind.
+- First armor table parser spike added with separate candidate data and review report.
 
 ## Open Questions
 
-- Should source page references be shown in the UI permanently or only in review/admin views?
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
-- When should reviewed generated candidates be promoted into canonical app data?
+- Which reviewed generated candidate batches should be promoted first after split fixtures are established?
 
 ## Handoff Rule
 

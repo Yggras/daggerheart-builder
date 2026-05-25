@@ -1,0 +1,163 @@
+[
+  {
+    "id": "subclass.bard.troubadour",
+    "kind": "subclass",
+    "name": "Troubadour",
+    "slug": "troubadour",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 5
+      },
+      "printedPages": [
+        8,
+        9
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Play the Troubadour if you want to play music to bolster your allies.",
+      "summary": "A Bard subclass focused on songs that support allies."
+    },
+    "tags": [
+      "subclass",
+      "bard",
+      "support",
+      "music"
+    ],
+    "relationships": [
+      {
+        "type": "class",
+        "targetId": "class.bard",
+        "label": "Bard"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.conditions",
+        "label": "Conditions"
+      }
+    ],
+    "classId": "class.bard",
+    "spellcastTrait": "presence",
+    "features": {
+      "foundation": [
+        {
+          "name": "Gifted Performer",
+          "text": "You can play three different types of songs, once each per long rest; describe how you perform for others to gain the listed benefit: Relaxing Song clears a Hit Point for you and all allies within Close range. Epic Song makes a target within Close range temporarily Vulnerable. Heartbreaking Song gives you and all allies within Close range a Hope."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Maestro",
+          "text": "Your rallying songs steel the courage of those who listen. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Virtuoso",
+          "text": "You are among the greatest of your craft and your skill is boundless. You can perform each of your Gifted Performer feature's songs twice per long rest."
+        }
+      ]
+    }
+  },
+  {
+    "id": "subclass.bard.wordsmith",
+    "kind": "subclass",
+    "name": "Wordsmith",
+    "slug": "wordsmith",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 6
+      },
+      "printedPages": [
+        8,
+        9
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Play the Wordsmith if you want to use clever wordplay and captivate crowds.",
+      "summary": "A Bard subclass focused on speeches, wordplay, and social support."
+    },
+    "tags": [
+      "subclass",
+      "bard",
+      "support",
+      "social"
+    ],
+    "relationships": [
+      {
+        "type": "class",
+        "targetId": "class.bard",
+        "label": "Bard"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.core.hope",
+        "label": "Hope"
+      },
+      {
+        "type": "rule",
+        "targetId": "rule.combat.stress",
+        "label": "Stress"
+      }
+    ],
+    "classId": "class.bard",
+    "spellcastTrait": "presence",
+    "features": {
+      "foundation": [
+        {
+          "name": "Rousing Speech",
+          "text": "Once per long rest, you can give a heartfelt, inspiring speech. All allies within Far range clear 2 Stress."
+        },
+        {
+          "name": "Heart of a Poet",
+          "text": "After you make an action roll to impress, persuade, or offend someone, you can spend a Hope to add a d4 to the roll."
+        }
+      ],
+      "specialization": [
+        {
+          "name": "Eloquent",
+          "text": "Once per session, when you encourage an ally, you can allow them to find a mundane object or tool they need, help an Ally without spending Hope, or give them an additional downtime move during their next rest."
+        }
+      ],
+      "mastery": [
+        {
+          "name": "Epic Poetry",
+          "text": "Your Rally Die increases to a d10. Additionally, when you Help an Ally, you can narrate the moment as if you were writing the tale of their heroism in a memoir. When you do, roll a d10 as your advantage die."
+        }
+      ]
+    }
+  }
+]

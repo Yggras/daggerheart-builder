@@ -463,3 +463,35 @@ Mark the 15 page-22 generated candidates as `reviewed` with review notes indicat
 Consequences:
 
 All 33 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should plan a narrow table-extraction spike before producing equipment or other entity candidates.
+
+## 2026-05-25 - Resolve SRD Data Workflow Questions
+
+Status: Accepted
+
+Context:
+
+The project needs clearer rules for source references, generated artifacts, promotion timing, canonical data layout, and review effort before table extraction expands.
+
+Decision:
+
+Show source page references only in review or admin surfaces, not the normal compendium UI. Regenerate extraction output when the source SRD changes. Split canonical reviewed SRD data by entity kind before promoting reviewed generated candidates. Treat license obligations as non-blocking for personal use, but revisit them before any distribution. Minimize manual review by applying conservative parser cleanup and using reports to flag risky rows.
+
+Consequences:
+
+The normal app UI should hide source references for now, while source metadata remains in data and reports. The first promotion target should be split canonical fixture files. Generated table outputs should stay separate by kind with dedicated review reports during calibration.
+
+## 2026-05-25 - Defer Structured Mechanical Effects
+
+Status: Accepted
+
+Context:
+
+Armor table extraction produces feature text such as `Flexible: +1 to Evasion` and `Very Heavy: -2 to Evasion; -1 to Agility`. A future character builder will need some of these bonuses as processable values, but modeling every conditional feature now would risk building a premature rules engine.
+
+Decision:
+
+Preserve SRD feature text as the current source of truth. Later, add optional normalized mechanical effects for simple static modifiers, such as Evasion, trait, and Spellcast Roll bonuses or penalties. Leave complex, triggered, conditional, or narrative effects as text until the character builder needs them.
+
+Consequences:
+
+The current armor parser can remain text-first. A future schema/parser slice should add a small `effects` model for obvious static modifiers before character-builder calculations depend on equipment data.

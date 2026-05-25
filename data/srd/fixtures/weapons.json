@@ -1,0 +1,116 @@
+[
+  {
+    "id": "weapon.primary.tier1.broadsword",
+    "kind": "weapon",
+    "name": "Broadsword",
+    "slug": "broadsword",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 23,
+        "pageEnd": 23
+      },
+      "printedPages": [
+        44,
+        45
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Broadsword Agility Melee d8 phy One-Handed Reliable: +1 to attack rolls",
+      "summary": "A one-handed Tier 1 physical primary weapon with Reliable."
+    },
+    "tags": [
+      "weapon",
+      "primary",
+      "tier-1",
+      "physical",
+      "melee"
+    ],
+    "category": "primary",
+    "tier": 1,
+    "levelRange": {
+      "min": 1,
+      "max": 1
+    },
+    "weaponType": "physical",
+    "requiresSpellcastTrait": false,
+    "trait": "agility",
+    "range": "melee",
+    "damage": {
+      "dice": "d8",
+      "type": "physical"
+    },
+    "burden": "one_handed",
+    "feature": {
+      "name": "Reliable",
+      "text": "+1 to attack rolls"
+    }
+  },
+  {
+    "id": "weapon.primary.tier1.returning_blade",
+    "kind": "weapon",
+    "name": "Returning Blade",
+    "slug": "returning-blade",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 23,
+        "pageEnd": 23
+      },
+      "printedPages": [
+        44,
+        45
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-24T00:00:00.000Z",
+      "notes": [
+        "Fixture entry manually transcribed from the extraction sample and source PDF."
+      ]
+    },
+    "text": {
+      "original": "Returning Blade Finesse Close d8 mag One-Handed Returning: When this weapon is thrown within its range, it appears in your hand immediately after the attack.",
+      "summary": "A one-handed Tier 1 magic primary weapon that returns after being thrown."
+    },
+    "tags": [
+      "weapon",
+      "primary",
+      "tier-1",
+      "magic",
+      "close"
+    ],
+    "category": "primary",
+    "tier": 1,
+    "levelRange": {
+      "min": 1,
+      "max": 1
+    },
+    "weaponType": "magic",
+    "requiresSpellcastTrait": true,
+    "trait": "finesse",
+    "range": "close",
+    "damage": {
+      "dice": "d8",
+      "type": "magic"
+    },
+    "burden": "one_handed",
+    "feature": {
+      "name": "Returning",
+      "text": "When this weapon is thrown within its range, it appears in your hand immediately after the attack."
+    }
+  }
+]

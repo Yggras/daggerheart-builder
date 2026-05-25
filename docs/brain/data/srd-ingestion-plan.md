@@ -82,7 +82,7 @@ The initial SRD schema lives in `src/srd/schema.ts` and uses a Zod discriminated
 - `adversary`
 - `environment`
 
-The first fixture lives in `data/srd/fixtures/entries.json` and can be validated with:
+The canonical fixtures live in kind-specific JSON files under `data/srd/fixtures/` and can be validated with:
 
 ```bash
 npm run validate:srd
