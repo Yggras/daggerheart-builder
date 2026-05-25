@@ -28,6 +28,8 @@ const acceptedReviewedIds = new Set([
   "rule.combat.line_of_sight_cover",
   "rule.combat.conditions",
   "rule.combat.temporary_tags_special_conditions",
+  "rule.combat.downtime",
+  "rule.combat.downtime_consequences",
 ]);
 
 type RuleSpec = {

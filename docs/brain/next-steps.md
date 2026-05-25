@@ -4,18 +4,18 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Review the dedicated `Downtime` rule-reference parser slice with `data/srd/generated/review-report.md` before expanding beyond prose rules.
+Select the next small prose-first `rule_reference` parser slice before expanding into tables, classes, domain cards, or other harder SRD shapes.
 
 ## Why This Is Next
 
-Both earlier generated `rule_reference` batches have been accepted through report-driven manual review. The parser now generates 18 candidates total: 16 reviewed entries plus 2 extracted Downtime entries. Downtime is large and list-heavy, so it should be reviewed before moving to tables, classes, domain cards, or other harder SRD shapes.
+All 18 generated `rule_reference` candidates through Downtime have been accepted through report-driven manual review. The parser is calibrated for small prose sections, but the next expansion should remain narrow and reviewable before moving to table-heavy or entity-specific extraction.
 
 ## Immediate Tasks
 
-1. Review `rule.combat.downtime` against physical PDF page 21 / printed page 41.
-2. Review `rule.combat.downtime_consequences` against physical PDF page 21 / printed page 41.
-3. Focus on parser cleanup listed in `data/srd/generated/review-report.md` for the list-heavy Downtime entry.
-4. Keep Downtime entries marked `review.status: "extracted"` until manually reviewed.
+1. Choose the next contiguous prose-heavy rules section for a small `rule_reference` parser slice.
+2. Add only that slice's rule specs to `scripts/extract-rule-references.ts`.
+3. Keep newly extracted candidates marked `review.status: "extracted"` until manually reviewed.
+4. Use `data/srd/generated/review-report.md` to guide cleanup and review risk.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
 6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
 7. Typecheck with `npm run typecheck` after any code change.
@@ -52,6 +52,7 @@ Both earlier generated `rule_reference` batches have been accepted through repor
 - Rule-reference parser expanded to 16 candidates, leaving the next page-21 prose slice marked `extracted` for review.
 - Second 8 generated rule-reference candidates accepted through report-driven manual review.
 - Downtime parser slice added as 2 extracted candidates with conservative cleanup and report output.
+- Downtime parser slice accepted through report-driven manual review, bringing all 18 generated rule-reference candidates to `reviewed`.
 
 ## Open Questions
 

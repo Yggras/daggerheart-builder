@@ -415,3 +415,19 @@ Mark the second 8 generated candidates as `reviewed` with review notes indicatin
 Consequences:
 
 All 16 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser slice should keep to prose-first `rule_reference` extraction, with Downtime as the recommended next target.
+
+## 2026-05-25 - Accept Downtime Rule Reference Batch
+
+Status: Accepted
+
+Context:
+
+The dedicated Downtime parser slice added 2 page-21 prose entries covering downtime moves and downtime consequences. The generated review report identified cleanup actions for the list-heavy Downtime entry, no suspicious tokens, and manual review found no flaws in either Downtime entry.
+
+Decision:
+
+Mark `rule.combat.downtime` and `rule.combat.downtime_consequences` as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
+
+Consequences:
+
+All 18 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should choose another small prose-first `rule_reference` slice before moving to table-heavy or entity-specific extraction.
