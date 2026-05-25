@@ -36,7 +36,7 @@ type RuleSpec = {
   slug: string;
   category: string;
   heading: string;
-  nextHeading: string;
+  nextHeading?: string;
   pdfPage: number;
   printedPages: number[];
   summary: string;
@@ -264,6 +264,31 @@ const ruleSpecs: RuleSpec[] = [
     headings: ["Combat", "Temporary Tags & Special Conditions"],
     dropLeadingText: "& SPECIAL CONDITIONS ",
   },
+  {
+    id: "rule.combat.downtime",
+    name: "Downtime",
+    slug: "downtime",
+    category: "combat",
+    heading: "DOWNTIME",
+    nextHeading: "DOWNTIME CONSEQUENCES",
+    pdfPage: 21,
+    printedPages: [41],
+    summary: "Explains short rests, long rests, and downtime moves between conflicts.",
+    tags: ["rule", "combat", "downtime", "rest"],
+    headings: ["Combat", "Downtime"],
+  },
+  {
+    id: "rule.combat.downtime_consequences",
+    name: "Downtime Consequences",
+    slug: "downtime-consequences",
+    category: "combat",
+    heading: "DOWNTIME CONSEQUENCES",
+    pdfPage: 21,
+    printedPages: [41],
+    summary: "Explains GM Fear gain and countdown advancement after rests.",
+    tags: ["rule", "combat", "downtime", "fear", "countdown"],
+    headings: ["Combat", "Downtime Consequences"],
+  },
 ];
 
 const cleanupRules = [
@@ -282,6 +307,16 @@ const cleanupRules = [
   { pattern: /\bAweapon\b/g, replacement: "A weapon", label: "Aweapon -> A weapon" },
   { pattern: /\bSpecialconditions\b/g, replacement: "Special conditions", label: "Specialconditions -> Special conditions" },
   { pattern: /\bitem\.The\b/g, replacement: "item. The", label: "item.The -> item. The" },
+  { pattern: /\btoWounds\b/g, replacement: "to Wounds", label: "toWounds -> to Wounds" },
+  { pattern: /\btoAllWounds\b/g, replacement: "to All Wounds", label: "toAllWounds -> to All Wounds" },
+  { pattern: /\bforyourself\b/g, replacement: "for yourself", label: "foryourself -> for yourself" },
+  { pattern: /\bClearStress\b/g, replacement: "Clear Stress", label: "ClearStress -> Clear Stress" },
+  { pattern: /\bClearAll Stress\b/g, replacement: "Clear All Stress", label: "ClearAll Stress -> Clear All Stress" },
+  { pattern: /\bRepairArmor\b/g, replacement: "Repair Armor", label: "RepairArmor -> Repair Armor" },
+  { pattern: /\bRepairAllArmor\b/g, replacement: "Repair All Armor", label: "RepairAllArmor -> Repair All Armor" },
+  { pattern: /\bTierArmor\b/g, replacement: "Tier Armor", label: "TierArmor -> Tier Armor" },
+  { pattern: /\bhowyou\b/g, replacement: "how you", label: "howyou -> how you" },
+  { pattern: /\bend ofa\b/g, replacement: "end of a", label: "end ofa -> end of a" },
 ] satisfies Array<{ pattern: RegExp; replacement: string; label: string }>;
 
 const pageTexts = await extractPdfPages(sourcePdfPath, unique(ruleSpecs.map((spec) => spec.pdfPage)));
@@ -357,7 +392,7 @@ async function extractPdfPage(pdfPath: string, page: number) {
   return stdout;
 }
 
-function extractSection(rawText: string, heading: string, nextHeading: string) {
+function extractSection(rawText: string, heading: string, nextHeading: string | undefined) {
   const lines = rawText.split(/\r?\n/);
   const startIndex = lines.findIndex((line) => line.trim() === heading);
 
@@ -365,13 +400,13 @@ function extractSection(rawText: string, heading: string, nextHeading: string) {
     throw new Error(`Could not find heading: ${heading}`);
   }
 
-  const nextIndex = lines.findIndex((line, index) => index > startIndex && line.trim() === nextHeading);
+  const nextIndex = nextHeading ? lines.findIndex((line, index) => index > startIndex && line.trim() === nextHeading) : lines.length;
 
   if (nextIndex === -1) {
     throw new Error(`Could not find next heading after ${heading}: ${nextHeading}`);
   }
 
-  return normalizeExtractedLines(lines.slice(startIndex + 1, nextIndex));
+  return removePageFooter(normalizeExtractedLines(lines.slice(startIndex + 1, nextIndex)));
 }
 
 function normalizeExtractedLines(lines: string[]) {
@@ -396,6 +431,10 @@ function applyCleanup(text: string) {
   }
 
   return { text: cleanedText, appliedLabels };
+}
+
+function removePageFooter(text: string) {
+  return text.replace(/\s*\d+\s+\d+\s+Daggerheart SRD\s+Daggerheart SRD\s*$/, "");
 }
 
 function dropLeadingText(text: string, leadingText: string | undefined) {

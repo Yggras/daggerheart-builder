@@ -4,21 +4,21 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Implement a dedicated `Downtime` rule-reference parser slice, then review it with the generated report before expanding beyond prose rules.
+Review the dedicated `Downtime` rule-reference parser slice with `data/srd/generated/review-report.md` before expanding beyond prose rules.
 
 ## Why This Is Next
 
-Both generated `rule_reference` batches have been accepted through report-driven manual review. The parser now generates 16 reviewed candidates total. `Downtime` is the next useful prose-heavy stress test before moving to tables, classes, domain cards, or other harder SRD shapes.
+Both earlier generated `rule_reference` batches have been accepted through report-driven manual review. The parser now generates 18 candidates total: 16 reviewed entries plus 2 extracted Downtime entries. Downtime is large and list-heavy, so it should be reviewed before moving to tables, classes, domain cards, or other harder SRD shapes.
 
 ## Immediate Tasks
 
-1. Add a `rule.combat.downtime` candidate extracted from physical PDF page 21 / printed page 41.
-2. Keep `Downtime` as its own slice because it is large and list-heavy.
-3. Generate `data/srd/generated/entries.candidates.json` and `data/srd/generated/review-report.md` with `npm run extract:srd:rules`.
-4. Validate fixture data with `npm run validate:srd` after any data/schema change.
-5. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
-6. Typecheck with `npm run typecheck` after any code change.
-7. Review the generated report before marking `Downtime` as reviewed.
+1. Review `rule.combat.downtime` against physical PDF page 21 / printed page 41.
+2. Review `rule.combat.downtime_consequences` against physical PDF page 21 / printed page 41.
+3. Focus on parser cleanup listed in `data/srd/generated/review-report.md` for the list-heavy Downtime entry.
+4. Keep Downtime entries marked `review.status: "extracted"` until manually reviewed.
+5. Validate fixture data with `npm run validate:srd` after any data/schema change.
+6. Validate candidate data with `npm run validate:srd:candidates` after any parser or candidate change.
+7. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -51,6 +51,7 @@ Both generated `rule_reference` batches have been accepted through report-driven
 - First 8 generated rule-reference candidates accepted through report-driven manual review.
 - Rule-reference parser expanded to 16 candidates, leaving the next page-21 prose slice marked `extracted` for review.
 - Second 8 generated rule-reference candidates accepted through report-driven manual review.
+- Downtime parser slice added as 2 extracted candidates with conservative cleanup and report output.
 
 ## Open Questions
 

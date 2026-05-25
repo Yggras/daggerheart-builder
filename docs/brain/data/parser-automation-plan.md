@@ -84,7 +84,7 @@ This order starts with prose and table shapes that are already represented in fi
 
 Start with `rule_reference` extraction from a small SRD rules section.
 
-Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Hope & Fear` and adjacent combat rule references from physical PDF pages 20-21 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md`. The first 16 generated candidates are marked `reviewed`; `Downtime` is the recommended next parser slice.
+Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Hope & Fear` and adjacent combat rule references from physical PDF pages 20-21 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md`. The first 16 generated candidates are marked `reviewed`; 2 Downtime candidates are marked `extracted` pending review.
 
 Reasons:
 
