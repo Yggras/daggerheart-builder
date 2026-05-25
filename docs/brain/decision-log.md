@@ -495,3 +495,19 @@ Preserve SRD feature text as the current source of truth. Later, add optional no
 Consequences:
 
 The current armor parser can remain text-first. A future schema/parser slice should add a small `effects` model for obvious static modifiers before character-builder calculations depend on equipment data.
+
+## 2026-05-25 - Accept And Promote Reviewed Generated Candidates
+
+Status: Accepted
+
+Context:
+
+All 33 generated rule-reference candidates were reviewed, and the armor parser produced 34 armor candidates with no parser warnings. The user spot-checked armor rows and found no flaws. Canonical fixture data is now split by kind, making promotion targeted and reviewable.
+
+Decision:
+
+Promote reviewed rule-reference candidates into `data/srd/fixtures/rule-references.json`. Mark the 34 armor candidates as `reviewed`, preserve that review state in `scripts/extract-armor.ts`, and promote them into `data/srd/fixtures/armor.json`.
+
+Consequences:
+
+Canonical fixtures now contain the reviewed prose rule-reference slice and the full reviewed armor table. The next parser work should use the armor parser/report pattern for a separate weapon table spike before any bulk equipment extraction.

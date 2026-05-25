@@ -84,7 +84,9 @@ This order starts with prose and table shapes that are already represented in fi
 
 Start with `rule_reference` extraction from a small SRD rules section.
 
-Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Hope & Fear` and adjacent rule references from physical PDF pages 20-22 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md` with cleanup notes, suspicious tokens, text lengths, and previews. All 33 generated rule-reference candidates through Death, Additional Rules, Leveling Up, and Multiclassing are marked `reviewed` after report-driven manual review.
+Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Hope & Fear` and adjacent rule references from physical PDF pages 20-22 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md` with cleanup notes, suspicious tokens, text lengths, and previews. All 33 generated rule-reference candidates through Death, Additional Rules, Leveling Up, and Multiclassing are marked `reviewed` after report-driven manual review and promoted to canonical split fixtures.
+
+Initial table implementation status: `scripts/extract-armor.ts` generates `data/srd/generated/armor.candidates.json` and `data/srd/generated/armor-review-report.md` from physical PDF page 29 using `pdftohtml -xml`. All 34 armor candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
 Reasons:
 
@@ -128,4 +130,4 @@ No generated record should be treated as canonical until manually reviewed.
 
 ## Open Decisions
 
-- Which reviewed generated candidate batches should be promoted first after split canonical fixtures are available?
+- Should bulk generated candidate outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?

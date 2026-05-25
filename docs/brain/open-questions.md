@@ -33,5 +33,4 @@
 
 ## Data
 
-- Which generated candidate batches should be promoted first after split canonical fixtures are in place?
 - Should full extraction outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?

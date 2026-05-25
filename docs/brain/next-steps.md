@@ -4,18 +4,18 @@ Last updated: 2026-05-25
 
 ## Current Best Next Step
 
-Review the first armor table candidate output and report before expanding table extraction beyond armor.
+Plan and implement a separate weapon table parser spike using the armor parser/report pattern.
 
 ## Why This Is Next
 
-Canonical fixtures are now split by entity kind, and the first non-prose parser spike targets armor because the armor table shape is simpler than weapon tables. Generated table data should stay in separate kind-specific candidate files with dedicated review reports until the table parser is calibrated.
+Reviewed generated rule-reference and armor candidates have been promoted into split canonical fixtures. Armor proved the first table parser pattern with separate candidate output and a dedicated report. Weapons are the next equipment shape, but they are larger and have more wrapped names/features, so they should get their own narrow parser/report slice rather than being folded into armor or bulk equipment extraction.
 
 ## Immediate Tasks
 
-1. Review `data/srd/generated/armor-review-report.md` against physical PDF page 29 / printed pages 56-57.
-2. Fully review any armor rows flagged by the report for parse warnings or suspicious cleanup.
-3. Spot-check clean armor rows instead of manually reviewing every field with equal depth.
-4. Keep armor candidates marked `review.status: "extracted"` until reviewed.
+1. Inspect `pdftohtml -xml` output for the first weapon table page and compare it with `data/srd/fixtures/weapons.json`.
+2. Add a separate weapon parser that writes `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md`.
+3. Keep weapon candidates marked `review.status: "extracted"` until reviewed.
+4. Use report warnings to minimize manual work: fully review flagged rows and spot-check clean rows.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
 6. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
 7. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
@@ -28,8 +28,8 @@ Canonical fixtures are now split by entity kind, and the first non-prose parser 
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Bulk equipment table extraction before a narrow table spike is planned and validated.
-- Entity-specific extraction beyond the chosen first table spike.
+- Bulk equipment table extraction before the weapon table parser is calibrated.
+- Entity-specific extraction beyond the chosen weapon parser slice.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -60,11 +60,12 @@ Canonical fixtures are now split by entity kind, and the first non-prose parser 
 - Page-22 prose rule-reference slice accepted through report-driven manual review, bringing all 33 generated rule-reference candidates to `reviewed`.
 - Canonical fixture data split by SRD kind.
 - First armor table parser spike added with separate candidate data and review report.
+- Reviewed rule-reference candidates promoted into canonical split fixtures.
+- Armor table parser batch accepted through risk-based review and promoted into canonical split fixtures.
 
 ## Open Questions
 
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
-- Which reviewed generated candidate batches should be promoted first after split fixtures are established?
 
 ## Handoff Rule
 
