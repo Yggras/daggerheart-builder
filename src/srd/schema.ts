@@ -201,7 +201,7 @@ export const EnvironmentEntrySchema = BaseEntrySchema.extend({
   kind: z.literal("environment"),
   tier: z.number().int().min(1).max(4),
   environmentType: z.enum(["event", "exploration", "social", "traversal"]),
-  difficulty: z.number().int().positive(),
+  difficulty: z.union([z.number().int().positive(), z.literal("special")]),
   impulses: z.array(z.string().min(1)).min(1),
   potentialAdversaryIds: z.array(z.string()),
   features: z.array(FeatureSchema).min(1),

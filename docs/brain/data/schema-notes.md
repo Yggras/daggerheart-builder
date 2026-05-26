@@ -67,6 +67,11 @@ All entries share:
 
 Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, armor thresholds/score, loot type/roll data, adversary stat blocks, environment stat blocks, and rule categories/headings.
 
+Environment schema notes:
+
+- Environment `difficulty` may be a positive integer or `"special"` when the SRD lists `Difficulty: Special`.
+- Special difficulty details should be preserved in `text.original` and feature text instead of replacing them with fake numeric values.
+
 Domain card schema notes:
 
 - Domain cards are extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item.
