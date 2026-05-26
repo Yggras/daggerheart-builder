@@ -4,25 +4,20 @@ Last updated: 2026-05-26
 
 ## Current Best Next Step
 
-Implement an adversary parser slice.
+Implement an environment parser slice.
 
 ## Why This Is Next
 
-Class/subclass and domain-card parser families have been extracted, AI-verified, and promoted into canonical fixtures. The next parser target should be adversaries because they are the largest remaining structured entity family and environments may reference adversary IDs.
+All prior entity families are complete and promoted. Adversary IDs are now stable (129 canonical adversaries across tiers 1–4). Environments are the last remaining structured entity family and may reference adversary IDs, so they are unblocked now.
 
 ## Immediate Tasks
 
-1. Implement a narrow adversary parser slice, starting with the existing `Glass Snake` fixture for calibration.
-2. Compare generated adversary candidates against existing canonical fixtures and source PDF text before expanding to the full adversary set.
-3. Keep newly generated adversary candidates marked `review.status: "extracted"` until AI-assisted source verification passes.
+1. Implement an environment parser slice, starting with the existing `Sunken Laboratory` fixture for calibration.
+2. Compare generated environment candidates against existing canonical fixtures and source PDF text before expanding to the full set.
+3. Keep newly generated environment candidates marked `review.status: "extracted"` until AI-assisted source verification passes.
 4. Validate fixture data with `npm run validate:srd` after any data/schema change.
-5. Validate ancestry candidates with `npm run validate:srd:candidates:ancestries` after ancestry parser or candidate changes.
-6. Validate community candidates with `npm run validate:srd:candidates:communities` after community parser or candidate changes.
-7. Validate loot candidates with `npm run validate:srd:candidates:loot` after loot parser or candidate changes.
-8. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
-9. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
-10. Validate weapon candidates with `npm run validate:srd:candidates:weapons` after weapon parser or candidate changes.
-11. Typecheck with `npm run typecheck` after any code change.
+5. Validate environment candidates with `npm run validate:srd:candidates:environments` (add this script if not present) after environment parser or candidate changes.
+6. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -31,7 +26,6 @@ Class/subclass and domain-card parser families have been extracted, AI-verified,
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Environments before adversary IDs are stable.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -76,6 +70,7 @@ Class/subclass and domain-card parser families have been extracted, AI-verified,
 - `Mixed Ancestry` modeled as a reviewed `rule_reference` through the existing rule-reference parser and promoted into canonical fixtures.
 - Full class/subclass parser family added, AI-verified, and promoted into canonical split fixtures.
 - Full domain-card parser family added, AI-verified, and promoted into canonical split fixtures.
+- Full adversary parser family added (129 adversaries, tiers 1–4, all roles), AI-verified, and promoted into canonical split fixtures. Schema extended for `physical_or_magic` damage and dice-expression attack modifiers.
 
 ## Open Questions
 
