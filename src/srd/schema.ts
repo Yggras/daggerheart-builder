@@ -64,7 +64,7 @@ const TraitSchema = z.enum([
 
 const RangeSchema = z.enum(["melee", "very_close", "close", "far", "very_far"]);
 
-const DamageTypeSchema = z.enum(["physical", "magic"]);
+const DamageTypeSchema = z.enum(["physical", "magic", "physical_or_magic"]);
 
 const WeaponDamageTypeSchema = z.enum(["physical", "magic", "physical_or_magic"]);
 
@@ -73,6 +73,8 @@ const WeaponTraitSchema = z.union([TraitSchema, z.literal("spellcast")]);
 const BurdenSchema = z.enum(["one_handed", "two_handed"]);
 
 const DamageRollSchema = z.string().regex(/^(?:(?:\d+)?d\d+(?:[+-]\d+)?|\d+)$/);
+
+const AttackModifierSchema = z.union([z.number().int(), z.string().regex(/^[+−-]?(?:(?:\d+)?d\d+(?:[+-]\d+)?|\d+)$/)]);
 
 const LevelRangeSchema = z.object({
   min: z.number().int().positive(),
@@ -179,7 +181,7 @@ export const AdversaryEntrySchema = BaseEntrySchema.extend({
   hitPoints: z.number().int().positive(),
   stress: z.number().int().positive(),
   attack: z.object({
-    modifier: z.number().int(),
+    modifier: AttackModifierSchema,
     name: z.string().min(1),
     range: RangeSchema,
     damage: z.object({

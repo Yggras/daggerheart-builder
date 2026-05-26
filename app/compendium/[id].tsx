@@ -187,7 +187,9 @@ function formatThresholds(thresholds: { major: number | null; severe: number | n
 }
 
 function formatAttack(attack: Extract<SrdEntry, { kind: "adversary" }>["attack"]) {
-  return `${attack.modifier >= 0 ? "+" : ""}${attack.modifier} | ${attack.name}: ${attack.range} | ${attack.damage.roll} ${attack.damage.type}`;
+  const modifier = typeof attack.modifier === "number" ? `${attack.modifier >= 0 ? "+" : ""}${attack.modifier}` : attack.modifier;
+
+  return `${modifier} | ${attack.name}: ${attack.range} | ${attack.damage.roll} ${attack.damage.type}`;
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {

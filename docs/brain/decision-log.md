@@ -735,3 +735,35 @@ Allow environment `difficulty` to be either a positive integer or the literal va
 Consequences:
 
 Environment extraction can remain source-faithful for special-difficulty entries. App display code must treat environment difficulty as display data, not a guaranteed number, until a future rules engine has concrete requirements.
+
+## 2026-05-26 - Support Physical Or Magic Adversary Damage
+
+Status: Accepted
+
+Context:
+
+Full adversary extraction encountered SRD attack damage listed as `phy/mag`, matching the already modeled weapon edge case for damage that can be physical or magic.
+
+Decision:
+
+Allow adversary attack damage type to use the normalized value `physical_or_magic`.
+
+Consequences:
+
+Adversary parser output can preserve `phy/mag` source values without collapsing them to only physical or only magic damage. Future UI and rules code should display this value distinctly.
+
+## 2026-05-26 - Support Variable Adversary Attack Modifiers
+
+Status: Accepted
+
+Context:
+
+Full adversary extraction encountered at least one attack modifier listed as a dice expression, such as `+2d4`, instead of a fixed integer.
+
+Decision:
+
+Allow adversary attack modifiers to be either an integer or a source-faithful dice expression string.
+
+Consequences:
+
+Adversary stat blocks can preserve variable attack modifiers without losing source meaning. App display code must format attack modifiers as display values rather than assuming every modifier is numeric.

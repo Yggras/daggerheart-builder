@@ -81,6 +81,8 @@ Weapon schema notes:
 
 - Weapon traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows.
 - Weapon damage types include `physical`, `magic`, and `physical_or_magic` for Ghostblade.
+- Adversary attack damage types also include `physical_or_magic` when the SRD lists `phy/mag`.
+- Adversary attack modifiers may be numeric or a dice expression such as `+2d4` when the SRD lists a variable attack modifier.
 
 ## Future Mechanical Effects
 
