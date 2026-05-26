@@ -67,6 +67,11 @@ All entries share:
 
 Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, armor thresholds/score, loot type/roll data, adversary stat blocks, environment stat blocks, and rule categories/headings.
 
+Domain card schema notes:
+
+- Domain cards are extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item.
+- Codex grimoire cards currently preserve the full card text in one ability item. Splitting grimoire sub-spells into separate ability records is deferred until the app needs sub-spell rendering or search.
+
 Weapon schema notes:
 
 - Weapon traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows.

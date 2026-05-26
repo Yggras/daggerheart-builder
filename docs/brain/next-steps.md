@@ -4,17 +4,17 @@ Last updated: 2026-05-26
 
 ## Current Best Next Step
 
-Implement a Bard class/subclass parser slice.
+Implement an adversary parser slice.
 
 ## Why This Is Next
 
-`Mixed Ancestry` has been folded into the existing rule-reference parser, reviewed, and promoted into canonical rule references. The next class/subclass parser target should be Bard because Bard, Troubadour, and Wordsmith already exist as canonical fixtures for comparison, and their source span on physical PDF pages 5-6 is a narrow calibration slice before harder classes.
+Class/subclass and domain-card parser families have been extracted, AI-verified, and promoted into canonical fixtures. The next parser target should be adversaries because they are the largest remaining structured entity family and environments may reference adversary IDs.
 
 ## Immediate Tasks
 
-1. Implement a narrow Bard class/subclass parser slice that generates class and subclass candidates for Bard, Troubadour, and Wordsmith only.
-2. Compare generated Bard candidates against existing canonical fixtures and source PDF text before expanding to Druid or the full class set.
-3. Keep newly generated class/subclass candidates marked `review.status: "extracted"` until reviewed.
+1. Implement a narrow adversary parser slice, starting with the existing `Glass Snake` fixture for calibration.
+2. Compare generated adversary candidates against existing canonical fixtures and source PDF text before expanding to the full adversary set.
+3. Keep newly generated adversary candidates marked `review.status: "extracted"` until AI-assisted source verification passes.
 4. Validate fixture data with `npm run validate:srd` after any data/schema change.
 5. Validate ancestry candidates with `npm run validate:srd:candidates:ancestries` after ancestry parser or candidate changes.
 6. Validate community candidates with `npm run validate:srd:candidates:communities` after community parser or candidate changes.
@@ -31,8 +31,7 @@ Implement a Bard class/subclass parser slice.
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Full class/subclass extraction before a narrow class/subclass parser slice is reviewed.
-- Domain cards, adversaries, or environments before the next class/subclass direction is decided.
+- Environments before adversary IDs are stable.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -75,10 +74,13 @@ Implement a Bard class/subclass parser slice.
 - First ancestry/community parser slice added for physical PDF pages 14-18, generating 18 ancestry candidates and 9 community candidates with separate review reports.
 - Ancestry/community parser batch accepted through report-driven manual review and promoted into canonical split fixtures.
 - `Mixed Ancestry` modeled as a reviewed `rule_reference` through the existing rule-reference parser and promoted into canonical fixtures.
+- Full class/subclass parser family added, AI-verified, and promoted into canonical split fixtures.
+- Full domain-card parser family added, AI-verified, and promoted into canonical split fixtures.
 
 ## Open Questions
 
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
+- Should Codex grimoire cards be normalized into multiple `abilities`, or is preserving the full card text as one ability sufficient until the app needs sub-spell rendering?
 
 ## Review Policy
 

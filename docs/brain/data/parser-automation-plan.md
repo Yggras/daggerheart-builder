@@ -94,6 +94,10 @@ Loot implementation status: `scripts/extract-loot.ts` generates `data/srd/genera
 
 Ancestry/community implementation status: `scripts/extract-ancestries-communities.ts` generates `data/srd/generated/ancestries.candidates.json`, `data/srd/generated/ancestries-review-report.md`, `data/srd/generated/communities.candidates.json`, and `data/srd/generated/communities-review-report.md` from physical PDF pages 14-18 using `pdftotext -raw`. It extracts 18 ancestry candidates and 9 community candidates. All generated ancestry/community candidates are marked `reviewed` after report-driven manual review and promoted to canonical split fixtures. `Mixed Ancestry` is intentionally not emitted as an ancestry candidate because the current schema models ancestry entries as feature-bearing ancestry cards; it is handled by the rule-reference parser instead.
 
+Class/subclass implementation status: `scripts/extract-classes-subclasses.ts` generates `data/srd/generated/classes-subclasses.candidates.json` and `data/srd/generated/classes-subclasses-review-report.md` from physical PDF pages 5-14 using `pdftotext -raw`. It extracts all 9 class candidates and 18 subclass candidates. The Bard slice was calibrated against existing canonical fixtures, the full batch was accepted through AI-assisted source verification, and all candidates were promoted to canonical split fixtures.
+
+Domain-card implementation status: `scripts/extract-domain-cards.ts` generates `data/srd/generated/domain-cards.candidates.json` and `data/srd/generated/domain-cards-review-report.md` from physical PDF pages 60-68 using `pdftotext -raw`. It extracts 189 domain-card candidates across all 9 domains. The batch was accepted through AI-assisted source verification and promoted to canonical split fixtures. Codex grimoire cards currently preserve full card text as one `abilities` item; sub-spell splitting is deferred until needed.
+
 Reasons:
 
 - Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
@@ -141,3 +145,4 @@ No generated record should be treated as canonical until reviewed. Review may be
 ## Open Decisions
 
 - Should bulk generated candidate outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?
+- Should Codex grimoire cards be normalized into multiple ability records, or should full-card text remain the canonical normalized shape for now?
