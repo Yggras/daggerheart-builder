@@ -34,4 +34,3 @@
 ## Data
 
 - Should full extraction outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?
-- Should `Mixed Ancestry` become a `rule_reference` candidate, a special ancestry shape, or stay out of structured candidate data?
