@@ -90,6 +90,8 @@ Initial table implementation status: `scripts/extract-armor.ts` generates `data/
 
 Weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md` from physical PDF pages 23-28 using `pdftohtml -xml`. It extracts 204 weapon candidates covering primary weapons, secondary weapons, and combat wheelchair weapon rows. All 204 weapon candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
+Loot implementation status: `scripts/extract-loot.ts` generates `data/srd/generated/loot.candidates.json` and `data/srd/generated/loot-review-report.md` from physical PDF pages 30-32 using `pdftohtml -xml`. It extracts 120 loot candidates spanning 60 reusable items and 60 consumables. All 120 loot candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
+
 Reasons:
 
 - Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
@@ -105,6 +107,7 @@ Every parser slice must run:
 npm run validate:srd
 npm run validate:srd:candidates
 npm run validate:srd:candidates:armor
+npm run validate:srd:candidates:loot
 npm run validate:srd:candidates:weapons
 npm run typecheck
 ```

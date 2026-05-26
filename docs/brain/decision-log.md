@@ -575,3 +575,35 @@ Mark the full 204-entry weapon candidate batch as `reviewed`, preserve that revi
 Consequences:
 
 Canonical fixtures now contain reviewed rule references, armor, and the full weapon table set. The next parser target should stay equipment-adjacent with loot and consumables before moving to harder entity families.
+
+## 2026-05-26 - Add First Loot And Consumable Parser Slice
+
+Status: Accepted
+
+Context:
+
+Reviewed generated rule-reference, armor, and weapon candidates were already promoted into canonical split fixtures. The next parser target needed to stay equipment-adjacent while exercising another table-heavy extraction shape before moving to more complex entity families.
+
+Decision:
+
+Add `scripts/extract-loot.ts` to parse loot and consumable tables from physical PDF pages 30-32 with `pdftohtml -xml`, generating `data/srd/generated/loot.candidates.json` and `data/srd/generated/loot-review-report.md`. Keep all generated loot candidates marked `extracted` until reviewed.
+
+Consequences:
+
+The parser now produces a 120-entry loot candidate batch: 60 reusable items and 60 consumables. The next step is report-driven manual review, especially around wrapped names, wrapped descriptions, the page-31 section boundary, and the page-32 continuation near unrelated Gold and GM text.
+
+## 2026-05-26 - Accept Full Loot And Consumable Batch
+
+Status: Accepted
+
+Context:
+
+The first loot/consumable parser slice produced 120 candidates across physical PDF pages 30-32. The generated review report showed no parser warnings, and the user spot-checked the batch without finding flaws.
+
+Decision:
+
+Mark the full 120-entry loot batch as `reviewed`, preserve that review state in `scripts/extract-loot.ts`, and promote the reviewed candidates into `data/srd/fixtures/loot.json`.
+
+Consequences:
+
+Canonical fixtures now contain reviewed rule references, armor, weapons, and the full loot/consumable set. The next parser work should move to ancestries and communities before attempting more complex entity families.

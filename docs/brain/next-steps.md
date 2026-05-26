@@ -1,26 +1,27 @@
 # Next Steps
 
-Last updated: 2026-05-25
+Last updated: 2026-05-26
 
 ## Current Best Next Step
 
-Plan the next equipment-adjacent parser slice for loot and consumables.
+Plan the next parser slice for ancestries and communities.
 
 ## Why This Is Next
 
-Reviewed generated rule-reference, armor, and weapon candidates have been promoted into split canonical fixtures. Weapons now cover the full weapon-table range, including primary weapons, secondary weapons, and combat wheelchair weapon rows. The next safest parser target is loot/consumables because it stays equipment-adjacent and should be simpler than classes, domain cards, adversaries, or environments.
+The full loot/consumable parser batch was accepted with no flaws detected, and the reviewed 120-entry batch has been promoted into canonical split fixtures. With rule references, armor, weapons, and loot now promoted, the next safest parser target is ancestries and communities because representative fixtures already exist and the slice should be narrower than classes, domain cards, adversaries, or environments.
 
 ## Immediate Tasks
 
-1. Inspect `pdftohtml -xml` output for loot and consumable pages and compare with `data/srd/fixtures/loot.json`.
-2. Add a separate loot/consumable parser that writes a kind-specific candidate file and review report.
-3. Keep newly generated loot candidates marked `review.status: "extracted"` until reviewed.
-4. Use report warnings to minimize manual review and flag suspicious row parsing.
+1. Inspect the SRD ancestry and community sections and compare their structure against the current canonical fixtures.
+2. Decide whether ancestry/community extraction should start with prose-first `pdftotext -raw`, table-aware `pdftohtml -xml`, or a mixed approach.
+3. Add a separate ancestry/community parser slice that writes kind-specific candidate data and a review report.
+4. Keep newly generated ancestry/community candidates marked `review.status: "extracted"` until reviewed.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
-6. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
-7. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
-8. Validate weapon candidates with `npm run validate:srd:candidates:weapons` after weapon parser or candidate changes.
-9. Typecheck with `npm run typecheck` after any code change.
+6. Validate loot candidates with `npm run validate:srd:candidates:loot` after loot parser or candidate changes.
+7. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
+8. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
+9. Validate weapon candidates with `npm run validate:srd:candidates:weapons` after weapon parser or candidate changes.
+10. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -29,7 +30,7 @@ Reviewed generated rule-reference, armor, and weapon candidates have been promot
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Other entity-specific extraction beyond loot/consumables before the loot parser shape is reviewed.
+- Other entity-specific extraction beyond ancestries/communities before the ancestry/community parser shape is reviewed.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -66,6 +67,9 @@ Reviewed generated rule-reference, armor, and weapon candidates have been promot
 - Tier 1 primary weapon parser batch accepted through risk-based review and promoted into canonical split fixtures.
 - Weapon parser expanded to full weapon-table extraction with 204 candidates total: 25 reviewed and 179 extracted.
 - Full weapon parser batch accepted through risk-based review and promoted into canonical split fixtures.
+- First loot/consumable parser slice added for physical PDF pages 30-32 with separate candidate data and review report.
+- Loot/consumable parser generated 120 extracted candidates: 60 reusable items and 60 consumables.
+- Loot/consumable parser batch accepted through risk-based review and promoted into canonical split fixtures.
 
 ## Open Questions
 

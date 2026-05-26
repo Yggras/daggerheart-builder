@@ -13,9 +13,11 @@
     "validate:srd": "tsx scripts/validate-srd.ts",
     "validate:srd:candidates": "tsx scripts/validate-srd.ts data/srd/generated/entries.candidates.json",
     "validate:srd:candidates:armor": "tsx scripts/validate-srd.ts data/srd/generated/armor.candidates.json",
+    "validate:srd:candidates:loot": "tsx scripts/validate-srd.ts data/srd/generated/loot.candidates.json",
     "validate:srd:candidates:weapons": "tsx scripts/validate-srd.ts data/srd/generated/weapons.candidates.json",
     "extract:srd:rules": "tsx scripts/extract-rule-references.ts",
     "extract:srd:armor": "tsx scripts/extract-armor.ts",
+    "extract:srd:loot": "tsx scripts/extract-loot.ts",
     "extract:srd:weapons": "tsx scripts/extract-weapons.ts"
   },
   "dependencies": {
