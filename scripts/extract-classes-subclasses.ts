@@ -2,8 +2,6 @@ import { execFile } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { promisify } from "node:util";
-import canonicalClasses from "../data/srd/fixtures/classes.json";
-import canonicalSubclasses from "../data/srd/fixtures/subclasses.json";
 import { SrdEntryCollectionSchema, type SrdEntry } from "../src/srd/schema";
 
 const execFileAsync = promisify(execFile);
@@ -13,6 +11,7 @@ const outputPath = "data/srd/generated/classes-subclasses.candidates.json";
 const reviewReportPath = "data/srd/generated/classes-subclasses-review-report.md";
 const sourceUrl = "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf";
 const acceptedReviewTimestamp = "2026-05-26T00:00:00.000Z";
+const bardCalibrationIds = new Set(["class.bard", "subclass.bard.troubadour", "subclass.bard.wordsmith"]);
 
 type ClassEntry = Extract<SrdEntry, { kind: "class" }>;
 type SubclassEntry = Extract<SrdEntry, { kind: "subclass" }>;
@@ -630,7 +629,7 @@ function splitDomains(text: string) {
 function splitClassItems(text: string) {
   return text
     .split(/\s+or\s+/)
-    .map((item) => item.trim())
+    .map((item) => capitalize(item.trim()))
     .filter(Boolean);
 }
 
@@ -737,8 +736,7 @@ function verifySubclassSpec(
 }
 
 function bardFixtureComparisonNotes(entryId: string) {
-  const fixtures = [...canonicalClasses, ...canonicalSubclasses] as Array<ClassEntry | SubclassEntry>;
-  return fixtures.some((fixture) => fixture.id === entryId)
+  return bardCalibrationIds.has(entryId)
     ? ["Compared against existing canonical Bard fixture shape during calibration; stats, feature names, and class/subclass links match while generated source text is fuller."]
     : [];
 }
@@ -838,6 +836,10 @@ function slugify(value: string) {
 
 function normalizeText(text: string) {
   return text.replace(/\s+/g, " ").trim();
+}
+
+function capitalize(value: string) {
+  return value ? `${value[0]?.toUpperCase()}${value.slice(1)}` : value;
 }
 
 function previewText(text: string) {
