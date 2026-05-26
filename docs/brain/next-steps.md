@@ -4,20 +4,22 @@ Last updated: 2026-05-26
 
 ## Current Best Next Step
 
-Implement an environment parser slice.
+All structured SRD entity families are extracted, reviewed, and promoted to canonical fixtures. The SRD data foundation is complete. The next focus should be app improvements or new feature planning — likely starting with:
+
+1. Enhance the compendium UI (filters, search, detail rendering for environments/adversaries).
+2. Decide whether to add Supabase integration or keep offline-only.
+3. Begin character builder planning.
 
 ## Why This Is Next
 
-All prior entity families are complete and promoted. Adversary IDs are now stable (129 canonical adversaries across tiers 1–4). Environments are the last remaining structured entity family and may reference adversary IDs, so they are unblocked now.
+The full SRD data pipeline is done: 783 canonical entries across all entity kinds. No remaining extraction work until the SRD changes or new entity kinds are identified.
 
 ## Immediate Tasks
 
-1. Implement an environment parser slice, starting with the existing `Sunken Laboratory` fixture for calibration.
-2. Compare generated environment candidates against existing canonical fixtures and source PDF text before expanding to the full set.
-3. Keep newly generated environment candidates marked `review.status: "extracted"` until AI-assisted source verification passes.
-4. Validate fixture data with `npm run validate:srd` after any data/schema change.
-5. Validate environment candidates with `npm run validate:srd:candidates:environments` (add this script if not present) after environment parser or candidate changes.
-6. Typecheck with `npm run typecheck` after any code change.
+None — the SRD extraction pipeline is complete. Choose a product direction.
+
+1. Validate fixture data with `npm run validate:srd` after any data/schema change.
+2. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -71,6 +73,8 @@ All prior entity families are complete and promoted. Adversary IDs are now stabl
 - Full class/subclass parser family added, AI-verified, and promoted into canonical split fixtures.
 - Full domain-card parser family added, AI-verified, and promoted into canonical split fixtures.
 - Full adversary parser family added (129 adversaries, tiers 1–4, all roles), AI-verified, and promoted into canonical split fixtures. Schema extended for `physical_or_magic` damage and dice-expression attack modifiers.
+- Full environment parser family added (19 environments, tiers 1–4, all types), AI-verified, and promoted into canonical split fixtures. Adversary name normalization handles abbreviated/pluralized group member names. Total canonical fixture count: 783 entries across 11 kinds.
+- `validate-srd.ts` enhanced: when validating a specific candidates file, it now merges with fixture context so cross-kind ID references resolve correctly.
 
 ## Open Questions
 

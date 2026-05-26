@@ -9,7 +9,17 @@ const targetPath = inputPath ? resolve(process.cwd(), inputPath) : null;
 const targetLabel = inputPath ?? "data/srd/fixtures/*.json";
 
 try {
-  const parsed = targetPath ? (JSON.parse(await readFile(targetPath, "utf8")) as unknown) : fixtureEntries;
+  let parsed: unknown;
+  if (targetPath) {
+    // When validating a specific candidates file, merge with fixture entries as cross-reference context.
+    // Fixture entries of the same kind as the candidates are excluded to avoid duplicate ID conflicts.
+    const candidateEntries = JSON.parse(await readFile(targetPath, "utf8")) as Array<{ kind: string }>;
+    const candidateKinds = new Set(candidateEntries.map((e) => e.kind));
+    const contextEntries = fixtureEntries.filter((e) => !candidateKinds.has(e.kind));
+    parsed = [...contextEntries, ...candidateEntries];
+  } else {
+    parsed = fixtureEntries;
+  }
   const entries = SrdEntryCollectionSchema.parse(parsed);
 
   const counts = entries.reduce<Record<string, number>>((acc, entry) => {
