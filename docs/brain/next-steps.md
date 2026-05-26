@@ -13,7 +13,7 @@ Implement a Bard class/subclass parser slice.
 ## Immediate Tasks
 
 1. Implement a narrow Bard class/subclass parser slice that generates class and subclass candidates for Bard, Troubadour, and Wordsmith only.
-2. Compare generated Bard candidates against existing canonical fixtures before expanding to Druid or the full class set.
+2. Compare generated Bard candidates against existing canonical fixtures and source PDF text before expanding to Druid or the full class set.
 3. Keep newly generated class/subclass candidates marked `review.status: "extracted"` until reviewed.
 4. Validate fixture data with `npm run validate:srd` after any data/schema change.
 5. Validate ancestry candidates with `npm run validate:srd:candidates:ancestries` after ancestry parser or candidate changes.
@@ -79,6 +79,10 @@ Implement a Bard class/subclass parser slice.
 ## Open Questions
 
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
+
+## Review Policy
+
+Generated parser batches may now be accepted through AI-assisted source verification instead of user manual review. Candidates can be marked `reviewed` when schema validation, parser reports, deterministic reruns, and source-PDF verification pass, with evidence recorded in report output or review notes.
 
 ## Handoff Rule
 

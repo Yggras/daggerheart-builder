@@ -57,8 +57,8 @@ Candidate entries should:
 - Match `SrdEntryCollectionSchema`.
 - Use stable IDs following the existing fixture pattern.
 - Preserve SRD wording in `text.original`.
-- Set `review.status` to `extracted`.
-- Set `review.reviewedAt` to `null`.
+- Set `review.status` to `extracted` until AI-assisted source verification or another accepted review gate passes.
+- Set `review.reviewedAt` to `null` until review is accepted.
 - Include source PDF and printed page references when available.
 - Include parser notes in `review.notes` for uncertain extraction choices.
 
@@ -118,15 +118,15 @@ npm run typecheck
 
 `npm run validate:srd` validates the reviewed split fixture collection by default. The underlying validator also accepts an arbitrary SRD JSON path so generated candidates can be checked with the same schema logic. Run only the candidate validation commands relevant to files changed in the current slice.
 
-No generated record should be treated as canonical until manually reviewed.
+No generated record should be treated as canonical until reviewed. Review may be completed through AI-assisted source verification when schema validation, parser reports, deterministic reruns, and source-PDF comparison pass.
 
 ## Review Workflow
 
-1. Parser writes candidate entries with `review.status: "extracted"`.
-2. Parser reports cleanup actions and suspicious tokens for risk-based review.
-3. Reviewer spot-checks normal entries and fully reviews flagged or high-risk entries against the SRD PDF.
-4. Reviewer fixes wording, source references, normalized fields, and relationships.
-5. Reviewer changes status to `reviewed` or `corrected`.
+1. Parser writes candidate entries with `review.status: "extracted"` until verification passes.
+2. Parser reports cleanup actions, suspicious tokens, warnings, source pages, and text previews for risk-based verification.
+3. The agent verifies normal entries against parser reports and source PDF text, and fully verifies flagged or high-risk entries against the SRD PDF.
+4. The agent fixes wording, source references, normalized fields, and relationships when verification finds issues.
+5. The agent changes status to `reviewed` or `corrected` only after validation, deterministic rerun checks, and source verification pass.
 6. Reviewed entries can be promoted into canonical app data.
 
 ## Parser Implementation Notes

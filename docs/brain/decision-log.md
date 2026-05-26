@@ -671,3 +671,19 @@ Fold `Mixed Ancestry` into `scripts/extract-rule-references.ts`, keep it in `dat
 Consequences:
 
 Rule-reference extraction now produces 34 reviewed candidates. `Mixed Ancestry` is canonical alongside the rest of the reviewed rule references without a one-off validation path.
+
+## 2026-05-26 - Use AI-Assisted Source Verification For Parser Review
+
+Status: Accepted
+
+Context:
+
+Manual user review of every generated SRD parser batch is slowing parser completion, and the project needs a reliable reviewed canonical data foundation without requiring the user to inspect every slice personally.
+
+Decision:
+
+Use AI-assisted source verification as an accepted review gate for generated SRD candidates. The agent may mark candidates as `reviewed` when schema validation, parser reports, deterministic reruns, and source-PDF verification pass. User manual review is no longer required for every parser batch, but parser warnings, suspicious extraction artifacts, relationship issues, and high-risk mechanical fields must be resolved before promotion.
+
+Consequences:
+
+Generated candidate review reports and `review.notes` must record AI-assisted verification evidence. Canonical fixture promotion remains limited to reviewed or corrected entries, but review can now be completed by the agent when the verification gates pass.
