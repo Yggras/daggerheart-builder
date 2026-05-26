@@ -92,6 +92,8 @@ Weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/g
 
 Loot implementation status: `scripts/extract-loot.ts` generates `data/srd/generated/loot.candidates.json` and `data/srd/generated/loot-review-report.md` from physical PDF pages 30-32 using `pdftohtml -xml`. It extracts 120 loot candidates spanning 60 reusable items and 60 consumables. All 120 loot candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
 
+Ancestry/community implementation status: `scripts/extract-ancestries-communities.ts` generates `data/srd/generated/ancestries.candidates.json`, `data/srd/generated/ancestries-review-report.md`, `data/srd/generated/communities.candidates.json`, and `data/srd/generated/communities-review-report.md` from physical PDF pages 14-18 using `pdftotext -raw`. It extracts 18 ancestry candidates and 9 community candidates. All generated ancestry/community candidates are marked `reviewed` after report-driven manual review and promoted to canonical split fixtures. `Mixed Ancestry` is intentionally not emitted as an ancestry candidate because the current schema models ancestry entries as feature-bearing ancestry cards.
+
 Reasons:
 
 - Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
@@ -106,7 +108,9 @@ Every parser slice must run:
 ```bash
 npm run validate:srd
 npm run validate:srd:candidates
+npm run validate:srd:candidates:ancestries
 npm run validate:srd:candidates:armor
+npm run validate:srd:candidates:communities
 npm run validate:srd:candidates:loot
 npm run validate:srd:candidates:weapons
 npm run typecheck

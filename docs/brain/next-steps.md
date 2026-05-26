@@ -4,24 +4,26 @@ Last updated: 2026-05-26
 
 ## Current Best Next Step
 
-Plan the next parser slice for ancestries and communities.
+Resolve `Mixed Ancestry` handling, then plan the class/subclass parser slice.
 
 ## Why This Is Next
 
-The full loot/consumable parser batch was accepted with no flaws detected, and the reviewed 120-entry batch has been promoted into canonical split fixtures. With rule references, armor, weapons, and loot now promoted, the next safest parser target is ancestries and communities because representative fixtures already exist and the slice should be narrower than classes, domain cards, adversaries, or environments.
+The ancestry/community parser batch was accepted with no flaws detected, and the reviewed 18 ancestry candidates and 9 community candidates have been promoted into canonical split fixtures. `Mixed Ancestry` was intentionally skipped because the current ancestry schema models feature-bearing ancestry cards, so that open modeling question should be resolved before moving into larger class/subclass extraction.
 
 ## Immediate Tasks
 
-1. Inspect the SRD ancestry and community sections and compare their structure against the current canonical fixtures.
-2. Decide whether ancestry/community extraction should start with prose-first `pdftotext -raw`, table-aware `pdftohtml -xml`, or a mixed approach.
-3. Add a separate ancestry/community parser slice that writes kind-specific candidate data and a review report.
-4. Keep newly generated ancestry/community candidates marked `review.status: "extracted"` until reviewed.
+1. Decide whether `Mixed Ancestry` should remain out of structured data, become a `rule_reference` candidate, or require a special ancestry/rule schema change.
+2. Inspect the SRD class and subclass sections and compare their structure against the current canonical class/subclass fixtures.
+3. Plan a narrow class/subclass parser slice before attempting all classes and subclasses.
+4. Keep newly generated class/subclass candidates marked `review.status: "extracted"` until reviewed.
 5. Validate fixture data with `npm run validate:srd` after any data/schema change.
-6. Validate loot candidates with `npm run validate:srd:candidates:loot` after loot parser or candidate changes.
-7. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
-8. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
-9. Validate weapon candidates with `npm run validate:srd:candidates:weapons` after weapon parser or candidate changes.
-10. Typecheck with `npm run typecheck` after any code change.
+6. Validate ancestry candidates with `npm run validate:srd:candidates:ancestries` after ancestry parser or candidate changes.
+7. Validate community candidates with `npm run validate:srd:candidates:communities` after community parser or candidate changes.
+8. Validate loot candidates with `npm run validate:srd:candidates:loot` after loot parser or candidate changes.
+9. Validate rule-reference candidates with `npm run validate:srd:candidates` after rule parser or candidate changes.
+10. Validate armor candidates with `npm run validate:srd:candidates:armor` after armor parser or candidate changes.
+11. Validate weapon candidates with `npm run validate:srd:candidates:weapons` after weapon parser or candidate changes.
+12. Typecheck with `npm run typecheck` after any code change.
 
 ## Do Not Start Yet
 
@@ -30,7 +32,8 @@ The full loot/consumable parser batch was accepted with no flaws detected, and t
 - Campaign play view.
 - UI kit/design system selection.
 - Inline rich-text links.
-- Other entity-specific extraction beyond ancestries/communities before the ancestry/community parser shape is reviewed.
+- Full class/subclass extraction before a narrow class/subclass parser slice is reviewed.
+- Domain cards, adversaries, or environments before the next class/subclass direction is decided.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -70,10 +73,13 @@ The full loot/consumable parser batch was accepted with no flaws detected, and t
 - First loot/consumable parser slice added for physical PDF pages 30-32 with separate candidate data and review report.
 - Loot/consumable parser generated 120 extracted candidates: 60 reusable items and 60 consumables.
 - Loot/consumable parser batch accepted through risk-based review and promoted into canonical split fixtures.
+- First ancestry/community parser slice added for physical PDF pages 14-18, generating 18 ancestry candidates and 9 community candidates with separate review reports.
+- Ancestry/community parser batch accepted through report-driven manual review and promoted into canonical split fixtures.
 
 ## Open Questions
 
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
+- Should `Mixed Ancestry` become a `rule_reference` candidate, a special ancestry shape, or stay out of structured candidate data?
 
 ## Handoff Rule
 

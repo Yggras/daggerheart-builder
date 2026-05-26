@@ -607,3 +607,35 @@ Mark the full 120-entry loot batch as `reviewed`, preserve that review state in 
 Consequences:
 
 Canonical fixtures now contain reviewed rule references, armor, weapons, and the full loot/consumable set. The next parser work should move to ancestries and communities before attempting more complex entity families.
+
+## 2026-05-26 - Add First Ancestry And Community Parser Slice
+
+Status: Accepted
+
+Context:
+
+Reviewed generated rule-reference, armor, weapon, and loot candidates were already promoted into canonical split fixtures. The next parser target needed to exercise prose/card-like entity extraction before moving to larger classes, domain cards, adversaries, or environments.
+
+Decision:
+
+Add `scripts/extract-ancestries-communities.ts` to parse ancestry and community sections from physical PDF pages 14-18 with `pdftotext -raw`, generating separate ancestry and community candidate files and review reports. Keep all generated ancestry/community candidates marked `extracted` until reviewed. Do not emit `Mixed Ancestry` as an ancestry candidate in this slice because the current ancestry schema models feature-bearing ancestry cards.
+
+Consequences:
+
+The parser now produces 18 ancestry candidates and 9 community candidates for report-driven manual review. The next step is risk-based review of those reports, including a decision on how to model `Mixed Ancestry`, before promotion into canonical split fixtures.
+
+## 2026-05-26 - Accept Ancestry And Community Batch
+
+Status: Accepted
+
+Context:
+
+The first ancestry/community parser slice produced 18 ancestry candidates and 9 community candidates across physical PDF pages 14-18. The generated review reports showed no parser warnings, and the user reviewed the batch without finding flaws.
+
+Decision:
+
+Mark the full ancestry/community batch as `reviewed`, preserve that review state in `scripts/extract-ancestries-communities.ts`, and promote the reviewed candidates into `data/srd/fixtures/ancestries.json` and `data/srd/fixtures/communities.json`.
+
+Consequences:
+
+Canonical fixtures now contain reviewed rule references, armor, weapons, loot, ancestries, and communities. `Mixed Ancestry` remains an open modeling question because it was intentionally skipped by the ancestry parser slice.
