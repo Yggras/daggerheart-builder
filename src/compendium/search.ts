@@ -38,16 +38,17 @@ export const adversaryRoles = [
 export const environmentTypes = ["event", "exploration", "social", "traversal"] as const;
 export const weaponCategories = ["primary", "secondary"] as const;
 export const domainCardDomains = [
-  "arcana",
-  "blade",
-  "bone",
-  "codex",
-  "grace",
-  "midnight",
-  "sage",
-  "splendor",
-  "valor",
+  "Arcana",
+  "Blade",
+  "Bone",
+  "Codex",
+  "Grace",
+  "Midnight",
+  "Sage",
+  "Splendor",
+  "Valor",
 ] as const;
+export const domainCardLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const;
 export const lootTypes = ["item", "consumable"] as const;
 
 // ---------------------------------------------------------------------------
@@ -61,6 +62,7 @@ export interface CompendiumFilters {
   environmentType?: string | "all";
   category?: string | "all";
   domain?: string | "all";
+  level?: number | "all";
   lootType?: string | "all";
 }
 
@@ -151,6 +153,7 @@ export function searchFamily(entries: SrdEntry[], query: string, filters: Compen
 
     if (entry.kind === "domain_card") {
       if (filters.domain !== undefined && filters.domain !== "all" && entry.domain !== filters.domain) return false;
+      if (filters.level !== undefined && filters.level !== "all" && entry.level !== filters.level) return false;
     }
 
     if (entry.kind === "loot") {

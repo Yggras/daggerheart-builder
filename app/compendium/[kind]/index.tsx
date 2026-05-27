@@ -10,6 +10,7 @@ import {
   adversaryRoles,
   adversaryTiers,
   domainCardDomains,
+  domainCardLevels,
   environmentTypes,
   lootTypes,
   searchFamily,
@@ -164,12 +165,20 @@ function SubFilters({
       );
     case "domain_card":
       return (
-        <FilterRow
-          label="Domain"
-          options={domainCardDomains.map((d) => ({ label: capitalize(d), value: d }))}
-          selected={filters.domain ?? "all"}
-          onSelect={(v) => onChange("domain", v)}
-        />
+        <>
+          <FilterRow
+            label="Domain"
+            options={domainCardDomains.map((d) => ({ label: d, value: d }))}
+            selected={filters.domain ?? "all"}
+            onSelect={(v) => onChange("domain", v)}
+          />
+          <FilterRow
+            label="Level"
+            options={domainCardLevels.map((l) => ({ label: String(l), value: l }))}
+            selected={filters.level ?? "all"}
+            onSelect={(v) => onChange("level", v)}
+          />
+        </>
       );
     case "loot":
       return (
