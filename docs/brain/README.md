@@ -32,6 +32,5 @@ Decision entries should include:
 
 1. Read and update `next-steps.md` at the start and end of each session.
 2. Preserve the product vision and initial constraints.
-3. Build a reliable structured SRD data foundation.
-4. Plan parser automation before implementing full SRD extraction.
-5. Keep offline-first behavior and real-time campaign play as architectural drivers.
+3. Extend the compendium and app features using the complete SRD data foundation.
+4. Keep offline-first behavior and real-time campaign play as architectural drivers.

@@ -1,148 +1,75 @@
-# Parser Automation Plan
+# Parser Automation — Completed Reference
 
-Status: Draft for review
-Date: 2026-05-25
+Status: Complete
+Last updated: 2026-05-26
 
-## Purpose
+All 11 entity kind parsers have been implemented and all generated candidates have been reviewed and promoted to canonical fixtures. This document is retained as a reference for re-extraction if the SRD PDF updates.
 
-Define the next implementation plan for turning the official SRD PDF into structured candidate JSON without parsing the PDF at runtime.
+## Canonical Fixture Counts
 
-The parser should produce unreviewed candidate records that match `src/srd/schema.ts`. Reviewed canonical data remains a separate promotion step.
+| File | Entries |
+|------|---------|
+| `data/srd/fixtures/rule-references.json` | 34 |
+| `data/srd/fixtures/armor.json` | 34 |
+| `data/srd/fixtures/weapons.json` | 204 |
+| `data/srd/fixtures/loot.json` | 120 |
+| `data/srd/fixtures/ancestries.json` | 18 |
+| `data/srd/fixtures/communities.json` | 9 |
+| `data/srd/fixtures/classes.json` | 9 |
+| `data/srd/fixtures/subclasses.json` | 18 |
+| `data/srd/fixtures/domain-cards.json` | 189 |
+| `data/srd/fixtures/adversaries.json` | 129 |
+| `data/srd/fixtures/environments.json` | 19 |
+| **Total** | **783** |
 
-## Current Readiness
+## Extraction Scripts
 
-The schema/fixture coverage spike is complete and manually reviewed in the web app. Representative fixture coverage now exists for:
+One script per entity kind under `scripts/`:
 
-- `rule_reference`
-- `class`
-- `subclass`
-- `domain_card`
-- `weapon`
-- `ancestry`
-- `community`
-- `armor`
-- `loot`
-- `adversary`
-- `environment`
+- `extract-rule-references.ts` — prose rules (pdftotext -raw)
+- `extract-armor.ts` — armor tables (pdftohtml -xml)
+- `extract-weapons.ts` — weapon tables (pdftohtml -xml)
+- `extract-loot.ts` — loot/consumable tables (pdftohtml -xml)
+- `extract-ancestries-communities.ts` — ancestry/community sections (pdftotext -raw)
+- `extract-classes-subclasses.ts` — class/subclass sections (pdftotext -raw)
+- `extract-domain-cards.ts` — domain card sections (pdftotext -raw)
+- `extract-adversaries.ts` — adversary stat blocks (pdftotext -raw)
+- `extract-environments.ts` — environment stat blocks (pdftotext -raw)
 
-The current validated fixtures live as kind-specific JSON files under `data/srd/fixtures/`.
+## Tooling
 
-## Inputs
+Use Poppler as the extraction foundation:
 
-- Canonical source PDF: `data/source/Daggerheart-SRD-9-09-25.pdf`
-- Current schema: `src/srd/schema.ts`
-- Fixture target shape: split canonical JSON files under `data/srd/fixtures/`
-- Extraction spike notes: `docs/brain/data/extraction-spike-2026-05-24.md`
-
-## Tooling Direction
-
-Use Poppler as the initial parser foundation:
-
-- `pdftotext -raw` for prose-first extraction and section segmentation.
-- `pdftohtml -xml` for page-aware coordinates, tables, columns, and source page mapping.
-- `pdftotext -layout` only as a human debugging artifact.
+- `pdftotext -raw` — prose-first extraction and section segmentation.
+- `pdftohtml -xml` — page-aware coordinates for table reconstruction.
 
 Do not introduce another PDF library unless Poppler cannot reliably extract a required SRD shape.
 
-## Output Model
+Source PDF: `data/source/Daggerheart-SRD-9-09-25.pdf`
 
-The parser should write generated candidate data, not canonical reviewed data.
+## Validation Commands
 
-Recommended generated path:
-
-- `data/srd/generated/entries.candidates.json`
-
-Candidate entries should:
-
-- Match `SrdEntryCollectionSchema`.
-- Use stable IDs following the existing fixture pattern.
-- Preserve SRD wording in `text.original`.
-- Set `review.status` to `extracted` until AI-assisted source verification or another accepted review gate passes.
-- Set `review.reviewedAt` to `null` until review is accepted.
-- Include source PDF and printed page references when available.
-- Include parser notes in `review.notes` for uncertain extraction choices.
-
-Small generated candidate batches should be committed during parser-slice development so output can be reviewed and compared over time. Bulk generated output can be reconsidered later once full extraction volume and review workflow are known.
-
-Generated review reports should be written alongside candidate data when useful. The current prose rule-reference review report path is `data/srd/generated/review-report.md`; table/entity parser slices may use kind-specific candidate files and reports.
-
-## Extraction Order
-
-Implement extraction in small validated slices:
-
-1. Rules references.
-2. Ancestries and communities.
-3. Armor, weapons, loot, and consumables.
-4. Classes and subclasses.
-5. Domain cards.
-6. Adversaries.
-7. Environments.
-
-This order starts with prose and table shapes that are already represented in fixtures, then moves into larger and more complex sections.
-
-## Recommended First Slice
-
-Start with `rule_reference` extraction from a small SRD rules section.
-
-Initial implementation status: `scripts/extract-rule-references.ts` generates `data/srd/generated/entries.candidates.json` for `Mixed Ancestry`, `Hope & Fear`, and adjacent rule references from physical PDF pages 16 and 20-22 using `pdftotext -raw`. It also writes `data/srd/generated/review-report.md` with cleanup notes, suspicious tokens, text lengths, and previews. All 34 generated rule-reference candidates through Death, Additional Rules, Leveling Up, Multiclassing, and Mixed Ancestry are marked `reviewed` after report-driven manual review and promoted to canonical split fixtures.
-
-Initial table implementation status: `scripts/extract-armor.ts` generates `data/srd/generated/armor.candidates.json` and `data/srd/generated/armor-review-report.md` from physical PDF page 29 using `pdftohtml -xml`. All 34 armor candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
-
-Weapon implementation status: `scripts/extract-weapons.ts` generates `data/srd/generated/weapons.candidates.json` and `data/srd/generated/weapons-review-report.md` from physical PDF pages 23-28 using `pdftohtml -xml`. It extracts 204 weapon candidates covering primary weapons, secondary weapons, and combat wheelchair weapon rows. All 204 weapon candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
-
-Loot implementation status: `scripts/extract-loot.ts` generates `data/srd/generated/loot.candidates.json` and `data/srd/generated/loot-review-report.md` from physical PDF pages 30-32 using `pdftohtml -xml`. It extracts 120 loot candidates spanning 60 reusable items and 60 consumables. All 120 loot candidates are marked `reviewed` after risk-based review and promoted to canonical split fixtures.
-
-Ancestry/community implementation status: `scripts/extract-ancestries-communities.ts` generates `data/srd/generated/ancestries.candidates.json`, `data/srd/generated/ancestries-review-report.md`, `data/srd/generated/communities.candidates.json`, and `data/srd/generated/communities-review-report.md` from physical PDF pages 14-18 using `pdftotext -raw`. It extracts 18 ancestry candidates and 9 community candidates. All generated ancestry/community candidates are marked `reviewed` after report-driven manual review and promoted to canonical split fixtures. `Mixed Ancestry` is intentionally not emitted as an ancestry candidate because the current schema models ancestry entries as feature-bearing ancestry cards; it is handled by the rule-reference parser instead.
-
-Class/subclass implementation status: `scripts/extract-classes-subclasses.ts` generates `data/srd/generated/classes-subclasses.candidates.json` and `data/srd/generated/classes-subclasses-review-report.md` from physical PDF pages 5-14 using `pdftotext -raw`. It extracts all 9 class candidates and 18 subclass candidates. The Bard slice was calibrated against existing canonical fixtures, the full batch was accepted through AI-assisted source verification, and all candidates were promoted to canonical split fixtures.
-
-Domain-card implementation status: `scripts/extract-domain-cards.ts` generates `data/srd/generated/domain-cards.candidates.json` and `data/srd/generated/domain-cards-review-report.md` from physical PDF pages 60-68 using `pdftotext -raw`. It extracts 189 domain-card candidates across all 9 domains. The batch was accepted through AI-assisted source verification and promoted to canonical split fixtures. Codex grimoire cards currently preserve full card text as one `abilities` item; sub-spell splitting is deferred until needed.
-
-Reasons:
-
-- Rules references are prose-first, so they exercise `pdftotext -raw` before table reconstruction.
-- The current fixture already has multiple rule references for validation comparison.
-- Rule references are useful relationship targets for later entity extraction.
-- The slice can prove generated candidate validation without touching complex class, adversary, or environment structures.
-
-## Validation Gates
-
-Every parser slice must run:
+Run after any data or schema change:
 
 ```bash
 npm run validate:srd
-npm run validate:srd:candidates
-npm run validate:srd:candidates:ancestries
-npm run validate:srd:candidates:armor
-npm run validate:srd:candidates:communities
-npm run validate:srd:candidates:loot
-npm run validate:srd:candidates:weapons
 npm run typecheck
 ```
 
-`npm run validate:srd` validates the reviewed split fixture collection by default. The underlying validator also accepts an arbitrary SRD JSON path so generated candidates can be checked with the same schema logic. Run only the candidate validation commands relevant to files changed in the current slice.
+Individual candidate validation: `npm run validate:srd:candidates:<kind>` (run only for files changed in the current slice).
 
-No generated record should be treated as canonical until reviewed. Review may be completed through AI-assisted source verification when schema validation, parser reports, deterministic reruns, and source-PDF comparison pass.
+## Review Policy
 
-## Review Workflow
+Generated candidates are marked `review.status: "extracted"` until accepted. Review may be completed through AI-assisted source verification when schema validation, parser reports, deterministic reruns, and source-PDF verification pass. Evidence must be recorded in `review.notes`. Promotion to canonical fixtures requires `reviewed` or `corrected` status.
 
-1. Parser writes candidate entries with `review.status: "extracted"` until verification passes.
-2. Parser reports cleanup actions, suspicious tokens, warnings, source pages, and text previews for risk-based verification.
-3. The agent verifies normal entries against parser reports and source PDF text, and fully verifies flagged or high-risk entries against the SRD PDF.
-4. The agent fixes wording, source references, normalized fields, and relationships when verification finds issues.
-5. The agent changes status to `reviewed` or `corrected` only after validation, deterministic rerun checks, and source verification pass.
-6. Reviewed entries can be promoted into canonical app data.
+## Output Model
+
+Parser scripts write to `data/srd/generated/` — candidate data is never canonical until explicitly promoted. Each parser also writes a review report (e.g. `data/srd/generated/adversaries-review-report.md`) with cleanup notes, warnings, and text previews.
 
 ## Parser Implementation Notes
 
 - Keep parser code separate from app runtime code.
 - Prefer deterministic scripts that can be rerun against the same source PDF.
-- Use conservative cleanup rules for clear extraction artifacts; preserve typographic punctuation in `text.original` when it matches the SRD PDF.
+- Use conservative cleanup rules for clear extraction artifacts; preserve typographic punctuation when it matches the SRD PDF.
 - Treat relationship inference conservatively; broken relationships should fail validation.
 - Preserve official SRD terminology in IDs, kinds, UI labels, and docs.
-- Keep generated artifacts clearly marked so they are not confused with reviewed fixtures.
-
-## Open Decisions
-
-- Should bulk generated candidate outputs remain committed long-term, or become regenerated artifacts once extraction volume grows?
-- Should Codex grimoire cards be normalized into multiple ability records, or should full-card text remain the canonical normalized shape for now?

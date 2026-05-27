@@ -2,9 +2,7 @@
 
 ## Current Status
 
-Canonical SRD data should be stored as reviewed versioned JSON and validated with Zod. The initial schema lives in `src/srd/schema.ts`; canonical fixture data lives in kind-specific JSON files under `data/srd/fixtures/`.
-
-The representative schema/fixture spike passed automated validation and manual web review on 2026-05-25. The schema is sufficient to begin parser automation planning, while remaining provisional as full extraction reveals edge cases.
+The SRD schema is final and production-tested. All 11 entity kinds have been extracted, reviewed, and loaded in the app. The schema lives in `src/srd/schema.ts` and uses a Zod discriminated union. Canonical fixtures live in kind-specific JSON files under `data/srd/fixtures/` and are validated at app startup.
 
 Validate fixtures with:
 
@@ -12,9 +10,9 @@ Validate fixtures with:
 npm run validate:srd
 ```
 
-## Initial Requirements
+## Requirements
 
-The schema should support:
+The schema supports:
 
 - Stable IDs
 - Original SRD display text
@@ -22,24 +20,14 @@ The schema should support:
 - Categories and subcategories
 - Tags
 - Relationships between entries
-- Review state
-- Source information, including page references where available
+- Review state (`extracted`, `reviewed`, `corrected`)
+- Source information, including PDF page references
 
-## Extraction Spike Implications
+## Entity Kinds
 
-The 2026-05-24 extraction spike suggests the first schema should account for:
+The schema is a discriminated union over `kind`.
 
-- `source.page` because Poppler extraction is page-aware and manual review benefits from page references.
-- `review.status` because spacing, headings, and table rows require correction.
-- Separate entity shapes for prose rules, classes, subclasses, equipment, and domain cards.
-- Preserved original text plus normalized fields.
-- Table-derived records with fields for wrapped names and wrapped feature text.
-
-## Initial Entity Kinds
-
-The first schema is a discriminated union over `kind`.
-
-Current kinds:
+All 11 current kinds:
 
 - `rule_reference`
 - `class`
@@ -55,130 +43,47 @@ Current kinds:
 
 All entries share:
 
-- `id`
-- `kind`
-- `name`
-- `slug`
-- `source`
-- `review`
-- `text`
+- `id`, `kind`, `name`, `slug`
+- `source` (document, version, PDF page range, printed pages)
+- `review` (status, reviewedAt, notes)
+- `text` (original, summary)
 - `tags`
 - `relationships`
 
-Kind-specific fields are added for class domains/features, subclass features, domain card level/type/recall cost, weapon stats, ancestry features, community adjectives/features, armor thresholds/score, loot type/roll data, adversary stat blocks, environment stat blocks, and rule categories/headings.
+## Kind-Specific Notes
 
-Environment schema notes:
+**Environment** — `difficulty` may be a positive integer or `"special"` when the SRD lists `Difficulty: Special`. Special difficulty details are preserved in `text.original` and feature text.
 
-- Environment `difficulty` may be a positive integer or `"special"` when the SRD lists `Difficulty: Special`.
-- Special difficulty details should be preserved in `text.original` and feature text instead of replacing them with fake numeric values.
+**Domain cards** — extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item. Codex grimoire cards currently preserve full card text as one ability item; splitting into sub-spell abilities is deferred until the app needs it.
 
-Domain card schema notes:
+**Weapons** — traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows. Damage type may be `physical`, `magic`, or `physical_or_magic` (Ghostblade).
 
-- Domain cards are extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item.
-- Codex grimoire cards currently preserve the full card text in one ability item. Splitting grimoire sub-spells into separate ability records is deferred until the app needs sub-spell rendering or search.
-
-Weapon schema notes:
-
-- Weapon traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows.
-- Weapon damage types include `physical`, `magic`, and `physical_or_magic` for Ghostblade.
-- Adversary attack damage types also include `physical_or_magic` when the SRD lists `phy/mag`.
-- Adversary attack modifiers may be numeric or a dice expression such as `+2d4` when the SRD lists a variable attack modifier.
-
-## Future Mechanical Effects
-
-The character builder will eventually need some feature text as processable data. Keep preserved SRD text as the display/source-of-truth field, but later add optional normalized mechanical effects for obvious static modifiers.
-
-Initial effect candidates:
-
-- Evasion modifiers, such as `+1 to Evasion` or `-2 to Evasion`.
-- Trait modifiers, such as `-1 to Agility`.
-- Spellcast Roll modifiers, such as `+1 to Spellcast Rolls`.
-
-Do not model a full rules engine yet. Complex, triggered, conditional, or narrative effects should remain text-only until the character builder has concrete requirements for them.
+**Adversaries** — attack damage type also supports `physical_or_magic` (SRD `phy/mag`). Attack modifiers may be a numeric integer or a dice expression string (e.g. `+2d4`).
 
 ## Relationships
 
-SRD entries can link to other entries through `relationships`.
+SRD entries link to other entries through the `relationships` field.
 
-Relationship fields:
+Relationship fields: `type`, `targetId`, `label`.
 
-- `type`
-- `targetId`
-- `label`
+Current relationship types: `class`, `subclass`, `rule`, `domain_card`, `weapon`, `ancestry`, `community`, `armor`, `loot`, `adversary`, `environment`, `related`.
 
-Current relationship types:
-
-- `class`
-- `subclass`
-- `rule`
-- `domain_card`
-- `weapon`
-- `ancestry`
-- `community`
-- `armor`
-- `loot`
-- `adversary`
-- `environment`
-- `related`
-
-Validation requires every relationship target to exist in the same entry collection. Mechanical references are still preserved, such as `class.subclassIds` and `subclass.classId`; the UI derives related-entry navigation from both explicit relationships and these mechanical references.
+Validation requires every relationship target to exist in the combined entry collection. Mechanical references (`class.subclassIds`, `subclass.classId`, `environment.potentialAdversaryIds`) are preserved in parallel; the UI derives related-entry navigation from both.
 
 ## Source References
 
-Each entry stores both PDF page range and printed SRD pages:
+Each entry stores both PDF and printed page references:
 
-- `source.pdf.pageStart`
-- `source.pdf.pageEnd`
-- `source.printedPages`
+- `source.pdf.pageStart` / `source.pdf.pageEnd` — 1-based physical PDF page indexes used by extraction tools.
+- `source.printedPages` — printed SRD page numbers used for human review.
 
-`source.pdf.pageStart` and `source.pdf.pageEnd` are 1-based physical PDF page indexes used by extraction tools such as Poppler. They are not the same as the printed SRD page numbers visible in the document layout or some PDF viewers.
+Source references are stored in fixtures but not shown in the compendium UI. They are available for review and admin tooling.
 
-`source.printedPages` stores the printed SRD page numbers used for human review. Source page references should appear only in review/admin surfaces for now, not the normal compendium UI.
+## Future: Mechanical Effects
 
-For example, physical PDF page 20 contains the spread with printed SRD pages 38 and 39.
-
-## Candidate Record Shape
-
-```json
-{
-  "id": "spell.example-name",
-  "type": "spell",
-  "name": "Example Name",
-  "slug": "example-name",
-  "source": {
-    "document": "Daggerheart SRD",
-    "version": "1.0-2025-09-09",
-    "pdf": {
-      "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
-      "pageStart": 1,
-      "pageEnd": 1
-    },
-    "printedPages": [1],
-    "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
-  },
-  "review": {
-    "status": "extracted",
-    "reviewedAt": null,
-    "notes": []
-  },
-  "text": {
-    "original": "Original SRD wording goes here."
-  },
-  "metadata": {
-    "tags": []
-  },
-  "relationships": [
-    {
-      "type": "rule",
-      "targetId": "rule.core.hope",
-      "label": "Hope"
-    }
-  ]
-}
-```
+The character builder will eventually need some feature text as processable data. Keep preserved SRD text as the source-of-truth field; later add optional normalized mechanical effects for simple static modifiers (Evasion, trait, Spellcast Roll bonuses). Do not model a full rules engine yet.
 
 ## Open Questions
 
-- Should source page references be mandatory for all generated candidates?
-- Which fields are missing once parser-generated candidates cover the full SRD?
-- How should relationships between entries be represented beyond tags and IDs?
+- Should bulk generated extraction outputs remain committed long-term, or become regenerated artifacts when the SRD changes?
+- Should Codex grimoire cards be split into separate ability records per sub-spell, or is full-card text sufficient until sub-spell rendering is needed?

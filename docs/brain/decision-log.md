@@ -4,766 +4,315 @@
 
 Status: Accepted
 
-Context:
+Context: The project needs durable memory before implementation begins.
 
-The project needs durable memory before implementation begins.
+Decision: Use repo-local Markdown files under `docs/brain/` as the project second brain. Use ADRs for durable decisions and `decision-log.md` for smaller chronological decisions.
 
-Decision:
-
-Use repo-local Markdown files under `docs/brain/` as the project second brain. Use ADRs for durable decisions and `decision-log.md` for smaller chronological decisions.
-
-Consequences:
-
-Project context remains versionable, readable, and easy to update without extra tooling.
+Consequences: Project context remains versionable, readable, and easy to update without extra tooling.
 
 ## 2026-05-24 - Target iOS Android And Web
 
 Status: Accepted
 
-Context:
+Context: The app should be available across mobile and web clients.
 
-The app should be available across mobile and web clients.
+Decision: Target iOS, Android, and web.
 
-Decision:
-
-Target iOS, Android, and web.
-
-Consequences:
-
-The technical stack should favor shared code across these platforms.
+Consequences: The technical stack should favor shared code across these platforms.
 
 ## 2026-05-24 - Offline-First Direction
 
 Status: Accepted
 
-Context:
+Context: The app should work offline where possible, but live campaign play requires networked real-time updates.
 
-The app should work offline where possible, but live campaign play requires networked real-time updates.
+Decision: Design the app as offline-first for compendium and character ownership workflows, while treating playable campaign mode as online real-time functionality.
 
-Decision:
-
-Design the app as offline-first for compendium and character ownership workflows, while treating playable campaign mode as online real-time functionality.
-
-Consequences:
-
-Local storage, sync, conflict handling, and cached SRD data are core architectural concerns.
+Consequences: Local storage, sync, conflict handling, and cached SRD data are core architectural concerns.
 
 ## 2026-05-24 - User Accounts Required
 
 Status: Accepted
 
-Context:
+Context: Characters belong to users and must be distinguishable across devices and campaigns.
 
-Characters belong to users and must be distinguishable across devices and campaigns.
+Decision: User accounts are required.
 
-Decision:
-
-User accounts are required.
-
-Consequences:
-
-Authentication, ownership rules, and cloud sync must be part of the architecture.
+Consequences: Authentication, ownership rules, and cloud sync must be part of the architecture.
 
 ## 2026-05-24 - Personal Use Initial Scope
 
 Status: Accepted
 
-Context:
+Context: The initial project is not intended for public commercial distribution.
 
-The initial project is not intended for public commercial distribution.
+Decision: Treat the project as personal use only for now.
 
-Decision:
-
-Treat the project as personal use only for now.
-
-Consequences:
-
-Scope can remain focused, but license obligations must still be tracked and respected.
+Consequences: Scope can remain focused, but license obligations must still be tracked and respected.
 
 ## 2026-05-24 - Use Official SRD PDF As Data Source
 
 Status: Accepted
 
-Context:
+Context: Daggerheart SRD content is available as a PDF.
 
-Daggerheart SRD content is available as a PDF.
+Decision: Use the official Daggerheart SRD PDF from Critical Role/Darrington Press as the primary data source.
 
-Decision:
-
-Use the official Daggerheart SRD PDF from Critical Role/Darrington Press as the primary data source.
-
-Consequences:
-
-The project needs a PDF extraction, normalization, and manual review workflow.
+Consequences: The project needs a PDF extraction, normalization, and manual review workflow.
 
 ## 2026-05-24 - Preserve SRD Wording And Normalize Structure
 
 Status: Accepted
 
-Context:
+Context: The app needs accurate rules text and structured searchable data.
 
-The app needs accurate rules text and structured searchable data.
+Decision: Preserve original SRD wording for rules text while normalizing names, tags, mechanics, domains, tiers, and related fields into structured data.
 
-Decision:
-
-Preserve original SRD wording for rules text while normalizing names, tags, mechanics, domains, tiers, and related fields into structured data.
-
-Consequences:
-
-Data records should separate display text from normalized metadata and rule relationships.
+Consequences: Data records should separate display text from normalized metadata and rule relationships.
 
 ## 2026-05-24 - Extracted Data Must Be Reviewed
 
 Status: Accepted
 
-Context:
+Context: PDF extraction can introduce subtle errors.
 
-PDF extraction can introduce subtle errors.
+Decision: Treat extracted SRD data as untrusted until manually reviewed. Fix extraction mistakes immediately when found.
 
-Decision:
-
-Treat extracted SRD data as untrusted until manually reviewed. Fix extraction mistakes immediately when found.
-
-Consequences:
-
-Canonical app data must have a review status, and ingestion should support correction workflows.
+Consequences: Canonical app data must have a review status, and ingestion should support correction workflows.
 
 ## 2026-05-24 - Use Expo React Native And TypeScript
 
 Status: Accepted
 
-Context:
+Context: The app must target iOS, Android, and web from one pragmatic codebase.
 
-The app must target iOS, Android, and web from one pragmatic codebase.
+Decision: Use Expo, React Native, TypeScript, and Expo Router for the app shell and navigation.
 
-Decision:
-
-Use Expo, React Native, TypeScript, and Expo Router for the app shell and navigation.
-
-Consequences:
-
-The project can share most UI and application logic across mobile and web while keeping a strong TypeScript foundation.
+Consequences: The project can share most UI and application logic across mobile and web while keeping a strong TypeScript foundation.
 
 ## 2026-05-24 - Use Supabase Backend
 
 Status: Accepted
 
-Context:
+Context: The app needs auth, user-owned data, cloud sync, Postgres data modeling, and realtime campaign updates. Supabase Free was checked and is suitable for the personal-use scope.
 
-The app needs auth, user-owned data, cloud sync, Postgres data modeling, and realtime campaign updates. Supabase Free was checked and is suitable for the personal-use scope.
+Decision: Use Supabase as the backend, including Supabase Auth, Postgres, Realtime, and Row Level Security.
 
-Decision:
-
-Use Supabase as the backend, including Supabase Auth, Postgres, Realtime, and Row Level Security.
-
-Consequences:
-
-The app gets a familiar hosted backend with strong ownership modeling. Free-tier caveats remain: no automatic backups, project pausing after inactivity, storage limits, and auth email restrictions.
+Consequences: The app gets a familiar hosted backend with strong ownership modeling. Free-tier caveats remain: no automatic backups, project pausing after inactivity, storage limits, and auth email restrictions.
 
 ## 2026-05-24 - Use Zod For Runtime Validation
 
 Status: Accepted
 
-Context:
+Context: The project will process extracted PDF data, local data, backend payloads, and synced character/campaign state. TypeScript alone cannot validate runtime data.
 
-The project will process extracted PDF data, local data, backend payloads, and synced character/campaign state. TypeScript alone cannot validate runtime data.
+Decision: Use Zod for runtime schemas and validation.
 
-Decision:
-
-Use Zod for runtime schemas and validation.
-
-Consequences:
-
-SRD extraction, canonical data, app inputs, and sync payloads can be validated before being trusted.
+Consequences: SRD extraction, canonical data, app inputs, and sync payloads can be validated before being trusted.
 
 ## 2026-05-24 - Store Canonical SRD As Versioned JSON
 
 Status: Accepted
 
-Context:
+Context: The compendium should work offline and should not parse the SRD PDF at runtime.
 
-The compendium should work offline and should not parse the SRD PDF at runtime.
+Decision: Store reviewed canonical SRD data as versioned JSON bundled locally with the app.
 
-Decision:
-
-Store reviewed canonical SRD data as versioned JSON bundled locally with the app.
-
-Consequences:
-
-The compendium can be local-first. JSON data must be schema-validated and reviewed before becoming canonical.
+Consequences: The compendium can be local-first. JSON data must be schema-validated and reviewed before becoming canonical.
 
 ## 2026-05-24 - Use Admin-Managed Email Password Auth
 
 Status: Accepted
 
-Context:
+Context: The project is personal use only. Supabase default auth emails are restricted without custom SMTP. The user is comfortable manually creating users and passwords in Supabase.
 
-The project is personal use only. Supabase default auth emails are restricted without custom SMTP. The user is comfortable manually creating users and passwords in Supabase.
+Decision: Use Supabase email/password authentication with admin-managed accounts. Disable app signup and omit forgot-password flows initially.
 
-Decision:
-
-Use Supabase email/password authentication with admin-managed accounts. Disable app signup and omit forgot-password flows initially.
-
-Consequences:
-
-No auth email provider is required for MVP. Users cannot self-register or self-reset passwords until a later auth upgrade.
+Consequences: No auth email provider is required for MVP. Users cannot self-register or self-reset passwords until a later auth upgrade.
 
 ## 2026-05-24 - Run PDF Extraction Spike Before Full Parser
 
 Status: Accepted
 
-Context:
+Context: The SRD PDF is a major project risk. Starting only with handcrafted data could hide extraction issues, while building a full parser before the schema is proven could waste effort.
 
-The SRD PDF is a major project risk. Starting only with handcrafted data could hide extraction issues, while building a full parser before the schema is proven could waste effort.
+Decision: Run a limited PDF extraction spike on representative SRD sections before the first compendium prototype. Then define an initial schema, create a tiny fixture dataset, build the prototype, and defer the full parser until the schema and prototype are proven.
 
-Decision:
-
-Run a limited PDF extraction spike on representative SRD sections before the first compendium prototype. Then define an initial schema, create a tiny fixture dataset, build the prototype, and defer the full parser until the schema and prototype are proven.
-
-Consequences:
-
-The project learns about PDF extraction quality early while keeping the parser guided by app data needs.
+Consequences: The project learns about PDF extraction quality early while keeping the parser guided by app data needs.
 
 ## 2026-05-24 - Accept September 9 2025 SRD PDF As Current Source
 
 Status: Accepted
 
-Context:
+Context: The official Daggerheart SRD page currently links `Daggerheart-SRD-9-09-25.pdf` and labels it Daggerheart System Reference Document v1.0 with a September-9 changelog.
 
-The official Daggerheart SRD page currently links `Daggerheart-SRD-9-09-25.pdf` and labels it Daggerheart System Reference Document v1.0 with a September-9 changelog.
+Decision: Use the official September 9, 2025 SRD PDF as the current canonical source document for extraction and review.
 
-Decision:
-
-Use the official September 9, 2025 SRD PDF as the current canonical source document for extraction and review.
-
-Consequences:
-
-The local source PDF lives at `data/source/Daggerheart-SRD-9-09-25.pdf`, and all extracted SRD data must be checked against this document unless a newer official source replaces it.
+Consequences: The local source PDF lives at `data/source/Daggerheart-SRD-9-09-25.pdf`, and all extracted SRD data must be checked against this document unless a newer official source replaces it.
 
 ## 2026-05-24 - Use Initial Zod SRD Discriminated Union
 
 Status: Accepted
 
-Context:
+Context: The project needs an app-ready target shape before building the full PDF parser. The extraction spike showed that prose and structured data need validation and review metadata.
 
-The project needs an app-ready target shape before building the full PDF parser. The extraction spike showed that prose and structured data need validation and review metadata.
+Decision: Use a TypeScript/Zod discriminated union for initial SRD entries with shared base fields and kind-specific fields.
 
-Decision:
-
-Use a TypeScript/Zod discriminated union for initial SRD entries with shared base fields and kind-specific fields for `rule_reference`, `class`, `subclass`, `domain_card`, and `weapon`.
-
-Consequences:
-
-The first fixture can be validated with `npm run validate:srd`, and future parser work has a concrete JSON target.
+Consequences: Fixtures can be validated with `npm run validate:srd`, and parser work has a concrete JSON target.
 
 ## 2026-05-24 - Build First Prototype With Expo Router
 
 Status: Accepted
 
-Context:
+Context: The project needs a runnable app shell before building the first compendium prototype.
 
-The project needs a runnable app shell before building the first compendium prototype.
+Decision: Use Expo Router at the repository root with routes for home, compendium list/search/filter, and compendium detail. Use plain React Native components for the prototype and avoid adding a UI kit for now.
 
-Decision:
-
-Use Expo Router at the repository root with routes for home, compendium list/search/filter, and compendium detail. Use plain React Native components for the prototype and avoid adding a UI kit for now.
-
-Consequences:
-
-The prototype can validate navigation, local fixture loading, search, filters, and detail rendering before adding Supabase, character builder, campaign mode, or a design system.
+Consequences: The prototype can validate navigation, local fixture loading, search, filters, and detail rendering before adding Supabase, character builder, campaign mode, or a design system.
 
 ## 2026-05-24 - Add SRD Relationship Links
 
 Status: Accepted
 
-Context:
+Context: The compendium needs convenient navigation between related entries, especially classes, subclasses, and relevant rules.
 
-The compendium needs convenient navigation between related entries, especially classes, subclasses, and relevant rules.
+Decision: Add a generic `relationships` field to SRD entries, validate that relationship targets exist, and render related entries on detail pages. Continue to keep mechanical references like `class.subclassIds` and `subclass.classId` and derive links from them.
 
-Decision:
-
-Add a generic `relationships` field to SRD entries, validate that relationship targets exist, and render related entries on detail pages. Continue to keep mechanical references like `class.subclassIds` and `subclass.classId` and derive links from them.
-
-Consequences:
-
-Broken links fail fixture validation, and the prototype supports class-to-subclass, subclass-to-class, and entry-to-rule navigation without implementing inline rich-text links yet.
+Consequences: Broken links fail fixture validation, and the compendium supports class-to-subclass, subclass-to-class, and entry-to-rule navigation without implementing inline rich-text links yet.
 
 ## 2026-05-25 - Align Entity Names With SRD Wording
 
 Status: Accepted
 
-Context:
+Context: The SRD uses `ancestry` and `community` for heritage and origin concepts. Earlier project notes used mixed terms such as species/background.
 
-The SRD uses `ancestry` and `community` for heritage and origin concepts. Earlier project notes used mixed terms such as species/background, creating ambiguity in schema and UI naming.
+Decision: Use official SRD wording for all app and data entity names (`ancestry`, `community`, `domain_card`, etc.).
 
-Decision:
-
-Use official SRD wording for app and data entity names. Model these concepts as `ancestry` and `community`; do not introduce `species` or `background` as equivalent entity kinds.
-
-Consequences:
-
-Schema, fixtures, filters, UI labels, and docs should stay aligned with official SRD terminology. Background questions remain class/subclass content unless the SRD defines a separate background entity later.
+Consequences: Schema, fixtures, filters, UI labels, and docs stay aligned with official SRD terminology.
 
 ## 2026-05-25 - Model Consumables As Loot Entries
 
 Status: Accepted
 
-Context:
+Context: The SRD defines loot as comprising consumables and reusable items. The compendium needs to distinguish them without a separate top-level entity kind.
 
-The SRD defines loot as comprising consumables and reusable items. The compendium needs to distinguish single-use consumables from reusable loot without inventing a separate top-level SRD entity name.
+Decision: Use `loot` as the SRD entry kind for both reusable items and consumables. Add a normalized `lootType` field with `item` and `consumable` values.
 
-Decision:
-
-Use `loot` as the SRD entry kind for both reusable items and consumables. Add a normalized `lootType` field with `item` and `consumable` values.
-
-Consequences:
-
-The app preserves SRD terminology while still supporting filters, display, and future character inventory rules that need to know whether loot is consumed on use.
-
-## 2026-05-25 - Schema Fixture Spike Complete
-
-Status: Accepted
-
-Context:
-
-The compendium needed representative schema and fixture coverage across major SRD entry families before parser automation could be planned responsibly.
-
-Decision:
-
-Accept the expanded schema/fixture coverage as sufficient for parser automation planning. The representative fixture set passes `npm run validate:srd`, `npm run typecheck`, `npx expo-doctor`, and manual web review with `npm run web`.
-
-Consequences:
-
-Future work can move from schema discovery into parser automation planning and first-slice implementation. Parser output must still be treated as extracted and unreviewed until manually checked against the SRD PDF.
+Consequences: The app preserves SRD terminology while still supporting loot-type filters and future character inventory rules.
 
 ## 2026-05-25 - Commit Small Generated Candidate Batches
 
 Status: Accepted
 
-Context:
+Context: Parser automation needs visible generated output for review, validation, and iteration, but full extraction may eventually produce large generated artifacts.
 
-Parser automation needs visible generated output for review, validation, and iteration, but full extraction may eventually produce large generated artifacts.
+Decision: Commit small generated candidate data batches for parser slices. Reconsider ignoring or regenerating bulk generated output once full extraction volume and review workflow are clearer.
 
-Decision:
-
-Commit small generated candidate data batches for parser slices. Reconsider ignoring or regenerating bulk generated output once full extraction volume and review workflow are clearer.
-
-Consequences:
-
-Early parser output remains versioned and reviewable. Generated data must stay clearly marked as candidate data and must not be confused with reviewed canonical fixtures.
+Consequences: Early parser output remains versioned and reviewable. Generated data must stay clearly marked and must not be confused with reviewed canonical fixtures.
 
 ## 2026-05-25 - Reuse SRD Validator For Candidate Files
 
 Status: Accepted
 
-Context:
+Context: Both reviewed fixtures and generated candidate files must match the same `SrdEntryCollectionSchema`.
 
-Both reviewed fixtures and generated candidate files must match the same `SrdEntryCollectionSchema` before app or review workflows trust their structure.
+Decision: Extend the existing SRD validation script so it can validate the default fixture file or an arbitrary SRD JSON path. When validating a candidates file, merge with fixture context so cross-kind ID references resolve correctly.
 
-Decision:
-
-Extend the existing SRD validation script so it can validate the default fixture file or an arbitrary SRD JSON path, rather than creating a separate validator implementation.
-
-Consequences:
-
-Validation logic stays centralized. Candidate validation can be exposed through package scripts while preserving the existing `npm run validate:srd` fixture workflow.
+Consequences: Validation logic stays centralized. Candidate validation is exposed through package scripts while preserving the existing `npm run validate:srd` workflow.
 
 ## 2026-05-25 - Use Risk-Based Candidate Review
 
 Status: Accepted
 
-Context:
+Context: Manually reviewing every generated SRD record with equal depth would not scale.
 
-Manually reviewing every generated SRD record with equal depth would not scale once parser automation expands beyond small slices. Early parser slices still need close review to calibrate extraction and cleanup behavior.
+Decision: Use full manual review for early calibration slices, then shift toward risk-based review: spot-check normal entries, fully review entries with parser warnings or suspicious tokens.
 
-Decision:
-
-Use full manual review for early calibration slices, then shift toward risk-based review: spot-check normal entries, fully review entries with parser warnings or suspicious tokens, and fully review high-risk mechanical content before promotion.
-
-Consequences:
-
-Parser output should include review notes or reports that identify cleanup actions and suspicious extraction artifacts. Automated validation remains mandatory for every generated batch, but validation does not replace human review for risky or flagged entries.
-
-## 2026-05-25 - Accept First Report-Driven Rule Reference Batch
-
-Status: Accepted
-
-Context:
-
-The first generated rule-reference batch covered 8 entries from `Hope & Fear` and adjacent combat rules. The generated review report identified cleanup actions and no suspicious tokens, and manual spot-check review found no flaws.
-
-Decision:
-
-Mark the 8 reviewed generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
-
-Consequences:
-
-The parser now preserves accepted review state for those generated entries when rerun. Newly added generated entries remain `extracted` until reviewed.
-
-## 2026-05-25 - Accept Second Report-Driven Rule Reference Batch
-
-Status: Accepted
-
-Context:
-
-The second generated rule-reference batch added 8 page-21 prose entries covering resistance, multi-target attacks, multiple damage sources, range and movement, line of sight, and temporary tags. The generated review report identified cleanup actions and no suspicious tokens, and manual review found no flaws.
-
-Decision:
-
-Mark the second 8 generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
-
-Consequences:
-
-All 16 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser slice should keep to prose-first `rule_reference` extraction, with Downtime as the recommended next target.
-
-## 2026-05-25 - Accept Downtime Rule Reference Batch
-
-Status: Accepted
-
-Context:
-
-The dedicated Downtime parser slice added 2 page-21 prose entries covering downtime moves and downtime consequences. The generated review report identified cleanup actions for the list-heavy Downtime entry, no suspicious tokens, and manual review found no flaws in either Downtime entry.
-
-Decision:
-
-Mark `rule.combat.downtime` and `rule.combat.downtime_consequences` as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
-
-Consequences:
-
-All 18 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should choose another small prose-first `rule_reference` slice before moving to table-heavy or entity-specific extraction.
-
-## 2026-05-25 - Expand Prose Rule Reference Parser Before Tables
-
-Status: Accepted
-
-Context:
-
-The parser is calibrated for small prose-first `rule_reference` sections, and the Downtime slice was accepted without flaws. The next SRD pages include another prose-heavy rules page followed immediately by equipment tables, which are a different extraction problem.
-
-Decision:
-
-Move moderately faster by adding the full physical page-22 prose slice for Death, Additional Rules, Leveling Up, and Multiclassing before starting table-heavy or entity-specific extraction. Enhance the generated review report with text lengths and previews to make risk-based review faster.
-
-Consequences:
-
-The parser now produces 33 generated rule-reference candidates: 18 reviewed candidates and 15 extracted page-22 candidates pending review. Equipment tables and structured entity extraction remain deferred until the larger prose slice is reviewed.
-
-## 2026-05-25 - Accept Page 22 Prose Rule Reference Batch
-
-Status: Accepted
-
-Context:
-
-The expanded page-22 prose parser slice added 15 entries covering Death, Additional Rules, Leveling Up, and Multiclassing. The generated review report identified cleanup actions, no suspicious tokens, and manual review found no flaws.
-
-Decision:
-
-Mark the 15 page-22 generated candidates as `reviewed` with review notes indicating report-driven manual review accepted the batch on 2026-05-25.
-
-Consequences:
-
-All 33 generated rule-reference candidates are now reviewed and preserved as reviewed when the parser is rerun. The next parser work should plan a narrow table-extraction spike before producing equipment or other entity candidates.
-
-## 2026-05-25 - Resolve SRD Data Workflow Questions
-
-Status: Accepted
-
-Context:
-
-The project needs clearer rules for source references, generated artifacts, promotion timing, canonical data layout, and review effort before table extraction expands.
-
-Decision:
-
-Show source page references only in review or admin surfaces, not the normal compendium UI. Regenerate extraction output when the source SRD changes. Split canonical reviewed SRD data by entity kind before promoting reviewed generated candidates. Treat license obligations as non-blocking for personal use, but revisit them before any distribution. Minimize manual review by applying conservative parser cleanup and using reports to flag risky rows.
-
-Consequences:
-
-The normal app UI should hide source references for now, while source metadata remains in data and reports. The first promotion target should be split canonical fixture files. Generated table outputs should stay separate by kind with dedicated review reports during calibration.
+Consequences: Parser output should include review reports that flag risky rows. Automated validation remains mandatory but does not replace review for flagged entries.
 
 ## 2026-05-25 - Defer Structured Mechanical Effects
 
 Status: Accepted
 
-Context:
+Context: Armor and other entries have feature text like `+1 to Evasion`. A future character builder will need some of these as processable values, but modeling every feature now would risk building a premature rules engine.
 
-Armor table extraction produces feature text such as `Flexible: +1 to Evasion` and `Very Heavy: -2 to Evasion; -1 to Agility`. A future character builder will need some of these bonuses as processable values, but modeling every conditional feature now would risk building a premature rules engine.
+Decision: Preserve SRD feature text as the current source of truth. Later, add optional normalized mechanical effects for simple static modifiers (Evasion, trait, Spellcast Roll). Leave complex or narrative effects as text until the character builder needs them.
 
-Decision:
+Consequences: The current parsers remain text-first. A future schema slice should add a small `effects` model before character-builder calculations depend on equipment data.
 
-Preserve SRD feature text as the current source of truth. Later, add optional normalized mechanical effects for simple static modifiers, such as Evasion, trait, and Spellcast Roll bonuses or penalties. Leave complex, triggered, conditional, or narrative effects as text until the character builder needs them.
-
-Consequences:
-
-The current armor parser can remain text-first. A future schema/parser slice should add a small `effects` model for obvious static modifiers before character-builder calculations depend on equipment data.
-
-## 2026-05-25 - Accept And Promote Reviewed Generated Candidates
+## 2026-05-25 - Split Canonical SRD Data By Kind
 
 Status: Accepted
 
-Context:
+Context: Promoting all generated candidates into one large fixture file would make diffs large and review slow.
 
-All 33 generated rule-reference candidates were reviewed, and the armor parser produced 34 armor candidates with no parser warnings. The user spot-checked armor rows and found no flaws. Canonical fixture data is now split by kind, making promotion targeted and reviewable.
+Decision: Split canonical reviewed SRD data into kind-specific JSON files under `data/srd/fixtures/` before promoting any reviewed generated candidates.
 
-Decision:
-
-Promote reviewed rule-reference candidates into `data/srd/fixtures/rule-references.json`. Mark the 34 armor candidates as `reviewed`, preserve that review state in `scripts/extract-armor.ts`, and promote them into `data/srd/fixtures/armor.json`.
-
-Consequences:
-
-Canonical fixtures now contain the reviewed prose rule-reference slice and the full reviewed armor table. The next parser work should use the armor parser/report pattern for a separate weapon table spike before any bulk equipment extraction.
-
-## 2026-05-25 - Add First Weapon Table Parser Spike
-
-Status: Accepted
-
-Context:
-
-Armor table extraction proved the table parser/report pattern. Weapon tables are larger and include more wrapped names and feature text, so they should be extracted in a narrow slice before bulk equipment extraction.
-
-Decision:
-
-Add `scripts/extract-weapons.ts` to generate the Tier 1 primary weapon table from physical PDF page 23 into `data/srd/generated/weapons.candidates.json`, with a dedicated report at `data/srd/generated/weapons-review-report.md`. Keep generated weapon candidates marked `extracted` until reviewed.
-
-Consequences:
-
-The parser now produces a separate 25-entry weapon candidate batch for risk-based review. Weapon extraction beyond Tier 1 primary weapons remains deferred until this slice is accepted.
-
-## 2026-05-25 - Accept Tier 1 Primary Weapon Batch
-
-Status: Accepted
-
-Context:
-
-The first weapon parser spike generated 25 Tier 1 primary weapon candidates from physical PDF page 23. The generated review report showed no parser warnings, and manual review/spot-checking found no flaws so far.
-
-Decision:
-
-Mark the 25 Tier 1 primary weapon candidates as `reviewed`, preserve that review state in `scripts/extract-weapons.ts`, and promote them into `data/srd/fixtures/weapons.json`.
-
-Consequences:
-
-Canonical fixtures now contain the reviewed Tier 1 primary weapon table. The next weapon parser work should expand to the next narrow weapon slice, likely Tier 2 primary weapons, before attempting full weapon extraction.
-
-## 2026-05-25 - Expand To Full Weapon Extraction
-
-Status: Accepted
-
-Context:
-
-The Tier 1 primary weapon parser slice was accepted and promoted. The user requested moving to full weapon extraction rather than continuing narrow weapon slices.
-
-Decision:
-
-Expand `scripts/extract-weapons.ts` to parse physical PDF pages 23-28 with `pdftohtml -xml`, covering primary weapons, secondary weapons, and combat wheelchair weapon rows. Add schema support for weapon-only `spellcast` trait rows and `physical_or_magic` damage. Preserve the accepted Tier 1 primary weapon review state while leaving newly generated weapons marked `extracted`.
-
-Consequences:
-
-The weapon candidate file now contains 204 weapon entries: 25 reviewed and 179 extracted pending review. The next step is risk-based review of the full weapon report before promotion.
-
-## 2026-05-25 - Accept Full Weapon Batch
-
-Status: Accepted
-
-Context:
-
-The full weapon parser produced 204 weapon candidates across physical PDF pages 23-28. The generated report showed no parser warnings after fixing the Heavy Frame / Arcane Frame section boundary, and the user smoke-tested weapons without finding flaws.
-
-Decision:
-
-Mark the full 204-entry weapon candidate batch as `reviewed`, preserve that review state in `scripts/extract-weapons.ts`, and promote the reviewed candidates into `data/srd/fixtures/weapons.json`.
-
-Consequences:
-
-Canonical fixtures now contain reviewed rule references, armor, and the full weapon table set. The next parser target should stay equipment-adjacent with loot and consumables before moving to harder entity families.
-
-## 2026-05-26 - Add First Loot And Consumable Parser Slice
-
-Status: Accepted
-
-Context:
-
-Reviewed generated rule-reference, armor, and weapon candidates were already promoted into canonical split fixtures. The next parser target needed to stay equipment-adjacent while exercising another table-heavy extraction shape before moving to more complex entity families.
-
-Decision:
-
-Add `scripts/extract-loot.ts` to parse loot and consumable tables from physical PDF pages 30-32 with `pdftohtml -xml`, generating `data/srd/generated/loot.candidates.json` and `data/srd/generated/loot-review-report.md`. Keep all generated loot candidates marked `extracted` until reviewed.
-
-Consequences:
-
-The parser now produces a 120-entry loot candidate batch: 60 reusable items and 60 consumables. The next step is report-driven manual review, especially around wrapped names, wrapped descriptions, the page-31 section boundary, and the page-32 continuation near unrelated Gold and GM text.
-
-## 2026-05-26 - Accept Full Loot And Consumable Batch
-
-Status: Accepted
-
-Context:
-
-The first loot/consumable parser slice produced 120 candidates across physical PDF pages 30-32. The generated review report showed no parser warnings, and the user spot-checked the batch without finding flaws.
-
-Decision:
-
-Mark the full 120-entry loot batch as `reviewed`, preserve that review state in `scripts/extract-loot.ts`, and promote the reviewed candidates into `data/srd/fixtures/loot.json`.
-
-Consequences:
-
-Canonical fixtures now contain reviewed rule references, armor, weapons, and the full loot/consumable set. The next parser work should move to ancestries and communities before attempting more complex entity families.
-
-## 2026-05-26 - Add First Ancestry And Community Parser Slice
-
-Status: Accepted
-
-Context:
-
-Reviewed generated rule-reference, armor, weapon, and loot candidates were already promoted into canonical split fixtures. The next parser target needed to exercise prose/card-like entity extraction before moving to larger classes, domain cards, adversaries, or environments.
-
-Decision:
-
-Add `scripts/extract-ancestries-communities.ts` to parse ancestry and community sections from physical PDF pages 14-18 with `pdftotext -raw`, generating separate ancestry and community candidate files and review reports. Keep all generated ancestry/community candidates marked `extracted` until reviewed. Do not emit `Mixed Ancestry` as an ancestry candidate in this slice because the current ancestry schema models feature-bearing ancestry cards.
-
-Consequences:
-
-The parser now produces 18 ancestry candidates and 9 community candidates for report-driven manual review. The next step is risk-based review of those reports, including a decision on how to model `Mixed Ancestry`, before promotion into canonical split fixtures.
-
-## 2026-05-26 - Accept Ancestry And Community Batch
-
-Status: Accepted
-
-Context:
-
-The first ancestry/community parser slice produced 18 ancestry candidates and 9 community candidates across physical PDF pages 14-18. The generated review reports showed no parser warnings, and the user reviewed the batch without finding flaws.
-
-Decision:
-
-Mark the full ancestry/community batch as `reviewed`, preserve that review state in `scripts/extract-ancestries-communities.ts`, and promote the reviewed candidates into `data/srd/fixtures/ancestries.json` and `data/srd/fixtures/communities.json`.
-
-Consequences:
-
-Canonical fixtures now contain reviewed rule references, armor, weapons, loot, ancestries, and communities. `Mixed Ancestry` remains an open modeling question because it was intentionally skipped by the ancestry parser slice.
-
-## 2026-05-26 - Model Mixed Ancestry As Rule Reference Candidate
-
-Status: Accepted
-
-Context:
-
-The ancestry/community parser intentionally skipped `Mixed Ancestry` because the ancestry schema models feature-bearing ancestry cards, while `Mixed Ancestry` is a procedure for representing characters descended from multiple ancestries.
-
-Decision:
-
-Model `Mixed Ancestry` as a generated `rule_reference` candidate with ID `rule.character_creation.mixed_ancestry`, generated by `scripts/extract-rule-references.ts` into the existing rule-reference candidate file and review report.
-
-Consequences:
-
-No special ancestry schema shape is needed for this section. The candidate belongs to the normal rule-reference review and promotion workflow.
-
-## 2026-05-26 - Accept And Promote Mixed Ancestry Rule Reference
-
-Status: Accepted
-
-Context:
-
-The user reviewed the `Mixed Ancestry` rule-reference candidate and found no flaws. A separate one-entry Mixed Ancestry candidate file added unnecessary workflow noise because the entry is just another `rule_reference`.
-
-Decision:
-
-Fold `Mixed Ancestry` into `scripts/extract-rule-references.ts`, keep it in `data/srd/generated/entries.candidates.json` and `data/srd/generated/review-report.md`, remove the dedicated Mixed Ancestry candidate/report files and validation script, and promote the reviewed entry into `data/srd/fixtures/rule-references.json`.
-
-Consequences:
-
-Rule-reference extraction now produces 34 reviewed candidates. `Mixed Ancestry` is canonical alongside the rest of the reviewed rule references without a one-off validation path.
+Consequences: Promotion is targeted and reviewable per entity kind. Each fixture file can be validated and diffed independently.
 
 ## 2026-05-26 - Use AI-Assisted Source Verification For Parser Review
 
 Status: Accepted
 
-Context:
+Context: Manual user review of every generated SRD parser batch was slowing parser completion.
 
-Manual user review of every generated SRD parser batch is slowing parser completion, and the project needs a reliable reviewed canonical data foundation without requiring the user to inspect every slice personally.
+Decision: Use AI-assisted source verification as an accepted review gate for generated SRD candidates. The agent may mark candidates as `reviewed` when schema validation, parser reports, deterministic reruns, and source-PDF verification pass. Parser warnings, suspicious artifacts, relationship issues, and high-risk mechanical fields must still be resolved before promotion.
 
-Decision:
-
-Use AI-assisted source verification as an accepted review gate for generated SRD candidates. The agent may mark candidates as `reviewed` when schema validation, parser reports, deterministic reruns, and source-PDF verification pass. User manual review is no longer required for every parser batch, but parser warnings, suspicious extraction artifacts, relationship issues, and high-risk mechanical fields must be resolved before promotion.
-
-Consequences:
-
-Generated candidate review reports and `review.notes` must record AI-assisted verification evidence. Canonical fixture promotion remains limited to reviewed or corrected entries, but review can now be completed by the agent when the verification gates pass.
-
-## 2026-05-26 - Accept And Promote Class/Subclass Parser Family
-
-Status: Accepted
-
-Context:
-
-The Bard class/subclass slice was the next parser calibration target because Bard, Troubadour, and Wordsmith already existed as canonical fixtures. The parser was able to extract all class and subclass entries from physical PDF pages 5-14 after the Bard calibration passed.
-
-Decision:
-
-Accept the full class/subclass parser batch generated by `scripts/extract-classes-subclasses.ts`, including 9 class candidates and 18 subclass candidates. Mark the batch as `reviewed` through AI-assisted source verification and promote the reviewed candidates into `data/srd/fixtures/classes.json` and `data/srd/fixtures/subclasses.json`.
-
-Consequences:
-
-Canonical fixtures now contain all reviewed SRD classes and subclasses. Later character-builder work still needs separate modeling for class-adjacent sheets and lists such as Beastform options and Ranger Companion rules if those need structured handling.
-
-## 2026-05-26 - Accept And Promote Domain Card Parser Family
-
-Status: Accepted
-
-Context:
-
-After classes and subclasses were promoted, domain cards were the next card-like entity family. The domain-card reference pages have a consistent `Level`, domain, type, and recall-cost pattern suitable for a generic `pdftotext -raw` parser.
-
-Decision:
-
-Accept the full domain-card parser batch generated by `scripts/extract-domain-cards.ts`, including 189 domain-card candidates across Arcana, Blade, Bone, Codex, Grace, Midnight, Sage, Splendor, and Valor. Mark the batch as `reviewed` through AI-assisted source verification and promote the reviewed candidates into `data/srd/fixtures/domain-cards.json`.
-
-Consequences:
-
-Canonical fixtures now contain the full reviewed domain-card reference set. Codex grimoire cards currently preserve full card text as one ability entry; splitting grimoires into separate sub-spell abilities is deferred until the app needs that structure.
+Consequences: Generated candidate review reports and `review.notes` must record AI-assisted verification evidence. Canonical fixture promotion remains limited to reviewed or corrected entries.
 
 ## 2026-05-26 - Support Special Environment Difficulty
 
 Status: Accepted
 
-Context:
+Context: Some environment entries list `Difficulty: Special` rather than a fixed number.
 
-The environment parser will encounter SRD entries whose difficulty is listed as `Special` rather than a fixed number. The existing environment schema only allowed positive numeric difficulty, which would force fake values or block otherwise valid environment candidates.
+Decision: Allow environment `difficulty` to be either a positive integer or the literal value `"special"`. Preserve the source explanation in `text.original` and feature text.
 
-Decision:
+Consequences: Environment extraction can remain source-faithful. App display code must treat environment difficulty as display data, not a guaranteed number.
 
-Allow environment `difficulty` to be either a positive integer or the literal value `"special"`. Preserve the source explanation for special difficulty in `text.original` and feature text.
-
-Consequences:
-
-Environment extraction can remain source-faithful for special-difficulty entries. App display code must treat environment difficulty as display data, not a guaranteed number, until a future rules engine has concrete requirements.
-
-## 2026-05-26 - Support Physical Or Magic Adversary Damage
+## 2026-05-26 - Support Physical Or Magic Damage And Variable Attack Modifiers
 
 Status: Accepted
 
-Context:
+Context: Full adversary extraction encountered `phy/mag` damage (matching the weapon edge case) and at least one attack modifier expressed as a dice expression such as `+2d4`.
 
-Full adversary extraction encountered SRD attack damage listed as `phy/mag`, matching the already modeled weapon edge case for damage that can be physical or magic.
+Decision: Allow adversary attack damage type to use the normalized value `physical_or_magic`. Allow adversary attack modifiers to be either an integer or a dice-expression string.
 
-Decision:
+Consequences: Adversary stat blocks preserve source meaning without collapsing ambiguous values. Display code must format attack modifiers as display values rather than assuming numeric.
 
-Allow adversary attack damage type to use the normalized value `physical_or_magic`.
-
-Consequences:
-
-Adversary parser output can preserve `phy/mag` source values without collapsing them to only physical or only magic damage. Future UI and rules code should display this value distinctly.
-
-## 2026-05-26 - Support Variable Adversary Attack Modifiers
+## 2026-05-26 - SRD Extraction Phase Complete
 
 Status: Accepted
 
-Context:
+Context: All 11 entity kind parsers were implemented and all generated candidates were accepted through risk-based review and AI-assisted source verification.
 
-Full adversary extraction encountered at least one attack modifier listed as a dice expression, such as `+2d4`, instead of a fixed integer.
+Decision: Accept the full extraction pipeline as complete. All 783 entries across 11 entity kinds are promoted to canonical split fixtures under `data/srd/fixtures/`. No remaining extraction work is needed until the SRD updates or new entity kinds are identified.
 
-Decision:
+Final fixture counts:
+- `rule-references.json` — 34 entries
+- `armor.json` — 34 entries
+- `weapons.json` — 204 entries
+- `loot.json` — 120 entries (60 items, 60 consumables)
+- `ancestries.json` — 18 entries
+- `communities.json` — 9 entries
+- `classes.json` — 9 entries
+- `subclasses.json` — 18 entries
+- `domain-cards.json` — 189 entries
+- `adversaries.json` — 129 entries
+- `environments.json` — 19 entries
 
-Allow adversary attack modifiers to be either an integer or a source-faithful dice expression string.
+Consequences: The SRD data foundation is complete and stable. Future parser work is only needed if the SRD PDF updates.
 
-Consequences:
+## 2026-05-27 - Compendium UI Refactored To Nested Routing
 
-Adversary stat blocks can preserve variable attack modifiers without losing source meaning. App display code must format attack modifiers as display values rather than assuming every modifier is numeric.
+Status: Accepted
+
+Context: The original compendium used a flat `[id]` route for all entry types. As the number of entity kinds grew to 11, the list screen became a single undifferentiated view and the route structure did not reflect the kind-then-entry hierarchy.
+
+Decision: Replace the flat `app/compendium/[id].tsx` route with a nested `app/compendium/[kind]/` directory containing:
+- `index.tsx` — kind list screen with text search and kind-specific chip filters (tier, role, environment type, weapon category, domain, loot type)
+- `[id].tsx` — entry detail screen
+
+Update the compendium overview (`app/compendium/index.tsx`) to show one card per entity kind linking into the new nested structure.
+
+Consequences: Navigation is now overview → kind list → detail. Each entity kind has its own filtered list. All 11 kinds have complete detail rendering. Tested and working on Android.
