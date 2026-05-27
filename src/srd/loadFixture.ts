@@ -20,6 +20,12 @@ export function getRelatedEntries(entry: SrdEntry) {
     relatedIds.add(entry.classId);
   }
 
+  if (entry.kind === "environment") {
+    for (const adversaryId of entry.potentialAdversaryIds) {
+      relatedIds.add(adversaryId);
+    }
+  }
+
   return [...relatedIds]
     .map((id) => getSrdEntryById(id))
     .filter((relatedEntry): relatedEntry is SrdEntry => relatedEntry !== null);

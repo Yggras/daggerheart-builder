@@ -1,11 +1,11 @@
 import { Link, useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { formatKind, formatTags } from "../../src/compendium/display";
-import { getRelatedEntries, getSrdEntryById } from "../../src/srd/loadFixture";
-import type { SrdEntry } from "../../src/srd/schema";
+import { formatKind, formatTags } from "../../../src/compendium/display";
+import { getRelatedEntries, getSrdEntryById } from "../../../src/srd/loadFixture";
+import type { SrdEntry } from "../../../src/srd/schema";
 
 export default function CompendiumDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { kind, id } = useLocalSearchParams<{ kind: string; id: string }>();
   const entry = typeof id === "string" ? getSrdEntryById(id) : null;
 
   if (!entry) {
@@ -27,12 +27,12 @@ export default function CompendiumDetailScreen() {
       <Text style={styles.title}>{entry.name}</Text>
       {entry.text.summary ? <Text style={styles.summary}>{entry.text.summary}</Text> : null}
 
-      <View style={styles.metaPanel}>
-        <Text style={styles.metaLabel}>Review</Text>
-        <Text style={styles.metaText}>{entry.review.status}</Text>
-        <Text style={styles.metaLabel}>Tags</Text>
-        <Text style={styles.metaText}>{formatTags(entry.tags)}</Text>
-      </View>
+      {entry.tags.length > 0 ? (
+        <View style={styles.tagsPanel}>
+          <Text style={styles.tagsLabel}>Tags</Text>
+          <Text style={styles.tagsText}>{formatTags(entry.tags)}</Text>
+        </View>
+      ) : null}
 
       {renderKindDetails(entry)}
 
@@ -187,7 +187,8 @@ function formatThresholds(thresholds: { major: number | null; severe: number | n
 }
 
 function formatAttack(attack: Extract<SrdEntry, { kind: "adversary" }>["attack"]) {
-  const modifier = typeof attack.modifier === "number" ? `${attack.modifier >= 0 ? "+" : ""}${attack.modifier}` : attack.modifier;
+  const modifier =
+    typeof attack.modifier === "number" ? `${attack.modifier >= 0 ? "+" : ""}${attack.modifier}` : attack.modifier;
 
   return `${modifier} | ${attack.name}: ${attack.range} | ${attack.damage.roll} ${attack.damage.type}`;
 }
@@ -230,7 +231,11 @@ function RelatedEntries({ entry }: { entry: SrdEntry }) {
     <Section title="Related Entries">
       <View style={styles.relatedList}>
         {relatedEntries.map((relatedEntry) => (
-          <Link key={relatedEntry.id} href={{ pathname: "/compendium/[id]", params: { id: relatedEntry.id } }} asChild>
+          <Link
+            key={relatedEntry.id}
+            href={{ pathname: "/compendium/[kind]/[id]", params: { kind: relatedEntry.kind, id: relatedEntry.id } }}
+            asChild
+          >
             <Pressable style={styles.relatedCard}>
               <Text style={styles.relatedKind}>{formatKind(relatedEntry.kind)}</Text>
               <Text style={styles.relatedTitle}>{relatedEntry.name}</Text>
@@ -279,7 +284,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 25,
   },
-  metaPanel: {
+  tagsPanel: {
     borderWidth: 1,
     borderColor: "#dfd2c0",
     borderRadius: 18,
@@ -287,14 +292,13 @@ const styles = StyleSheet.create({
     gap: 4,
     padding: 16,
   },
-  metaLabel: {
+  tagsLabel: {
     color: "#8d5428",
     fontSize: 12,
     fontWeight: "800",
-    marginTop: 8,
     textTransform: "uppercase",
   },
-  metaText: {
+  tagsText: {
     color: "#201915",
     fontSize: 15,
     lineHeight: 21,
