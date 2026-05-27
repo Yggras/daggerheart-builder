@@ -10,7 +10,6 @@ const familyOrder: SrdEntry["kind"][] = [
   "adversary",
   "environment",
   "class",
-  "subclass",
   "domain_card",
   "ancestry",
   "community",
