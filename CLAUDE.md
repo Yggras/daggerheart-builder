@@ -58,7 +58,6 @@ Always run `validate:srd` and `typecheck` after any data or schema change.
 - Character builder
 - Campaign play view
 - UI kit / design system selection
-- Inline rich-text links inside rules text
 
 **Do not:**
 - Parse the SRD PDF at runtime — data is bundled as reviewed canonical JSON.

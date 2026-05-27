@@ -1,8 +1,13 @@
 import { Link, useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { formatKind, formatTags } from "../../../src/compendium/display";
+import { LinkedText } from "../../../src/compendium/components/LinkedText";
+import { Section } from "../../../src/compendium/components/Section";
+import { TagBadges } from "../../../src/compendium/components/TagBadges";
+import { KindDetails } from "../../../src/compendium/details/KindDetails";
+import { formatFamilyName, formatKind } from "../../../src/compendium/display";
 import { getRelatedEntries, getSrdEntryById } from "../../../src/srd/loadFixture";
 import type { SrdEntry } from "../../../src/srd/schema";
+import { colors, radii } from "../../../src/theme";
 
 export default function CompendiumDetailScreen() {
   const { kind, id } = useLocalSearchParams<{ kind: string; id: string }>();
@@ -23,200 +28,41 @@ export default function CompendiumDetailScreen() {
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      <View style={styles.breadcrumb}>
+        <Link href="/compendium" asChild>
+          <Pressable>
+            <Text style={styles.breadcrumbLink}>Compendium</Text>
+          </Pressable>
+        </Link>
+        <Text style={styles.breadcrumbSep}> &gt; </Text>
+        <Link href={{ pathname: "/compendium/[kind]", params: { kind: entry.kind } }} asChild>
+          <Pressable>
+            <Text style={styles.breadcrumbLink}>{formatFamilyName(entry.kind)}</Text>
+          </Pressable>
+        </Link>
+        <Text style={styles.breadcrumbSep}> &gt; </Text>
+        <Text style={styles.breadcrumbCurrent} numberOfLines={1}>{entry.name}</Text>
+      </View>
+
       <Text style={styles.kind}>{formatKind(entry.kind)}</Text>
       <Text style={styles.title}>{entry.name}</Text>
-      {entry.text.summary ? <Text style={styles.summary}>{entry.text.summary}</Text> : null}
+      {entry.text.summary ? <LinkedText text={entry.text.summary} style={styles.summary} /> : null}
 
       {entry.tags.length > 0 ? (
         <View style={styles.tagsPanel}>
           <Text style={styles.tagsLabel}>Tags</Text>
-          <Text style={styles.tagsText}>{formatTags(entry.tags)}</Text>
+          <TagBadges tags={entry.tags} />
         </View>
       ) : null}
 
-      {renderKindDetails(entry)}
+      <KindDetails entry={entry} />
 
       <RelatedEntries entry={entry} />
 
       <Section title="Original Text">
-        <Text style={styles.body}>{entry.text.original}</Text>
+        <LinkedText text={entry.text.original} style={styles.body} />
       </Section>
     </ScrollView>
-  );
-}
-
-function renderKindDetails(entry: SrdEntry) {
-  switch (entry.kind) {
-    case "class":
-      return (
-        <Section title="Class Details">
-          <KeyValue label="Domains" value={entry.domains.join(", ")} />
-          <KeyValue label="Starting Evasion" value={String(entry.startingEvasion)} />
-          <KeyValue label="Starting Hit Points" value={String(entry.startingHitPoints)} />
-          <KeyValue label="Class Items" value={entry.classItems.join(" or ")} />
-          <Feature title={entry.hopeFeature.name} text={entry.hopeFeature.text} />
-          {entry.classFeatures.map((feature) => (
-            <Feature key={feature.name} title={feature.name} text={feature.text} />
-          ))}
-        </Section>
-      );
-    case "subclass":
-      return (
-        <Section title="Subclass Details">
-          <KeyValue label="Class" value={entry.classId} />
-          <KeyValue label="Spellcast Trait" value={entry.spellcastTrait ?? "None"} />
-          {entry.features.foundation.map((feature) => (
-            <Feature key={feature.name} title={`Foundation: ${feature.name}`} text={feature.text} />
-          ))}
-          {entry.features.specialization.map((feature) => (
-            <Feature key={feature.name} title={`Specialization: ${feature.name}`} text={feature.text} />
-          ))}
-          {entry.features.mastery.map((feature) => (
-            <Feature key={feature.name} title={`Mastery: ${feature.name}`} text={feature.text} />
-          ))}
-        </Section>
-      );
-    case "domain_card":
-      return (
-        <Section title="Card Details">
-          <KeyValue label="Domain" value={entry.domain} />
-          <KeyValue label="Level" value={String(entry.level)} />
-          <KeyValue label="Type" value={entry.cardType} />
-          <KeyValue label="Recall Cost" value={String(entry.recallCost)} />
-          {entry.abilities.map((ability) => (
-            <Feature key={ability.name} title={ability.name} text={ability.text} />
-          ))}
-        </Section>
-      );
-    case "weapon":
-      return (
-        <Section title="Weapon Details">
-          <KeyValue label="Category" value={entry.category} />
-          <KeyValue label="Tier" value={String(entry.tier)} />
-          <KeyValue label="Trait" value={entry.trait} />
-          <KeyValue label="Range" value={entry.range} />
-          <KeyValue label="Damage" value={`${entry.damage.dice} ${entry.damage.type}`} />
-          <KeyValue label="Burden" value={entry.burden} />
-          <KeyValue label="Requires Spellcast Trait" value={entry.requiresSpellcastTrait ? "Yes" : "No"} />
-          {entry.feature ? <Feature title={entry.feature.name} text={entry.feature.text} /> : null}
-        </Section>
-      );
-    case "ancestry":
-      return (
-        <Section title="Ancestry Details">
-          {entry.features.map((feature) => (
-            <Feature key={feature.name} title={feature.name} text={feature.text} />
-          ))}
-        </Section>
-      );
-    case "community":
-      return (
-        <Section title="Community Details">
-          <KeyValue label="Adjectives" value={entry.adjectives.join(", ")} />
-          <Feature title={entry.feature.name} text={entry.feature.text} />
-        </Section>
-      );
-    case "armor":
-      return (
-        <Section title="Armor Details">
-          <KeyValue label="Tier" value={String(entry.tier)} />
-          <KeyValue label="Levels" value={`${entry.levelRange.min}-${entry.levelRange.max}`} />
-          <KeyValue label="Base Thresholds" value={formatThresholds(entry.baseThresholds)} />
-          <KeyValue label="Base Score" value={String(entry.baseScore)} />
-          {entry.feature ? <Feature title={entry.feature.name} text={entry.feature.text} /> : null}
-        </Section>
-      );
-    case "loot":
-      return (
-        <Section title="Loot Details">
-          <KeyValue label="Type" value={entry.lootType} />
-          <KeyValue label="Roll" value={String(entry.roll).padStart(2, "0")} />
-          <KeyValue label="Max Quantity" value={entry.maxQuantity ? String(entry.maxQuantity) : "Not limited"} />
-        </Section>
-      );
-    case "adversary":
-      return (
-        <Section title="Adversary Details">
-          <KeyValue label="Tier" value={String(entry.tier)} />
-          <KeyValue label="Role" value={entry.role} />
-          <KeyValue label="Difficulty" value={String(entry.difficulty)} />
-          <KeyValue label="Thresholds" value={formatThresholds(entry.thresholds)} />
-          <KeyValue label="HP" value={String(entry.hitPoints)} />
-          <KeyValue label="Stress" value={String(entry.stress)} />
-          <KeyValue label="Attack" value={formatAttack(entry.attack)} />
-          <KeyValue label="Motives & Tactics" value={entry.motivesAndTactics.join(", ")} />
-          {entry.experiences.length > 0 ? (
-            <KeyValue
-              label="Experiences"
-              value={entry.experiences.map((experience) => `${experience.name} +${experience.modifier}`).join(", ")}
-            />
-          ) : null}
-          {entry.features.map((feature) => (
-            <Feature key={feature.name} title={feature.name} text={feature.text} />
-          ))}
-        </Section>
-      );
-    case "environment":
-      return (
-        <Section title="Environment Details">
-          <KeyValue label="Tier" value={String(entry.tier)} />
-          <KeyValue label="Type" value={entry.environmentType} />
-          <KeyValue label="Difficulty" value={String(entry.difficulty)} />
-          <KeyValue label="Impulses" value={entry.impulses.join(", ")} />
-          {entry.features.map((feature) => (
-            <Feature key={feature.name} title={feature.name} text={feature.text} />
-          ))}
-        </Section>
-      );
-    case "rule_reference":
-      return (
-        <Section title="Rule Details">
-          <KeyValue label="Category" value={entry.category} />
-          <KeyValue label="Headings" value={entry.headings.join(" > ")} />
-        </Section>
-      );
-  }
-}
-
-function formatThresholds(thresholds: { major: number | null; severe: number | null }) {
-  if (thresholds.major === null && thresholds.severe === null) {
-    return "None";
-  }
-
-  return `${thresholds.major ?? "None"}/${thresholds.severe ?? "None"}`;
-}
-
-function formatAttack(attack: Extract<SrdEntry, { kind: "adversary" }>["attack"]) {
-  const modifier =
-    typeof attack.modifier === "number" ? `${attack.modifier >= 0 ? "+" : ""}${attack.modifier}` : attack.modifier;
-
-  return `${modifier} | ${attack.name}: ${attack.range} | ${attack.damage.roll} ${attack.damage.type}`;
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      {children}
-    </View>
-  );
-}
-
-function KeyValue({ label, value }: { label: string; value: string }) {
-  return (
-    <View style={styles.keyValue}>
-      <Text style={styles.key}>{label}</Text>
-      <Text style={styles.value}>{value}</Text>
-    </View>
-  );
-}
-
-function Feature({ title, text }: { title: string; text: string }) {
-  return (
-    <View style={styles.feature}>
-      <Text style={styles.featureTitle}>{title}</Text>
-      <Text style={styles.body}>{text}</Text>
-    </View>
   );
 }
 
@@ -251,14 +97,14 @@ function RelatedEntries({ entry }: { entry: SrdEntry }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: "#f6f0e3",
+    backgroundColor: colors.background,
   },
   screenCentered: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     gap: 16,
-    backgroundColor: "#f6f0e3",
+    backgroundColor: colors.background,
     padding: 24,
   },
   content: {
@@ -266,79 +112,59 @@ const styles = StyleSheet.create({
     padding: 18,
     paddingBottom: 40,
   },
+  breadcrumb: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
+  },
+  breadcrumbLink: {
+    color: colors.accent,
+    fontSize: 13,
+    fontWeight: "600",
+  },
+  breadcrumbSep: {
+    color: colors.textTertiary,
+    fontSize: 13,
+  },
+  breadcrumbCurrent: {
+    color: colors.textTertiary,
+    fontSize: 13,
+    flexShrink: 1,
+  },
   kind: {
-    color: "#8d5428",
+    color: colors.accentBold,
     fontSize: 13,
     fontWeight: "800",
     letterSpacing: 1,
     textTransform: "uppercase",
   },
   title: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 36,
     fontWeight: "800",
     lineHeight: 42,
   },
   summary: {
-    color: "#4e433b",
+    color: colors.textSecondary,
     fontSize: 17,
     lineHeight: 25,
   },
   tagsPanel: {
     borderWidth: 1,
-    borderColor: "#dfd2c0",
-    borderRadius: 18,
-    backgroundColor: "#fffaf0",
-    gap: 4,
+    borderColor: colors.border,
+    borderRadius: radii.card,
+    backgroundColor: colors.cardBackground,
+    gap: 8,
     padding: 16,
   },
   tagsLabel: {
-    color: "#8d5428",
+    color: colors.accentBold,
     fontSize: 12,
     fontWeight: "800",
     textTransform: "uppercase",
-  },
-  tagsText: {
-    color: "#201915",
-    fontSize: 15,
-    lineHeight: 21,
-  },
-  section: {
-    borderWidth: 1,
-    borderColor: "#dfd2c0",
-    borderRadius: 18,
-    backgroundColor: "#fffaf0",
-    gap: 12,
-    padding: 16,
-  },
-  sectionTitle: {
-    color: "#201915",
-    fontSize: 22,
-    fontWeight: "800",
-  },
-  keyValue: {
-    gap: 2,
-  },
-  key: {
-    color: "#8d5428",
-    fontSize: 12,
-    fontWeight: "800",
-    textTransform: "uppercase",
-  },
-  value: {
-    color: "#201915",
-    fontSize: 15,
-  },
-  feature: {
-    gap: 4,
-  },
-  featureTitle: {
-    color: "#201915",
-    fontSize: 17,
-    fontWeight: "800",
   },
   body: {
-    color: "#4e433b",
+    color: colors.textSecondary,
     fontSize: 15,
     lineHeight: 22,
   },
@@ -347,42 +173,42 @@ const styles = StyleSheet.create({
   },
   relatedCard: {
     borderWidth: 1,
-    borderColor: "#eadcca",
-    borderRadius: 14,
-    backgroundColor: "#f6f0e3",
+    borderColor: colors.borderSubtle,
+    borderRadius: radii.button,
+    backgroundColor: colors.background,
     gap: 4,
     padding: 12,
   },
   relatedKind: {
-    color: "#8d5428",
+    color: colors.accentBold,
     fontSize: 11,
     fontWeight: "800",
     letterSpacing: 0.8,
     textTransform: "uppercase",
   },
   relatedTitle: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 17,
     fontWeight: "800",
   },
   relatedSummary: {
-    color: "#6a5b50",
+    color: colors.textTertiary,
     fontSize: 14,
     lineHeight: 20,
   },
   missingTitle: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 24,
     fontWeight: "800",
   },
   backButton: {
-    borderRadius: 14,
-    backgroundColor: "#201915",
+    borderRadius: radii.button,
+    backgroundColor: colors.textPrimary,
     paddingHorizontal: 18,
     paddingVertical: 12,
   },
   backButtonText: {
-    color: "#f6f0e3",
+    color: colors.background,
     fontWeight: "800",
   },
 });

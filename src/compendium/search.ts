@@ -65,17 +65,66 @@ export interface CompendiumFilters {
 }
 
 // ---------------------------------------------------------------------------
+// Sort
+// ---------------------------------------------------------------------------
+
+export type SortOption = "name_asc" | "name_desc" | "tier_asc" | "tier_desc";
+
+function getEntryTier(entry: SrdEntry): number {
+  if ("tier" in entry && typeof entry.tier === "number") return entry.tier;
+  return 0;
+}
+
+export function sortResults(entries: SrdEntry[], sort: SortOption): SrdEntry[] {
+  const sorted = [...entries];
+  switch (sort) {
+    case "name_asc":
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    case "name_desc":
+      return sorted.sort((a, b) => b.name.localeCompare(a.name));
+    case "tier_asc":
+      return sorted.sort((a, b) => getEntryTier(a) - getEntryTier(b) || a.name.localeCompare(b.name));
+    case "tier_desc":
+      return sorted.sort((a, b) => getEntryTier(b) - getEntryTier(a) || a.name.localeCompare(b.name));
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Scoring (used for ranked search results)
+// ---------------------------------------------------------------------------
+
+function scoreEntry(entry: SrdEntry, normalizedQuery: string): number {
+  const nameLower = entry.name.toLowerCase();
+
+  if (nameLower === normalizedQuery) return 100;
+  if (nameLower.startsWith(normalizedQuery)) return 80;
+
+  const wordBoundary = new RegExp(`\\b${escapeRegex(normalizedQuery)}`);
+  if (wordBoundary.test(nameLower)) return 60;
+  if (nameLower.includes(normalizedQuery)) return 40;
+
+  const summaryTags = [entry.text.summary ?? "", entry.tags.join(" ")].join(" ").toLowerCase();
+  if (summaryTags.includes(normalizedQuery)) return 20;
+
+  if (entry.text.original.toLowerCase().includes(normalizedQuery)) return 10;
+
+  return 0;
+}
+
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// ---------------------------------------------------------------------------
 // Family search (used on per-kind list screens)
 // ---------------------------------------------------------------------------
 
 export function searchFamily(entries: SrdEntry[], query: string, filters: CompendiumFilters): SrdEntry[] {
   const normalizedQuery = query.trim().toLowerCase();
 
-  return entries.filter((entry) => {
-    // Always filter to the selected kind
+  const filtered = entries.filter((entry) => {
     if (entry.kind !== filters.kind) return false;
 
-    // Kind-specific sub-filters (TypeScript narrows entry.kind inside each block)
     if (entry.kind === "adversary") {
       if (filters.tier !== undefined && filters.tier !== "all" && entry.tier !== filters.tier) return false;
       if (filters.role !== undefined && filters.role !== "all" && entry.role !== filters.role) return false;
@@ -108,13 +157,19 @@ export function searchFamily(entries: SrdEntry[], query: string, filters: Compen
       if (filters.lootType !== undefined && filters.lootType !== "all" && entry.lootType !== filters.lootType) return false;
     }
 
-    // Text search
     if (!normalizedQuery) return true;
 
-    const searchableText = [entry.name, entry.text.original, entry.text.summary ?? "", entry.tags.join(" ")]
-      .join(" ")
-      .toLowerCase();
-
-    return searchableText.includes(normalizedQuery);
+    return scoreEntry(entry, normalizedQuery) > 0;
   });
+
+  if (normalizedQuery) {
+    filtered.sort((a, b) => {
+      const scoreA = scoreEntry(a, normalizedQuery);
+      const scoreB = scoreEntry(b, normalizedQuery);
+      if (scoreB !== scoreA) return scoreB - scoreA;
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  return filtered;
 }

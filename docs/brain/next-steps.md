@@ -27,7 +27,6 @@ None — the SRD extraction pipeline is complete. Choose a product direction.
 - Character builder.
 - Campaign play view.
 - UI kit/design system selection.
-- Inline rich-text links.
 - Full SRD extraction.
 
 ## Recent Completed Milestones
@@ -46,6 +45,7 @@ None — the SRD extraction pipeline is complete. Choose a product direction.
 - AI-assisted source verification accepted as review gate for generated candidates.
 - `validate-srd.ts` enhanced to merge fixture context when validating candidate files so cross-kind ID references resolve correctly.
 - Compendium UI refactored to nested `[kind]/[id]` routing: overview screen → kind list with text search and kind-specific chip filters → full detail rendering for all 11 kinds. Tested on Android.
+- Compendium UI enhanced: centralized theme (`src/theme.ts`), per-kind detail components extracted from monolithic switch, shared `Section`/`KeyValue`/`Feature` components, tag badges, breadcrumbs, clear-all-filters, sort options (A-Z, Z-A, Tier), ranked search with scoring, search result highlighting, and inline rich-text links in rules text (curated allowlist, first-occurrence-only, longest-match-first).
 
 ## Open Questions
 

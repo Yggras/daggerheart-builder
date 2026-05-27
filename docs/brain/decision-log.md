@@ -316,3 +316,18 @@ Decision: Replace the flat `app/compendium/[id].tsx` route with a nested `app/co
 Update the compendium overview (`app/compendium/index.tsx`) to show one card per entity kind linking into the new nested structure.
 
 Consequences: Navigation is now overview → kind list → detail. Each entity kind has its own filtered list. All 11 kinds have complete detail rendering. Tested and working on Android.
+
+## 2026-05-27 - Compendium UI Enhancement
+
+Status: Accepted
+
+Context: The compendium prototype had hardcoded colors across 5 files, a 130-line switch statement for detail rendering, basic substring search, no sort options, and no cross-reference linking in rules text.
+
+Decision: Comprehensive enhancement in 5 phases:
+1. Centralized theme in `src/theme.ts` (semantic color names, layout radii).
+2. Code quality refactor: shared components (`Section`, `KeyValue`, `Feature`, `TagBadges`), per-kind detail components in `src/compendium/details/`, and memoized search.
+3. Visual polish: tag badges as styled pills, breadcrumb navigation, improved adversary detail (structured attack, experience rows, motive pills), clear-all-filters button, sort options (A-Z, Z-A, Tier).
+4. Ranked search with multi-tier scoring (exact > starts-with > word-boundary > contains > summary/tags > full text) and highlighted matches in results.
+5. Inline rich-text links: curated allowlist (8+ character names, blocklisted common single-word terms), longest-match-first, first-occurrence-only deduplication. Applied to feature text, summaries, and original text.
+
+Consequences: The "inline rich-text links" constraint is lifted. The compendium is now a polished, navigable reference tool. Theme extraction prepares for future dark mode without requiring a context provider yet.

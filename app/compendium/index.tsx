@@ -4,6 +4,7 @@ import { formatFamilyName } from "../../src/compendium/display";
 import { srdKinds } from "../../src/compendium/search";
 import { srdEntries } from "../../src/srd/loadFixture";
 import type { SrdEntry } from "../../src/srd/schema";
+import { colors, radii } from "../../src/theme";
 
 const familyOrder: SrdEntry["kind"][] = [
   "adversary",
@@ -55,7 +56,7 @@ function FamilyCard({ kind, count }: { kind: SrdEntry["kind"]; count: number }) 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: "#f6f0e3",
+    backgroundColor: colors.background,
     padding: 16,
   },
   header: {
@@ -63,12 +64,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   title: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 32,
     fontWeight: "800",
   },
   subtitle: {
-    color: "#6a5b50",
+    color: colors.textTertiary,
     fontSize: 15,
   },
   listContent: {
@@ -77,9 +78,9 @@ const styles = StyleSheet.create({
   },
   card: {
     borderWidth: 1,
-    borderColor: "#dfd2c0",
-    borderRadius: 18,
-    backgroundColor: "#fffaf0",
+    borderColor: colors.border,
+    borderRadius: radii.card,
+    backgroundColor: colors.cardBackground,
     paddingHorizontal: 20,
     paddingVertical: 18,
     minHeight: 72,
@@ -87,12 +88,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   familyName: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 22,
     fontWeight: "800",
   },
   count: {
-    color: "#7c4f2a",
+    color: colors.accent,
     fontSize: 14,
   },
 });

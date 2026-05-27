@@ -1,5 +1,6 @@
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { colors, radii } from "../src/theme";
 
 export default function HomeScreen() {
   return (
@@ -27,38 +28,38 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 24,
     padding: 24,
-    backgroundColor: "#f6f0e3",
+    backgroundColor: colors.background,
   },
   hero: {
     gap: 12,
   },
   kicker: {
-    color: "#7c4f2a",
+    color: colors.accent,
     fontSize: 14,
     fontWeight: "700",
     letterSpacing: 1.2,
     textTransform: "uppercase",
   },
   title: {
-    color: "#201915",
+    color: colors.textPrimary,
     fontSize: 40,
     fontWeight: "800",
     lineHeight: 46,
   },
   body: {
-    color: "#4e433b",
+    color: colors.textSecondary,
     fontSize: 17,
     lineHeight: 25,
   },
   primaryAction: {
     alignItems: "center",
-    borderRadius: 14,
-    backgroundColor: "#201915",
+    borderRadius: radii.button,
+    backgroundColor: colors.textPrimary,
     paddingHorizontal: 20,
     paddingVertical: 16,
   },
   primaryActionText: {
-    color: "#f6f0e3",
+    color: colors.background,
     fontSize: 16,
     fontWeight: "700",
   },
