@@ -47,6 +47,8 @@ None — the SRD extraction pipeline and current compendium enhancement pass are
 - Compendium UI refactored to nested `[kind]/[id]` routing: overview screen → kind list with text search and kind-specific chip filters → full detail rendering for all 11 kinds. Tested on Android.
 - Compendium UI enhanced: centralized theme (`src/theme.ts`), per-kind detail components extracted from monolithic switch, shared `Section`/`KeyValue`/`Feature` components, tag badges, breadcrumbs, clear-all-filters, sort options (A-Z, Z-A, Tier), ranked search with scoring, search result highlighting, and inline rich-text links in rules text (curated allowlist, first-occurrence-only, longest-match-first).
 - Field-value rule links scaled across enum fields for weapons, classes, domain cards, subclasses, adversaries, environments, and loot. Subclasses are intentionally reachable through class navigation rather than a separate overview card.
+- Ancestry compendium art added through optimized bundled WebP assets. Source PNGs live only in ignored `art-source/`; bundled files are generated into `assets/compendium/ancestries/` with `npm run optimize:images:ancestries` and rendered on ancestry detail pages.
+- Ancestry summaries now use the first descriptive SRD prose sentence instead of generic "A Daggerheart ancestry with..." feature-list summaries.
 
 ## Open Questions
 

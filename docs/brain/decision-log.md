@@ -394,3 +394,23 @@ Context: A documentation audit found stale current-state references after recent
 Decision: Refresh current-state docs to match implementation: 791 canonical entries across 11 kinds, including 42 rule references; the SRD extraction pipeline and current compendium enhancement pass are complete; Codex grimoire cards are split into per-spell abilities; inline text links and linked enum field values are implemented; subclasses are intentionally reached through class navigation rather than a separate compendium overview card.
 
 Consequences: Future sessions should treat product direction selection as the next step, not default compendium polish. Historical decision entries remain chronological records, but current-state docs and session-start skills now reflect the present implementation.
+
+## 2026-05-28 - Use Optimized Bundled WebP For Compendium Art
+
+Status: Accepted
+
+Context: The first 18 ancestry PNGs totaled 43 MB, and planned adversary art would make unoptimized PNGs too large for a mobile/web app bundle.
+
+Decision: Treat high-resolution PNGs as local source art under ignored `art-source/`, and bundle only optimized WebP derivatives under `assets/compendium/<kind>/`. Use `sharp` through `scripts/optimize-compendium-images.ts` to generate slug-named assets. Keep image references in app presentation code via explicit slug-to-asset maps rather than adding art paths to canonical SRD fixtures.
+
+Consequences: App package size stays manageable while preserving repeatable conversion. Future adversary images should be added to `art-source/compendium/adversaries/`, optimized before use, and referenced from a static map similar to ancestry art.
+
+## 2026-05-28 - Use Descriptive Ancestry Summaries
+
+Status: Accepted
+
+Context: Ancestry list cards and detail headers used generated summaries like "A Daggerheart ancestry with...", which repeated obvious context and did not help distinguish ancestries.
+
+Decision: Generate ancestry `text.summary` from the first descriptive SRD prose sentence in `scripts/extract-ancestries-communities.ts` rather than from the ancestry feature names.
+
+Consequences: Ancestry list cards now describe physical identity and flavor at a glance while features remain visible in the detail view. Regenerating ancestry candidates preserves the improved summaries.

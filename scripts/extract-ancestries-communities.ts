@@ -381,7 +381,7 @@ function extractAncestry(spec: AncestrySpec, text: string): CandidateRow<Ancestr
       review: reviewFor("scripts/extract-ancestries-communities.ts", cleanupLabels, warnings, acceptedFullAncestryCommunityBatch),
       text: {
         original: description,
-        summary: `A Daggerheart ancestry with ${features.map((feature) => feature.name).join(" and ")} features.`,
+        summary: summarizeDescription(description),
       },
       tags: spec.tags,
       relationships: [],
@@ -477,6 +477,10 @@ function splitAtMarker(text: string, marker: RegExp) {
     afterMarker: text.slice(match.index + match[0].length).trim(),
     markerFound: true,
   };
+}
+
+function summarizeDescription(description: string) {
+  return description.match(/^.+?[.!?](?:\s|$)/)?.[0].trim() ?? description;
 }
 
 function extractFeature(text: string, feature: FeatureSpec, nextFeature?: FeatureSpec) {

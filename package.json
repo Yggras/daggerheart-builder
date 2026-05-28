@@ -29,7 +29,10 @@
     "extract:srd:rules": "tsx scripts/extract-rule-references.ts",
     "extract:srd:armor": "tsx scripts/extract-armor.ts",
     "extract:srd:loot": "tsx scripts/extract-loot.ts",
-    "extract:srd:weapons": "tsx scripts/extract-weapons.ts"
+    "extract:srd:weapons": "tsx scripts/extract-weapons.ts",
+    "optimize:images": "tsx scripts/optimize-compendium-images.ts",
+    "optimize:images:ancestries": "tsx scripts/optimize-compendium-images.ts ancestries",
+    "optimize:images:adversaries": "tsx scripts/optimize-compendium-images.ts adversaries"
   },
   "dependencies": {
     "@expo/metro-runtime": "^56.0.12",
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "sharp": "^0.34.5",
     "tsx": "^4.20.6",
     "typescript": "~6.0.3"
   }

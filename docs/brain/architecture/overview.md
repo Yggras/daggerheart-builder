@@ -69,6 +69,19 @@ Canonical SRD data is stored as reviewed versioned JSON, split into kind-specifi
 
 The SRD data extraction pipeline is complete (791 entries, 11 kinds). The compendium consumes local canonical data and does not call Supabase at runtime.
 
+## Compendium Art Direction
+
+Compendium art is app presentation data, not canonical SRD data. Do not add image paths to `data/srd/fixtures/` or the SRD schema unless art becomes a durable content model later.
+
+Use this asset workflow:
+
+- Keep original high-resolution source art under ignored `art-source/compendium/<kind>/`.
+- Generate optimized WebP derivatives into bundled `assets/compendium/<kind>/` with `npm run optimize:images:<kind>`.
+- Reference bundled images through explicit slug-to-asset maps in `src/compendium/`, because React Native Metro requires static asset references.
+- Name generated assets with entry slugs, e.g. `assets/compendium/ancestries/faerie.webp`.
+
+Current optimized art: ancestry detail images. Future adversary art should follow the same source-to-WebP pipeline before being rendered in the app.
+
 ## Auth Direction
 
 Use admin-managed Supabase email/password accounts for the MVP. App signup and forgot-password flows are out of scope until an auth email provider or another self-service auth method is added. Auth has not been integrated yet.
