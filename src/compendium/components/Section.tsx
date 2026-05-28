@@ -1,4 +1,6 @@
+import { useRouter } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
+import { getFieldLink } from "../fieldLinks";
 import type { SrdEntry } from "../../srd/schema";
 import { colors, radii } from "../../theme";
 import { LinkedText } from "./LinkedText";
@@ -17,6 +19,37 @@ export function KeyValue({ label, value }: { label: string; value: string }) {
     <View style={styles.keyValue}>
       <Text style={styles.key}>{label}</Text>
       <Text style={styles.value}>{value}</Text>
+    </View>
+  );
+}
+
+export function LinkedKeyValue({
+  label,
+  value,
+  linkValue,
+}: {
+  label: string;
+  value: string;
+  linkValue?: string;
+}) {
+  const router = useRouter();
+  const link = getFieldLink(linkValue ?? value);
+
+  if (!link) {
+    return <KeyValue label={label} value={value} />;
+  }
+
+  return (
+    <View style={styles.keyValue}>
+      <Text style={styles.key}>{label}</Text>
+      <Text
+        style={[styles.value, styles.linkedValue]}
+        onPress={() =>
+          router.push({ pathname: "/compendium/[kind]/[id]", params: { kind: link.entryKind, id: link.entryId } })
+        }
+      >
+        {value}
+      </Text>
     </View>
   );
 }
@@ -69,6 +102,10 @@ const styles = StyleSheet.create({
   value: {
     color: colors.textPrimary,
     fontSize: 15,
+  },
+  linkedValue: {
+    color: colors.link,
+    textDecorationLine: "underline",
   },
   feature: {
     gap: 4,

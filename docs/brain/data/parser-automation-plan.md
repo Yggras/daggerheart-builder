@@ -9,7 +9,7 @@ All 11 entity kind parsers have been implemented and all generated candidates ha
 
 | File | Entries |
 |------|---------|
-| `data/srd/fixtures/rule-references.json` | 34 |
+| `data/srd/fixtures/rule-references.json` | 37 |
 | `data/srd/fixtures/armor.json` | 34 |
 | `data/srd/fixtures/weapons.json` | 204 |
 | `data/srd/fixtures/loot.json` | 120 |
@@ -20,7 +20,9 @@ All 11 entity kind parsers have been implemented and all generated candidates ha
 | `data/srd/fixtures/domain-cards.json` | 189 |
 | `data/srd/fixtures/adversaries.json` | 129 |
 | `data/srd/fixtures/environments.json` | 19 |
-| **Total** | **783** |
+| **Total** | **786** |
+
+Note: `rule-references.json` includes 3 hand-authored entries (Character Traits, Weapon Burden, Weapon Categories) added after the original 34-entry extraction. See "Authored Entries" below.
 
 ## Extraction Scripts
 
@@ -65,6 +67,14 @@ Generated candidates are marked `review.status: "extracted"` until accepted. Rev
 ## Output Model
 
 Parser scripts write to `data/srd/generated/` — candidate data is never canonical until explicitly promoted. Each parser also writes a review report (e.g. `data/srd/generated/adversaries-review-report.md`) with cleanup notes, warnings, and text previews.
+
+## Authored Entries
+
+Some entries cannot be produced by the PDF section-boundary model — they are synthesized from multiple scattered PDF locations or reformatted (e.g., bulleted lists). These are carried as fully-specified `SrdEntry` objects in an authored-entries array inside the relevant extraction script (reference: the `authoredRules` array in `extract-rule-references.ts`), merged into the script's output alongside the PDF-extracted entries.
+
+**An extraction script — not just the fixtures — must be the source of truth for every entry of its kind.** Authored entries must never live only in `data/srd/fixtures/`, or they will be silently lost on a future re-extraction. After authoring, regenerate and confirm the generated and fixture copies match byte-for-byte.
+
+See `decisions/ADR-0013-authored-entries-in-extraction-scripts.md` for the full convention and the step-by-step recipe. This is the standard approach whenever new linked field values (domains, adversary roles, environment types, loot types, armor score, etc.) require rule references or other entries that aren't clean PDF sections.
 
 ## Parser Implementation Notes
 

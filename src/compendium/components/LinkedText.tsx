@@ -1,14 +1,16 @@
 import { useRouter } from "expo-router";
 import { StyleSheet, Text, type TextStyle } from "react-native";
 import { colors } from "../../theme";
+import { formatBodyText } from "../display";
 import { parseTextForLinks } from "../linking";
 
 export function LinkedText({ text, style }: { text: string; style?: TextStyle }) {
   const router = useRouter();
-  const segments = parseTextForLinks(text);
+  const formatted = formatBodyText(text);
+  const segments = parseTextForLinks(formatted);
 
   if (segments.length === 1 && segments[0]?.type === "text") {
-    return <Text style={style}>{text}</Text>;
+    return <Text style={style}>{formatted}</Text>;
   }
 
   return (

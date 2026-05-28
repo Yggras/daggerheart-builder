@@ -32,3 +32,11 @@ export function formatFamilyName(kind: SrdEntry["kind"]) {
 export function formatTags(tags: string[]) {
   return tags.map((tag) => tag.replaceAll("-", " ")).join(" • ");
 }
+
+// Rule text is stored as a single flat string. Bulleted lists (• markers) run
+// together without line breaks, producing an unreadable wall of text. Put each
+// bullet on its own line so lists render legibly.
+export function formatBodyText(text: string): string {
+  if (!text.includes("•")) return text;
+  return text.replace(/\s*•\s*/g, "\n• ").trim();
+}

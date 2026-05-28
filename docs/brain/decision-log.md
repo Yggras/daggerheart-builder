@@ -331,3 +331,27 @@ Decision: Comprehensive enhancement in 5 phases:
 5. Inline rich-text links: curated allowlist (8+ character names, blocklisted common single-word terms), longest-match-first, first-occurrence-only deduplication. Applied to feature text, summaries, and original text.
 
 Consequences: The "inline rich-text links" constraint is lifted. The compendium is now a polished, navigable reference tool. Theme extraction prepares for future dark mode without requiring a context provider yet.
+
+## 2026-05-28 - Tappable Field Values Linked to Rule References
+
+Status: Accepted
+
+Context: Many structured field values across the compendium (weapon range, burden, traits, domains, adversary roles, etc.) are game terms a player may not understand, but they displayed as plain text with no path to an explanation. The existing inline-linking system only handles prose text, not structured `KeyValue` fields. Piloted on weapons before scaling.
+
+Decision: Introduce a value-to-rule registry and a tappable field-value component:
+1. `src/compendium/fieldLinks.ts` — a `Record<string, FieldLink>` mapping normalized field values (e.g., `two_handed`, `agility`, `far`) to the rule_reference that explains them, with `getFieldLink(value)`.
+2. `LinkedKeyValue` in `src/compendium/components/Section.tsx` — renders like `KeyValue` but makes the value tappable (link color + underline) when a mapping exists; falls back to plain `KeyValue` otherwise. Supports a `linkValue` prop so display text can differ from the lookup key.
+3. Authored 3 new rule_reference entries from the SRD PDF: `rule.character_creation.traits` (Character Traits), `rule.equipment.weapon_burden` (Weapon Burden), `rule.equipment.weapon_categories` (Weapon Categories). Introduced a new `equipment` category. Total rule_reference entries: 37 (was 34).
+4. `WeaponDetails` uses `LinkedKeyValue` for Category, Trait, Range, Damage type, and Burden, with snake_case values formatted to Title Case for display.
+
+Consequences: Field values now link to their explanations without parsing prose. The pattern scales by adding rule_references + `fieldLinks` entries + swapping `KeyValue` for `LinkedKeyValue` in the relevant per-kind detail component — no architectural changes. Next candidates: domains (classes/domain cards), adversary roles, environment types, loot types, armor score.
+
+## 2026-05-28 - Authored Rule References Carried In Extraction Script
+
+Status: Accepted
+
+Context: The 3 new rule_reference entries from the field-link pilot were hand-added directly to `data/srd/fixtures/rule-references.json` but were absent from `scripts/extract-rule-references.ts` (whose `ruleSpecs` extracts 34 rules to `data/srd/generated/`). Re-running extraction doesn't overwrite fixtures (separate output path, manual promotion), but a future rebuild of fixtures from a fresh extraction would silently drop the 3 authored entries and the bulleted Character Traits text. Two of the three (Weapon Burden, Weapon Categories) are synthesized from multiple PDF sections and cannot be cleanly section-extracted by the heading-boundary model.
+
+Decision: The rule-reference extraction script now carries both PDF-extracted rules (`ruleSpecs`) and hand-authored rules (`authoredRules` — full `SrdEntry` objects, copied verbatim from the fixtures, that bypass `pdftotext` section extraction). Both sets are merged, schema-validated together, and written to `entries.candidates.json`. The review report gained an "Authored Entries" section. Regenerated output now matches fixtures byte-for-byte (37 entries).
+
+Consequences: `npm run extract:srd:rules` reproduces the complete rule_reference set, so fixtures remain regeneration-safe. Future authored rules (domains, adversary roles, environment types, etc. from the field-link scaling plan) MUST be added to `authoredRules` in the extraction script — not only to fixtures — to avoid being lost on regeneration.

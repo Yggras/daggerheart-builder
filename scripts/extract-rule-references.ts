@@ -520,6 +520,115 @@ const ruleSpecs: RuleSpec[] = [
   },
 ];
 
+// Hand-authored rule references that cannot be cleanly section-extracted by the
+// heading-boundary model above. Weapon Burden and Weapon Categories are
+// synthesized from multiple PDF locations; Character Traits is a bulleted list.
+// These are merged into the output verbatim so `npm run extract:srd:rules`
+// reproduces the full set and keeps the fixtures regeneration-safe.
+const authoredRules: SrdEntry[] = [
+  {
+    id: "rule.character_creation.traits",
+    kind: "rule_reference",
+    name: "Character Traits",
+    slug: "character-traits",
+    source: {
+      document: "Daggerheart SRD",
+      version: "1.0-2025-09-09",
+      pdf: {
+        path: sourcePdfPath,
+        pageStart: 3,
+        pageEnd: 3,
+      },
+      printedPages: [4],
+      url: sourceUrl,
+    },
+    review: {
+      status: "reviewed",
+      reviewedAt: "2026-05-28T00:00:00.000Z",
+      notes: [
+        "Authored from the Character Creation Step 3 (Assign Character Traits) section on printed page 4; wording transcribed from the source PDF.",
+      ],
+    },
+    text: {
+      original:
+        "Your character has six traits that represent their physical, mental, and social aptitude. • Agility (Use it to Sprint, Leap, Maneuver, etc.): A high Agility means you're fast on your feet, nimble on difficult terrain, and quick to react to danger. You'll make an Agility Roll to scurry up a rope, sprint to cover, or bound from rooftop to rooftop. • Strength (Use it to Lift, Smash, Grapple, etc.): A high Strength means you're better at feats that test your physical prowess and stamina. You'll make a Strength Roll to break through a door, lift heavy objects, or hold your ground against a charging foe. • Finesse (Use it to Control, Hide, Tinker, etc.): A high Finesse means you're skilled at tasks that require accuracy, stealth, or the utmost control. You'll make a Finesse Roll to use fine tools, escape notice, or strike with precision. • Instinct (Use it to Perceive, Sense, Navigate, etc.): A high Instinct means you have a keen sense of your surroundings and a natural intuition. You'll make an Instinct Roll to sense danger, notice details in the world around you, or track an elusive foe. • Presence (Use it to Charm, Perform, Deceive, etc.): A high Presence means you have a strong force of personality and a facility for social situations. You'll make a Presence Roll to plead your case, intimidate a foe, or capture the attention of a crowd. • Knowledge (Use it to Recall, Analyze, Comprehend, etc.): A high Knowledge means you know information others don't and understand how to apply your mind through deduction and inference. You'll make a Knowledge Roll to interpret facts, see the patterns clearly, or remember important information. When you \"roll with a trait,\" that trait's modifier is added to the roll's total. Assign the modifiers +2, +1, +1, +0, +0, -1 to your character's traits in any order you wish.",
+      summary:
+        "The six traits — Agility, Strength, Finesse, Instinct, Presence, and Knowledge — represent a character's physical, mental, and social aptitude. Each trait's modifier is added to rolls using that trait.",
+    },
+    tags: ["rule", "character-creation", "traits", "agility", "strength", "finesse", "instinct", "presence", "knowledge"],
+    relationships: [],
+    category: "character creation",
+    headings: ["Character Creation", "Assign Character Traits"],
+  },
+  {
+    id: "rule.equipment.weapon_burden",
+    kind: "rule_reference",
+    name: "Weapon Burden",
+    slug: "weapon-burden",
+    source: {
+      document: "Daggerheart SRD",
+      version: "1.0-2025-09-09",
+      pdf: {
+        path: sourcePdfPath,
+        pageStart: 3,
+        pageEnd: 3,
+      },
+      printedPages: [5],
+      url: sourceUrl,
+    },
+    review: {
+      status: "reviewed",
+      reviewedAt: "2026-05-28T00:00:00.000Z",
+      notes: [
+        "Synthesized from the weapon tables' Burden column, the Character Creation Step 5 weapon-selection text on printed page 5, and the Combat Wheelchair Burden section on printed page 54. Definition verified against the source PDF.",
+      ],
+    },
+    text: {
+      original:
+        "A weapon's Burden indicates how many hands it occupies when equipped. One-Handed weapons occupy one hand, and Two-Handed weapons occupy both hands. Your character's maximum burden is two hands, so you can equip either a single two-handed weapon or two one-handed weapons. At character creation you select from the Tier 1 Weapon Tables: either a two-handed primary weapon, or a one-handed primary weapon and a one-handed secondary weapon.",
+      summary:
+        "Burden indicates how many hands a weapon requires — one-handed or two-handed. A character can equip up to two hands of weapons total.",
+    },
+    tags: ["rule", "equipment", "weapon", "burden", "one-handed", "two-handed"],
+    relationships: [],
+    category: "equipment",
+    headings: ["Equipment", "Weapons", "Burden"],
+  },
+  {
+    id: "rule.equipment.weapon_categories",
+    kind: "rule_reference",
+    name: "Weapon Categories",
+    slug: "weapon-categories",
+    source: {
+      document: "Daggerheart SRD",
+      version: "1.0-2025-09-09",
+      pdf: {
+        path: sourcePdfPath,
+        pageStart: 3,
+        pageEnd: 3,
+      },
+      printedPages: [5],
+      url: sourceUrl,
+    },
+    review: {
+      status: "reviewed",
+      reviewedAt: "2026-05-28T00:00:00.000Z",
+      notes: [
+        "Authored from the Character Creation Step 5 weapon-selection text on printed page 5 and the Secondary Weapon Tables introduction on printed page 26. Wording verified against the source PDF.",
+      ],
+    },
+    text: {
+      original:
+        "A weapon's category specifies whether it is a Primary or Secondary weapon. Your character can only equip up to one weapon of each category at a time. At character creation, select from the Tier 1 Weapon Tables: either a two-handed primary weapon, or a one-handed primary weapon and a one-handed secondary weapon. Players can choose one Tier 1 secondary weapon during character creation. The GM can make other weapons available throughout the campaign as the PCs level up.",
+      summary: "Weapons are either Primary or Secondary. A character can equip one of each category at a time.",
+    },
+    tags: ["rule", "equipment", "weapon", "category", "primary", "secondary"],
+    relationships: [],
+    category: "equipment",
+    headings: ["Equipment", "Weapons", "Categories"],
+  },
+];
+
 const cleanupRules = [
   { pattern: /\banAlly\b/g, replacement: "an Ally", label: "anAlly -> an Ally" },
   { pattern: /\baTagTeam\b/g, replacement: "a Tag Team", label: "aTagTeam -> a Tag Team" },
@@ -571,15 +680,17 @@ const cleanupRules = [
 
 const pageTexts = await extractPdfPages(sourcePdfPath, unique(ruleSpecs.map((spec) => spec.pdfPage)));
 const extractedRules = ruleSpecs.map((spec) => extractRule(spec, pageTexts.get(spec.pdfPage) ?? ""));
-const entries = extractedRules.map((rule) => rule.entry);
+const entries = [...extractedRules.map((rule) => rule.entry), ...authoredRules];
 
 SrdEntryCollectionSchema.parse(entries);
 
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(resolve(process.cwd(), outputPath), `${JSON.stringify(entries, null, 2)}\n`, "utf8");
-await writeFile(resolve(process.cwd(), reviewReportPath), buildReviewReport(extractedRules), "utf8");
+await writeFile(resolve(process.cwd(), reviewReportPath), buildReviewReport(extractedRules, authoredRules), "utf8");
 
-console.log(`Extracted ${entries.length} rule_reference candidate entries to ${outputPath}.`);
+console.log(
+  `Extracted ${extractedRules.length} PDF-section rule_reference entries and ${authoredRules.length} authored entries (${entries.length} total) to ${outputPath}.`,
+);
 console.log(`Wrote parser review report to ${reviewReportPath}.`);
 
 function extractRule(spec: RuleSpec, rawText: string): ExtractedRule {
@@ -711,7 +822,7 @@ function reviewDateLabel(timestamp: string) {
   return timestamp.slice(0, 10);
 }
 
-function buildReviewReport(extractedRules: ExtractedRule[]) {
+function buildReviewReport(extractedRules: ExtractedRule[], authoredRules: SrdEntry[]) {
   const lines = [
     "# SRD Candidate Review Report",
     "",
@@ -719,7 +830,9 @@ function buildReviewReport(extractedRules: ExtractedRule[]) {
     "",
     "## Summary",
     "",
-    `- Candidate entries: ${extractedRules.length}`,
+    `- PDF-section candidate entries: ${extractedRules.length}`,
+    `- Authored entries: ${authoredRules.length}`,
+    `- Total entries: ${extractedRules.length + authoredRules.length}`,
     `- Entries with parser cleanup: ${extractedRules.filter((rule) => rule.appliedCleanupLabels.length > 0).length}`,
     `- Entries with suspicious tokens: ${extractedRules.filter((rule) => rule.suspiciousTokens.length > 0).length}`,
     "",
@@ -740,6 +853,22 @@ function buildReviewReport(extractedRules: ExtractedRule[]) {
       `- Parser cleanup: ${rule.appliedCleanupLabels.length > 0 ? rule.appliedCleanupLabels.join("; ") : "none"}`,
     );
     lines.push(`- Suspicious tokens: ${rule.suspiciousTokens.length > 0 ? rule.suspiciousTokens.join(", ") : "none"}`);
+    lines.push("");
+  }
+
+  lines.push("## Authored Entries");
+  lines.push("");
+  lines.push("Hand-authored entries that bypass PDF section extraction (synthesized from multiple sections or formatted as bulleted lists). Verify wording against the source PDF.");
+  lines.push("");
+  for (const entry of authoredRules) {
+    lines.push(`### ${entry.id}`);
+    lines.push("");
+    lines.push(`- Name: ${entry.name}`);
+    lines.push(`- Printed SRD pages: ${entry.source.printedPages.join(", ")}`);
+    lines.push(`- Review status: ${entry.review.status}`);
+    lines.push(`- Text length: ${entry.text.original.length} characters`);
+    lines.push(`- Text preview: ${previewText(entry.text.original)}`);
+    lines.push(`- Source notes: ${entry.review.notes.join(" ")}`);
     lines.push("");
   }
 
