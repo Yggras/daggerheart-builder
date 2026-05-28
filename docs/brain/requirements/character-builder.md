@@ -19,11 +19,11 @@ The exact steps are not final and must be derived from the SRD rules model.
 Likely areas include:
 
 - Character identity
-- Species
+- Ancestry
 - Class
 - Subclass
 - Domains
-- Background
+- Community
 - Equipment
 - Starting abilities or features
 - Final review

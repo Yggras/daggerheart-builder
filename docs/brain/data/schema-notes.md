@@ -54,7 +54,7 @@ All entries share:
 
 **Environment** — `difficulty` may be a positive integer or `"special"` when the SRD lists `Difficulty: Special`. Special difficulty details are preserved in `text.original` and feature text.
 
-**Domain cards** — extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item. Codex grimoire cards currently preserve full card text as one ability item; splitting into sub-spell abilities is deferred until the app needs it.
+**Domain cards** — extracted as one entry per card with `domain`, `level`, `cardType`, `recallCost`, and at least one `abilities` item. Codex grimoire cards are split into one ability per named sub-spell by `scripts/extract-domain-cards.ts` using a curated `grimoireSpells` map, so the compendium renders each sub-spell as a separate bold-named feature.
 
 **Weapons** — traits include the six base traits plus `spellcast` for Arcane-Frame Wheelchair rows. Damage type may be `physical`, `magic`, or `physical_or_magic` (Ghostblade).
 
@@ -86,4 +86,3 @@ The character builder will eventually need some feature text as processable data
 ## Open Questions
 
 - Should bulk generated extraction outputs remain committed long-term, or become regenerated artifacts when the SRD changes?
-- Should Codex grimoire cards be split into separate ability records per sub-spell, or is full-card text sufficient until sub-spell rendering is needed?

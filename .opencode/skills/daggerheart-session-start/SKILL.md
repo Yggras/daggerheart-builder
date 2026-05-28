@@ -39,8 +39,8 @@ npm run android         # verify UI changes on device
 
 ## Current Project Priorities
 
-- The SRD data foundation is complete and stable (783 entries, 11 kinds). Do not re-extract unless the SRD PDF changes.
-- Build and improve app features (compendium first, then character builder, then campaign play) using the canonical fixture data.
+- The SRD data foundation is complete and stable (791 entries, 11 kinds). Do not re-extract unless the SRD PDF changes.
+- The current compendium improvement pass is complete. Choose the next product slice before starting major feature work.
 - Preserve all project decisions in `docs/brain/`.
 - Do not start Supabase integration, character builder, campaign play, or UI kit selection until explicitly decided.
 - Run `validate:srd` and `typecheck` after any data or code change.

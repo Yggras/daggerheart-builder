@@ -1,7 +1,7 @@
 # Parser Automation — Completed Reference
 
 Status: Complete
-Last updated: 2026-05-26
+Last updated: 2026-05-28
 
 All 11 entity kind parsers have been implemented and all generated candidates have been reviewed and promoted to canonical fixtures. This document is retained as a reference for re-extraction if the SRD PDF updates.
 
@@ -9,7 +9,7 @@ All 11 entity kind parsers have been implemented and all generated candidates ha
 
 | File | Entries |
 |------|---------|
-| `data/srd/fixtures/rule-references.json` | 37 |
+| `data/srd/fixtures/rule-references.json` | 42 |
 | `data/srd/fixtures/armor.json` | 34 |
 | `data/srd/fixtures/weapons.json` | 204 |
 | `data/srd/fixtures/loot.json` | 120 |
@@ -20,9 +20,9 @@ All 11 entity kind parsers have been implemented and all generated candidates ha
 | `data/srd/fixtures/domain-cards.json` | 189 |
 | `data/srd/fixtures/adversaries.json` | 129 |
 | `data/srd/fixtures/environments.json` | 19 |
-| **Total** | **786** |
+| **Total** | **791** |
 
-Note: `rule-references.json` includes 3 hand-authored entries (Character Traits, Weapon Burden, Weapon Categories) added after the original 34-entry extraction. See "Authored Entries" below.
+Note: `rule-references.json` includes 8 hand-authored entries added after the original 34-entry extraction: Character Traits, Weapon Burden, Weapon Categories, Domains, Domain Card Types, Adversary Types, Environment Types, and Loot. See "Authored Entries" below.
 
 ## Extraction Scripts
 
@@ -74,7 +74,7 @@ Some entries cannot be produced by the PDF section-boundary model — they are s
 
 **An extraction script — not just the fixtures — must be the source of truth for every entry of its kind.** Authored entries must never live only in `data/srd/fixtures/`, or they will be silently lost on a future re-extraction. After authoring, regenerate and confirm the generated and fixture copies match byte-for-byte.
 
-See `decisions/ADR-0013-authored-entries-in-extraction-scripts.md` for the full convention and the step-by-step recipe. This is the standard approach whenever new linked field values (domains, adversary roles, environment types, loot types, armor score, etc.) require rule references or other entries that aren't clean PDF sections.
+See `decisions/ADR-0013-authored-entries-in-extraction-scripts.md` for the full convention and the step-by-step recipe. This is the standard approach whenever new linked field values or other app needs require rule references or entries that aren't clean PDF sections.
 
 ## Parser Implementation Notes
 

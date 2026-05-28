@@ -384,3 +384,13 @@ Decision: Updated `scripts/extract-domain-cards.ts` (the parser is the source of
 3. Regenerated candidates and promoted to fixtures (only the 13 grimoire entries changed; parser reproduces all other 176 cards byte-for-byte). `DomainCardDetails` already renders each ability via the bold-titled `Feature`, so sub-spells now display as bold-named features automatically.
 
 Consequences: Grimoire cards are readable, with each sub-spell as its own bold-named feature and corrected spacing in both abilities and `text.original`. The split is deterministic and regeneration-safe via the curated map. If the SRD adds grimoires, extend `grimoireSpells`.
+
+## 2026-05-28 - Current Documentation Reconciled With Implementation
+
+Status: Accepted
+
+Context: A documentation audit found stale current-state references after recent compendium and rule-reference work. Older docs still cited 783 or 786 entries, described compendium UI enhancement as the next likely task, treated grimoire splitting and inline links as unresolved, and implied subclasses should have a separate overview card.
+
+Decision: Refresh current-state docs to match implementation: 791 canonical entries across 11 kinds, including 42 rule references; the SRD extraction pipeline and current compendium enhancement pass are complete; Codex grimoire cards are split into per-spell abilities; inline text links and linked enum field values are implemented; subclasses are intentionally reached through class navigation rather than a separate compendium overview card.
+
+Consequences: Future sessions should treat product direction selection as the next step, not default compendium polish. Historical decision entries remain chronological records, but current-state docs and session-start skills now reflect the present implementation.

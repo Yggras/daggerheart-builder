@@ -4,8 +4,8 @@ A personal-use Daggerheart TTRPG companion app (iOS / Android / web) built with 
 
 ## Current State
 
-- **SRD data extraction is complete**: 783 canonical entries across 11 entity kinds, all reviewed and validated.
-- **Compendium UI is working** (tested on Android): overview → kind list with search + chip filters → entry detail view.
+- **SRD data extraction is complete**: 791 canonical entries across 11 entity kinds, all reviewed and validated.
+- **Compendium UI is working** (tested on Android): overview → kind list with search + chip filters → entry detail view. Subclasses are intentionally surfaced through class navigation rather than a separate overview card.
 - **Not yet started**: Supabase integration, character builder, campaign play.
 
 ## Second Brain
@@ -25,7 +25,7 @@ Use the `/daggerheart-session-start` skill at the start of any session for full 
 | `app/` | Expo Router screens |
 | `src/srd/` | Zod schema, fixture loader, fixture entry index |
 | `src/compendium/` | Display formatting and client-side search/filter logic |
-| `data/srd/fixtures/` | 11 kind-specific canonical JSON files (783 entries total) |
+| `data/srd/fixtures/` | 11 kind-specific canonical JSON files (791 entries total) |
 | `data/srd/generated/` | Parser output — candidate data, not canonical |
 | `data/source/` | Official SRD PDF |
 | `scripts/` | SRD extraction scripts (one per entity kind) |
@@ -35,7 +35,7 @@ Use the `/daggerheart-session-start` skill at the start of any session for full 
 
 ```
 /                          → home screen
-/compendium                → kind overview (one card per entity kind)
+/compendium                → kind overview (top-level kind cards; subclasses grouped under classes)
 /compendium/[kind]         → kind list with text search and chip filters
 /compendium/[kind]/[id]    → entry detail screen
 ```

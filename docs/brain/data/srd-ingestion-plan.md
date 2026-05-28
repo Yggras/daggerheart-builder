@@ -1,6 +1,6 @@
 # SRD Ingestion Plan
 
-Status: Complete — all 783 canonical entries ingested, reviewed, and promoted.
+Status: Complete — all 791 canonical entries ingested, reviewed, and promoted.
 
 ## Source Document
 

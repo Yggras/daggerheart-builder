@@ -12,7 +12,7 @@ While adding rule references for game terms (Character Traits, Weapon Burden, We
 - **Synthesized entries** drawn from several scattered PDF locations (e.g., Weapon Burden combines the weapon-table Burden column, the character-creation weapon-selection step, and the Combat Wheelchair burden section). There is no single heading span to capture.
 - **Reformatted entries** where the desired canonical text differs from the raw PDF flow (e.g., a bulleted list authored with `•` markers for readable rendering).
 
-These were first added only to the fixtures. That created a latent hazard: the generating script did not know about them, so a future rebuild of fixtures from a fresh extraction (e.g., when the SRD PDF updates) would silently drop them. This is a recurring need — future work (domains, adversary roles, environment types, loot types, armor score, and other linked field values) will require the same kind of hand-authored or synthesized entries.
+These were first added only to the fixtures. That created a latent hazard: the generating script did not know about them, so a future rebuild of fixtures from a fresh extraction (e.g., when the SRD PDF updates) would silently drop them. This need has recurred for domains, adversary roles, environment types, loot types, and other linked field values that require hand-authored or synthesized entries.
 
 ## Decision
 

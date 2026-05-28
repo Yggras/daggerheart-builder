@@ -67,7 +67,7 @@ Supabase integration has not started. The compendium works entirely from local b
 
 Canonical SRD data is stored as reviewed versioned JSON, split into kind-specific files under `data/srd/fixtures/`. The app validates the combined fixture collection with Zod at startup through `src/srd/loadFixture.ts` and `src/srd/schema.ts`.
 
-The SRD data extraction pipeline is complete (783 entries, 11 kinds). The compendium consumes local canonical data and does not call Supabase at runtime.
+The SRD data extraction pipeline is complete (791 entries, 11 kinds). The compendium consumes local canonical data and does not call Supabase at runtime.
 
 ## Auth Direction
 

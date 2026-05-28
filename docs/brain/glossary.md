@@ -30,7 +30,7 @@ The live play experience that includes character sheets, shared state, DM tools,
 
 ## Reviewed Data
 
-Extracted SRD data that has been manually checked and corrected against the official source.
+Extracted SRD data that has been manually checked or accepted through AI-assisted source verification, then corrected as needed against the official source.
 
 ## Second Brain
 

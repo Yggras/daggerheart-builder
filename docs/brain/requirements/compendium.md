@@ -27,16 +27,18 @@ Provide a searchable reference for official Daggerheart SRD content.
 
 The compendium is working and tested on Android. It includes:
 
-- A kind overview screen with one card per entity kind and entry counts.
+- A kind overview screen with top-level kind cards and entry counts. Subclasses are intentionally grouped under class navigation instead of having a separate overview card.
 - A kind list screen with text search and kind-specific chip filters:
   - Adversaries: tier + role
   - Environments: tier + environment type
   - Weapons: tier + category
   - Armor: tier
-  - Domain cards: domain
+  - Domain cards: domain + level
   - Loot: loot type
 - Entry detail screens for all 11 entity kinds with full kind-specific field rendering.
 - Related-entry navigation (class ↔ subclass, environment → adversaries, rule links).
+- Inline rich-text links in rules text where curated matching can safely link to entries.
+- Tappable enum field values for linked game terms such as domains, weapon range, weapon burden, adversary roles, environment types, and loot types.
 - Runtime Zod validation before entries are exposed to the UI.
 
 Source page references are stored in fixture data but intentionally not shown in the compendium UI. They are available for review/admin tooling.
@@ -51,4 +53,3 @@ Source page references are stored in fixture data but intentionally not shown in
 
 - Should the compendium require login?
 - Should source page references ever be surfaced to users, or remain admin-only?
-- Should related entries eventually be shown as inline links inside rules text, or should explicit related-entry sections remain the main navigation pattern?
