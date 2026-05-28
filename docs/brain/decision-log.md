@@ -355,3 +355,19 @@ Context: The 3 new rule_reference entries from the field-link pilot were hand-ad
 Decision: The rule-reference extraction script now carries both PDF-extracted rules (`ruleSpecs`) and hand-authored rules (`authoredRules` — full `SrdEntry` objects, copied verbatim from the fixtures, that bypass `pdftotext` section extraction). Both sets are merged, schema-validated together, and written to `entries.candidates.json`. The review report gained an "Authored Entries" section. Regenerated output now matches fixtures byte-for-byte (37 entries).
 
 Consequences: `npm run extract:srd:rules` reproduces the complete rule_reference set, so fixtures remain regeneration-safe. Future authored rules (domains, adversary roles, environment types, etc. from the field-link scaling plan) MUST be added to `authoredRules` in the extraction script — not only to fixtures — to avoid being lost on regeneration.
+
+## 2026-05-28 - Field Links Scaled To All Entity Kinds
+
+Status: Accepted
+
+Context: The weapon field-link pilot proved the pattern. Scaling to the other kinds required new rule references for game terms and surfaced a collision: the value `"social"` is both an adversary role and an environment type, which the flat `getFieldLink(value)` registry could not disambiguate.
+
+Decision:
+1. Authored 5 new rule references (in both `authoredRules` and fixtures, per ADR-0013): `rule.core.domains` (Domains), `rule.core.domain_card_types` (Domain Card Types), `rule.adversaries.types` (Adversary Types), `rule.environments.types` (Environment Types), `rule.equipment.loot` (Loot). New categories: `core materials`, `adversaries`, `environments`. Total rule_reference entries: 42.
+2. Refactored `fieldLinks` to be namespaced by semantic field: `Record<field, Record<value, FieldLink>>` with `getFieldLink(field, value)`. Fields: trait, burden, category, range, damageType, domain, cardType, role, environmentType, lootType. Resolves the `social` collision.
+3. Added `LinkedValue` (inline linked text) and `LinkedKeyValueList` (comma-separated independently-linked values) to `Section.tsx`; `LinkedKeyValue` now takes a `field` prop. Shared `formatEnum` moved to `display.ts`.
+4. Wired links into all detail components: Weapons (category/trait/range/damage/burden), Classes (each domain), Domain Cards (domain/type), Subclasses (spellcast trait), Adversaries (role stat + attack range/damage type), Environments (type), Loot (type).
+
+Scope note: only enum-valued fields are linked. Numeric fields (armor score, thresholds, recall cost, difficulty, level) are intentionally not linked — tapping a bare number to reach a concept is poor UX. Revisit if a label-based link affordance is added later.
+
+Consequences: Game-term field values across the whole compendium now link to their explanations. The namespaced registry is collision-safe and extends by adding a field/value map plus a rule reference.

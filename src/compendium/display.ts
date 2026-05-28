@@ -4,6 +4,14 @@ export function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+// snake_case enum value → Title Case for display (e.g. "very_close" → "Very Close").
+export function formatEnum(s: string) {
+  return s
+    .split("_")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 export function formatKind(kind: SrdEntry["kind"]) {
   return kind
     .split("_")

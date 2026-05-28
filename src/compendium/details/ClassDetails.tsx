@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { getSrdEntryById } from "../../srd/loadFixture";
 import type { SrdEntry } from "../../srd/schema";
 import { colors, radii } from "../../theme";
-import { Feature, KeyValue, Section } from "../components/Section";
+import { Feature, KeyValue, LinkedKeyValueList, Section } from "../components/Section";
 
 type SubclassEntry = Extract<SrdEntry, { kind: "subclass" }>;
 
@@ -68,7 +68,7 @@ export function ClassDetails({ entry }: { entry: Extract<SrdEntry, { kind: "clas
   return (
     <>
       <Section title="Class Details">
-        <KeyValue label="Domains" value={entry.domains.join(", ")} />
+        <LinkedKeyValueList label="Domains" field="domain" values={entry.domains} />
         <KeyValue label="Starting Evasion" value={String(entry.startingEvasion)} />
         <KeyValue label="Starting Hit Points" value={String(entry.startingHitPoints)} />
         <KeyValue label="Class Items" value={entry.classItems.join(" or ")} />

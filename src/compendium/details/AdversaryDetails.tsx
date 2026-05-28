@@ -1,19 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
 import type { SrdEntry } from "../../srd/schema";
 import { colors, radii } from "../../theme";
-import { Feature, Section, formatThresholds } from "../components/Section";
+import { formatEnum } from "../display";
+import { Feature, LinkedValue, Section, formatThresholds } from "../components/Section";
 
-function formatEnum(s: string) {
-  return s
-    .split("_")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, field, linkValue }: { label: string; value: string; field?: string; linkValue?: string }) {
   return (
     <View style={styles.stat}>
-      <Text style={styles.statValue}>{value}</Text>
+      {field ? (
+        <LinkedValue field={field} value={linkValue ?? value} display={value} style={styles.statValue} />
+      ) : (
+        <Text style={styles.statValue}>{value}</Text>
+      )}
       <Text style={styles.statLabel}>{label}</Text>
     </View>
   );
@@ -31,7 +29,7 @@ export function AdversaryDetails({ entry }: { entry: Extract<SrdEntry, { kind: "
     <Section title="Adversary Details">
       <View style={styles.statRow}>
         <Stat label="Tier" value={String(entry.tier)} />
-        <Stat label="Role" value={formatEnum(entry.role)} />
+        <Stat label="Role" value={formatEnum(entry.role)} field="role" linkValue={entry.role} />
         <Stat label="Difficulty" value={String(entry.difficulty)} />
       </View>
 
@@ -47,7 +45,19 @@ export function AdversaryDetails({ entry }: { entry: Extract<SrdEntry, { kind: "
           <Text style={styles.attackMod}>{modifier}</Text>
         </View>
         <Text style={styles.attackDetail}>
-          {formatEnum(entry.attack.range)} · {entry.attack.damage.roll} {formatEnum(entry.attack.damage.type)}
+          <LinkedValue
+            field="range"
+            value={entry.attack.range}
+            display={formatEnum(entry.attack.range)}
+            style={styles.attackDetail}
+          />
+          {` · ${entry.attack.damage.roll} `}
+          <LinkedValue
+            field="damageType"
+            value={entry.attack.damage.type}
+            display={formatEnum(entry.attack.damage.type)}
+            style={styles.attackDetail}
+          />
         </Text>
       </View>
 

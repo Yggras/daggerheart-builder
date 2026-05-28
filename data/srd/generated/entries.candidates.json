@@ -1689,5 +1689,236 @@
       "Weapons",
       "Categories"
     ]
+  },
+  {
+    "id": "rule.core.domains",
+    "kind": "rule_reference",
+    "name": "Domains",
+    "slug": "domains",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 4,
+        "pageEnd": 4
+      },
+      "printedPages": [
+        6,
+        7
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-28T00:00:00.000Z",
+      "notes": [
+        "Authored from the Core Materials \"Domains\" section on printed pages 6-7; descriptions transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "The Daggerheart core set includes 9 Domain Decks, each comprising a collection of cards granting features or special abilities expressing a particular theme. Each class grants access to two domains. The 9 Domains are: • Arcana: the domain of innate and instinctual magic. Those who choose this path tap into the raw, enigmatic forces of the realms to manipulate both their own energy and the elements. Accessed by the Druid and Sorcerer classes. • Blade: the domain of weapon mastery. Whether by steel, bow, or a more specialized arm, those who follow this path have the skill to cut short the lives of others. Accessed by the Guardian and Warrior classes. • Bone: the domain of tactics and the body. Practitioners have an uncanny control over their own physical abilities and an eye for predicting the behaviors of others in combat. Accessed by the Ranger and Warrior classes. • Codex: the domain of intensive magical study. Those who seek magical knowledge turn to the equations of power recorded in books, on scrolls, etched into walls, or tattooed on bodies. Accessed by the Bard and Wizard classes. • Grace: the domain of charisma. Through rapturous storytelling, charming spells, or a shroud of lies, those who channel this power define the realities of their adversaries, bending perception to their will. Accessed by the Bard and Rogue classes. • Midnight: the domain of shadows and secrecy. Whether by clever tricks, deft magic, or the cloak of night, those who channel these forces practice the art of obscurity and can uncover sequestered treasures. Accessed by the Rogue and Sorcerer classes. • Sage: the domain of the natural world. Those who walk this path tap into the unfettered power of the earth and its creatures to unleash raw magic. Accessed by the Druid and Ranger classes. • Splendor: the domain of life. Through this magic, followers gain the ability to heal and, to an extent, control death. Accessed by the Seraph and Wizard classes. • Valor: the domain of protection. Whether through attack or defense, those who choose this discipline channel formidable strength to protect their allies in battle. Accessed by the Guardian and Seraph classes.",
+      "summary": "The nine domains — Arcana, Blade, Bone, Codex, Grace, Midnight, Sage, Splendor, and Valor — are themed card decks. Each class grants access to two of them."
+    },
+    "tags": [
+      "rule",
+      "domains",
+      "arcana",
+      "blade",
+      "bone",
+      "codex",
+      "grace",
+      "midnight",
+      "sage",
+      "splendor",
+      "valor"
+    ],
+    "relationships": [],
+    "category": "core materials",
+    "headings": [
+      "Core Materials",
+      "Domains"
+    ]
+  },
+  {
+    "id": "rule.core.domain_card_types",
+    "kind": "rule_reference",
+    "name": "Domain Card Types",
+    "slug": "domain-card-types",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 5,
+        "pageEnd": 5
+      },
+      "printedPages": [
+        8,
+        9
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-28T00:00:00.000Z",
+      "notes": [
+        "Authored from the \"Domain Card Anatomy\" section on printed pages 8-9; wording transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "A domain card's type is listed in the center above the title. There are three types of domain cards: • Abilities: typically non-magical in nature. • Spells: magical in nature. • Grimoires: unique to the Codex domain, granting access to a collection of less potent spells. Some game mechanics only apply to certain types of cards.",
+      "summary": "Domain cards are one of three types: abilities (non-magical), spells (magical), or grimoires (Codex-only collections of lesser spells)."
+    },
+    "tags": [
+      "rule",
+      "domain-card",
+      "ability",
+      "spell",
+      "grimoire"
+    ],
+    "relationships": [],
+    "category": "core materials",
+    "headings": [
+      "Core Materials",
+      "Domain Cards",
+      "Domain Card Anatomy"
+    ]
+  },
+  {
+    "id": "rule.adversaries.types",
+    "kind": "rule_reference",
+    "name": "Adversary Types",
+    "slug": "adversary-types",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 36,
+        "pageEnd": 36
+      },
+      "printedPages": [
+        70,
+        71
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-28T00:00:00.000Z",
+      "notes": [
+        "Authored from the \"Using Adversaries\" stat block TYPE section on printed pages 70-71; type definitions transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "An adversary's type appears alongside their tier and represents the role they play in a conflict. The adversary types are: • Bruisers: tough; deliver powerful attacks. • Hordes: groups of identical creatures acting together as a single unit. • Leaders: command and summon other adversaries. • Minions: easily dispatched but dangerous in numbers. • Ranged: fragile in close encounters but deal high damage at range. • Skulks: maneuver and exploit opportunities to ambush opponents. • Socials: present challenges around conversation instead of combat. • Solos: present a formidable challenge to a whole party, with or without support. • Standards: representative of their fictional group. • Supports: enhance their allies and disrupt their opponents.",
+      "summary": "An adversary's type (role) — Bruiser, Horde, Leader, Minion, Ranged, Skulk, Social, Solo, Standard, or Support — represents the role it plays in a conflict."
+    },
+    "tags": [
+      "rule",
+      "adversary",
+      "type",
+      "role"
+    ],
+    "relationships": [],
+    "category": "adversaries",
+    "headings": [
+      "Adversaries and Environments",
+      "Using Adversaries",
+      "Adversary Stat Blocks",
+      "Type"
+    ]
+  },
+  {
+    "id": "rule.environments.types",
+    "kind": "rule_reference",
+    "name": "Environment Types",
+    "slug": "environment-types",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 52,
+        "pageEnd": 52
+      },
+      "printedPages": [
+        102,
+        103
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-28T00:00:00.000Z",
+      "notes": [
+        "Authored from the \"Using Environments\" stat block TYPE section on printed pages 102-103; type definitions transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "An environment's type indicates the kind of scene it most easily supports: • Explorations: wondrous locations with mysteries and marvels to discover. • Socials: locations that primarily present interpersonal challenges. • Traversals: dangerous locations where movement through and around the space itself is a challenge. • Events: special activities or occurrences (rather than physical spaces).",
+      "summary": "An environment's type — Exploration, Social, Traversal, or Event — indicates the kind of scene it most easily supports."
+    },
+    "tags": [
+      "rule",
+      "environment",
+      "type",
+      "exploration",
+      "social",
+      "traversal",
+      "event"
+    ],
+    "relationships": [],
+    "category": "environments",
+    "headings": [
+      "Adversaries and Environments",
+      "Using Environments",
+      "Environment Stat Block",
+      "Type"
+    ]
+  },
+  {
+    "id": "rule.equipment.loot",
+    "kind": "rule_reference",
+    "name": "Loot",
+    "slug": "loot",
+    "source": {
+      "document": "Daggerheart SRD",
+      "version": "1.0-2025-09-09",
+      "pdf": {
+        "path": "data/source/Daggerheart-SRD-9-09-25.pdf",
+        "pageStart": 30,
+        "pageEnd": 31
+      },
+      "printedPages": [
+        58,
+        59
+      ],
+      "url": "https://www.daggerheart.com/wp-content/uploads/2025/09/Daggerheart-SRD-9-09-25.pdf"
+    },
+    "review": {
+      "status": "reviewed",
+      "reviewedAt": "2026-05-28T00:00:00.000Z",
+      "notes": [
+        "Authored from the \"Loot\" and \"Consumables\" sections on printed pages 58-59; wording transcribed from the source PDF."
+      ]
+    },
+    "text": {
+      "original": "Loot comprises any consumables or reusable items the party acquires. • Items: reusable loot that can be used until sold, discarded, or lost. • Consumables: loot that can only be used once. You can hold up to five of each consumable at a time, and using a consumable doesn't require a roll unless required by the GM or the demands of the fiction.",
+      "summary": "Loot is either a reusable item or a single-use consumable."
+    },
+    "tags": [
+      "rule",
+      "equipment",
+      "loot",
+      "item",
+      "consumable"
+    ],
+    "relationships": [],
+    "category": "equipment",
+    "headings": [
+      "Loot"
+    ]
   }
 ]

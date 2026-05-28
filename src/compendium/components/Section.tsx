@@ -1,5 +1,6 @@
 import { useRouter } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Fragment } from "react";
+import { StyleSheet, Text, type TextStyle, View } from "react-native";
 import { getFieldLink } from "../fieldLinks";
 import type { SrdEntry } from "../../srd/schema";
 import { colors, radii } from "../../theme";
@@ -23,32 +24,82 @@ export function KeyValue({ label, value }: { label: string; value: string }) {
   );
 }
 
+// Inline text that links to a rule reference when the field/value pair maps to
+// one, otherwise renders plain. Use inside KeyValue-style rows, stat blocks, or
+// comma-separated value lists.
+export function LinkedValue({
+  field,
+  value,
+  display,
+  style,
+}: {
+  field: string;
+  value: string;
+  display?: string;
+  style?: TextStyle | TextStyle[];
+}) {
+  const router = useRouter();
+  const link = getFieldLink(field, value);
+  const label = display ?? value;
+
+  if (!link) {
+    return <Text style={style}>{label}</Text>;
+  }
+
+  return (
+    <Text
+      style={[style, styles.linkedValue]}
+      onPress={() =>
+        router.push({ pathname: "/compendium/[kind]/[id]", params: { kind: link.entryKind, id: link.entryId } })
+      }
+    >
+      {label}
+    </Text>
+  );
+}
+
 export function LinkedKeyValue({
   label,
   value,
+  field,
   linkValue,
 }: {
   label: string;
   value: string;
+  field: string;
   linkValue?: string;
 }) {
-  const router = useRouter();
-  const link = getFieldLink(linkValue ?? value);
-
-  if (!link) {
-    return <KeyValue label={label} value={value} />;
-  }
-
   return (
     <View style={styles.keyValue}>
       <Text style={styles.key}>{label}</Text>
-      <Text
-        style={[styles.value, styles.linkedValue]}
-        onPress={() =>
-          router.push({ pathname: "/compendium/[kind]/[id]", params: { kind: link.entryKind, id: link.entryId } })
-        }
-      >
-        {value}
+      <LinkedValue field={field} value={linkValue ?? value} display={value} style={styles.value} />
+    </View>
+  );
+}
+
+// A key/value row whose value is a comma-separated list of independently-linked
+// values (e.g. a class's two domains, each linking to the Domains rule).
+export function LinkedKeyValueList({
+  label,
+  field,
+  values,
+  formatValue,
+}: {
+  label: string;
+  field: string;
+  values: string[];
+  formatValue?: (value: string) => string;
+}) {
+  return (
+    <View style={styles.keyValue}>
+      <Text style={styles.key}>{label}</Text>
+      <Text style={styles.value}>
+        {values.map((value, i) => (
+          <Fragment key={value}>
+            {i > 0 ? ", " : null}
+            <LinkedValue field={field} value={value} display={formatValue ? formatValue(value) : value} style={styles.value} />
+          </Fragment>
+        ))}
       </Text>
     </View>
   );
