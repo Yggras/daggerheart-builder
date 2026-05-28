@@ -371,3 +371,16 @@ Decision:
 Scope note: only enum-valued fields are linked. Numeric fields (armor score, thresholds, recall cost, difficulty, level) are intentionally not linked — tapping a bare number to reach a concept is poor UX. Revisit if a label-based link affordance is added later.
 
 Consequences: Game-term field values across the whole compendium now link to their explanations. The namespaced registry is collision-safe and extends by adding a field/value map plus a rule reference.
+
+## 2026-05-28 - Grimoire Cards Split Into Per-Spell Abilities
+
+Status: Accepted
+
+Context: The 13 Codex grimoire domain cards each bundle multiple named sub-spells, but the parser stored the whole body as a single ability, so the compendium showed an unreadable blob with the sub-spell names inline and unbolded. Poppler also dropped spaces in several sub-spell names (e.g. "PowerPush", "Tava’sArmor", "Wall ofFlame"). This resolves the long-standing open question about grimoire normalization.
+
+Decision: Updated `scripts/extract-domain-cards.ts` (the parser is the source of truth):
+1. Added cleanupRules for the 6 joined sub-spell name artifacts (PowerPush, Tava’sArmor, AdjustAppearance, MysticTether, Wall ofFlame, PassThrough).
+2. Added a curated, source-verified `grimoireSpells` map (card name → ordered sub-spell names) and a `splitGrimoireAbilities` function that slices the cleaned body on each `Name:` boundary into one ability per spell. Non-grimoire cards keep their single ability.
+3. Regenerated candidates and promoted to fixtures (only the 13 grimoire entries changed; parser reproduces all other 176 cards byte-for-byte). `DomainCardDetails` already renders each ability via the bold-titled `Feature`, so sub-spells now display as bold-named features automatically.
+
+Consequences: Grimoire cards are readable, with each sub-spell as its own bold-named feature and corrected spacing in both abilities and `text.original`. The split is deterministic and regeneration-safe via the curated map. If the SRD adds grimoires, extend `grimoireSpells`.

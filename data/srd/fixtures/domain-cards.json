@@ -3114,7 +3114,7 @@
       ]
     },
     "text": {
-      "original": "PowerPush: Make a Spellcast Roll against a target within Melee range. On a success, they’re knocked back to Far range and take d10+2 magic damage using your Proficiency. Tava’sArmor: Spend a Hope to give a target you can touch a +1 bonus to their Armor Score until their next rest or you cast Tava’s Armor again. Ice Spike: Make a Spellcast Roll (12) to summon a large ice spike within Far range. If you use it as a weapon, make the Spellcast Roll against the target’s Difficulty instead. On a success, deal d6 physical damage using your Proficiency.",
+      "original": "Power Push: Make a Spellcast Roll against a target within Melee range. On a success, they’re knocked back to Far range and take d10+2 magic damage using your Proficiency. Tava’s Armor: Spend a Hope to give a target you can touch a +1 bonus to their Armor Score until their next rest or you cast Tava’s Armor again. Ice Spike: Make a Spellcast Roll (12) to summon a large ice spike within Far range. If you use it as a weapon, make the Spellcast Roll against the target’s Difficulty instead. On a success, deal d6 physical damage using your Proficiency.",
       "summary": "Level 1 Codex grimoire."
     },
     "tags": [
@@ -3130,8 +3130,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Ava",
-        "text": "PowerPush: Make a Spellcast Roll against a target within Melee range. On a success, they’re knocked back to Far range and take d10+2 magic damage using your Proficiency. Tava’sArmor: Spend a Hope to give a target you can touch a +1 bonus to their Armor Score until their next rest or you cast Tava’s Armor again. Ice Spike: Make a Spellcast Roll (12) to summon a large ice spike within Far range. If you use it as a weapon, make the Spellcast Roll against the target’s Difficulty instead. On a success, deal d6 physical damage using your Proficiency."
+        "name": "Power Push",
+        "text": "Make a Spellcast Roll against a target within Melee range. On a success, they’re knocked back to Far range and take d10+2 magic damage using your Proficiency."
+      },
+      {
+        "name": "Tava’s Armor",
+        "text": "Spend a Hope to give a target you can touch a +1 bonus to their Armor Score until their next rest or you cast Tava’s Armor again."
+      },
+      {
+        "name": "Ice Spike",
+        "text": "Make a Spellcast Roll (12) to summon a large ice spike within Far range. If you use it as a weapon, make the Spellcast Roll against the target’s Difficulty instead. On a success, deal d6 physical damage using your Proficiency."
       }
     ]
   },
@@ -3179,8 +3187,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Illiat",
-        "text": "Slumber: Make a Spellcast Roll against a target within Very Close range. On a success, they’re Asleep until they take damage or the GM spends a Fear on their turn to clear this condition. Arcane Barrage: Once per rest, spend anynumber of Hope and shoot magical projectiles that strike a target of your choice within Close range. Roll a number of d6s equal to the Hope spent and deal that much magic damage to the target. Telepathy: Spend a Hope to open a line of mental communication with one target you can see. This connection lasts until your next rest or you cast Telepathy again."
+        "name": "Slumber",
+        "text": "Make a Spellcast Roll against a target within Very Close range. On a success, they’re Asleep until they take damage or the GM spends a Fear on their turn to clear this condition."
+      },
+      {
+        "name": "Arcane Barrage",
+        "text": "Once per rest, spend anynumber of Hope and shoot magical projectiles that strike a target of your choice within Close range. Roll a number of d6s equal to the Hope spent and deal that much magic damage to the target."
+      },
+      {
+        "name": "Telepathy",
+        "text": "Spend a Hope to open a line of mental communication with one target you can see. This connection lasts until your next rest or you cast Telepathy again."
       }
     ]
   },
@@ -3228,8 +3244,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Tyfar",
-        "text": "Wild Flame: Make a Spellcast Roll against up to three adversaries within Melee range. Targets you succeed against take 2d6 magic damage and must mark a Stress as flames erupt from your hand. Magic Hand: You conjure a magical hand with the same size and strength as your own within Far range. Mysterious Mist: Make a Spellcast Roll (13) to cast a temporary thick fog that gathers in a stationary area within Very Close range. The fog heavily obscures this area and everything in it."
+        "name": "Wild Flame",
+        "text": "Make a Spellcast Roll against up to three adversaries within Melee range. Targets you succeed against take 2d6 magic damage and must mark a Stress as flames erupt from your hand."
+      },
+      {
+        "name": "Magic Hand",
+        "text": "You conjure a magical hand with the same size and strength as your own within Far range."
+      },
+      {
+        "name": "Mysterious Mist",
+        "text": "Make a Spellcast Roll (13) to cast a temporary thick fog that gathers in a stationary area within Very Close range. The fog heavily obscures this area and everything in it."
       }
     ]
   },
@@ -3261,7 +3285,7 @@
       ]
     },
     "text": {
-      "original": "AdjustAppearance: You magically shift your appearance and clothing to avoid recognition. Parallela: Spend 2 Hope to cast this spell on yourself or an ally within Close range. The next time the target makes an attack, they can hit an additional target within range that their attack roll would succeed against. You can only hold this spell on one creature at a time. Illusion: Make a Spellcast Roll (14). On a success, create a temporaryvisual illusion no larger than you within Close range that lasts for as long as you look at it. It holds up to scrutiny until an observer is within Melee range.",
+      "original": "Adjust Appearance: You magically shift your appearance and clothing to avoid recognition. Parallela: Spend 2 Hope to cast this spell on yourself or an ally within Close range. The next time the target makes an attack, they can hit an additional target within range that their attack roll would succeed against. You can only hold this spell on one creature at a time. Illusion: Make a Spellcast Roll (14). On a success, create a temporaryvisual illusion no larger than you within Close range that lasts for as long as you look at it. It holds up to scrutiny until an observer is within Melee range.",
       "summary": "Level 2 Codex grimoire."
     },
     "tags": [
@@ -3277,8 +3301,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Sitil",
-        "text": "AdjustAppearance: You magically shift your appearance and clothing to avoid recognition. Parallela: Spend 2 Hope to cast this spell on yourself or an ally within Close range. The next time the target makes an attack, they can hit an additional target within range that their attack roll would succeed against. You can only hold this spell on one creature at a time. Illusion: Make a Spellcast Roll (14). On a success, create a temporaryvisual illusion no larger than you within Close range that lasts for as long as you look at it. It holds up to scrutiny until an observer is within Melee range."
+        "name": "Adjust Appearance",
+        "text": "You magically shift your appearance and clothing to avoid recognition."
+      },
+      {
+        "name": "Parallela",
+        "text": "Spend 2 Hope to cast this spell on yourself or an ally within Close range. The next time the target makes an attack, they can hit an additional target within range that their attack roll would succeed against. You can only hold this spell on one creature at a time."
+      },
+      {
+        "name": "Illusion",
+        "text": "Make a Spellcast Roll (14). On a success, create a temporaryvisual illusion no larger than you within Close range that lasts for as long as you look at it. It holds up to scrutiny until an observer is within Melee range."
       }
     ]
   },
@@ -3326,8 +3358,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Vagras",
-        "text": "Runic Lock: Make a Spellcast Roll (15) on an object you’re touching that can close (such as a lock, chest, or box). Once per rest on a success, you can lock the object so it can only be opened by creatures of your choice. Someone with access to magic and an hour of time to study the spell can break it. Arcane Door: When you have no adversaries within Melee range, make a Spellcast Roll (13). On a success, spend a Hope to create a portal from where you are to a point within Far range you can see. It closes once a creature has passed through it. Reveal: Make a Spellcast Roll. If there is anything magically hidden within Close range, it is revealed."
+        "name": "Runic Lock",
+        "text": "Make a Spellcast Roll (15) on an object you’re touching that can close (such as a lock, chest, or box). Once per rest on a success, you can lock the object so it can only be opened by creatures of your choice. Someone with access to magic and an hour of time to study the spell can break it."
+      },
+      {
+        "name": "Arcane Door",
+        "text": "When you have no adversaries within Melee range, make a Spellcast Roll (13). On a success, spend a Hope to create a portal from where you are to a point within Far range you can see. It closes once a creature has passed through it."
+      },
+      {
+        "name": "Reveal",
+        "text": "Make a Spellcast Roll. If there is anything magically hidden within Close range, it is revealed."
       }
     ]
   },
@@ -3375,8 +3415,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Korvax",
-        "text": "Levitation: Make a Spellcast Roll to temporarily lift a target you can see up into the air and move them within Close range of their original position. Recant: Spend a Hope to force a target within Melee range to make a Reaction Roll (15). On a failure, they forget the last minute of your conversation. Rune Circle: Mark a Stress to create a temporary magical circle on the ground where you stand. All adversaries within Melee range, or who enter Melee range, take 2d12+4 magic damage and are knocked back to Very Close range."
+        "name": "Levitation",
+        "text": "Make a Spellcast Roll to temporarily lift a target you can see up into the air and move them within Close range of their original position."
+      },
+      {
+        "name": "Recant",
+        "text": "Spend a Hope to force a target within Melee range to make a Reaction Roll (15). On a failure, they forget the last minute of your conversation."
+      },
+      {
+        "name": "Rune Circle",
+        "text": "Mark a Stress to create a temporary magical circle on the ground where you stand. All adversaries within Melee range, or who enter Melee range, take 2d12+4 magic damage and are knocked back to Very Close range."
       }
     ]
   },
@@ -3408,7 +3456,7 @@
       ]
     },
     "text": {
-      "original": "MysticTether: Make a Spellcast Roll against a target within Far range. On a success, they’re temporarily Restrained and must mark a Stress. If you target a flying creature, this spell grounds and temporarily Restrains them. Fireball: Make a Spellcast Roll against a target within Very Far range. On a success, hurl a sphere of fire toward them that explodes on impact. The target and all creatures within Very Close range of them must make a Reaction Roll (13). Targets who fail take d20+5 magic damage using your Proficiency. Targets who succeed take half damage.",
+      "original": "Mystic Tether: Make a Spellcast Roll against a target within Far range. On a success, they’re temporarily Restrained and must mark a Stress. If you target a flying creature, this spell grounds and temporarily Restrains them. Fireball: Make a Spellcast Roll against a target within Very Far range. On a success, hurl a sphere of fire toward them that explodes on impact. The target and all creatures within Very Close range of them must make a Reaction Roll (13). Targets who fail take d20+5 magic damage using your Proficiency. Targets who succeed take half damage.",
       "summary": "Level 3 Codex grimoire."
     },
     "tags": [
@@ -3424,8 +3472,12 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Norai",
-        "text": "MysticTether: Make a Spellcast Roll against a target within Far range. On a success, they’re temporarily Restrained and must mark a Stress. If you target a flying creature, this spell grounds and temporarily Restrains them. Fireball: Make a Spellcast Roll against a target within Very Far range. On a success, hurl a sphere of fire toward them that explodes on impact. The target and all creatures within Very Close range of them must make a Reaction Roll (13). Targets who fail take d20+5 magic damage using your Proficiency. Targets who succeed take half damage."
+        "name": "Mystic Tether",
+        "text": "Make a Spellcast Roll against a target within Far range. On a success, they’re temporarily Restrained and must mark a Stress. If you target a flying creature, this spell grounds and temporarily Restrains them."
+      },
+      {
+        "name": "Fireball",
+        "text": "Make a Spellcast Roll against a target within Very Far range. On a success, hurl a sphere of fire toward them that explodes on impact. The target and all creatures within Very Close range of them must make a Reaction Roll (13). Targets who fail take d20+5 magic damage using your Proficiency. Targets who succeed take half damage."
       }
     ]
   },
@@ -3473,8 +3525,12 @@
     "recallCost": 3,
     "abilities": [
       {
-        "name": "Book of Exota",
-        "text": "Repudiate: You can interrupt a magical effect taking place. Make a reaction roll using your Spellcast trait. Once per rest on a success, the effect stops and any consequences are avoided. Create Construct: Spend a Hope to choose a group of objects around you and create an animated construct from them that obeys basic commands. Make a Spellcast Roll to command them to take action. When necessary, they share your Evasion and traits and their attacks deal 2d10+3 physical damage. You can only maintain one construct at a time, and they fall apart when they take any amount of damage."
+        "name": "Repudiate",
+        "text": "You can interrupt a magical effect taking place. Make a reaction roll using your Spellcast trait. Once per rest on a success, the effect stops and any consequences are avoided."
+      },
+      {
+        "name": "Create Construct",
+        "text": "Spend a Hope to choose a group of objects around you and create an animated construct from them that obeys basic commands. Make a Spellcast Roll to command them to take action. When necessary, they share your Evasion and traits and their attacks deal 2d10+3 physical damage. You can only maintain one construct at a time, and they fall apart when they take any amount of damage."
       }
     ]
   },
@@ -3506,7 +3562,7 @@
       ]
     },
     "text": {
-      "original": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range. Time Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell. Wall ofFlame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage.",
+      "original": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range. Time Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell. Wall of Flame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage.",
       "summary": "Level 4 Codex grimoire."
     },
     "tags": [
@@ -3522,8 +3578,16 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Grynn",
-        "text": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range. Time Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell. Wall ofFlame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage."
+        "name": "Arcane Deflection",
+        "text": "Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range."
+      },
+      {
+        "name": "Time Lock",
+        "text": "Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell."
+      },
+      {
+        "name": "Wall of Flame",
+        "text": "Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage."
       }
     ]
   },
@@ -3751,7 +3815,7 @@
       ]
     },
     "text": {
-      "original": "PassThrough: Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side. Plane Gate: Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest.",
+      "original": "Pass Through: Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side. Plane Gate: Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest.",
       "summary": "Level 7 Codex grimoire."
     },
     "tags": [
@@ -3767,8 +3831,12 @@
     "recallCost": 0,
     "abilities": [
       {
-        "name": "Book of Homet",
-        "text": "PassThrough: Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side. Plane Gate: Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest."
+        "name": "Pass Through",
+        "text": "Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side."
+      },
+      {
+        "name": "Plane Gate",
+        "text": "Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest."
       }
     ]
   },
@@ -3865,8 +3933,12 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Vyola",
-        "text": "Memory Delve: Make a Spellcast Roll against a target within Far range. On a success, peer into the target’s mind and ask the GM a question. The GM describes any memories the target has pertaining to the answer. Shared Clarity: Once per long rest, spend a Hope to choose two willing creatures. When one of them would mark Stress, they can choose between the two of them who marks it. This spell lasts until their next rest."
+        "name": "Memory Delve",
+        "text": "Make a Spellcast Roll against a target within Far range. On a success, peer into the target’s mind and ask the GM a question. The GM describes any memories the target has pertaining to the answer."
+      },
+      {
+        "name": "Shared Clarity",
+        "text": "Once per long rest, spend a Hope to choose two willing creatures. When one of them would mark Stress, they can choose between the two of them who marks it. This spell lasts until their next rest."
       }
     ]
   },
@@ -3963,8 +4035,12 @@
     "recallCost": 4,
     "abilities": [
       {
-        "name": "Book of Ronin",
-        "text": "Transform: Make a Spellcast Roll (15). On a success, transform into an inanimate object no larger than twice your normal size. You can remain in this shape until you take damage. Eternal Enervation: Once per long rest, make a Spellcast Roll against a target within Close range. On a success, they become permanently Vulnerable. They can’t clear this condition by any means."
+        "name": "Transform",
+        "text": "Make a Spellcast Roll (15). On a success, transform into an inanimate object no larger than twice your normal size. You can remain in this shape until you take damage."
+      },
+      {
+        "name": "Eternal Enervation",
+        "text": "Once per long rest, make a Spellcast Roll against a target within Close range. On a success, they become permanently Vulnerable. They can’t clear this condition by any means."
       }
     ]
   },
@@ -4061,8 +4137,12 @@
     "recallCost": 2,
     "abilities": [
       {
-        "name": "Book of Yarrow",
-        "text": "Timejammer: Make a Spellcast Roll (18). On a success, time temporarily slows to a halt for everyone within Far range except for you. It resumes the next time you make an action roll that targets another creature. Magic Immunity: Spend 5 Hope to become immune to magic damage until your next rest."
+        "name": "Timejammer",
+        "text": "Make a Spellcast Roll (18). On a success, time temporarily slows to a halt for everyone within Far range except for you. It resumes the next time you make an action roll that targets another creature."
+      },
+      {
+        "name": "Magic Immunity",
+        "text": "Spend 5 Hope to become immune to magic damage until your next rest."
       }
     ]
   },

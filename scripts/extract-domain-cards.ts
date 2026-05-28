@@ -110,6 +110,53 @@ const titleOverrides = new Map<string, string>([
   ["UNYIELDINGARMOR", "Unyielding Armor"],
 ]);
 
+// Grimoire cards bundle several named sub-spells in one body. Poppler renders
+// them as a single run of text, so we split on these curated, source-verified
+// sub-spell names (in order) to produce one ability per spell. Names use the
+// post-cleanup spelling (joined-word artifacts are fixed by cleanupRules first).
+const grimoireSpells = new Map<string, string[]>([
+  ["Book of Ava", ["Power Push", "Tava’s Armor", "Ice Spike"]],
+  ["Book of Illiat", ["Slumber", "Arcane Barrage", "Telepathy"]],
+  ["Book of Tyfar", ["Wild Flame", "Magic Hand", "Mysterious Mist"]],
+  ["Book of Sitil", ["Adjust Appearance", "Parallela", "Illusion"]],
+  ["Book of Vagras", ["Runic Lock", "Arcane Door", "Reveal"]],
+  ["Book of Korvax", ["Levitation", "Recant", "Rune Circle"]],
+  ["Book of Norai", ["Mystic Tether", "Fireball"]],
+  ["Book of Exota", ["Repudiate", "Create Construct"]],
+  ["Book of Grynn", ["Arcane Deflection", "Time Lock", "Wall of Flame"]],
+  ["Book of Homet", ["Pass Through", "Plane Gate"]],
+  ["Book of Vyola", ["Memory Delve", "Shared Clarity"]],
+  ["Book of Ronin", ["Transform", "Eternal Enervation"]],
+  ["Book of Yarrow", ["Timejammer", "Magic Immunity"]],
+]);
+
+function splitGrimoireAbilities(cardName: string, body: string): DomainCardEntry["abilities"] {
+  const spellNames = grimoireSpells.get(cardName);
+  if (!spellNames) {
+    throw new Error(`No grimoire sub-spell mapping for ${cardName}`);
+  }
+
+  const positions = spellNames.map((name) => {
+    const index = body.indexOf(`${name}:`);
+    if (index === -1) {
+      throw new Error(`Could not locate sub-spell "${name}:" in ${cardName}`);
+    }
+    return { name, index };
+  });
+
+  for (let i = 1; i < positions.length; i += 1) {
+    if (positions[i]!.index <= positions[i - 1]!.index) {
+      throw new Error(`Grimoire sub-spells out of order in ${cardName}`);
+    }
+  }
+
+  return positions.map((position, i) => {
+    const textStart = position.index + position.name.length + 1;
+    const textEnd = i + 1 < positions.length ? positions[i + 1]!.index : body.length;
+    return { name: position.name, text: body.slice(textStart, textEnd).trim() };
+  });
+}
+
 const cleanupRules = [
   { pattern: /byyou/g, replacement: "by you", label: "byyou -> by you" },
   { pattern: /oryou/g, replacement: "or you", label: "oryou -> or you" },
@@ -127,6 +174,13 @@ const cleanupRules = [
   { pattern: /yourArmor/g, replacement: "your Armor", label: "yourArmor -> your Armor" },
   { pattern: /thetarget/g, replacement: "the target", label: "thetarget -> the target" },
   { pattern: /byExample/g, replacement: "by Example", label: "byExample -> by Example" },
+  // Grimoire sub-spell name join artifacts (Poppler dropped the space).
+  { pattern: /PowerPush/g, replacement: "Power Push", label: "PowerPush -> Power Push" },
+  { pattern: /Tava’sArmor/g, replacement: "Tava’s Armor", label: "Tava’sArmor -> Tava’s Armor" },
+  { pattern: /AdjustAppearance/g, replacement: "Adjust Appearance", label: "AdjustAppearance -> Adjust Appearance" },
+  { pattern: /MysticTether/g, replacement: "Mystic Tether", label: "MysticTether -> Mystic Tether" },
+  { pattern: /Wall ofFlame/g, replacement: "Wall of Flame", label: "Wall ofFlame -> Wall of Flame" },
+  { pattern: /PassThrough/g, replacement: "Pass Through", label: "PassThrough -> Pass Through" },
 ] satisfies Array<{ pattern: RegExp; replacement: string; label: string }>;
 
 const pageTexts = await extractPdfPages(sourcePdfPath, firstPdfPage, lastPdfPage);
@@ -198,12 +252,15 @@ function extractPageCards(pdfPage: number, rawText: string): CandidateRow[] {
         level: parsedLevel.level,
         cardType: parsedLevel.cardType,
         recallCost: parsedLevel.recallCost(lines[index + 1] ?? ""),
-        abilities: [
-          {
-            name,
-            text: cleanedBody.text,
-          },
-        ],
+        abilities:
+          parsedLevel.cardType === "grimoire"
+            ? splitGrimoireAbilities(name, cleanedBody.text)
+            : [
+                {
+                  name,
+                  text: cleanedBody.text,
+                },
+              ],
       },
       cleanupLabels: cleanedBody.appliedLabels,
       warnings,
@@ -316,7 +373,7 @@ function buildReviewReport(rows: CandidateRow[]) {
     "- Schema validation passed inside the extraction script before files were written.",
     "- Entries were accepted by AI-assisted source verification against the SRD PDF extraction for physical PDF pages 60-68.",
     "- Known joined title artifacts from Poppler raw extraction are normalized by explicit title overrides.",
-    "- Grimoire entries currently preserve full card text as one ability; sub-spell splitting is deferred until a dedicated grimoire-normalization slice is needed.",
+    "- Grimoire entries are split into one ability per sub-spell using the curated, source-verified `grimoireSpells` map; joined sub-spell names are normalized by cleanupRules.",
     "",
     "## Entries",
     "",

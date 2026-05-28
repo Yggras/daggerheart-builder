@@ -50,7 +50,10 @@ None — the SRD extraction pipeline is complete. Choose a product direction.
 ## Open Questions
 
 - Should full extraction outputs be committed long-term, or treated as generated artifacts later?
-- Should Codex grimoire cards be normalized into multiple `abilities`, or is preserving the full card text as one ability sufficient until the app needs sub-spell rendering?
+
+## Resolved Questions
+
+- Codex grimoire cards are now normalized into one `ability` per sub-spell (resolved 2026-05-28). The domain-card parser splits grimoire bodies via a curated `grimoireSpells` map; the compendium renders each sub-spell as a bold-named feature.
 
 ## Review Policy
 
