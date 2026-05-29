@@ -1,9 +1,9 @@
 # Character Builder Wizard — Living Specification
 
-> **Status:** v1 **implemented** on branch `feat/character-builder` (milestones M1–M6 per the
-> approved plan), pending final Android verification + merge. Design decisions CBW-1…25 below remain
-> the source of truth. Gates green: `typecheck`, `verify:engine` (25 assertions), `validate:srd`
-> (791 entries); web export bundles cleanly.
+> **Status:** v1 **merged into `main`** (PR #1, 2026-05-29; milestones M1–M6). Android run-through
+> passed with no bugs. Design decisions CBW-1…25 below remain the source of truth. Gates green:
+> `typecheck`, `verify:engine` (25 assertions), `validate:srd` (791 entries); web export bundles
+> cleanly. **Next:** a dedicated UI/UX pass over the builder (see `next-steps.md`).
 > **Last updated:** 2026-05-29
 > **Owner:** project
 >
