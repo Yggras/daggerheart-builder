@@ -1,5 +1,27 @@
 # Decision Log
 
+## 2026-05-29 - Character Builder Wizard: v1 Implemented
+
+Status: Accepted (pending Android verification + merge)
+
+Context: Following the approved implementation plan, the character builder v1 was built on branch
+`feat/character-builder` in six staged, gated milestones (M1 SRD data task → M2 schema → M3 engine
+→ M4 store/list → M5 wizard shell → M6 step screens).
+
+Decision: Implement per the spec (`requirements/character-builder-wizard-spec.md`, CBW-1…25). New
+`src/character/` module holds the Zod model (static `definition` vs. reserved `playState`), a pure
+rules engine with a 3-entry static-effects map (slot-aware for Mixed Ancestry), and a local-first
+AsyncStorage store with debounced draft autosave. Per-class background/connection questions were
+extracted onto the class schema/fixtures. The wizard uses per-step Expo Router routes with a hub, a
+compact live summary bar, and strict selection; all 9 steps, the nested Beastbound companion
+sub-flow, Mixed Ancestry, and review→complete→read-only-sheet are functional. Added deps:
+`@react-native-async-storage/async-storage`, `expo-crypto`.
+
+Consequences: `npm run typecheck`, `verify:engine` (25 assertions), and `validate:srd` (791 entries)
+pass; web export bundles cleanly. Remaining: a full Android run-through (M6 gate) and merge. The
+model and engine were designed so level-up/advancement and live play-state can be layered on later
+without reshaping the root model.
+
 ## 2026-05-29 - Character Builder Wizard: Specification Phase Started
 
 Status: Accepted (spec in progress)

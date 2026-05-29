@@ -429,6 +429,9 @@ const cleanupRules = [
   { pattern: /anArmorSlot/g, replacement: "an Armor Slot", label: "anArmorSlot -> an Armor Slot" },
   { pattern: /additionalArmorSlot/g, replacement: "additional Armor Slot", label: "additionalArmorSlot -> additional Armor Slot" },
   { pattern: /yourArmorSlots/g, replacement: "your Armor Slots", label: "yourArmorSlots -> your Armor Slots" },
+  { pattern: /communityyou/g, replacement: "community you", label: "communityyou -> community you" },
+  { pattern: /sayyou/g, replacement: "say you", label: "sayyou -> say you" },
+  { pattern: /betrayyou/g, replacement: "betray you", label: "betrayyou -> betray you" },
 ] satisfies Array<{ pattern: RegExp; replacement: string; label: string }>;
 
 const rawText = await extractPdfPages(sourcePdfPath, 5, 14);
@@ -465,6 +468,7 @@ function extractClassAndSubclasses(spec: ClassSpec, text: string, cleanupLabels:
   );
   const classFeatures = parseFeatures(classFeatureSection, spec.classFeatures);
   const subclassIds = spec.subclasses.map((subclass) => subclassId(spec.name, subclass.name));
+  const { backgroundQuestions, connectionQuestions } = extractClassQuestions(spec, classSection);
 
   const classWarnings = verifyClassSpec(spec, parsedDomains, startingEvasion, startingHitPoints, classItems, classFeatures);
   const classEntry: ClassEntry = {
@@ -494,6 +498,8 @@ function extractClassAndSubclasses(spec: ClassSpec, text: string, cleanupLabels:
     hopeFeature,
     classFeatures,
     subclassIds,
+    backgroundQuestions,
+    connectionQuestions,
   };
 
   const subclassRows = spec.subclasses.map((subclassSpec, index) => {
@@ -509,6 +515,7 @@ function extractClassAndSubclasses(spec: ClassSpec, text: string, cleanupLabels:
       warnings: classWarnings,
       verificationNotes: [
         "Parsed domains, starting evasion, starting HP, class items, Hope feature, class features, and subclass IDs from source PDF text.",
+        "Parsed 3 background and 3 connection questions from the class guide; intro lines dropped, final connection question truncated at its terminating question mark.",
         ...bardFixtureComparisonNotes(classEntry.id),
       ],
     },
@@ -674,6 +681,60 @@ function findFeatureStart(text: string, name: string) {
   }
 
   return { index: periodIndex, marker: periodMarker };
+}
+
+function extractClassQuestions(spec: ClassSpec, classSection: string) {
+  // The background block is cleanly bounded by the CONNECTIONS heading.
+  const backgroundRaw = extractBetween(classSection, "BACKGROUND QUESTIONS", "CONNECTIONS");
+  const background = parseQuestionBlock(backgroundRaw);
+
+  // The connection block runs to the end of the class section; its last question may be followed
+  // by bleed-through from the next section, so truncate the final question at its terminating "?".
+  const connectionStart = classSection.indexOf("CONNECTIONS");
+  const connectionRaw = classSection.slice(connectionStart + "CONNECTIONS".length);
+  const connection = parseQuestionBlock(connectionRaw);
+  if (connection.length === 3) {
+    connection[2] = truncateAtQuestionMark(connection[2]!);
+  }
+
+  assertQuestions(spec.name, "background", background);
+  assertQuestions(spec.name, "connection", connection);
+
+  return {
+    backgroundQuestions: background.map((text, index) => ({
+      id: `${classId(spec.name)}.background.${index + 1}`,
+      text,
+    })),
+    connectionQuestions: connection.map((text, index) => ({
+      id: `${classId(spec.name)}.connection.${index + 1}`,
+      text,
+    })),
+  };
+}
+
+function parseQuestionBlock(blockText: string) {
+  // The first "•"-delimited segment is the constant intro line; questions follow.
+  return blockText
+    .split("•")
+    .map((segment) => normalizeText(segment))
+    .filter(Boolean)
+    .slice(1, 4);
+}
+
+function truncateAtQuestionMark(text: string) {
+  const index = text.indexOf("?");
+  return index === -1 ? text : text.slice(0, index + 1).trim();
+}
+
+function assertQuestions(className: string, kind: "background" | "connection", questions: string[]) {
+  if (questions.length !== 3) {
+    throw new Error(`${className} ${kind} questions: expected 3 but parsed ${questions.length}.`);
+  }
+  for (const question of questions) {
+    if (!question.endsWith("?")) {
+      throw new Error(`${className} ${kind} question does not end with "?": "${question}"`);
+    }
+  }
 }
 
 function normalizeTrait(text: string): SubclassEntry["spellcastTrait"] {

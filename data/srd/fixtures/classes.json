@@ -72,6 +72,34 @@
     "subclassIds": [
       "subclass.bard.troubadour",
       "subclass.bard.wordsmith"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.bard.background.1",
+        "text": "Who from your community taught you to have such confidence in yourself?"
+      },
+      {
+        "id": "class.bard.background.2",
+        "text": "You were in love once. Who did you adore, and how did they hurt you?"
+      },
+      {
+        "id": "class.bard.background.3",
+        "text": "You’ve always looked up to another bard. Who are they, and why do you idolize them?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.bard.connection.1",
+        "text": "What made you realize we were going to be such good friends?"
+      },
+      {
+        "id": "class.bard.connection.2",
+        "text": "What do I do that annoys you?"
+      },
+      {
+        "id": "class.bard.connection.3",
+        "text": "Why do you grab my hand at night?"
+      }
     ]
   },
   {
@@ -155,6 +183,34 @@
     "subclassIds": [
       "subclass.druid.warden-of-the-elements",
       "subclass.druid.warden-of-renewal"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.druid.background.1",
+        "text": "Why was the community you grew up in so reliant on nature and its creatures?"
+      },
+      {
+        "id": "class.druid.background.2",
+        "text": "Who was the first wild animal you bonded with? Why did your bond end?"
+      },
+      {
+        "id": "class.druid.background.3",
+        "text": "Who has been trying to hunt you down? What do they want from you?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.druid.connection.1",
+        "text": "What did you confide in me that makes me leap into danger for you every time?"
+      },
+      {
+        "id": "class.druid.connection.2",
+        "text": "What animal do I say you remind me of?"
+      },
+      {
+        "id": "class.druid.connection.3",
+        "text": "What affectionate nickname have you given me?"
+      }
     ]
   },
   {
@@ -232,6 +288,34 @@
     "subclassIds": [
       "subclass.guardian.stalwart",
       "subclass.guardian.vengeance"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.guardian.background.1",
+        "text": "Who from your community did you fail to protect, and why do you still think of them?"
+      },
+      {
+        "id": "class.guardian.background.2",
+        "text": "You’ve been tasked with protecting something important and delivering it somewhere dangerous. What is it, and where does it need to go?"
+      },
+      {
+        "id": "class.guardian.background.3",
+        "text": "You consider an aspect of yourself to be a weakness. What is it, and how has it affected you?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.guardian.connection.1",
+        "text": "How did I save your life the first time we met?"
+      },
+      {
+        "id": "class.guardian.connection.2",
+        "text": "What small gift did you give me that you notice I always carry with me?"
+      },
+      {
+        "id": "class.guardian.connection.3",
+        "text": "What lie have you told me about yourself that I absolutely believe?"
+      }
     ]
   },
   {
@@ -309,6 +393,34 @@
     "subclassIds": [
       "subclass.ranger.beastbound",
       "subclass.ranger.wayfinder"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.ranger.background.1",
+        "text": "A terrible creature hurt your community, and you’ve vowed to hunt them down. What are they, and what unique trail or sign do they leave behind?"
+      },
+      {
+        "id": "class.ranger.background.2",
+        "text": "Your first kill almost killed you, too. What was it, and what part of you was never the same after that event?"
+      },
+      {
+        "id": "class.ranger.background.3",
+        "text": "You’ve traveled many dangerous lands, but what is the one place you refuse to go?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.ranger.connection.1",
+        "text": "What friendly competition do we have?"
+      },
+      {
+        "id": "class.ranger.connection.2",
+        "text": "Why do you act differently when we’re alone than when others are around?"
+      },
+      {
+        "id": "class.ranger.connection.3",
+        "text": "What threat have you asked me to watch for, and why are you worried about it?"
+      }
     ]
   },
   {
@@ -390,6 +502,34 @@
     "subclassIds": [
       "subclass.rogue.nightwalker",
       "subclass.rogue.syndicate"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.rogue.background.1",
+        "text": "What did you get caught doing that got you exiled from your home community?"
+      },
+      {
+        "id": "class.rogue.background.2",
+        "text": "You used to have a different life, but you’ve tried to leave it behind. Who from your past is still chasing you?"
+      },
+      {
+        "id": "class.rogue.background.3",
+        "text": "Who from your past were you most sad to say goodbye to?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.rogue.connection.1",
+        "text": "What did I recently convince you to do that got us both in trouble?"
+      },
+      {
+        "id": "class.rogue.connection.2",
+        "text": "What have I discovered about your past that I hold secret from the others?"
+      },
+      {
+        "id": "class.rogue.connection.3",
+        "text": "Who do you know from my past, and how have they influenced your feelings about me?"
+      }
     ]
   },
   {
@@ -467,6 +607,34 @@
     "subclassIds": [
       "subclass.seraph.divine-wielder",
       "subclass.seraph.winged-sentinel"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.seraph.background.1",
+        "text": "Which god did you devote yourself to? What incredible feat did they perform for you in a moment of desperation?"
+      },
+      {
+        "id": "class.seraph.background.2",
+        "text": "How did your appearance change after taking your oath?"
+      },
+      {
+        "id": "class.seraph.background.3",
+        "text": "In what strange or unique way do you communicate with your god?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.seraph.connection.1",
+        "text": "What promise did you make me agree to, should you die on the battlefield?"
+      },
+      {
+        "id": "class.seraph.connection.2",
+        "text": "Why do you ask me so many questions about my god?"
+      },
+      {
+        "id": "class.seraph.connection.3",
+        "text": "You’ve told me to protect one member of our party above all others, even yourself. Who are they and why?"
+      }
     ]
   },
   {
@@ -549,6 +717,34 @@
     "subclassIds": [
       "subclass.sorcerer.elemental-origin",
       "subclass.sorcerer.primal-origin"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.sorcerer.background.1",
+        "text": "What did you do that made the people in your community wary of you?"
+      },
+      {
+        "id": "class.sorcerer.background.2",
+        "text": "What mentor taught you to control your untamed magic, and why are they no longer able to guide you?"
+      },
+      {
+        "id": "class.sorcerer.background.3",
+        "text": "You have a deep fear you hide from everyone. What is it, and why does it scare you?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.sorcerer.connection.1",
+        "text": "Why do you trust me so deeply?"
+      },
+      {
+        "id": "class.sorcerer.connection.2",
+        "text": "What did I do that makes you cautious around me?"
+      },
+      {
+        "id": "class.sorcerer.connection.3",
+        "text": "Why do we keep our shared past a secret?"
+      }
     ]
   },
   {
@@ -629,6 +825,34 @@
     "subclassIds": [
       "subclass.warrior.call-of-the-brave",
       "subclass.warrior.call-of-the-slayer"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.warrior.background.1",
+        "text": "Who taught you to fight, and why did they stay behind when you left home?"
+      },
+      {
+        "id": "class.warrior.background.2",
+        "text": "Somebody defeated you in battle years ago and left you to die. Who was it, and how did they betray you?"
+      },
+      {
+        "id": "class.warrior.background.3",
+        "text": "What legendary place have you always wanted to visit, and why is it so special?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.warrior.connection.1",
+        "text": "We knew each other long before this party came together. How?"
+      },
+      {
+        "id": "class.warrior.connection.2",
+        "text": "What mundane task do you usually help me with off the battlefield?"
+      },
+      {
+        "id": "class.warrior.connection.3",
+        "text": "What fear am I helping you overcome?"
+      }
     ]
   },
   {
@@ -708,6 +932,34 @@
     "subclassIds": [
       "subclass.wizard.school-of-knowledge",
       "subclass.wizard.school-of-war"
+    ],
+    "backgroundQuestions": [
+      {
+        "id": "class.wizard.background.1",
+        "text": "What responsibilities did your community once count on you for? How did you let them down?"
+      },
+      {
+        "id": "class.wizard.background.2",
+        "text": "You’ve spent your life searching for a book or object of great significance. What is it, and why is it so important to you?"
+      },
+      {
+        "id": "class.wizard.background.3",
+        "text": "You have a powerful rival. Who are they, and why are you so determined to defeat them?"
+      }
+    ],
+    "connectionQuestions": [
+      {
+        "id": "class.wizard.connection.1",
+        "text": "What favor have I asked of you that you’re not sure you can fulfill?"
+      },
+      {
+        "id": "class.wizard.connection.2",
+        "text": "What weird hobby or strange fascination do we both share?"
+      },
+      {
+        "id": "class.wizard.connection.3",
+        "text": "What secret about yourself have you entrusted only to me?"
+      }
     ]
   }
 ]

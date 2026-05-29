@@ -4,19 +4,34 @@ Last updated: 2026-05-29
 
 ## Current Best Next Step
 
-**Character builder is the chosen product slice.** The living spec at
-`docs/brain/requirements/character-builder-wizard-spec.md` is now **design-complete** —
-decisions CBW-1…25 resolved across all areas: 9-step grounding, data inventory + verified gaps,
-rules engine (incl. a minimal static-effects model), the character data model (definition vs.
-play-state, recompute + version stamp), the prerequisite SRD data task (§11), and the full wizard
-step/UX flow (§12). Key shape: full strict wizard, solo + deferred connections, local-first draft
-autosave, Android-first, per-step Expo Router routes, creation-only derivation architected for
-future level-up, Mixed Ancestry + Beastbound in scope.
+**Character builder v1 is implemented** on branch `feat/character-builder` (milestones M1–M6 of the
+approved plan at `~/.claude/plans/sunny-waddling-sunset.md`). Spec:
+`docs/brain/requirements/character-builder-wizard-spec.md` (CBW-1…25). What shipped:
+- SRD data task: per-class background/connection questions on the class schema/fixtures; Experience
+  suggestion list.
+- `src/character/`: Zod model (definition vs. reserved play-state), pure rules engine + 3 static
+  effects, local-first AsyncStorage store with draft autosave.
+- Wizard: `/characters` list, per-step Expo Router routes + hub, compact live summary bar, all 9
+  step UIs (incl. Mixed Ancestry, nested Beastbound companion, strict trait multiset), review +
+  Complete, read-only sheet.
+- Gates green: `typecheck`, `verify:engine` (25 assertions), `validate:srd` (791); web export bundles.
 
-**Next action:** get the spec approved, then begin the build sequence in spec §9 — starting with the
-**prerequisite SRD data task** (extend `extract-classes-subclasses.ts` to add `backgroundQuestions`
-+ `connectionQuestions`, 3 each, to the class schema/fixtures). **No implementation until explicitly
-approved.**
+**Status:** Android run-through done (no bugs found); PR opened to merge `feat/character-builder`.
+
+**Next action — dedicated UI/UX pass over the character builder.** v1 is functionally complete but
+built function-first; it needs a deliberate usability/visual review before it feels polished.
+Candidate areas to evaluate (not yet decided):
+- Long option lists (28 tier-1 primary weapons, 18 ancestries, 27 domain cards) — add search/filter,
+  grouping (e.g. domain cards by domain), or condensed rows; current flat lists are long to scroll.
+- Step flow affordances: clearer per-step completion/validation feedback, progress indicator,
+  inline "why is Next/Complete unavailable" hints.
+- Live summary bar polish (placement, what shows collapsed, spacing on small screens).
+- Traits step clarity (remaining-pool indicator), equipment grouping, domain-card detail (show
+  ability text), and the Beastbound companion sub-flow layout.
+- Empty/placeholder states, keyboard handling on text steps, and overall visual hierarchy/theming.
+
+Later follow-ups (still gated): level-up/advancement (model is designed for it), live play-state,
+Supabase sync.
 
 ## Why This Is Next
 
