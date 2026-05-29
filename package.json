@@ -10,6 +10,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
+    "verify:engine": "tsx scripts/verify-character-engine.ts",
     "validate:srd": "tsx scripts/validate-srd.ts",
     "validate:srd:candidates": "tsx scripts/validate-srd.ts data/srd/generated/entries.candidates.json",
     "validate:srd:candidates:adversaries": "tsx scripts/validate-srd.ts data/srd/generated/adversaries.candidates.json",
