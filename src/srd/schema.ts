@@ -86,6 +86,11 @@ const FeatureSchema = z.object({
   text: z.string().min(1),
 });
 
+const QuestionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(?:[._-][a-z0-9]+)*$/),
+  text: z.string().min(1),
+});
+
 const StatThresholdsSchema = z.object({
   major: z.number().int().positive().nullable(),
   severe: z.number().int().positive().nullable(),
@@ -106,6 +111,8 @@ export const ClassEntrySchema = BaseEntrySchema.extend({
   hopeFeature: FeatureSchema,
   classFeatures: z.array(FeatureSchema).min(1),
   subclassIds: z.array(z.string()).min(1),
+  backgroundQuestions: z.array(QuestionSchema).length(3),
+  connectionQuestions: z.array(QuestionSchema).length(3),
 });
 
 export const SubclassEntrySchema = BaseEntrySchema.extend({
