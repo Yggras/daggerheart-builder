@@ -1,14 +1,22 @@
 # Next Steps
 
-Last updated: 2026-05-28
+Last updated: 2026-05-29
 
 ## Current Best Next Step
 
-All structured SRD entity families are extracted, reviewed, and promoted to canonical fixtures. The SRD data foundation and current compendium improvement pass are complete. The next focus should be choosing the next product slice:
+**Character builder is the chosen product slice.** The living spec at
+`docs/brain/requirements/character-builder-wizard-spec.md` is now **design-complete** —
+decisions CBW-1…25 resolved across all areas: 9-step grounding, data inventory + verified gaps,
+rules engine (incl. a minimal static-effects model), the character data model (definition vs.
+play-state, recompute + version stamp), the prerequisite SRD data task (§11), and the full wizard
+step/UX flow (§12). Key shape: full strict wizard, solo + deferred connections, local-first draft
+autosave, Android-first, per-step Expo Router routes, creation-only derivation architected for
+future level-up, Mixed Ancestry + Beastbound in scope.
 
-1. Character builder planning.
-2. Supabase/auth/sync planning, if backend work is explicitly approved.
-3. A focused compendium follow-up only if there is a concrete usability gap.
+**Next action:** get the spec approved, then begin the build sequence in spec §9 — starting with the
+**prerequisite SRD data task** (extend `extract-classes-subclasses.ts` to add `backgroundQuestions`
++ `connectionQuestions`, 3 each, to the class schema/fixtures). **No implementation until explicitly
+approved.**
 
 ## Why This Is Next
 

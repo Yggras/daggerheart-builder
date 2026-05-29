@@ -1,5 +1,51 @@
 # Decision Log
 
+## 2026-05-29 - Character Builder Wizard: Specification Phase Started
+
+Status: Accepted (spec in progress)
+
+Context: With the SRD data foundation and compendium complete, the character builder was chosen
+as the next product slice. The user requested a full guided wizard with a rules engine, mirroring
+the SRD's 9-step Character Creation, including background and connection questions, beginning with
+an interrogation session that documents every decision.
+
+Decision: Created a living specification at
+`docs/brain/requirements/character-builder-wizard-spec.md` and ran an interrogation (rounds 1–3),
+resolving foundational decisions CBW-1…14:
+- Full wizard following the SRD's 9 steps; **strict SRD enforcement** (no manual override/homebrew in v1).
+- **Solo creation + deferred connections** (no party model in v1).
+- **Creation-only rules-engine derivation** for v1, but the model/engine must be architected so
+  level-up/advancement can be layered on later (hard future requirement for live play).
+- **Linear navigation with Back/Next + a step hub**; name/pronouns/description editable any time.
+- **Local-first persistence** now (offline-first; shaped for future Supabase sync; no Supabase in v1).
+- **Android-first** verification, web secondary.
+- **Mixed Ancestry** and the **Ranger Beastbound companion** sub-flow are in scope for v1.
+- Background/connection questions (a data gap — only in the PDF) sourced via a new **extraction
+  pass**, stored as **fields on the class entry** (`backgroundQuestions[]`, `connectionQuestions[]`).
+- **Experiences**: free-text + tappable SRD example suggestions (static authored list).
+- **Multiple characters** with a `/characters` list (create/open/delete).
+- Character model + engine live in a new **`src/character/`** module, Zod-validated.
+- Class-feature creation selection audit: only **Wizard "Strange Patterns"** (choose 1–12) is a
+  bespoke creation-time choice; surfaced the class-item "pick one of two" requirement. The
+  Step-5 "item to carry your spells" line was **verified against the PDF (2026-05-29) and found
+  absent from this SRD** — it is a templated line from the full core rules; no spell-focus item
+  is modeled.
+
+Data-model drill-down (CBW-15…18) further resolved:
+- **Separate `definition` (build choices) from a reserved `playState`** (live counters); v1 writes
+  only `definition`. Serves the live-play/level-up requirement and keeps build data sync-clean.
+- **Recompute derived values** from choices + SRD data (never persist them as truth); stamp each
+  character with `srdVersion` + `schemaVersion` for drift detection and migrations.
+- **Structured inventory** (`{ srdId?, label?, qty }`) + SRD gold counters (handfuls/bags/chests).
+- **Domain cards carry a loadout/vault location** now (creation = 2× loadout).
+- Companion model fields grounded in the SRD Beastbound steps (name, animal kind, Evasion 10, two
+  +2 Experiences, attack with range/damage die/physical-or-magic).
+
+Consequences: The spec's §9 build sequence begins with a prerequisite SRD data task before any
+wizard code. Implementation remains gated until the spec is explicitly approved. The hard
+constraint against starting the character builder is now lifted for **specification**; coding is
+still pending approval.
+
 ## 2026-05-24 - Use Markdown Second Brain
 
 Status: Accepted

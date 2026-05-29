@@ -1,5 +1,9 @@
 # Character Builder Requirements
 
+> **See the living spec:** `docs/brain/requirements/character-builder-wizard-spec.md` is the
+> authoritative, decision-tracked specification for the wizard (started 2026-05-29). This file
+> remains the high-level requirements summary; the living spec supersedes it for design decisions.
+
 ## Purpose
 
 Provide a guided step-by-step Daggerheart character creation flow based on structured SRD data.
