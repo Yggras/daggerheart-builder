@@ -16,9 +16,22 @@ approved plan at `~/.claude/plans/sunny-waddling-sunset.md`). Spec:
   Complete, read-only sheet.
 - Gates green: `typecheck`, `verify:engine` (25 assertions), `validate:srd` (791); web export bundles.
 
-**Next action:** final **Android run-through** (create a character end-to-end) per the M6 gate, then
-merge `feat/character-builder`. After that, candidate follow-ups: level-up/advancement (the model is
-designed for it), play-state, or Supabase sync — all still gated until explicitly chosen.
+**Status:** Android run-through done (no bugs found); PR opened to merge `feat/character-builder`.
+
+**Next action — dedicated UI/UX pass over the character builder.** v1 is functionally complete but
+built function-first; it needs a deliberate usability/visual review before it feels polished.
+Candidate areas to evaluate (not yet decided):
+- Long option lists (28 tier-1 primary weapons, 18 ancestries, 27 domain cards) — add search/filter,
+  grouping (e.g. domain cards by domain), or condensed rows; current flat lists are long to scroll.
+- Step flow affordances: clearer per-step completion/validation feedback, progress indicator,
+  inline "why is Next/Complete unavailable" hints.
+- Live summary bar polish (placement, what shows collapsed, spacing on small screens).
+- Traits step clarity (remaining-pool indicator), equipment grouping, domain-card detail (show
+  ability text), and the Beastbound companion sub-flow layout.
+- Empty/placeholder states, keyboard handling on text steps, and overall visual hierarchy/theming.
+
+Later follow-ups (still gated): level-up/advancement (model is designed for it), live play-state,
+Supabase sync.
 
 ## Why This Is Next
 
