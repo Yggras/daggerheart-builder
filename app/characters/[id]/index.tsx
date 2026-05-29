@@ -49,6 +49,54 @@ export default function CharacterSheetScreen() {
           </View>
         </Section>
 
+        <Section title="Heritage">
+          <Text style={styles.lineItem}>{heritageLine(def)}</Text>
+        </Section>
+
+        {stats.experiences.length > 0 ? (
+          <Section title="Experiences">
+            {stats.experiences.map((experience) => (
+              <Text key={experience.id} style={styles.lineItem}>
+                {experience.text || "Unnamed"} ({experience.modifier >= 0 ? `+${experience.modifier}` : experience.modifier})
+              </Text>
+            ))}
+          </Section>
+        ) : null}
+
+        {def.domainCards.length > 0 ? (
+          <Section title="Domain Cards">
+            {def.domainCards.map((card) => (
+              <Text key={card.cardId} style={styles.lineItem}>
+                {nameOf(card.cardId)}
+              </Text>
+            ))}
+          </Section>
+        ) : null}
+
+        <Section title="Equipment">
+          {[def.equipment.primaryWeaponId, def.equipment.secondaryWeaponId, def.equipment.armorId]
+            .filter((value): value is string => Boolean(value))
+            .map((entryId) => (
+              <Text key={entryId} style={styles.lineItem}>
+                {nameOf(entryId)}
+              </Text>
+            ))}
+          {def.equipment.chosenClassItemId ? (
+            <Text style={styles.lineItem}>{def.equipment.chosenClassItemId}</Text>
+          ) : null}
+          {def.equipment.potion ? (
+            <Text style={styles.lineItem}>{def.equipment.potion === "minor_health" ? "Minor Health Potion" : "Minor Stamina Potion"}</Text>
+          ) : null}
+        </Section>
+
+        {stats.companion ? (
+          <Section title="Companion">
+            <Text style={styles.lineItem}>
+              {def.companion?.name || "Unnamed"} ({def.companion?.animalKind || "companion"}) · Evasion {stats.companion.evasion} · {stats.companion.attack.damageRoll ?? "—"}
+            </Text>
+          </Section>
+        ) : null}
+
         <Text style={styles.edit} onPress={() => router.push({ pathname: "/characters/[id]/build", params: { id } })}>
           Edit in builder →
         </Text>
@@ -83,6 +131,21 @@ function Centered({ text }: { text: string }) {
   );
 }
 
+function nameOf(id: string): string {
+  return getSrdEntryById(id)?.name ?? id;
+}
+
+function heritageLine(def: { heritage: { communityId: string | null; ancestry: { mode: string; primaryId: string | null; secondaryId: string | null } } }): string {
+  const { mode, primaryId, secondaryId } = def.heritage.ancestry;
+  const ancestry = primaryId
+    ? mode === "mixed" && secondaryId
+      ? `${nameOf(primaryId)} / ${nameOf(secondaryId)} (Mixed)`
+      : nameOf(primaryId)
+    : "No ancestry";
+  const community = def.heritage.communityId ? nameOf(def.heritage.communityId) : "No community";
+  return `${ancestry} · ${community}`;
+}
+
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   content: { padding: 16, gap: 16, paddingBottom: 32 },
@@ -103,6 +166,7 @@ const styles = StyleSheet.create({
   statLabel: { color: colors.textTertiary, fontSize: 11, textTransform: "capitalize" },
   section: { gap: 10 },
   sectionTitle: { color: colors.textPrimary, fontSize: 18, fontWeight: "800" },
+  lineItem: { color: colors.textSecondary, fontSize: 15, lineHeight: 21 },
   edit: { color: colors.accentBold, fontSize: 16, fontWeight: "700", paddingVertical: 12 },
   centered: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.background },
   centeredText: { color: colors.textSecondary, fontSize: 16 },
