@@ -13,9 +13,15 @@ export default function HomeScreen() {
         </Text>
       </View>
 
-      <Link href="/compendium" asChild>
+      <Link href="/characters" asChild>
         <Pressable style={styles.primaryAction}>
-          <Text style={styles.primaryActionText}>Open Compendium</Text>
+          <Text style={styles.primaryActionText}>Characters</Text>
+        </Pressable>
+      </Link>
+
+      <Link href="/compendium" asChild>
+        <Pressable style={styles.secondaryAction}>
+          <Text style={styles.secondaryActionText}>Open Compendium</Text>
         </Pressable>
       </Link>
     </View>
@@ -60,6 +66,20 @@ const styles = StyleSheet.create({
   },
   primaryActionText: {
     color: colors.background,
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  secondaryAction: {
+    alignItems: "center",
+    borderRadius: radii.button,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.cardBackground,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  secondaryActionText: {
+    color: colors.textPrimary,
     fontSize: 16,
     fontWeight: "700",
   },

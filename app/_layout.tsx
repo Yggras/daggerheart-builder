@@ -14,6 +14,7 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" options={{ title: "Daggerheart" }} />
+        <Stack.Screen name="characters/index" options={{ title: "Characters" }} />
         <Stack.Screen name="compendium/index" options={{ title: "Compendium" }} />
         <Stack.Screen name="compendium/[kind]/index" options={{ title: "Entries" }} />
         <Stack.Screen name="compendium/[kind]/[id]" options={{ title: "Entry" }} />
