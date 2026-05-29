@@ -1,9 +1,9 @@
 # Character Builder Wizard — Living Specification
 
-> **Status:** Design-complete (CBW-1…25 resolved). Covers: 9-step grounding (§2), data inventory +
-> verified gaps (§3), rules engine incl. static effects (§4), character data model (§5), the
-> prerequisite SRD data task (§11), and the wizard step/UX flow (§12). **Do not implement until
-> explicitly approved.** Open items in §10 are implementation-time details, not blockers.
+> **Status:** v1 **implemented** on branch `feat/character-builder` (milestones M1–M6 per the
+> approved plan), pending final Android verification + merge. Design decisions CBW-1…25 below remain
+> the source of truth. Gates green: `typecheck`, `verify:engine` (25 assertions), `validate:srd`
+> (791 entries); web export bundles cleanly.
 > **Last updated:** 2026-05-29
 > **Owner:** project
 >
