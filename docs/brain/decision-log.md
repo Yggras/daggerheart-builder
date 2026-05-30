@@ -1,5 +1,48 @@
 # Decision Log
 
+## 2026-05-30 - Supabase Slice 2: Continuous Character Cloud Sync Implemented
+
+Status: Accepted (pending live verification with a real Supabase project + the SQL applied)
+
+Context: Following slice 1 (auth), characters were still local-only. The user wants characters to
+sync **continuously and automatically** across their devices — no manual "Sync now" — including
+later during live-play sessions, which implies frequent multi-device writes that must be reliable.
+Implemented on branch `feat/supabase-auth`.
+
+Decision: Build a reusable sync engine now; live-play `playState` stays out of scope (campaign play
+still gated) but will ride this same engine later. Confirmed choices: fully automatic sync,
+**Supabase Realtime** for inbound live updates, **last-write-wins** per whole-character document on
+`meta.updatedAt`, hard-delete of the remote row on local delete.
+
+- **Data model:** `meta.ownerId` (optional uuid; backfilled on first push so slice-1 characters
+  still validate), `CHARACTER_SCHEMA_VERSION` → 2. New committed `supabase/schema.sql`: a
+  `characters` table (scalar columns for RLS/index + a `data` JSONB holding the full Character as
+  source of truth), a single `owner_all` RLS policy (`auth.uid() = owner_id`), and the table added
+  to the `supabase_realtime` publication. Applied by pasting into the dashboard SQL editor (no local
+  Supabase stack dependency).
+- **Store as event source:** `src/character/store.ts` gained a `subscribeToStore` change emitter;
+  every mutator emits `{ type, origin: "local" | "remote", … }`. New `putCharacterRaw` writes a
+  pulled row **without** bumping `updatedAt` (preserves remote timestamp for LWW) and emits
+  `origin: "remote"`. `createDraftCharacter(ownerId?)` and `deleteCharacter(id, origin?)` extended.
+  All existing call sites stay unchanged — the engine reacts to writes.
+- **Engine (`src/character/sync/`):** `remote.ts` (row<->Character mapping + Supabase CRUD) and
+  `engine.ts` — a singleton with a **persisted** outbound queue (`daggerheart.sync.queue.v1`,
+  survives restarts), a drain loop retried on timer / Realtime reconnect / AppState-active, inbound
+  Realtime `postgres_changes` filtered by `owner_id` applying strictly-newer rows via
+  `putCharacterRaw`, and an initial bidirectional LWW reconcile on start. Deletes are handled at
+  delete-time (not in reconcile), matching the hard-delete model. `SyncProvider` starts/stops the
+  engine from auth state and exposes `useSyncStatus()`.
+- **UI:** `app/_layout.tsx` mounts `SyncProvider` under `AuthProvider`; the Characters list
+  subscribes to store changes for live updates and passes `ownerId` on create; `useCharacterDraft`
+  adopts strictly-newer remote updates mid-session but ignores them while a local autosave is
+  pending (local edit wins until it flushes).
+
+Consequences: `typecheck`, `verify:engine` (25), and `validate:srd` (791) pass. Characters now sync
+automatically once the SQL is applied and the user is signed in; offline edits queue and flush on
+reconnect. Accepted limitation: whole-document LWW means simultaneous two-device edits can clobber
+one side; connectivity detection is timer/Realtime/AppState-based (no NetInfo yet). The engine is
+designed to carry live-play `playState` sync in a future slice.
+
 ## 2026-05-30 - Supabase Slice 1: Auth Foundation Implemented
 
 Status: Accepted (pending live verification with a real Supabase project)

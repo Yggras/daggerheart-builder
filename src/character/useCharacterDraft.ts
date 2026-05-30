@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getCharacter, saveCharacter } from "./store";
+import { getCharacter, saveCharacter, subscribeToStore } from "./store";
 import type { Character } from "./schema";
 
 const AUTOSAVE_DELAY_MS = 400;
@@ -44,6 +44,27 @@ export function useCharacterDraft(id: string | undefined) {
 
   // Flush any pending save when the component unmounts.
   useEffect(() => flush, [flush]);
+
+  // Adopt live updates the sync engine applies from other devices. Guard against clobbering an
+  // active edit: ignore while a local autosave is pending, and only adopt a strictly-newer version.
+  useEffect(() => {
+    if (!id) return;
+    return subscribeToStore((event) => {
+      if (event.type === "delete") {
+        if (event.id === id && !timer.current) {
+          latest.current = null;
+          setCharacter(null);
+        }
+        return;
+      }
+      if (event.origin !== "remote" || event.character.id !== id) return;
+      if (timer.current) return; // user is mid-edit; local wins until it flushes (LWW)
+      const current = latest.current;
+      if (current && event.character.meta.updatedAt <= current.meta.updatedAt) return;
+      latest.current = event.character;
+      setCharacter(event.character);
+    });
+  }, [id]);
 
   const update = useCallback((mutate: (character: Character) => void) => {
     setCharacter((current) => {

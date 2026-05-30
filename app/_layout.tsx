@@ -2,6 +2,7 @@ import { Redirect, Stack, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, View } from "react-native";
 import { AuthProvider, useAuth } from "../src/auth/AuthProvider";
+import { SyncProvider } from "../src/character/sync/SyncProvider";
 import { colors } from "../src/theme";
 
 function AuthGate({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,7 @@ function AuthGate({ children }: { children: React.ReactNode }) {
 export default function RootLayout() {
   return (
     <AuthProvider>
+      <SyncProvider>
       <AuthGate>
         <Stack
           screenOptions={{
@@ -47,6 +49,7 @@ export default function RootLayout() {
           <Stack.Screen name="compendium/[kind]/[id]" options={{ title: "Entry" }} />
         </Stack>
       </AuthGate>
+      </SyncProvider>
       <StatusBar style="light" />
     </AuthProvider>
   );

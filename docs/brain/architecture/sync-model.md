@@ -36,13 +36,29 @@ Realtime updates should avoid noisy high-frequency writes. Frequently changing U
 - Auth foundation (slice 1, 2026-05-30): Supabase client with AsyncStorage-backed session
   persistence, config via `app.config.ts` + `.env` (`extra.supabaseUrl` / `extra.supabaseAnonKey`),
   an `AuthProvider`, a login-only screen (admin-managed email/password, ADR-0007), and a root route
-  guard. Characters are still local (`src/character/store.ts`); no cloud sync yet.
-- Decided sync policy for user-owned data: last-write-wins on `meta.updatedAt` (single-user personal
-  scope). To be built in slice 2 alongside an `ownerId` field and a `characters` table with RLS.
+  guard.
+- Continuous character sync (slice 2, 2026-05-30): characters sync automatically across a user's
+  devices — no manual trigger. Design:
+  - **Local truth stays AsyncStorage** (`src/character/store.ts`); the store emits change events
+    (`subscribeToStore`) tagged `origin: "local" | "remote"`. `putCharacterRaw` applies a pulled row
+    without bumping `updatedAt` (preserves remote timestamp for LWW).
+  - **Table** `public.characters` (`supabase/schema.sql`): scalar columns for RLS/index + a `data`
+    JSONB holding the full Character (source of truth on pull). Single `owner_all` RLS policy
+    (`auth.uid() = owner_id`). Added to the `supabase_realtime` publication.
+  - **Engine** (`src/character/sync/engine.ts`): persisted outbound queue
+    (`daggerheart.sync.queue.v1`) so unsent changes survive restarts; drain retried on timer /
+    Realtime reconnect / AppState-active; inbound Realtime `postgres_changes` filtered by `owner_id`,
+    applying strictly-newer rows; initial bidirectional LWW reconcile on start.
+  - **Conflict policy:** whole-document **last-write-wins** on `meta.updatedAt`.
+  - **Deletes:** hard-delete the remote row at delete time (queued so offline deletes still
+    propagate). Reconcile intentionally does not resurrect locally-deleted characters.
+- **Known limitations:** simultaneous two-device edits can clobber one side (whole-doc LWW); no
+  NetInfo — connectivity is inferred from timer/Realtime/AppState; live-play `playState` is not yet
+  synced (will reuse this engine in a future slice).
 
 ## Open Questions
 
 - Which local database should be used? (Currently AsyncStorage for characters.)
-- How should sync conflicts be represented to users? (Slice 2 starts with last-write-wins.)
-- What data can be edited offline?
+- Should sync conflicts ever be surfaced to users, or is silent last-write-wins sufficient long-term?
+- Should deletes move to soft-delete tombstones to fully survive offline/multi-device?
 - Which campaign state is persisted versus session-only?

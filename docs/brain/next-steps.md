@@ -2,56 +2,44 @@
 
 Last updated: 2026-05-30
 
-## Latest: Supabase Auth Foundation (Slice 1) Implemented
+## Latest: Supabase Slices 1–2 Implemented (auth + continuous character sync)
 
-The character builder v1 is **merged to `main`** (PR #1). Supabase integration has now begun. Slice
-1 (auth foundation) is implemented on branch `feat/supabase-auth`: `@supabase/supabase-js` client
-with AsyncStorage session persistence, config via `app.config.ts` + `.env`, an `AuthProvider`
-(`src/auth/`), a login-only screen (admin-managed email/password per ADR-0007), and a root route
-guard. Characters remain local. `npm run typecheck` passes; live verification needs a real Supabase
-project + an admin-created user.
+The character builder v1 is **merged to `main`** (PR #1). Supabase integration is underway on branch
+`feat/supabase-auth`:
 
-**Next step — Supabase Slice 2: character cloud sync.** Add an `ownerId` to the character model, a
-`characters` table with RLS in Supabase, and last-write-wins sync on `meta.updatedAt`. Consider a
-repository abstraction over `src/character/store.ts` at that point.
+- **Slice 1 — auth foundation:** `@supabase/supabase-js` client with AsyncStorage session
+  persistence, config via `app.config.ts` + `.env`, an `AuthProvider` (`src/auth/`), a login-only
+  screen (admin-managed email/password per ADR-0007), and a root route guard.
+- **Slice 2 — continuous character cloud sync:** characters now sync automatically across a user's
+  devices (no manual "Sync now"). A `characters` table (RLS + `data` JSONB + realtime publication,
+  see `supabase/schema.sql`), `meta.ownerId` + `schemaVersion` 2, a store change-emitter, and a sync
+  engine (`src/character/sync/`) with a persisted offline retry queue, Supabase Realtime inbound, and
+  last-write-wins on `meta.updatedAt`. Hard-delete of the remote row on local delete.
 
-A **character-builder UI/UX pass** (below) also remains an open option to pick up in parallel or
-afterward.
+Gates green: `typecheck`, `verify:engine` (25), `validate:srd` (791). **Live verification still
+needed:** apply `supabase/schema.sql` in the dashboard, then test cross-device sync, offline queue
+flush, and RLS with a real project.
 
 ## Current Best Next Step
 
-**Character builder v1 is implemented** on branch `feat/character-builder` (milestones M1–M6 of the
-approved plan at `~/.claude/plans/sunny-waddling-sunset.md`). Spec:
-`docs/brain/requirements/character-builder-wizard-spec.md` (CBW-1…25). What shipped:
-- SRD data task: per-class background/connection questions on the class schema/fixtures; Experience
-  suggestion list.
-- `src/character/`: Zod model (definition vs. reserved play-state), pure rules engine + 3 static
-  effects, local-first AsyncStorage store with draft autosave.
-- Wizard: `/characters` list, per-step Expo Router routes + hub, compact live summary bar, all 9
-  step UIs (incl. Mixed Ancestry, nested Beastbound companion, strict trait multiset), review +
-  Complete, read-only sheet.
-- Gates green: `typecheck`, `verify:engine` (25 assertions), `validate:srd` (791); web export bundles.
+Two viable directions — pick one:
 
-**Status:** Android run-through done (no bugs found); PR opened to merge `feat/character-builder`.
+1. **Supabase Slice 3 — live-play `playState` on the existing sync engine** (HP/stress/hope live
+   counters). The engine and `playState` boundary were designed for this; note campaign play remains
+   gated, so this would be solo live-play state only.
+2. **Character-builder UI/UX pass** (function-first v1 needs polish): long option lists
+   (28 tier-1 weapons, 18 ancestries, 27 domain cards) need search/filter/grouping; step-flow
+   validation feedback + progress indicator; live summary bar polish; Traits remaining-pool
+   indicator; equipment grouping; domain-card ability text; Beastbound companion layout; empty
+   states; keyboard handling; visual hierarchy/theming.
 
-**Next action — dedicated UI/UX pass over the character builder.** v1 is functionally complete but
-built function-first; it needs a deliberate usability/visual review before it feels polished.
-Candidate areas to evaluate (not yet decided):
-- Long option lists (28 tier-1 primary weapons, 18 ancestries, 27 domain cards) — add search/filter,
-  grouping (e.g. domain cards by domain), or condensed rows; current flat lists are long to scroll.
-- Step flow affordances: clearer per-step completion/validation feedback, progress indicator,
-  inline "why is Next/Complete unavailable" hints.
-- Live summary bar polish (placement, what shows collapsed, spacing on small screens).
-- Traits step clarity (remaining-pool indicator), equipment grouping, domain-card detail (show
-  ability text), and the Beastbound companion sub-flow layout.
-- Empty/placeholder states, keyboard handling on text steps, and overall visual hierarchy/theming.
-
-Later follow-ups (still gated): level-up/advancement (model is designed for it), live play-state,
-Supabase sync.
+Later follow-ups (still gated): level-up/advancement (model is designed for it), campaign play.
 
 ## Why This Is Next
 
-The full SRD data pipeline is done: 791 canonical entries across all 11 entity kinds. No remaining extraction work is needed until the SRD changes or new entity kinds are identified. The compendium now has nested routes, ranked search, highlighting, inline text links, field-value links, and per-kind detail rendering.
+The SRD data pipeline (791 entries, 11 kinds) and compendium are complete and stable. The character
+builder is functionally complete and now cloud-synced; remaining work is either extending live state
+onto the new sync engine or polishing the builder UX.
 
 ## Immediate Tasks
 
@@ -71,8 +59,11 @@ foundation slice.)
 
 ## Recent Completed Milestones
 
+- Supabase continuous character sync (slice 2): `characters` table + RLS + realtime
+  (`supabase/schema.sql`), `meta.ownerId` + schemaVersion 2, store change-emitter, sync engine
+  (`src/character/sync/`) with persisted offline queue, Realtime inbound, and last-write-wins.
 - Supabase auth foundation (slice 1): client + session persistence, `app.config.ts`/`.env` config,
-  `AuthProvider`, login-only screen (ADR-0007), and root route guard. Characters still local.
+  `AuthProvider`, login-only screen (ADR-0007), and root route guard.
 - Second brain created.
 - Official SRD PDF downloaded and recorded.
 - PDF extraction spike completed (Poppler-based).

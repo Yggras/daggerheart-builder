@@ -13,7 +13,7 @@ import { z } from "zod";
 // separately (the wizard's per-step validity) before status flips to "complete" (CBW-2). New
 // characters/definitions are built with the factory helpers at the bottom of this file.
 
-export const CHARACTER_SCHEMA_VERSION = 1;
+export const CHARACTER_SCHEMA_VERSION = 2;
 
 export const TRAIT_NAMES = ["agility", "strength", "finesse", "instinct", "presence", "knowledge"] as const;
 export type TraitName = (typeof TRAIT_NAMES)[number];
@@ -143,6 +143,9 @@ const MetaSchema = z.object({
   status: z.enum(["draft", "complete"]),
   schemaVersion: z.number().int().positive(),
   srdVersion: z.string().min(1), // detect drift if SRD data changes (CBW-16)
+  // Supabase auth user that owns this character. Optional so pre-sync (schemaVersion 1) characters
+  // still validate; the sync engine backfills it on first push.
+  ownerId: z.string().uuid().optional(),
 });
 
 export const CharacterSchema = z.object({
@@ -189,7 +192,12 @@ export function createEmptyDefinition(): CharacterDefinition {
   };
 }
 
-export function createCharacter(params: { id: string; srdVersion: string; now?: string }): Character {
+export function createCharacter(params: {
+  id: string;
+  srdVersion: string;
+  ownerId?: string;
+  now?: string;
+}): Character {
   const timestamp = params.now ?? new Date().toISOString();
   return {
     id: params.id,
@@ -199,6 +207,7 @@ export function createCharacter(params: { id: string; srdVersion: string; now?: 
       status: "draft",
       schemaVersion: CHARACTER_SCHEMA_VERSION,
       srdVersion: params.srdVersion,
+      ownerId: params.ownerId,
     },
     definition: createEmptyDefinition(),
   };

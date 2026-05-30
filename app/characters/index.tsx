@@ -1,13 +1,15 @@
 import { useFocusEffect, useRouter } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import { createDraftCharacter, deleteCharacter, listCharacters } from "../../src/character/store";
+import { useAuth } from "../../src/auth/AuthProvider";
+import { createDraftCharacter, deleteCharacter, listCharacters, subscribeToStore } from "../../src/character/store";
 import type { Character } from "../../src/character/schema";
 import { getSrdEntryById } from "../../src/srd/loadFixture";
 import { colors, radii } from "../../src/theme";
 
 export default function CharacterListScreen() {
   const router = useRouter();
+  const { user } = useAuth();
   const [characters, setCharacters] = useState<Character[]>([]);
 
   const refresh = useCallback(() => {
@@ -20,10 +22,13 @@ export default function CharacterListScreen() {
     }, [refresh]),
   );
 
+  // Refresh live when the store changes — including remote edits the sync engine applies.
+  useEffect(() => subscribeToStore(() => refresh()), [refresh]);
+
   const onNew = useCallback(async () => {
-    const character = await createDraftCharacter();
+    const character = await createDraftCharacter(user?.id);
     router.push({ pathname: "/characters/[id]/build", params: { id: character.id } });
-  }, [router]);
+  }, [router, user?.id]);
 
   const onOpen = useCallback(
     (character: Character) => {
