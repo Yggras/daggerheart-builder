@@ -33,6 +33,8 @@ export type WizardStep = {
   optional?: boolean;
 };
 
+export type WizardStepStatus = "locked" | "complete" | "optional_unanswered" | "incomplete";
+
 export function isTraitArrayComplete(definition: CharacterDefinition): boolean {
   const values = TRAIT_NAMES.map((trait) => definition.traits[trait]);
   if (values.some((value) => value === null)) return false;
@@ -68,6 +70,10 @@ function isEquipmentComplete(definition: CharacterDefinition): boolean {
 
 function areExperiencesComplete(definition: CharacterDefinition): boolean {
   return definition.experiences.length === 2 && definition.experiences.every((experience) => experience.text.trim().length > 0);
+}
+
+function hasQuestionAnswers(definition: CharacterDefinition, kind: "background" | "connections"): boolean {
+  return definition[kind].answers.some((answer) => answer.answer.trim().length > 0);
 }
 
 export const WIZARD_STEPS: WizardStep[] = [
@@ -148,6 +154,79 @@ export function stepIndex(slug: StepSlug): number {
 
 export function adjacentStep(slug: StepSlug, direction: 1 | -1): WizardStep | undefined {
   return WIZARD_STEPS[stepIndex(slug) + direction];
+}
+
+export function adjacentUnlockedStep(
+  slug: StepSlug,
+  direction: 1 | -1,
+  definition: CharacterDefinition,
+): WizardStep | undefined {
+  const start = stepIndex(slug);
+  for (let index = start + direction; index >= 0 && index < WIZARD_STEPS.length; index += direction) {
+    const step = WIZARD_STEPS[index];
+    if (step && !step.isLocked(definition)) return step;
+  }
+  return undefined;
+}
+
+export function getStepStatus(step: WizardStep, definition: CharacterDefinition): WizardStepStatus {
+  if (step.isLocked(definition)) return "locked";
+  if (step.slug === "background") return hasQuestionAnswers(definition, "background") ? "complete" : "optional_unanswered";
+  if (step.slug === "connections") return hasQuestionAnswers(definition, "connections") ? "complete" : "optional_unanswered";
+  return step.isComplete(definition) ? "complete" : "incomplete";
+}
+
+export function getStepMissingReason(step: WizardStep, definition: CharacterDefinition): string {
+  if (step.isLocked(definition)) return "Choose a class first.";
+
+  switch (step.slug) {
+    case "class":
+      if (!definition.classId) return "Choose a class.";
+      if (!definition.subclassId) return "Choose a subclass.";
+      if (definition.classId === "class.wizard" && definition.featureChoices[WIZARD_STRANGE_PATTERNS_KEY] == null) {
+        return "Choose your Strange Patterns number.";
+      }
+      if (definition.subclassId === "subclass.ranger.beastbound" && !definition.companion?.name.trim()) {
+        return "Name your Beastbound companion.";
+      }
+      return "Ready.";
+    case "heritage":
+      if (!definition.heritage.ancestry.primaryId) return "Choose an ancestry.";
+      if (definition.heritage.ancestry.mode === "mixed" && !definition.heritage.ancestry.secondaryId) {
+        return "Choose a secondary ancestry.";
+      }
+      if (definition.heritage.ancestry.secondaryId === definition.heritage.ancestry.primaryId) {
+        return "Choose two different ancestries.";
+      }
+      if (!definition.heritage.communityId) return "Choose a community.";
+      return "Ready.";
+    case "traits": {
+      const assigned = TRAIT_NAMES.filter((trait) => definition.traits[trait] !== null).length;
+      return assigned < TRAIT_NAMES.length ? `Assign all six traits (${assigned}/6).` : "Use each trait value exactly once.";
+    }
+    case "equipment": {
+      const missing: string[] = [];
+      if (!definition.equipment.primaryWeaponId) missing.push("primary weapon");
+      if (!definition.equipment.armorId) missing.push("armor");
+      if (!definition.equipment.chosenClassItemId) missing.push("class item");
+      if (!definition.equipment.potion) missing.push("potion");
+      return missing.length > 0 ? `Choose ${missing.join(", ")}.` : "Ready.";
+    }
+    case "experiences": {
+      const complete = definition.experiences.filter((experience) => experience.text.trim().length > 0).length;
+      return complete < 2 ? `Create two Experiences (${complete}/2).` : "Ready.";
+    }
+    case "domains":
+      return definition.domainCards.length < 2 ? `Choose two domain cards (${definition.domainCards.length}/2).` : "Ready.";
+    case "background":
+      return hasQuestionAnswers(definition, "background") ? "Answered." : "Optional: unanswered.";
+    case "connections":
+      return hasQuestionAnswers(definition, "connections") ? "Answered." : "Optional: unanswered.";
+    case "details":
+      return "Calculated automatically.";
+    default:
+      return "Ready.";
+  }
 }
 
 export function isDefinitionComplete(definition: CharacterDefinition): boolean {

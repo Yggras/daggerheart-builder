@@ -1,9 +1,10 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
 import { useCharacterDraft } from "../../../../src/character/useCharacterDraft";
 import { updateCharacter } from "../../../../src/character/store";
-import { WIZARD_STEPS, isDefinitionComplete } from "../../../../src/character/steps";
+import { WIZARD_STEPS, getStepMissingReason, getStepStatus, isDefinitionComplete } from "../../../../src/character/steps";
 import { colors, radii } from "../../../../src/theme";
 
 export default function ReviewScreen() {
@@ -26,18 +27,31 @@ export default function ReviewScreen() {
   return (
     <View style={styles.screen}>
       <ScrollView contentContainerStyle={styles.content}>
+        <BuilderTopNav characterId={id} showAllSteps />
+
         <Text style={styles.title}>Review</Text>
         <Text style={styles.subtitle}>{definition.identity.name.trim() || "Unnamed character"}</Text>
 
         <View style={styles.checklist}>
           {WIZARD_STEPS.map((step) => {
-            const done = step.isComplete(definition);
+            const status = getStepStatus(step, definition);
+            const done = status === "complete";
+            const optional = status === "optional_unanswered";
+            const targetStep = step.isLocked(definition) ? "class" : step.slug;
             return (
-              <View key={step.slug} style={styles.checkRow}>
-                <Text style={[styles.checkIcon, done ? styles.checkDone : styles.checkPending]}>{done ? "✓" : "○"}</Text>
-                <Text style={styles.checkLabel}>{step.title}</Text>
+              <Pressable
+                key={step.slug}
+                style={styles.checkRow}
+                onPress={() => router.push({ pathname: "/characters/[id]/build/[step]", params: { id, step: targetStep } })}
+              >
+                <Text style={[styles.checkIcon, done ? styles.checkDone : styles.checkPending]}>{done ? "✓" : optional ? "?" : "○"}</Text>
+                <View style={styles.checkMain}>
+                  <Text style={styles.checkLabel}>{step.title}</Text>
+                  <Text style={styles.checkHint}>{getStepMissingReason(step, definition)}</Text>
+                </View>
                 {step.optional ? <Text style={styles.optional}>optional</Text> : null}
-              </View>
+                <Text style={styles.chevron}>›</Text>
+              </Pressable>
             );
           })}
         </View>
@@ -47,7 +61,7 @@ export default function ReviewScreen() {
           disabled={!ready}
           onPress={onComplete}
         >
-          <Text style={styles.completeText}>{ready ? "Complete Character" : "Finish the required steps first"}</Text>
+          <Text style={styles.completeText}>{ready ? "Complete Character" : "Finish the required steps above"}</Text>
         </Pressable>
       </ScrollView>
 
@@ -70,12 +84,25 @@ const styles = StyleSheet.create({
   title: { color: colors.textPrimary, fontSize: 30, fontWeight: "800" },
   subtitle: { color: colors.textSecondary, fontSize: 17 },
   checklist: { gap: 10 },
-  checkRow: { flexDirection: "row", alignItems: "center", gap: 10 },
+  checkRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radii.input,
+    backgroundColor: colors.cardBackground,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
   checkIcon: { fontSize: 18, fontWeight: "800", width: 22 },
   checkDone: { color: colors.accentBold },
   checkPending: { color: colors.textTertiary },
-  checkLabel: { color: colors.textPrimary, fontSize: 16, flex: 1 },
+  checkMain: { flex: 1, gap: 2 },
+  checkLabel: { color: colors.textPrimary, fontSize: 16, fontWeight: "700" },
+  checkHint: { color: colors.textSecondary, fontSize: 13 },
   optional: { color: colors.textTertiary, fontSize: 12 },
+  chevron: { color: colors.textTertiary, fontSize: 20 },
   complete: {
     marginTop: 8,
     alignItems: "center",

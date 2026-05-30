@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { colors, radii } from "../../theme";
 import type { CharacterDefinition } from "../schema";
-import { WIZARD_STEPS } from "../steps";
+import { WIZARD_STEPS, getStepMissingReason, getStepStatus } from "../steps";
 
 // Step overview / launcher: shows each step's status and lets the user jump to any unlocked step.
 export function StepHub({
@@ -14,8 +14,10 @@ export function StepHub({
   return (
     <View style={styles.list}>
       {WIZARD_STEPS.map((step, index) => {
-        const locked = step.isLocked(definition);
-        const complete = step.isComplete(definition);
+        const status = getStepStatus(step, definition);
+        const locked = status === "locked";
+        const complete = status === "complete";
+        const optionalUnanswered = status === "optional_unanswered";
         return (
           <Pressable
             key={step.slug}
@@ -23,12 +25,12 @@ export function StepHub({
             disabled={locked}
             onPress={() => onSelect(step.slug)}
           >
-            <View style={[styles.marker, complete && !locked && styles.markerComplete]}>
-              <Text style={styles.markerText}>{locked ? "🔒" : complete ? "✓" : index + 1}</Text>
+            <View style={[styles.marker, complete && styles.markerComplete, optionalUnanswered && styles.markerOptional]}>
+              <Text style={styles.markerText}>{locked ? "-" : complete ? "✓" : optionalUnanswered ? "?" : index + 1}</Text>
             </View>
             <View style={styles.body}>
               <Text style={styles.title}>{step.title}</Text>
-              <Text style={styles.blurb}>{locked ? "Choose a class first" : step.blurb}</Text>
+              <Text style={styles.blurb}>{complete || optionalUnanswered || locked ? getStepMissingReason(step, definition) : step.blurb}</Text>
             </View>
             <Text style={styles.chevron}>›</Text>
           </Pressable>
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.highlightBackground,
   },
   markerComplete: { backgroundColor: colors.accent },
+  markerOptional: { backgroundColor: colors.borderSubtle },
   markerText: { color: colors.textPrimary, fontSize: 14, fontWeight: "800" },
   body: { flex: 1, gap: 2 },
   title: { color: colors.textPrimary, fontSize: 17, fontWeight: "700" },

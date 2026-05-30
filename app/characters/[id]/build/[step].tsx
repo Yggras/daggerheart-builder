@@ -1,11 +1,12 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
 import { StepFooter } from "../../../../src/character/components/StepFooter";
 import { StepBody } from "../../../../src/character/components/steps";
 import { useCharacterDraft } from "../../../../src/character/useCharacterDraft";
-import { adjacentStep, getStep, type StepSlug } from "../../../../src/character/steps";
-import { colors } from "../../../../src/theme";
+import { WIZARD_STEPS, adjacentUnlockedStep, getStep, getStepMissingReason, stepIndex, type StepSlug } from "../../../../src/character/steps";
+import { colors, radii } from "../../../../src/theme";
 
 export default function BuildStepScreen() {
   const { id, step } = useLocalSearchParams<{ id: string; step: string }>();
@@ -16,7 +17,17 @@ export default function BuildStepScreen() {
   if (loading) return <Centered text="Loading…" />;
   if (!character || !stepDef) return <Centered text="Step not found." />;
 
-  const next = adjacentStep(stepDef.slug as StepSlug, 1);
+  const slug = stepDef.slug as StepSlug;
+  const definition = character.definition;
+  const currentIndex = stepIndex(slug);
+  const previous = adjacentUnlockedStep(slug, -1, definition);
+  const next = adjacentUnlockedStep(slug, 1, definition);
+  const locked = stepDef.isLocked(definition);
+  const goHub = () => router.push({ pathname: "/characters/[id]/build", params: { id } });
+  const goBack = () =>
+    previous
+      ? router.push({ pathname: "/characters/[id]/build/[step]", params: { id, step: previous.slug } })
+      : goHub();
   const goNext = () =>
     next
       ? router.push({ pathname: "/characters/[id]/build/[step]", params: { id, step: next.slug } })
@@ -26,17 +37,32 @@ export default function BuildStepScreen() {
     <View style={styles.screen}>
       <Stack.Screen options={{ title: stepDef.title }} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>{stepDef.title}</Text>
-        <Text style={styles.blurb}>{stepDef.blurb}</Text>
+        <BuilderTopNav characterId={id} showAllSteps />
 
-        <View style={styles.body}>
-          <StepBody slug={stepDef.slug as StepSlug} character={character} update={update} />
+        <View style={styles.stepHeader}>
+          <Text style={styles.kicker}>Step {currentIndex + 1} of {WIZARD_STEPS.length}</Text>
+          <View style={styles.progressTrack}>
+            <View style={[styles.progressFill, { width: `${((currentIndex + 1) / WIZARD_STEPS.length) * 100}%` }]} />
+          </View>
+          <Text style={styles.title}>{stepDef.title}</Text>
+          <Text style={styles.blurb}>{locked ? getStepMissingReason(stepDef, definition) : stepDef.blurb}</Text>
         </View>
+
+        {locked ? (
+          <View style={styles.lockedCard}>
+            <Text style={styles.lockedTitle}>This step is locked</Text>
+            <Text style={styles.lockedText}>{getStepMissingReason(stepDef, definition)}</Text>
+          </View>
+        ) : (
+          <View style={styles.body}>
+            <StepBody slug={slug} character={character} update={update} />
+          </View>
+        )}
       </ScrollView>
 
-      <StatSummaryBar definition={character.definition} />
+      <StatSummaryBar definition={definition} />
       <View style={styles.footerWrap}>
-        <StepFooter onBack={() => router.back()} onNext={goNext} nextLabel={next ? "Next" : "Review"} />
+        <StepFooter onBack={goBack} onNext={locked ? goHub : goNext} nextLabel={locked ? "All Steps" : next ? "Next" : "Review"} />
       </View>
     </View>
   );
@@ -52,10 +78,24 @@ function Centered({ text }: { text: string }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  content: { padding: 16, gap: 8, paddingBottom: 24 },
+  content: { padding: 16, gap: 12, paddingBottom: 24 },
+  stepHeader: { gap: 8 },
+  kicker: { color: colors.accentBold, fontSize: 12, fontWeight: "800", letterSpacing: 0.8, textTransform: "uppercase" },
+  progressTrack: { height: 5, borderRadius: 999, backgroundColor: colors.borderSubtle, overflow: "hidden" },
+  progressFill: { height: "100%", borderRadius: 999, backgroundColor: colors.accent },
   title: { color: colors.textPrimary, fontSize: 26, fontWeight: "800" },
   blurb: { color: colors.textSecondary, fontSize: 15 },
   body: { marginTop: 12 },
+  lockedCard: {
+    gap: 6,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radii.card,
+    backgroundColor: colors.cardBackground,
+    padding: 16,
+  },
+  lockedTitle: { color: colors.textPrimary, fontSize: 17, fontWeight: "800" },
+  lockedText: { color: colors.textSecondary, fontSize: 14, lineHeight: 20 },
   footerWrap: { paddingHorizontal: 16, paddingBottom: 16, backgroundColor: colors.background },
   centered: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.background },
   centeredText: { color: colors.textSecondary, fontSize: 16 },
