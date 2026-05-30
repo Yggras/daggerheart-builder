@@ -1,6 +1,22 @@
 # Next Steps
 
-Last updated: 2026-05-29
+Last updated: 2026-05-30
+
+## Latest: Supabase Auth Foundation (Slice 1) Implemented
+
+The character builder v1 is **merged to `main`** (PR #1). Supabase integration has now begun. Slice
+1 (auth foundation) is implemented on branch `feat/supabase-auth`: `@supabase/supabase-js` client
+with AsyncStorage session persistence, config via `app.config.ts` + `.env`, an `AuthProvider`
+(`src/auth/`), a login-only screen (admin-managed email/password per ADR-0007), and a root route
+guard. Characters remain local. `npm run typecheck` passes; live verification needs a real Supabase
+project + an admin-created user.
+
+**Next step — Supabase Slice 2: character cloud sync.** Add an `ownerId` to the character model, a
+`characters` table with RLS in Supabase, and last-write-wins sync on `meta.updatedAt`. Consider a
+repository abstraction over `src/character/store.ts` at that point.
+
+A **character-builder UI/UX pass** (below) also remains an open option to pick up in parallel or
+afterward.
 
 ## Current Best Next Step
 
@@ -46,14 +62,17 @@ None — the SRD extraction pipeline and current compendium enhancement pass are
 
 ## Do Not Start Yet
 
-- Supabase integration.
-- Character builder.
 - Campaign play view.
 - UI kit/design system selection.
 - Re-running full SRD extraction unless the SRD PDF changes or a new entity kind is identified.
 
+(Lifted: the character builder is merged to `main`; Supabase integration has started with the auth
+foundation slice.)
+
 ## Recent Completed Milestones
 
+- Supabase auth foundation (slice 1): client + session persistence, `app.config.ts`/`.env` config,
+  `AuthProvider`, login-only screen (ADR-0007), and root route guard. Characters still local.
 - Second brain created.
 - Official SRD PDF downloaded and recorded.
 - PDF extraction spike completed (Poppler-based).

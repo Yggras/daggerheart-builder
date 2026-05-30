@@ -1,5 +1,33 @@
 # Decision Log
 
+## 2026-05-30 - Supabase Slice 1: Auth Foundation Implemented
+
+Status: Accepted (pending live verification with a real Supabase project)
+
+Context: With the compendium and character builder v1 merged to `main`, the long-gated Supabase
+integration was started. To avoid landing auth + character sync + campaign realtime in one risky
+pass, the work was sliced; this is slice 1 — the auth foundation only. Characters remain local
+(the AsyncStorage store in `src/character/store.ts` is untouched). Implemented on branch
+`feat/supabase-auth`. Decisions confirmed with the user: auth-only scope, config via
+`app.config.ts` + gitignored `.env`, and last-write-wins (`meta.updatedAt`) as the future sync
+policy (noted, not built).
+
+Decision: Add `@supabase/supabase-js` + `react-native-url-polyfill`. Convert `app.json` to
+`app.config.ts` exposing `extra.supabaseUrl` / `extra.supabaseAnonKey` from `process.env` (Expo CLI
+loads `.env`); committed `.env.example`. New `src/supabase/client.ts` is a singleton with
+AsyncStorage-backed session persistence (`detectSessionInUrl: false`, no OAuth/magic-link per
+ADR-0007). New `src/auth/AuthProvider.tsx` exposes `{ session, user, loading, signIn, signOut }`,
+hydrates via `getSession()`, subscribes to `onAuthStateChange`, and runs AppState-driven
+`startAutoRefresh`/`stopAutoRefresh` on native only. `app/_layout.tsx` wraps the app in
+`AuthProvider` + an `AuthGate` that redirects unauthenticated users to `/login` (and authenticated
+users away from it). New `app/login.tsx` is email/password only — no signup, no reset (ADR-0007).
+Home screen shows the signed-in email and a sign-out action.
+
+Consequences: `npm run typecheck` passes. The app now requires a Supabase project + an
+admin-created user to use; URL/anon key go in `.env`. This unblocks slice 2 (character cloud sync:
+add `ownerId`, a `characters` table + RLS, last-write-wins) and later campaign/realtime work. No
+character data is synced yet; the local store is the source of truth.
+
 ## 2026-05-29 - Character Builder Wizard: v1 Implemented
 
 Status: Accepted (pending Android verification + merge)

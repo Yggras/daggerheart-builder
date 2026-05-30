@@ -1,8 +1,11 @@
 import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { useAuth } from "../src/auth/AuthProvider";
 import { colors, radii } from "../src/theme";
 
 export default function HomeScreen() {
+  const { user, signOut } = useAuth();
+
   return (
     <View style={styles.screen}>
       <View style={styles.hero}>
@@ -24,6 +27,13 @@ export default function HomeScreen() {
           <Text style={styles.secondaryActionText}>Open Compendium</Text>
         </Pressable>
       </Link>
+
+      <View style={styles.account}>
+        {user?.email ? <Text style={styles.accountEmail}>Signed in as {user.email}</Text> : null}
+        <Pressable onPress={signOut} hitSlop={8}>
+          <Text style={styles.signOut}>Sign out</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -81,6 +91,20 @@ const styles = StyleSheet.create({
   secondaryActionText: {
     color: colors.textPrimary,
     fontSize: 16,
+    fontWeight: "700",
+  },
+  account: {
+    alignItems: "center",
+    gap: 6,
+    marginTop: 8,
+  },
+  accountEmail: {
+    color: colors.textTertiary,
+    fontSize: 14,
+  },
+  signOut: {
+    color: colors.link,
+    fontSize: 15,
     fontWeight: "700",
   },
 });
