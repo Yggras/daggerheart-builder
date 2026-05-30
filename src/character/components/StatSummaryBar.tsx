@@ -17,13 +17,13 @@ export function StatSummaryBar({ definition }: { definition: CharacterDefinition
   return (
     <Pressable style={styles.bar} onPress={() => setExpanded((value) => !value)}>
       <View style={styles.line}>
-        <Stat label="Evade" value={fmt(stats.evasion)} />
+        <Stat label="Evasion" value={fmt(stats.evasion)} />
         <Stat label="HP" value={fmt(stats.hpMax)} />
-        <Stat label="Thr" value={thresholds} />
+        <Stat label="Threshold" value={thresholds} />
         <Stat label="Hope" value={String(stats.hope)} />
         <Stat label="Stress" value={String(stats.stressSlots)} />
         <Stat label="Prof" value={String(stats.proficiency)} />
-        <Text style={styles.caret}>{expanded ? "▾" : "▸"}</Text>
+        <Text style={styles.caret}>{expanded ? "Hide" : "Details"}</Text>
       </View>
 
       {expanded ? (
@@ -86,11 +86,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
-  line: { flexDirection: "row", alignItems: "center", gap: 14 },
-  stat: { alignItems: "center", minWidth: 34 },
+  line: { flexDirection: "row", alignItems: "center", gap: 10 },
+  stat: { alignItems: "center", minWidth: 38 },
   statValue: { color: colors.textPrimary, fontSize: 15, fontWeight: "800" },
-  statLabel: { color: colors.textTertiary, fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5 },
-  caret: { marginLeft: "auto", color: colors.textTertiary, fontSize: 14 },
+  statLabel: { color: colors.textTertiary, fontSize: 9, textTransform: "uppercase", letterSpacing: 0.3 },
+  caret: { marginLeft: "auto", color: colors.link, fontSize: 12, fontWeight: "800" },
   details: { marginTop: 10, gap: 4, borderTopWidth: 1, borderColor: colors.borderSubtle, paddingTop: 8 },
   detailRow: { flexDirection: "row", justifyContent: "space-between" },
   detailLabel: { color: colors.textSecondary, fontSize: 13 },

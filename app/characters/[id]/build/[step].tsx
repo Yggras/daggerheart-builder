@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
@@ -36,7 +36,7 @@ export default function BuildStepScreen() {
       : router.push({ pathname: "/characters/[id]/build/review", params: { id } });
 
   return (
-    <View style={styles.screen}>
+    <KeyboardAvoidingView style={styles.screen} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <Stack.Screen options={{ title: stepDef.title }} />
       <ScrollView contentContainerStyle={[styles.content, { paddingBottom: 120 + insets.bottom }]}>
         <BuilderTopNav characterId={id} showAllSteps />
@@ -68,7 +68,7 @@ export default function BuildStepScreen() {
           <StepFooter onBack={goBack} onNext={locked ? goHub : goNext} nextLabel={locked ? "All Steps" : next ? "Next" : "Review"} />
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

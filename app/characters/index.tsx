@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { createDraftCharacter, deleteCharacter, listCharacters } from "../../src/character/store";
 import type { Character } from "../../src/character/schema";
+import { WIZARD_STEPS, getStepStatus } from "../../src/character/steps";
 import { getSrdEntryById } from "../../src/srd/loadFixture";
 import { colors, radii } from "../../src/theme";
 
@@ -11,7 +12,7 @@ export default function CharacterListScreen() {
   const [characters, setCharacters] = useState<Character[]>([]);
 
   const refresh = useCallback(() => {
-    listCharacters().then(setCharacters);
+    listCharacters().then((loaded) => setCharacters([...loaded].sort((a, b) => b.meta.updatedAt.localeCompare(a.meta.updatedAt))));
   }, []);
 
   useFocusEffect(
@@ -63,15 +64,22 @@ export default function CharacterListScreen() {
         contentContainerStyle={styles.listContent}
         ListEmptyComponent={<Text style={styles.empty}>Tap “New Character” to start building.</Text>}
         renderItem={({ item }) => (
-          <Pressable style={styles.card} onPress={() => onOpen(item)} onLongPress={() => onDelete(item)}>
+          <Pressable style={styles.card} onPress={() => onOpen(item)}>
             <View style={styles.cardMain}>
               <Text style={styles.name}>{characterName(item)}</Text>
               <Text style={styles.meta}>{characterSubtitle(item)}</Text>
+              <Text style={styles.progress}>{characterProgress(item)}</Text>
+              <View style={styles.chipRow}>{characterChips(item).map((chip) => <Text key={chip} style={styles.chip}>{chip}</Text>)}</View>
             </View>
-            <View style={[styles.badge, item.meta.status === "complete" ? styles.badgeComplete : styles.badgeDraft]}>
-              <Text style={item.meta.status === "complete" ? styles.badgeTextComplete : styles.badgeTextDraft}>
-                {item.meta.status === "complete" ? "Complete" : "Draft"}
-              </Text>
+            <View style={styles.cardSide}>
+              <View style={[styles.badge, item.meta.status === "complete" ? styles.badgeComplete : styles.badgeDraft]}>
+                <Text style={item.meta.status === "complete" ? styles.badgeTextComplete : styles.badgeTextDraft}>
+                  {item.meta.status === "complete" ? "Complete" : "Draft"}
+                </Text>
+              </View>
+              <Pressable hitSlop={8} onPress={() => onDelete(item)}>
+                <Text style={styles.delete}>Delete</Text>
+              </Pressable>
             </View>
           </Pressable>
         )}
@@ -91,7 +99,23 @@ function characterName(character: Character): string {
 function characterSubtitle(character: Character): string {
   const classId = character.definition.classId;
   const className = classId ? getSrdEntryById(classId)?.name ?? null : null;
-  return className ? `${className} • Level ${character.definition.level}` : "No class chosen yet";
+  const subclassName = character.definition.subclassId ? getSrdEntryById(character.definition.subclassId)?.name ?? null : null;
+  return className ? `${[className, subclassName].filter(Boolean).join(" · ")} • Level ${character.definition.level}` : "No class chosen yet";
+}
+
+function characterProgress(character: Character): string {
+  const complete = WIZARD_STEPS.filter((step) => getStepStatus(step, character.definition) === "complete").length;
+  return `${complete}/${WIZARD_STEPS.length} steps complete`;
+}
+
+function characterChips(character: Character): string[] {
+  const chips: string[] = [];
+  const ancestry = character.definition.heritage.ancestry.primaryId ? getSrdEntryById(character.definition.heritage.ancestry.primaryId)?.name : null;
+  const community = character.definition.heritage.communityId ? getSrdEntryById(character.definition.heritage.communityId)?.name : null;
+  if (ancestry) chips.push(ancestry);
+  if (community) chips.push(community);
+  if (character.definition.domainCards.length > 0) chips.push(`${character.definition.domainCards.length} cards`);
+  return chips;
 }
 
 const styles = StyleSheet.create({
@@ -103,7 +127,7 @@ const styles = StyleSheet.create({
   empty: { color: colors.textTertiary, fontSize: 15, marginTop: 24, textAlign: "center" },
   card: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 12,
     borderWidth: 1,
     borderColor: colors.border,
@@ -114,13 +138,18 @@ const styles = StyleSheet.create({
     minHeight: 72,
   },
   cardMain: { flex: 1, gap: 4 },
+  cardSide: { alignItems: "flex-end", gap: 10 },
   name: { color: colors.textPrimary, fontSize: 20, fontWeight: "800" },
   meta: { color: colors.textSecondary, fontSize: 14 },
+  progress: { color: colors.accentBold, fontSize: 13, fontWeight: "800" },
+  chipRow: { flexDirection: "row", flexWrap: "wrap", gap: 6, marginTop: 2 },
+  chip: { overflow: "hidden", borderRadius: radii.chip, backgroundColor: colors.borderSubtle, color: colors.textPrimary, fontSize: 12, fontWeight: "800", paddingHorizontal: 8, paddingVertical: 4 },
   badge: { borderRadius: radii.chip, paddingHorizontal: 12, paddingVertical: 5 },
   badgeDraft: { backgroundColor: colors.highlightBackground },
   badgeComplete: { backgroundColor: colors.accent },
   badgeTextDraft: { color: colors.textPrimary, fontSize: 12, fontWeight: "700" },
   badgeTextComplete: { color: colors.background, fontSize: 12, fontWeight: "700" },
+  delete: { color: colors.link, fontSize: 13, fontWeight: "800" },
   newButton: {
     position: "absolute",
     left: 16,

@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
+import { CharacterSummary } from "../../../../src/character/components/CharacterSummary";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
 import { useCharacterDraft } from "../../../../src/character/useCharacterDraft";
 import { updateCharacter } from "../../../../src/character/store";
@@ -57,6 +58,8 @@ export default function ReviewScreen() {
             );
           })}
         </View>
+
+        <CharacterSummary characterId={id} definition={definition} editable />
 
         <Pressable
           style={[styles.complete, !ready && styles.completeDisabled]}

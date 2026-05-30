@@ -16,6 +16,7 @@ export function QuestionsStep({ character, update, kind }: StepProps & { kind: "
   const questions = kind === "background" ? classEntry.backgroundQuestions : classEntry.connectionQuestions;
   const answers = def[kind].answers;
   const answerFor = (questionId: string) => answers.find((a) => a.questionId === questionId)?.answer ?? "";
+  const answeredCount = questions.filter((question) => answerFor(question.id).trim().length > 0).length;
 
   const setAnswer = (questionId: string, prompt: string, text: string) =>
     update((c) => {
@@ -30,14 +31,18 @@ export function QuestionsStep({ character, update, kind }: StepProps & { kind: "
 
   return (
     <View style={styles.container}>
-      <Text style={styles.hint}>
-        {kind === "background"
-          ? "Answer any that fit your character — all optional."
-          : "Prompts to explore with the other players — all optional."}
-      </Text>
+      <View style={styles.summaryCard}>
+        <Text style={styles.summaryTitle}>{answeredCount}/3 answered</Text>
+        <Text style={styles.hint}>
+          {kind === "background"
+            ? "Answer any that fit your character. This step is optional and can be skipped for now."
+            : "Use these prompts at the table if they help. This step is optional and can be skipped for now."}
+        </Text>
+      </View>
       {questions.map((question) => (
-        <View key={question.id} style={styles.field}>
+        <View key={question.id} style={[styles.field, answerFor(question.id).trim().length > 0 && styles.fieldAnswered]}>
           <Text style={styles.question}>{question.text}</Text>
+          <Text style={styles.answerState}>{answerFor(question.id).trim().length > 0 ? "Answered" : "Optional"}</Text>
           <TextInput
             style={styles.input}
             value={answerFor(question.id)}
@@ -55,8 +60,12 @@ export function QuestionsStep({ character, update, kind }: StepProps & { kind: "
 const styles = StyleSheet.create({
   container: { gap: 16 },
   hint: { color: colors.textSecondary, fontSize: 14 },
-  field: { gap: 8 },
+  summaryCard: { gap: 6, borderWidth: 1, borderColor: colors.border, borderRadius: radii.card, backgroundColor: colors.cardBackground, padding: 14 },
+  summaryTitle: { color: colors.textPrimary, fontSize: 17, fontWeight: "800" },
+  field: { gap: 8, borderWidth: 1, borderColor: colors.borderSubtle, borderRadius: radii.card, padding: 12 },
+  fieldAnswered: { borderColor: colors.accent, backgroundColor: colors.highlightBackground },
   question: { color: colors.textPrimary, fontSize: 15, fontWeight: "700", lineHeight: 21 },
+  answerState: { color: colors.textTertiary, fontSize: 12, fontWeight: "800", textTransform: "uppercase", letterSpacing: 0.5 },
   input: {
     borderWidth: 1,
     borderColor: colors.border,
