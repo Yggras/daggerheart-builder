@@ -12,7 +12,6 @@ export const STEP_SLUGS = [
   "class",
   "heritage",
   "traits",
-  "details",
   "equipment",
   "background",
   "experiences",
@@ -96,13 +95,6 @@ export const WIZARD_STEPS: WizardStep[] = [
     title: "Traits",
     blurb: "Assign +2, +1, +1, +0, +0, −1.",
     isComplete: isTraitArrayComplete,
-    isLocked: () => false,
-  },
-  {
-    slug: "details",
-    title: "Details",
-    blurb: "Level, Evasion, HP, Stress, Hope.",
-    isComplete: () => true,
     isLocked: () => false,
   },
   {
@@ -222,8 +214,6 @@ export function getStepMissingReason(step: WizardStep, definition: CharacterDefi
       return hasQuestionAnswers(definition, "background") ? "Answered." : "Optional: unanswered.";
     case "connections":
       return hasQuestionAnswers(definition, "connections") ? "Answered." : "Optional: unanswered.";
-    case "details":
-      return "Calculated automatically.";
     default:
       return "Ready.";
   }

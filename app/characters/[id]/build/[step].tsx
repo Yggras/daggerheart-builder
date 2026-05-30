@@ -1,5 +1,6 @@
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
 import { StepFooter } from "../../../../src/character/components/StepFooter";
@@ -11,6 +12,7 @@ import { colors, radii } from "../../../../src/theme";
 export default function BuildStepScreen() {
   const { id, step } = useLocalSearchParams<{ id: string; step: string }>();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { character, loading, update } = useCharacterDraft(id);
   const stepDef = getStep(step);
 
@@ -36,7 +38,7 @@ export default function BuildStepScreen() {
   return (
     <View style={styles.screen}>
       <Stack.Screen options={{ title: stepDef.title }} />
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: 120 + insets.bottom }]}>
         <BuilderTopNav characterId={id} showAllSteps />
 
         <View style={styles.stepHeader}>
@@ -60,9 +62,11 @@ export default function BuildStepScreen() {
         )}
       </ScrollView>
 
-      <StatSummaryBar definition={definition} />
-      <View style={styles.footerWrap}>
-        <StepFooter onBack={goBack} onNext={locked ? goHub : goNext} nextLabel={locked ? "All Steps" : next ? "Next" : "Review"} />
+      <View style={[styles.bottomDock, { paddingBottom: Math.max(insets.bottom, 16) }]}>
+        <StatSummaryBar definition={definition} />
+        <View style={styles.footerWrap}>
+          <StepFooter onBack={goBack} onNext={locked ? goHub : goNext} nextLabel={locked ? "All Steps" : next ? "Next" : "Review"} />
+        </View>
       </View>
     </View>
   );
@@ -78,7 +82,7 @@ function Centered({ text }: { text: string }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  content: { padding: 16, gap: 12, paddingBottom: 24 },
+  content: { padding: 16, gap: 12 },
   stepHeader: { gap: 8 },
   kicker: { color: colors.accentBold, fontSize: 12, fontWeight: "800", letterSpacing: 0.8, textTransform: "uppercase" },
   progressTrack: { height: 5, borderRadius: 999, backgroundColor: colors.borderSubtle, overflow: "hidden" },
@@ -96,7 +100,8 @@ const styles = StyleSheet.create({
   },
   lockedTitle: { color: colors.textPrimary, fontSize: 17, fontWeight: "800" },
   lockedText: { color: colors.textSecondary, fontSize: 14, lineHeight: 20 },
-  footerWrap: { paddingHorizontal: 16, paddingBottom: 16, backgroundColor: colors.background },
+  bottomDock: { backgroundColor: colors.background },
+  footerWrap: { paddingHorizontal: 16, backgroundColor: colors.background },
   centered: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: colors.background },
   centeredText: { color: colors.textSecondary, fontSize: 16 },
 });

@@ -1,5 +1,6 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { BuilderTopNav } from "../../../../src/character/components/BuilderTopNav";
 import { StatSummaryBar } from "../../../../src/character/components/StatSummaryBar";
 import { useCharacterDraft } from "../../../../src/character/useCharacterDraft";
@@ -10,6 +11,7 @@ import { colors, radii } from "../../../../src/theme";
 export default function ReviewScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { character, loading } = useCharacterDraft(id);
 
   if (loading) return <Centered text="Loading…" />;
@@ -26,7 +28,7 @@ export default function ReviewScreen() {
 
   return (
     <View style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={[styles.content, { paddingBottom: 72 + insets.bottom }]}>
         <BuilderTopNav characterId={id} showAllSteps />
 
         <Text style={styles.title}>Review</Text>
@@ -65,7 +67,9 @@ export default function ReviewScreen() {
         </Pressable>
       </ScrollView>
 
-      <StatSummaryBar definition={definition} />
+      <View style={{ paddingBottom: insets.bottom, backgroundColor: colors.cardBackground }}>
+        <StatSummaryBar definition={definition} />
+      </View>
     </View>
   );
 }
@@ -80,7 +84,7 @@ function Centered({ text }: { text: string }) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
-  content: { padding: 16, gap: 16, paddingBottom: 32 },
+  content: { padding: 16, gap: 16 },
   title: { color: colors.textPrimary, fontSize: 30, fontWeight: "800" },
   subtitle: { color: colors.textSecondary, fontSize: 17 },
   checklist: { gap: 10 },
