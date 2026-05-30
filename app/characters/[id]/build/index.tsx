@@ -39,14 +39,6 @@ export default function BuildHubScreen() {
             placeholderTextColor={colors.placeholder}
             onChangeText={(text) => update((c) => void (c.definition.identity.name = text))}
           />
-          <Text style={styles.label}>Pronouns</Text>
-          <TextInput
-            style={styles.input}
-            value={definition.identity.pronouns}
-            placeholder="e.g. they/them"
-            placeholderTextColor={colors.placeholder}
-            onChangeText={(text) => update((c) => void (c.definition.identity.pronouns = text))}
-          />
           <Text style={styles.label}>Description</Text>
           <TextInput
             style={[styles.input, styles.description]}
